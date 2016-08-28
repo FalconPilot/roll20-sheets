@@ -1,0 +1,9 @@
+{
+  "api":          "api_lor.js",
+  "html":         "template_lor.html",
+  "css":          "style_lor.css",
+  "authors":      "FalconPilot",
+  "roll20userid": "347882",
+  "preview":      "preview_lor.png",
+  "instructions": "Fiche de personnage francophone pour Land of Rebirth"
+}
