@@ -14,11 +14,52 @@
     <meta property="og:image:width" content="450">
     <meta property="og:image:height" content="150">
     <meta property="og:url" content="http://www.fpilot.fr/miscprojects/roll20/page_preview.html">
+    <!-- Preview style -->
+    <style>
+    .preview-wrapper {
+      position: relative;
+      width: 60%;
+      margin: 10px auto;
+    }
+    </style>
   </head>
   <!-- BODY -->
   <body>
-    <!-- Main wrapper -->
-    <div class="lor-wrapper">
+    <div class="preview-wrapper">
+      <!-- Begin code -->
+      <div class="sheet-lor-wrapper">
+        <!-- Identity -->
+        <div class="sheet-col">
+          <h1>Identité</h1>
+          <div>
+            <label>Nom</label>
+            <input type="text" name="attr_name">
+          </div>
+          <div>
+            <label>Surnom</label>
+            <input type="text" name="attr_nickname">
+          </div>
+          <div>
+            <label>Race</label>
+            <input type="text" name="attr_race">
+          </div>
+          <div>
+            <label>Destin</label>
+            <input type="text" name="attr_destin">
+          </div>
+        </div>
+      </div>
+      <!-- Avatar -->
+      <div class="sheet-col">
+        <div>
+          <label>URL de l'avatar</label>
+          <input type="text" name="attr_avatar">
+        </div>
+        <div>
+          <img src=""
+        </div>
+      </div>
+      <!-- End code -->
     </div>
   </body>
 </html>
