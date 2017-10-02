@@ -1,7 +1,7 @@
 var bloodMoney = bloodMoney || {};
 
-bloodMoney.equipments = {
-  weapons: {
+bloodMoney.data = {
+  equipment: {
     
   }
 }

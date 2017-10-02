@@ -3,7 +3,7 @@
 */
 
 div.sheet-bm-sheet {
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Helvetica Neue', Helvetica, sans-serif;
 }
 
 div.sheet-bm-header {
@@ -11,27 +11,81 @@ div.sheet-bm-header {
 }
 
 label {
-  padding: 4px 10px 4px 0;
   width: auto;
+  padding: 4px 0;
 }
 
 input[type=text] {
   padding: 3px;
-  width: 100%;
 }
 
 label,
 input[type=text] {
-  max-width: 100%;
   margin: 10px 0;
+}
+
+input[type=number] {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.sheet-info-input {
+  width: 80%;
+}
+
+.sheet-top-wrapper {
+  width: 100%;
+}
+
+.sheet-top-wrapper > div {
+  flex: 1;
+  padding: 5px;
+  box-sizing: border-box;
+}
+
+/*
+**  Rolltemplates
+*/
+
+.sheet-rolltemplate-carac table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #333;
+}
+
+.sheet-rolltemplate-carac th {
+  font-size: 1.2em;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.sheet-rolltemplate-carac td,
+.sheet-rolltemplate-carac th {
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+.sheet-rolltemplate-carac tr:nth-child(odd) > td {
+  background-color: #FFF;
+}
+
+.sheet-rolltemplate-carac tr:nth-child(even) > td {
+  background-color: #EEE;
+}
+
+.sheet-rolltemplate-carac td:nth-child(1) {
+  font-weight: bold;
+  text-align: left;
+}
+
+.sheet-rolltemplate-carac td:nth-child(2) {
+  text-align: center;
 }
 
 /*
 **  Titles
 */
 
-.sheet-bm-title,
-.sheet-section-name {
+h1, h2 {
   width: 100%;
   text-align: center;
 }
@@ -63,8 +117,106 @@ input[type=text] {
   max-height: 100%;
 }
 
-.sheet-avatar {
-  margin-left: 5px;
-  width: 200px;
-  height: 200px;
+/*
+**  Caracs classes
+*/
+
+table.sheet-caracs {
+  width: 100%;
+}
+
+table.sheet-caracs > thead > tr:not(.sheet-head-maj) > th {
+  padding: 4px;
+  box-sizing: border-box;
+}
+
+table.sheet-caracs > thead > tr:not(.sheet-head-sub):not(.sheet-head-maj) > th {
+  font-size: 1.2em;
+}
+
+table.sheet-caracs > tbody > tr > td {
+  padding: 4px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+table.sheet-caracs > tbody > tr > td > input[type=number]:disabled {
+  border: none;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: bold;
+  background-color: rgba(0, 0, 0, 0.2);
+  text-align: right;
+}
+
+th.sheet-head-phy,
+th.sheet-head-men,
+th.sheet-head-soc,
+td.sheet-body-phy,
+td.sheet-body-men,
+td.sheet-body-soc {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+tr.sheet-row-bon > td {
+  padding-top: 0 !important;
+}
+
+tr.sheet-row-bon > td:before {
+  content: "+/-";
+  font-weight: bold;
+}
+
+tr.sheet-row-tot {
+  border-top: 1px solid #333;
+}
+
+/* Colors */
+
+th.sheet-head-phy,
+td.sheet-body-phy,
+.sheet-rolltemplate-carac th.sheet-head-phy {
+  background-color: #f6b26b;
+}
+
+th.sheet-head-men,
+td.sheet-body-men,
+.sheet-rolltemplate-carac th.sheet-head-men {
+  background-color: #6fa8dc;
+}
+
+th.sheet-head-soc,
+td.sheet-body-soc,
+.sheet-rolltemplate-carac th.sheet-head-soc {
+  background-color: #93c47d;
+}
+
+tr.sheet-head-maj > th {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+tr.sheet-head-maj > th.sheet-head-phy {
+  background-color: #e69138;
+}
+
+tr.sheet-head-maj > th.sheet-head-men {
+  background-color: #3d85c6;
+}
+
+tr.sheet-head-maj > th.sheet-head-soc {
+  background-color: #6aa84f;
+}
+
+/* Major and Sub */
+
+tr.sheet-head-maj > th {
+  padding: 10px 4px;
+  box-sizing: border-box;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+tr.sheet-head-sub > th {
+  font-size: 0.8em;
+  font-style: italic;
+  font-weight: normal;
 }

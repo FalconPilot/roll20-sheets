@@ -1,6 +1,3 @@
-<!-- Metadata -->
-<link href="https://fonts.googleapis.com/css?family=Quicksand:400,700" rel="stylesheet">
-
 <!-- Sheet code -->
 <div class="sheet-bm-sheet">
 
@@ -12,23 +9,334 @@
   <!-- Sheet body -->
   <div class="sheet-bm-main sheet-flex-col">
 
+    <!-- HP and carry capacity -->
+
     <!-- Character informations -->
-    <h2 class="sheet-section-name">Informations</h2>
-    <div class="sheet-flex-row">
-      <div class="sheet-flex-row sheet-flex-up">
-        <div class="sheet-flex-col sheet-center-v">
-          <label>Nom</label>
-          <label>Surnom</label>
+    <h2>Informations</h2>
+    <div class="sheet-flex-col sheet-flex-up">
+      <div class="sheet-flex-row sheet-top-wrapper">
+        <div class="sheet-flex-col center-h">
+          <label>Âge</label>
+          <div class="sheet-flex-row sheet-center-v">
+            <input type="number" min="0" value="18" name="attr_age"/>
+            <span>ans</span>
+          </div>
         </div>
-        <div class="sheet-flex-col sheet-center-v sheet-flex-up">
-          <input type="text"/>
-          <input type="text"/>
+        <div class="sheet-flex-col sheet-center-h">
+          <label>Taille</label>
+          <div class="sheet-flex-row sheet-center-v">
+            <input type="number" min="1" max="2" value="1" name="attr_heightmeters"/>
+            <span>m</span>
+            <input type="number" min="0" max="99" value="0" name="attr_heightcentimeters"/>
+            <span>cm</span>
+          </div>
+        </div>
+        <div class="sheet-flex-col sheet-center-h">
+          <label>Archétype</label>
+          <select name="attr_archetype">
+            <option value="custom">Personnalisé</option>
+            <option value="racaille_des_rues">Racaille des rues</option>
+          </select>
+        </div>
+        <div class="sheet-flex-col sheet-center-h">
+          <label>Expérience</label>
+          <div class="sheet-flex-row sheet-center-v">
+            <input type="number" min="0" max="100" value="0" name="attr_xp"/>
+            <span>&#47; 100</span>
+          </div>
         </div>
       </div>
-      <div class="sheet-img-wrapper sheet-avatar">
-        <img src=""/>
+      <div class="sheet-flex-row">
+        <label class="sheet-flex-up">Nom</label>
+        <input type="text" class="sheet-info-input" name="attr_name"/>
       </div>
+      <div class="sheet-flex-row">
+        <label class="sheet-flex-up">Surnom</label>
+        <input type="text" class="sheet-info-input" name="attr_nickname"/>
+      </div>
+    </div>
+
+    <!-- Caracs -->
+    <h2>Caractéristiques</h2>
+    <table class="sheet-caracs">
+
+      <!-- Caracs head -->
+      <thead>
+        <tr class="sheet-head-maj">
+          <th colspan="4" class="sheet-head-phy">Physique</th>
+          <th colspan="4" class="sheet-head-men">Mental</th>
+          <th colspan="4" class="sheet-head-soc">Social</th>
+        </tr>
+        <tr>
+          <th colspan="4" class="sheet-head-phy">Physique</th>
+          <th colspan="4" class="sheet-head-men">Mental</th>
+          <th colspan="4" class="sheet-head-soc">Social</th>
+        </tr>
+        <tr>
+
+          <!-- PHY rolls -->
+          <th class="sheet-head-phy">
+            <button type="roll" value="&{template:carac} {{type=phy}} {{name=Test de force}} {{roll=[[((21 - 1D20) - @{str_tot} / 10) * (-1)]]}} {{character=@{name}}}"></button>
+          </th>
+          <th class="sheet-head-phy">
+            <button type="roll" value="&{template:carac} {{type=phy}} {{name=Test d'endurance}} {{roll=[[((21 - 1D20) - @{end_tot} / 10) * (-1)]]}} {{character=@{name}}}"></button>
+          </th>
+          <th class="sheet-head-phy">
+            <button type="roll" value="&{template:carac} {{type=phy}} {{name=Test d'agilité}} {{roll=[[((21 - 1D20) - @{agi_tot} / 10) * (-1)]]}} {{character=@{name}}}"></button>
+          </th>
+          <th class="sheet-head-phy">
+            <button type="roll" value="&{template:carac} {{type=phy}} {{name=Test de dextérité}} {{roll=[[((21 - 1D20) - @{dex_tot} / 10) * (-1)]]}} {{character=@{name}}}"></button>
+          </th>
+
+          <!-- MEN rolls -->
+          <th class="sheet-head-men">
+            <button type="roll" value="&{template:carac} {{type=men}} {{name=Test d'intellect}} {{roll=[[((21 - 1D20) - @{int_tot} / 10) * (-1)]]}} {{character=@{name}}}"></button>
+          </th>
+          <th class="sheet-head-men">
+            <button type="roll" value="&{template:carac} {{type=men}} {{name=Test de savoir}} {{roll=[[((21 - 1D20) - @{sav_tot} / 10) * (-1)]]}} {{character=@{name}}}"></button>
+          </th>
+          <th class="sheet-head-men">
+            <button type="roll" value="&{template:carac} {{type=men}} {{name=Test d'acuité}} {{roll=[[((21 - 1D20) - @{acu_tot} / 10) * (-1)]]}} {{character=@{name}}}"></button>
+          </th>
+          <th class="sheet-head-men">
+            <button type="roll" value="&{template:carac} {{type=men}} {{name=Test de courage}} {{roll=[[((21 - 1D20) - @{cou_tot} / 10) * (-1)]]}} {{character=@{name}}}"></button>
+          </th>
+
+          <!-- SOC rolls -->
+          <th class="sheet-head-soc">
+            <button type="roll" value="&{template:carac} {{type=soc}} {{name=Test de présence}} {{roll=[[((21 - 1D20) - @{pre_tot} / 10) * (-1)]]}} {{character=@{name}}}"></button>
+          </th>
+          <th class="sheet-head-soc">
+            <button type="roll" value="&{template:carac} {{type=soc}} {{name=Test de séduction}} {{roll=[[((21 - 1D20) - @{sed_tot} / 10) * (-1)]]}} {{character=@{name}}}"></button>
+          </th>
+          <th class="sheet-head-soc">
+            <button type="roll" value="&{template:carac} {{type=soc}} {{name=Test d'éloquence}} {{roll=[[((21 - 1D20) - @{elo_tot} / 10) * (-1)]]}} {{character=@{name}}}"></button>
+          </th>
+          <th class="sheet-head-soc">
+            <button type="roll" value="&{template:carac} {{type=soc}} {{name=Test d'empathie}} {{roll=[[((21 - 1D20) - @{emp_tot} / 10) * (-1)]]}} {{character=@{name}}}"></button>
+          </th>
+        </tr>
+        <tr>
+          <th class="sheet-head-phy">FOR</th>
+          <th class="sheet-head-phy">END</th>
+          <th class="sheet-head-phy">AGI</th>
+          <th class="sheet-head-phy">DEX</th>
+          <th class="sheet-head-men">INT</th>
+          <th class="sheet-head-men">SAV</th>
+          <th class="sheet-head-men">ACU</th>
+          <th class="sheet-head-men">COU</th>
+          <th class="sheet-head-soc">PRE</th>
+          <th class="sheet-head-soc">SED</th>
+          <th class="sheet-head-soc">ELO</th>
+          <th class="sheet-head-soc">EMP</th>
+        </tr>
+        <tr class="sheet-head-sub">
+          <th class="sheet-head-phy">Force</th>
+          <th class="sheet-head-phy">Endurance</th>
+          <th class="sheet-head-phy">Agilité</th>
+          <th class="sheet-head-phy">Dextérité</th>
+          <th class="sheet-head-men">Intellect</th>
+          <th class="sheet-head-men">Savoir</th>
+          <th class="sheet-head-men">Acuité</th>
+          <th class="sheet-head-men">Courage</th>
+          <th class="sheet-head-soc">Présence</th>
+          <th class="sheet-head-soc">Séduction</th>
+          <th class="sheet-head-soc">Eloquence</th>
+          <th class="sheet-head-soc">Empathie</th>
+        </tr>
+      </thead>
+
+      <!-- Caracs body -->
+      <tbody>
+        <tr class="sheet-row-base">
+
+          <!-- PHY base -->
+          <td>
+            <input type="number" value="6" min="1" max="20" name="attr_str_base"/>
+          </td>
+          <td>
+            <input type="number" value="6" min="1" max="20" name="attr_end_base"/>
+          </td>
+          <td>
+            <input type="number" value="6" min="1" max="20" name="attr_agi_base"/>
+          </td>
+          <td>
+            <input type="number" value="6" min="1" max="20" name="attr_dex_base"/>
+          </td>
+
+          <!-- MEN base -->
+          <td>
+            <input type="number" value="6" min="1" max="20" name="attr_int_base"/>
+          </td>
+          <td>
+            <input type="number" value="6" min="1" max="20" name="attr_sav_base"/>
+          </td>
+          <td>
+            <input type="number" value="6" min="1" max="20" name="attr_acu_base"/>
+          </td>
+          <td>
+            <input type="number" value="6" min="1" max="20" name="attr_cou_base"/>
+          </td>
+
+          <!-- SOC base -->
+          <td>
+            <input type="number" value="6" min="1" max="20" name="attr_pre_base"/>
+          </td>
+          <td>
+            <input type="number" value="6" min="1" max="20" name="attr_sed_base"/>
+          </td>
+          <td>
+            <input type="number" value="6" min="1" max="20" name="attr_elo_base"/>
+          </td>
+          <td>
+            <input type="number" value="6" min="1" max="20" name="attr_emp_base"/>
+          </td>
+        </tr>
+
+        <tr class="sheet-row-bon">
+
+          <!-- PHY bon -->
+          <td>
+            <input type="number" value="0" name="attr_str_bon"/>
+          </td>
+          <td>
+            <input type="number" value="0" name="attr_end_bon"/>
+          </td>
+          <td>
+            <input type="number" value="0" name="attr_agi_bon"/>
+          </td>
+          <td>
+            <input type="number" value="0" name="attr_dex_bon"/>
+          </td>
+
+          <!-- MEN bon -->
+          <td>
+            <input type="number" value="0" name="attr_int_bon"/>
+          </td>
+          <td>
+            <input type="number" value="0" name="attr_sav_bon"/>
+          </td>
+          <td>
+            <input type="number" value="0" name="attr_acu_bon"/>
+          </td>
+          <td>
+            <input type="number" value="0" name="attr_cou_bon"/>
+          </td>
+
+          <!-- SOC bon -->
+          <td>
+            <input type="number" value="0" name="attr_pre_bon"/>
+          </td>
+          <td>
+            <input type="number" value="0" name="attr_sed_bon"/>
+          </td>
+          <td>
+            <input type="number" value="0" name="attr_elo_bon"/>
+          </td>
+          <td>
+            <input type="number" value="0" name="attr_emp_bon"/>
+          </td>
+        </tr>
+
+        <tr class="sheet-row-tot">
+
+          <!-- PHY tot -->
+          <td class="sheet-body-phy">
+            <input type="number" value="@{str_base} + @{str_bon}" name="attr_str_tot" disabled/>
+          </td>
+          <td class="sheet-body-phy">
+            <input type="number" value="@{end_base} + @{end_bon}" name="attr_end_tot" disabled/>
+          </td>
+          <td class="sheet-body-phy">
+            <input type="number" value="@{agi_base} + @{agi_bon}" name="attr_agi_tot" disabled/>
+          </td>
+          <td class="sheet-body-phy">
+            <input type="number" value="@{dex_base} + @{dex_bon}" name="attr_dex_tot" disabled/>
+          </td>
+
+          <!-- MEN tot -->
+          <td class="sheet-body-men">
+            <input type="number" value="@{int_base} + @{int_bon}" name="attr_int_tot" disabled/>
+          </td>
+          <td class="sheet-body-men">
+            <input type="number" value="@{sav_base} + @{sav_bon}" name="attr_sav_tot" disabled/>
+          </td>
+          <td class="sheet-body-men">
+            <input type="number" value="@{acu_base} + @{acu_bon}" name="attr_acu_tot" disabled/>
+          </td>
+          <td class="sheet-body-men">
+            <input type="number" value="@{cou_base} + @{cou_bon}" name="attr_cou_tot" disabled/>
+          </td>
+
+          <!-- SOC tot -->
+          <td class="sheet-body-soc">
+            <input type="number" value="@{pre_base} + @{pre_bon}" name="attr_pre_tot" disabled/>
+          </td>
+          <td class="sheet-body-soc">
+            <input type="number" value="@{sed_base} + @{sed_bon}" name="attr_sed_tot" disabled/>
+          </td>
+          <td class="sheet-body-soc">
+            <input type="number" value="@{elo_base} + @{elo_bon}" name="attr_elo_tot" disabled/>
+          </td>
+          <td class="sheet-body-soc">
+            <input type="number" value="@{emp_base} + @{emp_bon}" name="attr_emp_tot" disabled/>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Skills -->
+    <h2>Compétences</h2>
+    <div class="">
+    </div>
+
+    <!-- Traits -->
+    <h2>Traits</h2>
+    <div class="">
     </div>
 
   </div>
 </div>
+
+<!-- Roll templates -->
+<rolltemplate class="sheet-rolltemplate-carac">
+  <table>
+    <thead>
+      <tr>
+        <th colspan="2" class="sheet-head-{{type}}">{{name}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#character}}
+        <tr>
+          <td>Personnage</td>
+          <td>{{character}}</td>
+        </tr>
+      {{/character}}
+      {{#roll}}
+        <tr>
+          <td>Résultat</td>
+          <td>{{roll}}</td>
+        </tr>
+      {{/roll}}
+    </tbody>
+  </table>
+</rolltemplate>
+
+<!-- Workers -->
+<script type="text/worker">
+
+var caracs = ["str", "end", "agi", "dex", "int", "sav", "acu", "cou", "pre", "sed", "elo", "emp"];
+
+caracs.forEach(function(carac) {
+  ["base", "bon"].forEach(function(mod) {
+    on("change:" + carac + "_" + mod, function() {
+      getAttrs([carac + "_base", carac + "_bon"], function(values) {
+        var key = carac + "_tot";
+        setAttrs({[key]: values[carac + "_base"] + values[carac + "_bon"]});
+      });
+    });
+  });
+});
+
+</script>
