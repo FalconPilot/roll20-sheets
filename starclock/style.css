@@ -1,0 +1,62 @@
+/*
+**  Main classes
+*/
+
+.sheet-sc-wrapper {
+  width: 100%;
+  font-family: 'Trebuchet MS';
+}
+
+.sheet-sc-wrapper > h1 {
+  width: 100%;
+  text-align: center;
+}
+
+/*
+**  Flex classes
+*/
+
+.sheet-flex-row,
+.sheet-flex-col { display: flex; }
+
+.sheet-flex-row { flex-direction: row; }
+.sheet-flex-col { flex-direction: column; }
+
+.sheet-flex-row.sheet-center-h,
+.sheet-flex-col.sheet-center-v { justify-content: center; }
+
+.sheet-flex-row.sheet-center-v,
+.sheet-flex-col.sheet-center-h { align-items: center; }
+
+.sheet-flex-up { flex: 1; }
+
+.sheet-flex-stretch { align-items: stretch; }
+
+/*
+**  Sheet weapon cards
+*/
+
+.sheet-weapon-card {
+  width: 350px;
+  padding: 10px;
+  box-sizing: border-box;
+  background-color: #EEE;
+  border: 1px solid #CCC;
+  border-radius: 5px;
+}
+
+.sheet-weapon-card > select {
+  width: 100%;
+}
+
+.sheet-weapon-card > select[value="bar51"]:after {
+  content: "BAR-51";
+}
+
+.sheet-weapon-rof {
+  max-width: 100%;
+}
+
+.sheet-weapon-rof > input[type=text] {
+  width: 2em;
+}

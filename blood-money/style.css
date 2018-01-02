@@ -137,15 +137,18 @@ table.sheet-caracs > thead > tr:not(.sheet-head-sub):not(.sheet-head-maj) > th {
 table.sheet-caracs > tbody > tr > td {
   padding: 4px;
   box-sizing: border-box;
-  text-align: center;
+  text-align: right;
 }
 
 table.sheet-caracs > tbody > tr > td > input[type=number]:disabled {
   border: none;
-  color: rgba(255, 255, 255, 0.8);
   font-weight: bold;
-  background-color: rgba(0, 0, 0, 0.2);
   text-align: right;
+}
+
+table.sheet-caracs > tbody > tr:not(.sheet-row-fact) > td > input[type=number]:disabled {
+  color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
 th.sheet-head-phy,
@@ -157,8 +160,47 @@ td.sheet-body-soc {
   color: rgba(0, 0, 0, 0.6);
 }
 
+th.sheet-head-phy > input:disabled,
+th.sheet-head-men > input:disabled,
+th.sheet-head-soc > input:disabled {
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  text-align: right;
+  padding: 0;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  display: none;
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+th.sheet-head-phy > input:disabled,
+th.sheet-head-phy > span,
+th.sheet-head-men > input:disabled,
+th.sheet-head-men > span,
+th.sheet-head-soc > input:disabled,
+th.sheet-head-soc > span {
+  display: inline-block;
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 1.2em;
+  line-height: 1.2em;
+  font-family: sans-serif;
+  font-weight: bold;
+}
+
 tr.sheet-row-bon > td {
   padding-top: 0 !important;
+}
+
+tr.sheet-row-bon > td > input {
+  width: 2em;
 }
 
 tr.sheet-row-bon > td:before {
@@ -204,6 +246,15 @@ tr.sheet-head-maj > th.sheet-head-men {
 
 tr.sheet-head-maj > th.sheet-head-soc {
   background-color: #6aa84f;
+}
+
+.sheet-row-fact > td > input:disabled {
+  background-color: transparent;
+  border: none;
+  font-size: 0.8em;
+  color: rgba(0, 0, 0, 0.6);
+  font-style: italic;
+  box-shadow: none;
 }
 
 /* Major and Sub */

@@ -1,0 +1,148 @@
+<!-- SHEET CODE -->
+<div class="sheet-da-wrapper sheet-flex-col">
+  <h1>Dragon Age</h1>
+
+  <!-- Character/Player infos -->
+  <div class="sheet-blocks-wrapper sheet-flex-row">
+    <!-- InRP infos -->
+    <div class="sheet-flex-col">
+
+      <div class="sheet-flex-row">
+        <label>Nom</label>
+        <input type="text" name="attr_character_name"/>
+      </div>
+
+      <div class="sheet-flex-row">
+        <label>Race</label>
+        <input type="text" name="attr_character_race"/>
+      </div>
+
+    </div>
+
+    <!-- OCC infos -->
+    <div class="sheet-flex-col">
+      <div class="sheet-flex-row">
+        <label>Joueur</label>
+        <input type="text" name="attr_player_name"/>
+      </div>
+    </div>
+  </div>
+
+  <hr/>
+
+  <div class="sheet-stat-score sheet-flex-row sheet-center-v sheet-center-h">
+    <span>Score :&nbsp;</span>
+    <input type="text" value="@{base_mus} + @{base_acu} + @{base_int} + @{base_wis} + @{base_pre} + @{base_spe} + @{base_pow} + @{base_sta}" name="attr_stat_score" disabled/>
+  </div>
+
+  <!-- Character stats -->
+  <div class="sheet-blocks-wrapper sheet-flex-row">
+    <!-- Left col -->
+    <div class="sheet-flex-col">
+
+      <!-- Body -->
+      <h2>Corps</h2>
+
+      <!-- MUSCLE -->
+      <div class="sheet-stat-wrapper sheet-body sheet-flex-row sheet-center-v">
+        <div class="sheet-flex-row sheet-center-v">
+          <input type="text" class="sheet-stat-modifier" value="@{base_mus} + @{bonus_mus} - 10" name="attr_modifier_mus" disabled/>
+        </div>
+        <label>Muscles</label>
+        <input type="text" class="sheet-stat-main" value="6" name="attr_base_mus"/>
+        <span>+</span>
+        <input type="text" class="sheet-stat-minor" value="0" name="attr_bonus_mus"/>
+      </div>
+
+      <!-- ACUITY -->
+      <div class="sheet-stat-wrapper sheet-body sheet-flex-row sheet-center-v">
+        <div class="sheet-flex-row sheet-center-v">
+          <input type="text" class="sheet-stat-modifier" value="@{base_acu} + @{bonus_acu} - 10" name="attr_modifier_acu" disabled/>
+        </div>
+        <label>Acuité</label>
+        <input type="text" class="sheet-stat-main" value="6" name="attr_base_acu"/>
+        <span>+</span>
+        <input type="text" class="sheet-stat-minor" value="0" name="attr_bonus_acu"/>
+      </div>
+
+      <!-- Mind -->
+      <h2>Esprit</h2>
+
+      <!-- INTELLECT -->
+      <div class="sheet-stat-wrapper sheet-mind sheet-flex-row sheet-center-v">
+        <div class="sheet-flex-row sheet-center-v">
+          <input type="text" class="sheet-stat-modifier" value="@{base_int} + @{bonus_int} - 10" name="attr_modifier_int" disabled/>
+        </div>
+        <label>Intellect</label>
+        <input type="text" class="sheet-stat-main" value="6" name="attr_base_int"/>
+        <span>+</span>
+        <input type="text" class="sheet-stat-minor" value="0" name="attr_bonus_int"/>
+      </div>
+
+      <!-- WISDOM -->
+      <div class="sheet-stat-wrapper sheet-mind sheet-flex-row sheet-center-v">
+        <div class="sheet-flex-row sheet-center-v">
+          <input type="text" class="sheet-stat-modifier" value="@{base_wis} + @{bonus_wis} - 10" name="attr_modifier_wis" disabled/>
+        </div>
+        <label>Sagesse</label>
+        <input type="text" class="sheet-stat-main" value="6" name="attr_base_wis"/>
+        <span>+</span>
+        <input type="text" class="sheet-stat-minor" value="0" name="attr_bonus_wis"/>
+      </div>
+    </div>
+
+    <!-- Right col -->
+    <div class="sheet-flex-col">
+
+      <!-- Social -->
+      <h2>Social</h2>
+
+      <!-- PRESENCE -->
+      <div class="sheet-stat-wrapper sheet-social sheet-flex-row sheet-center-v">
+        <div class="sheet-flex-row sheet-center-v">
+          <input type="text" class="sheet-stat-modifier" value="@{base_pre} + @{bonus_pre} - 10" name="attr_modifier_pre" disabled/>
+        </div>
+        <label>Présence</label>
+        <input type="text" class="sheet-stat-main" value="6" name="attr_base_pre"/>
+        <span>+</span>
+        <input type="text" class="sheet-stat-minor" value="0" name="attr_bonus_pre"/>
+      </div>
+
+      <!-- SPEECHCRAFT -->
+      <div class="sheet-stat-wrapper sheet-social sheet-flex-row sheet-center-v">
+        <div class="sheet-flex-row sheet-center-v">
+          <input type="text" class="sheet-stat-modifier" value="@{base_spe} + @{bonus_spe} - 10" name="attr_modifier_spe" disabled/>
+        </div>
+        <label>Éloquence</label>
+        <input type="text" class="sheet-stat-main" value="6" name="attr_base_spe"/>
+        <span>+</span>
+        <input type="text" class="sheet-stat-minor" value="0" name="attr_bonus_spe"/>
+      </div>
+
+      <!-- Magic -->
+      <h2>Magie</h2>
+
+      <!-- POWER -->
+      <div class="sheet-stat-wrapper sheet-magic sheet-flex-row sheet-center-v">
+        <div class="sheet-flex-row sheet-center-v">
+          <input type="text" class="sheet-stat-modifier" value="@{base_pow} + @{bonus_pow} - 10" name="attr_modifier_pow" disabled/>
+        </div>
+        <label>Puissance</label>
+        <input type="text" class="sheet-stat-main" value="6" name="attr_base_pow"/>
+        <span>+</span>
+        <input type="text" class="sheet-stat-minor" value="0" name="attr_bonus_pow"/>
+      </div>
+
+      <!-- STABILITY -->
+      <div class="sheet-stat-wrapper sheet-magic sheet-flex-row sheet-center-v">
+        <div class="sheet-flex-row sheet-center-v">
+          <input type="text" class="sheet-stat-modifier" value="@{base_sta} + @{bonus_sta} - 10" name="attr_modifier_sta" disabled/>
+        </div>
+        <label>Stabilité</label>
+        <input type="text" class="sheet-stat-main" value="6" name="attr_base_sta"/>
+        <span>+</span>
+        <input type="text" class="sheet-stat-minor" value="0" name="attr_bonus_sta"/>
+      </div>
+    </div>
+  </div>
+</div>

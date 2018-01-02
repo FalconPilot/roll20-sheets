@@ -10,6 +10,14 @@
   <div class="sheet-bm-main sheet-flex-col">
 
     <!-- HP and carry capacity -->
+    <div class="sheet-flex-row sheet-center-v sheet-center-h">
+      <input type="number" value="0" name="attr_hp_cur"/>
+      <span>&nbsp;/ (&nbsp;</span>
+      <input type="number" value="8 + @{end_fact}" disabled name="attr_hp_base"/>
+      <span>&nbsp;+&nbsp;</span>
+      <input type="number" value="0" name="attr_hp_bon"/>
+      <span>&nbsp;)</span>
+    </div>
 
     <!-- Character informations -->
     <h2>Informations</h2>
@@ -68,9 +76,18 @@
           <th colspan="4" class="sheet-head-soc">Social</th>
         </tr>
         <tr>
-          <th colspan="4" class="sheet-head-phy">Physique</th>
-          <th colspan="4" class="sheet-head-men">Mental</th>
-          <th colspan="4" class="sheet-head-soc">Social</th>
+          <th colspan="4" class="sheet-head-phy">
+            <input type="number" value="@{str_tot} + @{end_tot} + @{agi_tot} + @{dex_tot} + 10" name="attr_phy_score" disabled/>
+            <span>%</span>
+          </th>
+          <th colspan="4" class="sheet-head-men">
+            <input type="number" value="@{int_tot} + @{sav_tot} + @{acu_tot} + @{cou_tot} + 10" name="attr_men_score" disabled/>
+            <span>%</span>
+          </th>
+          <th colspan="4" class="sheet-head-soc">
+            <input type="number" value="@{pre_tot} + @{sed_tot} + @{elo_tot} + @{emp_tot} + 10" name="attr_soc_score" disabled/>
+            <span>%</span>
+          </th>
         </tr>
         <tr>
 
@@ -282,6 +299,52 @@
             <input type="number" value="@{emp_base} + @{emp_bon}" name="attr_emp_tot" disabled/>
           </td>
         </tr>
+
+        <!-- Factors -->
+        <tr class="sheet-row-fact">
+
+          <!-- PHY fact -->
+          <td class="sheet-body-phy">
+            <input type="number" value="floor((@{str_tot} - 10) / 2)" name="attr_str_fact" disabled/>
+          </td>
+          <td class="sheet-body-phy">
+            <input type="number" value="floor((@{end_tot} - 10) / 2)" name="attr_end_fact" disabled/>
+          </td>
+          <td class="sheet-body-phy">
+            <input type="number" value="floor((@{agi_tot} - 10) / 2)" name="attr_agi_fact" disabled/>
+          </td>
+          <td class="sheet-body-phy">
+            <input type="number" value="floor((@{dex_tot} - 10) / 2)" name="attr_dex_fact" disabled/>
+          </td>
+
+          <!-- MEN fact -->
+          <td class="sheet-body-men">
+            <input type="number" value="floor((@{int_tot} - 10) / 2)" name="attr_int_fact" disabled/>
+          </td>
+          <td class="sheet-body-men">
+            <input type="number" value="floor((@{sav_tot} - 10) / 2)" name="attr_sav_fact" disabled/>
+          </td>
+          <td class="sheet-body-men">
+            <input type="number" value="floor((@{acu_tot} - 10) / 2)" name="attr_acu_fact" disabled/>
+          </td>
+          <td class="sheet-body-men">
+            <input type="number" value="floor((@{cou_tot} - 10) / 2)" name="attr_cou_fact" disabled/>
+          </td>
+
+          <!-- SOC fact -->
+          <td class="sheet-body-soc">
+            <input type="number" value="floor((@{pre_tot} - 10) / 2)" name="attr_pre_fact" disabled/>
+          </td>
+          <td class="sheet-body-soc">
+            <input type="number" value="floor((@{sed_tot} - 10) / 2)" name="attr_sed_fact" disabled/>
+          </td>
+          <td class="sheet-body-soc">
+            <input type="number" value="floor((@{elo_tot} - 10) / 2)" name="attr_elo_fact" disabled/>
+          </td>
+          <td class="sheet-body-soc">
+            <input type="number" value="floor((@{emp_tot} - 10) / 2)" name="attr_emp_fact" disabled/>
+          </td>
+        </tr>
       </tbody>
     </table>
 
@@ -322,21 +385,3 @@
     </tbody>
   </table>
 </rolltemplate>
-
-<!-- Workers -->
-<script type="text/worker">
-
-var caracs = ["str", "end", "agi", "dex", "int", "sav", "acu", "cou", "pre", "sed", "elo", "emp"];
-
-caracs.forEach(function(carac) {
-  ["base", "bon"].forEach(function(mod) {
-    on("change:" + carac + "_" + mod, function() {
-      getAttrs([carac + "_base", carac + "_bon"], function(values) {
-        var key = carac + "_tot";
-        setAttrs({[key]: values[carac + "_base"] + values[carac + "_bon"]});
-      });
-    });
-  });
-});
-
-</script>

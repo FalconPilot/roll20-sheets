@@ -1,0 +1,164 @@
+<!-- Worker scripts -->
+<script type="text/worker">
+
+  /* Compendium */
+  var starClock = starClock || {};
+  starClock.data = {
+
+    /*
+    **  Inventory
+    */
+
+    inventory: {
+
+      /* Guns */
+      guns: {
+
+        /* BAR-51 */
+        bar51: {
+          caliber: "7.62x51mm",
+          damage_bonus: 0,
+          single: 1,
+          semi: 3,
+          full: 6,
+          failure: 2,
+          picture_url: "http://image.noelshack.com/fichiers/2016/38/1474628722-bar-51.png",
+          company: "voz_technika"
+        },
+
+        /* Brak-39 */
+        brak39: {
+          caliber: "7.62x39mm",
+          damage_bonus: 0,
+          single: 1,
+          semi: 3,
+          full: 6,
+          failure: 3,
+          picture_url: "http://image.noelshack.com/fichiers/2016/38/1474630195-brak-39.png",
+          company: "voz_technika"
+        }
+      },
+
+      /* Other weapons */
+      weapons: {
+
+      },
+
+      /* Ammo */
+      ammo: {
+        "7.62x51mm": {
+          dice_count: 3,
+          dice_faces: 4,
+          damage_bonus: 2,
+          perforation: 4
+        },
+        "7.62x39mm": {
+          dice_count: 2,
+          dice_faces: 6,
+          damage_bonus: 2,
+          perforation: 3
+        }
+      }
+    },
+
+    /*
+    **  Resources
+    */
+
+    resources: {
+
+      /* Logos */
+      logos: {
+        voz_technika: "http://image.noelshack.com/fichiers/2016/38/1474744257-voz-technika.png"
+      }
+    }
+  };
+
+  log("--- StarClock compendium loaded ! ---");
+
+  /*
+  ** Actual workers
+  */
+
+  on("change:repeating_guns", function() {
+    getSectionIDs("guns", function(list) {
+      var options = {};
+
+      /* Iterate over each weapon */
+      list.forEach(function(idArray) {
+        var baseKey = "repeating_guns_" + idArray + "_";
+        var attributes = getAttrs([ baseKey + "gunname" ], function(values) {
+          var wname = values[baseKey + "gunname"];
+          var weaponData = exists(starClock.data.inventory.guns[wname])
+            ? starClock.data.inventory.guns[wname]
+            : null;
+
+          var ammoData = exists(weaponData)
+            ? starClock.data.inventory.ammo[weaponData.caliber]
+            : null;
+
+          if (exists(weaponData) && exists(ammoData)) {
+
+            options[baseKey + "singleDices"] = ammoData.dice_count;
+            options[baseKey + "semiDices"] = ammoData.dice_count * weaponData.semi;
+            options[baseKey + "fullDices"] = ammoData.dice_count * weaponData.full;
+
+            options[baseKey + "gunFaces"] = ammoData.dice_faces;
+            options[baseKey + "gunBonus"] = ammoData.damage_bonus;
+
+            options[baseKey + "semiCount"] = weaponData.semi;
+            options[baseKey + "autoCount"] = weaponData.full;
+          }
+        });
+      });
+      console.log(options);
+      setAttrs(options);
+    });
+  });
+
+  function exists(item) {
+    return (item !== null && item !== undefined);
+  }
+</script>
+
+<!-- Main sheet code -->
+<div class="sheet-sc-wrapper sheet-flex-col sheet-center-v sheet-flex-stretch">
+
+  <h1>StarClock</h1>
+
+  <!-- Inventory tab -->
+  <div data-section="sc-inventory" class="sheet-flex-col sheet-center-h">
+    <section name="sc-weapons">
+
+      <!-- weapon template -->
+      <fieldset class="repeating_guns">
+        <div class="sheet-weapon-card sheet-flex-col">
+          <select name="attr_gunname">
+            <option disabled>Rifles</option>
+            <option value="bar51">BAR-51</option>
+            <option value="brak39">Brak-39</option>
+          </select>
+
+          <!-- Properties -->
+          <h3>Rates of Fire</h3>
+          <div class="sheet-flex-row sheet-weapon-rof">
+            <input type="text" value="S" disabled/>
+            <span>/</span>
+            <input type="text" name="attr_semiCount" disabled/>
+            <span>/</span>
+            <input type="text" name="attr_autoCount" disabled/>
+          </div>
+
+          <fieldset class="sheet-flex-row" name="sc-rolltypes">
+
+            <!-- Gun rolls -->
+            <button type="roll" value="/r @{singleDices}D@{gunFaces}+@{gunBonus}">S</button>
+            <button type="roll" value="/r @{semiDices}D@{gunFaces}+@{gunBonus}">@{semiCount}</button>
+            <button type="roll" value="/r @{fullDices}D@{gunFaces}+@{gunBonus}">@{autoCount}</button>
+          </fieldset>
+        </div>
+      </fieldset>
+
+    </section>
+  </fieldset>
+</div>

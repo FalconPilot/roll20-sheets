@@ -1,0 +1,122 @@
+/*
+**  Main wrapper classes
+*/
+
+div.sheet-da-wrapper {
+  width: 100%;
+  font-family: 'Trebuchet MS';
+}
+
+div.sheet-da-wrapper > h1 {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  text-align: center;
+  border-bottom: 1px solid #CCC;
+}
+
+div.sheet-da-wrapper > hr { width: 100%; }
+
+/*
+**  Blocks wrapper
+*/
+
+.sheet-blocks-wrapper { width: 100%; }
+
+.sheet-blocks-wrapper > div:first-child { border-right: 1px solid #CCC; }
+
+.sheet-blocks-wrapper > div {
+  width: 50%;
+  padding: 5px;
+  box-sizing: border-box;
+  flex-grow: 1;
+  flex-shrink: 0;
+}
+
+.sheet-blocks-wrapper > div > div {
+  margin: 10px 0;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+.sheet-blocks-wrapper > div label {
+  width: 30%;
+  margin-bottom: 0;
+}
+
+.sheet-blocks-wrapper > div input[type=text] { flex: 1; }
+
+/*
+**  Flex classes
+*/
+
+.sheet-flex-col,
+.sheet-flex-row { display: flex; }
+
+.sheet-flex-row { flex-direction: row; }
+.sheet-flex-col { flex-direction: column; }
+
+.sheet-flex-row.sheet-center-v,
+.sheet-flex-col.sheet-center-h { align-items: center; }
+
+.sheet-flex-row.sheet-center-h,
+.sheet-flex-col.sheet-center-v { justify-content: center; }
+
+/*
+**  Sheet stats
+*/
+
+.sheet-stat-score { margin-bottom: 5px; }
+
+.sheet-stat-score > input[type=text] {
+  width: 4em;
+  border: none;
+  background-color: transparent;
+  box-shadow: none;
+}
+
+.sheet-stat-score > input[type=text],
+.sheet-stat-score > span {
+  font-family: 'Trebuchet MS';
+  font-size: 10px;
+  font-weight: bold;
+  font-style: italic;
+}
+
+div.sheet-stat-wrapper.sheet-stat-wrapper > input[type=text] {
+  width: 3em;
+  height: 3em;
+  flex: 0;
+  border-width: 3px;
+  border-style: solid;
+  border-radius: 1.5em;
+  text-align: center;
+}
+
+.sheet-stat-wrapper > span {
+  margin: 0 5px;
+  font-weight: bold;
+}
+
+.sheet-stat-main { font-size: 15px; }
+.sheet-stat-minor { font-size: 12px; }
+
+.sheet-stat-main,
+.sheet-stat-minor {
+  font-family: 'Trebuchet MS';
+  box-shadow: 0px 0px 3px #999 inset;
+}
+
+.sheet-stat-wrapper.sheet-body > input[type=text] { border-color: #d14242; }
+.sheet-stat-wrapper.sheet-mind > input[type=text] { border-color: #429ad1; }
+.sheet-stat-wrapper.sheet-social > input[type=text] { border-color: #c4be50; }
+.sheet-stat-wrapper.sheet-magic > input[type=text] { border-color: #ab40ad; }
+
+.sheet-stat-modifier {
+  width: 3.5em;
+  margin-right: 5px;
+  border: 1px solid #CCC;
+  border-radius: 5px;
+  background-color: transparent;
+  text-align: center;
+}
