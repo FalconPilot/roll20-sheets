@@ -1,0 +1,97 @@
+/*
+**  Common classes
+*/
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input:disabled:hover,
+button:disabled:hover { cursor: not-allowed; }
+
+div.sheet-dl-wrapper { width: 850px; }
+
+.sheet-full-width { width: 100%; }
+
+.sheet-name-header {
+  margin-bottom: 20px;
+  padding-bottom: 5px;
+  border: none;
+  border-bottom: 1px solid #DDD;
+
+  font-family: 'Patrick hand';
+  font-size: inherit;
+  font-weight: inherit;
+  text-align: center;
+}
+
+/*
+**  Stats wrapper
+*/
+
+table.sheet-stats-wrapper > thead > tr > th,
+table.sheet-stats-wrapper > tbody > tr > td {
+  text-align: center;
+}
+
+table.sheet-stats-wrapper > tbody > tr > td {
+  position: relative;
+}
+
+table.sheet-stats-wrapper > tbody >tr > td:first-child {
+  font-weight: bold;
+  text-align: right;
+  font-style: italic;
+}
+
+table.sheet-stats-wrapper input[type=number] {
+  width: 50px;
+  height: 50px;
+  margin: 5px;
+
+  font-size: 20px;
+  font-family: 'Candal';
+  text-align: center;
+}
+
+/*
+**  Rolltemplates
+*/
+
+.sheet-rolltemplate-carac,
+.sheet-rolltemplate-carac > table { width: 100%; }
+
+.sheet-rolltemplate-carac {
+  border: 1px solid #999;
+  border-radius: 3px;
+}
+
+.sheet-rolltemplate-carac > table { margin: 5px 0; }
+
+.sheet-rolltemplate-carac > table tr.sheet-result > td { width: 50%; }
+
+.sheet-rolltemplate-carac > table tr.sheet-result > td,
+.sheet-rolltemplate-carac > table tr.sheet-result > td > span {
+  height: 50px;
+  width: 50px;
+}
+
+.sheet-rolltemplate-carac > table tr.sheet-result > td > span {
+  display: inline-block;
+  padding: 0;
+
+  font-size: 25px;
+  line-height: 50px;
+
+  border: none;
+  border-radius: 25px;
+}
+
+.sheet-rolltemplate-carac > table th,
+.sheet-rolltemplate-carac > table td {
+  text-align: center;
+  padding: 3px;
+  box-sizing: border-box;
+}

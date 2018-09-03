@@ -1,0 +1,70 @@
+<div class="dl-wrapper">
+  <h1 class="full-width">
+    <input type="text" name="attr_character_name" class="name-header full-width"/>
+  </h1>
+
+  <!-- Character stats -->
+  <table class="stats-wrapper full-width">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Physique</th>
+        <th>Réflexes</th>
+        <th>Acuité</th>
+        <th>Sociabilité</th>
+        <th>Volonté</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Roll</td>
+        <td><button type="roll" value="&{template:carac} {{heading=Physique}} {{roll=[[1D100]]}} {{target=[[@{total_phy} + ?{Bonus/Malus)|0}]]}} {{character=@{character_name}}}"></button></td>
+      </tr>
+      <tr>
+        <td>Base</td>
+        <td><input type="number" name="attr_base_phy" value="20"/></td>
+        <td><input type="number" name="attr_base_ref" value="20"/></td>
+        <td><input type="number" name="attr_base_acu" value="20"/></td>
+        <td><input type="number" name="attr_base_soc" value="20"/></td>
+        <td><input type="number" name="attr_base_vol" value="20"/></td>
+      </tr>
+      <tr>
+        <td>Total</td>
+        <td><input type="number" name="attr_total_phy" value="@{base_phy}" disabled/></td>
+        <td><input type="number" name="attr_total_ref" value="@{base_ref}" disabled/></td>
+        <td><input type="number" name="attr_total_acu" value="@{base_acu}" disabled/></td>
+        <td><input type="number" name="attr_total_soc" value="@{base_soc}" disabled/></td>
+        <td><input type="number" name="attr_total_vol" value="@{base_vol}" disabled/></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Roll templates -->
+<rolltemplate class="sheet-rolltemplate-carac">
+  <table>
+
+    <thead>
+      <tr>
+        <th colspan="2">{{heading}}</th>
+      </tr>
+      {{#character}}
+        <tr>
+          <th colspan="2">{{character}}</th>
+        </tr>
+      {{/character}}
+      <tr>
+        <th>Résultat</th>
+        <th>Cible</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr class="sheet-result">
+        <td>{{roll}}</td>
+        <td>{{target}}</td>
+      </tr>
+    </tbody>
+
+  </table>
+</rolltemplate>
