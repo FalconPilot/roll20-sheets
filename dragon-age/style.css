@@ -102,19 +102,18 @@ div.sheet-stat-wrapper.sheet-stat-wrapper > input[type=text] {
 .sheet-stat-minor { font-size: 12px; }
 
 .sheet-stat-main,
-.sheet-stat-minor {
-  font-family: 'Trebuchet MS';
-  box-shadow: 0px 0px 3px #999 inset;
-}
+.sheet-stat-minor { font-family: 'Trebuchet MS'; }
 
 .sheet-stat-wrapper.sheet-body > input[type=text] { border-color: #d14242; }
 .sheet-stat-wrapper.sheet-mind > input[type=text] { border-color: #429ad1; }
-.sheet-stat-wrapper.sheet-social > input[type=text] { border-color: #c4be50; }
+.sheet-stat-wrapper.sheet-social > input[type=text] { border-color: #677a48; }
 .sheet-stat-wrapper.sheet-magic > input[type=text] { border-color: #ab40ad; }
+
+.sheet-stat-wrapper > div:last-child { margin-left: auto; }
 
 .sheet-stat-modifier {
   width: 3.5em;
-  margin-right: 5px;
+  margin-left: 5px;
   border: 1px solid #CCC;
   border-radius: 5px;
   background-color: transparent;

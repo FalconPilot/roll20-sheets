@@ -1,0 +1,235 @@
+<div class="flex-col wrapper">
+  <h1 class="title">
+    Project <span>Virtual</span>
+  </h1>
+
+  <div class="inner-content">
+    <!-- Tabs buttons -->
+    <input type="radio" name="attr_tab" value="1" class="tab-button-1" checked="checked"/><span title="Monde réel"></span>
+    <input type="radio" name="attr_tab" value="2" class="tab-button-2"/><span title="Avatar virtuel"></span>
+
+    <!-- Real Character -->
+    <div class="flex-col tab-1">
+
+      <!-- IDENTITY -->
+      <h2 class="section-title">Identité réelle</h2>
+      <div class="flex-row simple-section">
+        <div class="flex-col">
+          <label>Nom complet</label>
+          <label>Nationalité</label>
+          <label>Langues parlées</label>
+        </div>
+        <div class="flex-col">
+          <input type="text" name="attr_character_name"/>
+          <input type="text" name="attr_reelle_nationalite"/>
+          <input type="text" name="attr_languages"/>
+        </div>
+      </div>
+
+      <!-- STATS -->
+      <h2 class="section-title">Caractéristiques</h2>
+      <div class="flex-row stats-wrapper">
+
+        <!-- PHYS -->
+        <div class="stat-wrapper flex-col center-h phys">
+          <label>Constitution</label>
+          <div>
+            <input type="number" name="attr_constitution" value="0"/>
+          </div>
+          <button type="roll" value="/r {3D10+?{Modificateur|0}}>5"></button>
+        </div>
+        <div class="stat-wrapper flex-col center-h phys">
+          <label>Agilité</label>
+          <div>
+            <input type="number" name="attr_agilite" value="0"/>
+          </div>
+        </div>
+        <div class="stat-wrapper flex-col center-h phys">
+          <label>Acuité</label>
+          <div>
+            <input type="number" name="attr_acuite" value="0"/>
+          </div>
+        </div>
+
+        <!-- MIND -->
+        <div class="stat-wrapper flex-col center-h mind">
+          <label>Intellect</label>
+          <div>
+            <input type="number" name="attr_intellect" value="0"/>
+          </div>
+        </div>
+        <div class="stat-wrapper flex-col center-h mind">
+          <label>Volonté</label>
+          <div>
+            <input type="number" name="attr_volonte" value="0"/>
+          </div>
+        </div>
+        <div class="stat-wrapper flex-col center-h mind">
+          <label>Sociabilité</label>
+          <div>
+            <input type="number" name="attr_sociabilite" value="0"/>
+          </div>
+        </div>
+      </div>
+
+      <!-- TRAITS -->
+      <h2 class="section-title">Traits</h2>
+      <fieldset class="flex-col repeating_realtraits">
+        <div class="flex-row center-v inventory-wrapper">
+          <input type="text" name="attr_r_tname" placeholder="Nom"/>
+          <textarea name="attr_r_tdesc" placeholder="Effets"></textarea>
+        </div>
+      </fieldset>
+
+      <!-- INVENTORY -->
+      <h2 class="section-title">Inventaire</h2>
+      <fieldset class="flex-col repeating_realinventory">
+        <div class="flex-row center-v inventory-wrapper">
+          <input type="text" name="attr_r_iname" placeholder="Nom"/>
+          <input type="number" name="attr_r_qty" placeholder="Qté"/>
+          <textarea name="attr_r_idesc" placeholder="Description/notes"></textarea>
+        </div>
+      </fieldset>
+    </div>
+
+    <!-- Virtual Avatar -->
+    <div class="flex-col tab-2">
+
+      <!-- IDENTITY -->
+      <h2 class="section-title">Identité virtuelle</h2>
+      <div class="flex-row simple-section">
+        <div class="flex-col">
+          <label>Pseudonyme</label>
+          <label>Nationalité</label>
+          <label>Statut</label>
+        </div>
+        <div class="flex-col">
+          <input type="text" name="attr_character_pseudonyme"/>
+          <input type="text" name="attr_character_cyber_nationalite"/>
+          <input type="text" name="attr_character_cyber_statut"/>
+        </div>
+      </div>
+
+      <hr/>
+
+      <div class="flex-col center-h">
+        <h3 class="sub-title">Relances</h3>
+        <div class="flex-col relances">
+          <span>
+            <input type="number" name="attr_relances" value="0"/>
+            <input name="attr_relances_total" type="number" value="@{relances_bonus} + @{chance} + 1" disabled/>
+          </span>
+          <div class="flex-row center-h">
+            <input type="number" name="attr_relances_bonus" value="0"/>
+          </div>
+        </div>
+      </div>
+
+      <!-- STATS -->
+      <h2 class="section-title">Caractéristiques</h2>
+      <div class="flex-row stats-wrapper">
+
+        <!-- PHYS -->
+        <div class="stat-wrapper flex-col center-h phys">
+          <label>Constitution</label>
+          <div>
+            <input type="number" name="attr_cyber_constitution" value="0"/>
+          </div>
+        </div>
+        <div class="stat-wrapper flex-col center-h phys">
+          <label>Agilité</label>
+          <div>
+            <input type="number" name="attr_cyber_agilite" value="0"/>
+          </div>
+        </div>
+        <div class="stat-wrapper flex-col center-h phys">
+          <label>Acuité</label>
+          <div>
+            <input type="number" name="attr_cyber_acuite" value="0"/>
+          </div>
+        </div>
+
+        <!-- TECH -->
+        <div class="stat-wrapper flex-col center-h tech">
+          <label>Affinité</label>
+          <div>
+            <input type="number" name="attr_affinite" value="0"/>
+          </div>
+        </div>
+        <div class="stat-wrapper flex-col center-h tech">
+          <label>Stabilité</label>
+          <div>
+            <input type="number" name="attr_stabilite" value="0"/>
+          </div>
+        </div>
+        <div class="stat-wrapper flex-col center-h tech">
+          <label>Chance</label>
+          <div>
+            <input type="number" name="attr_chance" value="0"/>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- RESISTANCES -->
+      <h2 class="section-title">Résistances</h2>
+      <div class="flex-row flex-wrap resistances-cyber">
+        <div class="flex-row">
+          <label class="phys">Physique</label>
+          <input type="number" name="attr_res_phys" value="0"/>
+          <input type="number" name="attr_res_phys_final" value="@{res_phys} + @{cyber_constitution}" disabled/>
+        </div>
+        <div class="flex-row">
+          <label class="impact">Impact</label>
+          <input type="number" name="attr_res_impact" value="0"/>
+          <input type="number" name="attr_res_impact_final" value="@{res_impact} + @{cyber_constitution}" disabled/>
+        </div>
+        <div class="flex-row">
+          <label class="explosif">Explosif</label>
+          <input type="number" name="attr_res_explosif" value="0"/>
+          <input type="number" name="attr_res_explosif_final" value="@{res_explosif} + @{cyber_constitution}" disabled/>
+        </div>
+
+        <div class="flex-row">
+          <label class="thermique">Thermique</label>
+          <input type="number" name="attr_res_thermique" value="0"/>
+          <input type="number" name="attr_res_thermique_final" value="@{res_thermique} + @{stabilite}" disabled/>
+        </div>
+        <div class="flex-row">
+          <label class="choc">Choc</label>
+          <input type="number" name="attr_res_choc" value="0"/>
+          <input type="number" name="attr_res_choc_final" value="@{res_choc} + @{stabilite}" disabled/>
+        </div>
+        <div class="flex-row">
+          <label class="toxique">Toxique</label>
+          <input type="number" name="attr_res_toxique" value="0"/>
+          <input type="number" name="attr_res_toxique_final" value="@{res_toxique} + @{stabilite}" disabled/>
+        </div>
+      </div>
+
+      <!-- TRAITS -->
+      <h2 class="section-title">Traits</h2>
+      <fieldset class="flex-col repeating_cybertraits">
+        <div class="flex-row center-v inventory-wrapper">
+          <input type="text" name="attr_c_tname" placeholder="Nom"/>
+          <textarea name="attr_c_tdesc" placeholder="Effets"></textarea>
+        </div>
+      </fieldset>
+
+      <!-- INVENTORY -->
+      <h2 class="section-title">Inventaire</h2>
+      <fieldset class="flex-col repeating_cyberinventory">
+        <div class="flex-row center-v inventory-wrapper">
+          <input type="text" name="attr_c_iname" placeholder="Nom"/>
+          <input type="number" name="attr_c_qty" placeholder="Qté"/>
+          <textarea name="attr_c_idesc" placeholder="Description/notes"></textarea>
+        </div>
+      </fieldset>
+
+    </div>
+  </div>
+</div>
+
+<!-- ROLL TEMPLATES -->
+<rolltemplate class="rolltemplate-std">
+</rolltemplate>
