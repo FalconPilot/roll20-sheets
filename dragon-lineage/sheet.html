@@ -3,7 +3,108 @@
     <input type="text" name="attr_character_name" class="name-header full-width"/>
   </h1>
 
+  <!-- HP / Stability -->
+  <div class="horizontal-wrapper full-width">
+
+    <!-- HP display -->
+    <div class="gauge-wrapper half-width">
+      <h3>Vitalité</h3>
+      <div class="hp-wrapper full-width">
+        <input type="number" name="attr_current_hp" value="8"/>
+        <input type="number" name="attr_max_hp" value="8" min="0"/>
+      </div>
+    </div>
+
+    <!-- Stability display -->
+    <div class="gauge-wrapper half-width">
+      <h3>Stabilité</h3>
+      <div class="stability-wrapper full-width">
+        <input type="number" name="attr_current_stability" value="3" min="0"/>
+        <input type="number" name="attr_max_stability" value="3" min="0"/>
+      </div>
+    </div>
+  </div>
+
+  <!-- Character -->
+  <hr/>
+  <div class="horizontal-wrapper full-width">
+
+    <!-- Col 1 -->
+    <table class="infos-wrapper third-width">
+      <tbody>
+        <tr>
+          <td>Race</td>
+          <td>
+            <select>
+              <option value="human">Humain</option>
+              <option value="draconian">Draconien</option>
+              <option value="sylvain">Sylvain</option>
+              <option value="hybrid-humdra">Humain/Draconien</option>
+              <option value="hybrid-humsyl">Humain/Sylvain</option>
+              <option value="hybrid-drasyl">Draconien/Sylvain</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>Archétype</td>
+          <td><input type="text" name"attr_character_archetype"/>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Col 2 -->
+    <table class="infos-wrapper third-width">
+      <tbody>
+        <tr>
+          <td>Genre</td>
+          <td><input type="text" name="attr_character_gender"/></td>
+        </tr>
+        <tr>
+          <td>Origine</td>
+          <td><input type="text" name="attr_character_origin"/></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Col 3 -->
+    <table class="infos-wrapper third-width">
+      <tbody>
+        <tr>
+          <td>Age</td>
+          <td>
+            <input type="number" name="attr_character_age" value="0" min="0"/>
+            <span class="suffix">ans</span>
+          </td>
+        </tr>
+        <tr>
+          <td>Poids</td>
+          <td>
+            <input type="number" name="attr_character_weight" value="0" min="0"/>
+            <span class="suffix">kg</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Money -->
+  <hr/>
+  <p class="tooltip">30SF = 1PA</p>
+  <div class="currencies horizontal-wrapper full-width">
+    <div class="half-width horizontal-wrapper">
+      <label>Pièces d'acier</label>
+      <input type="number" name="attr_steel_coins" class="steel-coins" value="0" min="0"/>
+      <img src="https://fpilot.fr/dragonlineage/Currencies/steel_coin.png"/>
+    </div>
+    <div class="half-width horizontal-wrapper">
+      <label>Sous de fer</label>
+      <input type="number" name="attr_iron_coins" class="iron-coins" value="0" min="0"/>
+      <img src="https://fpilot.fr/dragonlineage/Currencies/iron_coins.png"/>
+    </div>
+  </div>
+
   <!-- Character stats -->
+  <hr/>
   <table class="stats-wrapper full-width">
     <thead>
       <tr>
@@ -42,12 +143,384 @@
       </tr>
     </tbody>
   </table>
+
+  <!-- Martial skills -->
+  <hr/>
+  <div class="horizontal-wrapper">
+
+    <!-- Swords -->
+    <div class="martial-wrapper">
+      <label>
+        <strong>Epées</strong>
+        <div>
+          <input type="checkbox" name="attr_swords_known"/>
+          <img src="https://fpilot.fr/dragonlineage/MartialSkills/swords.png"/>
+        </div>
+      </label>
+    </div>
+
+    <!-- Daggers -->
+    <div class="martial-wrapper">
+      <label>
+        <strong>Dagues</strong>
+        <div>
+          <input type="checkbox" name="attr_daggers_known"/>
+          <img src="https://fpilot.fr/dragonlineage/MartialSkills/daggers.png"/>
+        </div>
+      </label>
+    </div>
+
+    <!-- Hast -->
+    <div class="martial-wrapper">
+      <label>
+        <strong>Hast</strong>
+        <div>
+          <input type="checkbox" name="attr_hast_known"/>
+          <img src="https://fpilot.fr/dragonlineage/MartialSkills/hast.png"/>
+        </div>
+      </label>
+    </div>
+
+    <!-- Maces -->
+    <div class="martial-wrapper">
+      <label>
+        <strong>Masses</strong>
+        <div>
+          <input type="checkbox" name="attr_maces_known"/>
+          <img src="https://fpilot.fr/dragonlineage/MartialSkills/maces.png"/>
+        </div>
+      </label>
+    </div>
+
+    <!-- Axes -->
+    <div class="martial-wrapper">
+      <label>
+        <strong>Haches</strong>
+        <div>
+          <input type="checkbox" name="attr_axes_known"/>
+          <img src="https://fpilot.fr/dragonlineage/MartialSkills/axes.png"/>
+        </div>
+      </label>
+    </div>
+
+    <!-- Whips -->
+    <div class="martial-wrapper">
+      <label>
+        <strong>Fouet</strong>
+        <div>
+          <input type="checkbox" name="attr_whips_known"/>
+          <img src="https://fpilot.fr/dragonlineage/MartialSkills/whips.png"/>
+        </div>
+      </label>
+    </div>
+
+    <!-- Bows -->
+    <div class="martial-wrapper">
+      <label>
+        <strong>Arcs</strong>
+        <div>
+          <input type="checkbox" name="attr_bows_known"/>
+          <img src="https://fpilot.fr/dragonlineage/MartialSkills/bows.png"/>
+        </div>
+      </label>
+    </div>
+
+    <!-- Crossbows -->
+    <div class="martial-wrapper">
+      <label>
+        <strong>Arbalètes</strong>
+        <div>
+          <input type="checkbox" name="attr_crossbows_known"/>
+          <img src="https://fpilot.fr/dragonlineage/MartialSkills/crossbows.png"/>
+        </div>
+      </label>
+    </div>
+
+    <!-- Slings -->
+    <div class="martial-wrapper">
+      <label>
+        <strong>Frondes</strong>
+        <div>
+          <input type="checkbox" name="attr_slings_known"/>
+          <img src="https://fpilot.fr/dragonlineage/MartialSkills/slings.png"/>
+        </div>
+      </label>
+    </div>
+
+    <!-- Powder weapons -->
+    <div class="martial-wrapper">
+      <label>
+        <strong>Poudre</strong>
+        <div>
+          <input type="checkbox" name="attr_powder_known"/>
+          <img src="https://fpilot.fr/dragonlineage/MartialSkills/powder.png"/>
+        </div>
+      </label>
+    </div>
+  </div>
+
+  <!-- Skills -->
+  <hr/>
+  <div class="horizontal-wrapper">
+
+    <!-- Image -->
+    <div class="third-width">
+    </div>
+
+    <!-- Col 1 -->
+    <table class="skills-wrapper third-width">
+      <thead>
+        <tr>
+          <th class="skill-name">Compétence</th>
+          <th>Connu</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="skill-name">Athlétisme</td>
+          <td><label><input type="checkbox" name="attr_athletisme_known"/></label></td>
+          <td><button type="roll" value="&{template:carac} {{heading=Athlétisme}} {{roll=[[1D100]]}} {{target=[[@{total_phy} - 20 + (20 * @{athletisme_known}) + ?{Bonus/Malus)|0}]]}} {{character=@{character_name}}}"></button></td>
+        </tr>
+        <tr>
+          <td class="skill-name">Bricolage</td>
+          <td><label><input type="checkbox" name="attr_bricolage_known"/></label></td>
+          <td><button type="roll" value="&{template:carac} {{heading=Bricolage}} {{roll=[[1D100]]}} {{target=[[@{total_acu} - 20 + (20 * @{bricolage_known}) + ?{Bonus/Malus)|0}]]}} {{character=@{character_name}}}"></button></td>
+        </tr>
+        <tr>
+          <td class="skill-name">Cuisine</td>
+          <td><label><input type="checkbox" name="attr_cuisine_known"/></label></td>
+          <td><button type="roll" value="&{template:carac} {{heading=Cuisine}} {{roll=[[1D100]]}} {{target=[[@{total_vol} - 20 + (20 * @{cuisine_known}) + ?{Bonus/Malus)|0}]]}} {{character=@{character_name}}}"></button></td>
+        </tr>
+        <tr>
+          <td class="skill-name">Diplomatie</td>
+          <td><label><input type="checkbox" name="attr_diplomatie_known"/></label></td>
+          <td><button type="roll" value="&{template:carac} {{heading=Diplomatie}} {{roll=[[1D100]]}} {{target=[[@{total_soc} - 20 + (20 * @{cuisine_known}) + ?{Bonus/Malus)|0}]]}} {{character=@{character_name}}}"></button></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Col 2 -->
+    <table class="skills-wrapper third-width">
+      <thead>
+        <tr>
+          <th class="skill-name">Compétence</th>
+          <th>Connu</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="skill-name">Escamotage</td>
+          <td><label><input type="checkbox" name="attr_escamotage_known"/></label></td>
+          <td><button type="roll" value="&{template:carac} {{heading=Escamotage}} {{roll=[[1D100]]}} {{target=[[@{total_ref} - 20 + (20 * @{escamotage_known}) + ?{Bonus/Malus)|0}]]}} {{character=@{character_name}}}"></button></td>
+        </tr>
+        <tr>
+          <td class="skill-name">Furtivité</td>
+          <td><label><input type="checkbox" name="attr_furtivite_known"/></label></td>
+          <td><button type="roll" value="&{template:carac} {{heading=Furtivité}} {{roll=[[1D100]]}} {{target=[[@{total_ref} - 20 + (20 * @{furtivite_known}) + ?{Bonus/Malus)|0}]]}} {{character=@{character_name}}}"></button></td>
+        </tr>
+        <tr>
+          <td class="skill-name">Intimidation</td>
+          <td><label><input type="checkbox" name="attr_intimidation_known"/></label></td>
+          <td><button type="roll" value="&{template:carac} {{heading=Intimidation}} {{roll=[[1D100]]}} {{target=[[@{total_vol} - 20 + (20 * @{intimidation_known}) + ?{Bonus/Malus)|0}]]}} {{character=@{character_name}}}"></button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Knowledge -->
+  <hr/>
+  <h2>
+    <img src="https://fpilot.fr/dragonlineage/gui/book.png"/>
+    Connaissances
+  </h2>
+  <fieldset class="repeating_knowledge">
+    <div class="horizontal-wrapper full-width">
+      <div class="knowledge-before">•</div>
+      <input class="knowledge-input" type="text" name="attr_knowledge_name" placeholder="Nom de la connaissance"/>
+    </div>
+  </fieldset>
+
+  <!-- Traits -->
+  <hr/>
+  <h2>
+    <img src="https://fpilot.fr/dragonlineage/gui/star.png"/>
+    Traits
+  </h2>
+  <fieldset class="repeating_traits">
+    <div class="full-width">
+      <div class="horizontal-wrapper">
+        <div class="knowledge-before">•</div>
+        <input class="knowledge-input" type="text" name="attr_trait_name" placeholder="Nom du trait"/>
+      </div>
+      <textarea class="trait-description" name="attr_trait_description" placeholder="Description du trait"></textarea>
+    </div>
+  </fieldset>
+
+  <!-- Equipment -->
+  <hr/>
+  <div class="horizontal-wrapper full-width">
+
+    <!-- Armor -->
+    <div class="armor-wrapper third-width">
+
+      <!-- Head -->
+      <div class="head slot">
+        <input type="text" name="attr_headgear" placeholder="Tête"/>
+        <table class="armor-protection">
+          <thead>
+            <tr>
+              <th class="slice">T</th>
+              <th class="bash">C</th>
+              <th class="pierce">P</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><input type="number" name="attr_headgear_rt" min="0" value="0"/></td>
+              <td><input type="number" name="attr_headgear_rc" min="0" value="0"/></td>
+              <td><input type="number" name="attr_headgear_rp" min="0" value="0"/></td>
+            </tr>
+          </tbody>
+        </table>
+        <input type="text" class="traits" name="attr_headgear_traits" placeholder="Traits"/>
+      </div>
+
+      <!-- Torso -->
+      <div class="chest slot">
+        <input type="text" name="attr_chestgear" placeholder="Corps"/>
+        <table class="armor-protection">
+          <thead>
+            <tr>
+              <th class="slice">T</th>
+              <th class="bash">C</th>
+              <th class="pierce">P</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><input type="number" name="attr_chestgear_rt" min="0" value="0"/></td>
+              <td><input type="number" name="attr_chestgear_rc" min="0" value="0"/></td>
+              <td><input type="number" name="attr_chestgear_rp" min="0" value="0"/></td>
+            </tr>
+          </tbody>
+        </table>
+        <input type="text" class="traits" name="attr_chestgear_traits" placeholder="Traits"/>
+      </div>
+
+      <!-- Arms -->
+      <div class="arms slot">
+        <input type="text" name="attr_armsgear" placeholder="Bras"/>
+        <table class="armor-protection">
+          <thead>
+            <tr>
+              <th class="slice">T</th>
+              <th class="bash">C</th>
+              <th class="pierce">P</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><input type="number" name="attr_armsgear_rt" min="0" value="0"/></td>
+              <td><input type="number" name="attr_armsgear_rc" min="0" value="0"/></td>
+              <td><input type="number" name="attr_armsgear_rp" min="0" value="0"/></td>
+            </tr>
+          </tbody>
+        </table>
+        <input type="text" class="traits" name="attr_armsgear_traits" placeholder="Traits"/>
+      </div>
+
+      <!-- Feet -->
+      <div class="bottom slot">
+        <input type="text" name="attr_bottomgear" placeholder="Jambes"/>
+        <table class="armor-protection">
+          <thead>
+            <tr>
+              <th class="slice">T</th>
+              <th class="bash">C</th>
+              <th class="pierce">P</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><input type="number" name="attr_bottomgear_rt" min="0" value="0"/></td>
+              <td><input type="number" name="attr_bottomgear_rc" min="0" value="0"/></td>
+              <td><input type="number" name="attr_bottomgear_rp" min="0" value="0"/></td>
+            </tr>
+          </tbody>
+        </table>
+        <input type="text" class="traits" name="attr_bottomgear_traits" placeholder="Traits"/>
+      </div>
+    </div>
+
+    <!-- Weapons -->
+    <div class="weapons-wrapper two-third-width">
+      <fieldset class="repeating_weapons">
+        <div class="weapon-wrapper">
+          <input type="text" name="attr_weapon_name" placeholder="Nom de l'arme"/>
+
+          <!-- Weapon dice -->
+          <select name="attr_weapon_dice">
+            <option value="1D4">D4</option>
+            <option value="1D6">D6</option>
+            <option value="1D8">D8</option>
+            <option value="1D10">D10</option>
+            <option value="1D12">D12</option>
+          </select>
+
+          <!-- Weapon level -->
+          <select name="attr_weapon_level">
+            <option value="5">Commun</option>
+            <option value="20">Martial</option>
+          </select>
+
+          <!-- Weapon type -->
+          <select name="attr_weapon_type">
+            <option value="@{swords_known}">Epée</option>
+            <option value="@{daggers_known}">Dague</option>
+            <option value="@{hast_known}">Hast</option>
+            <option value="@{axes_known}">Hache</option>
+            <option value="@{maces_known}">Masse</option>
+            <option value="@{whips_known}">Fouet</option>
+            <option value="@{bows_known}">Arc</option>
+            <option value="@{crossbows_known}">Arbalète</option>
+            <option value="@{slings_known}">Fronde</option>
+            <option value="@{powder_known}">Poudre</option>
+          </select>
+
+          <!-- Weapon roll -->
+          <button type="roll" value="&{template:attack} {{damage=[[@{weapon_dice} + ?{Bonus/Malus (dégâts)|0}]]}} {{heading=@{weapon_name}}} {{roll=[[1D100]]}} {{target=[[(@{total_ref} + ?{Bonus/Malus (toucher)|0}) - @{weapon_level} + (@{weapon_level} * @{weapon_type})]]}} {{character=@{character_name}}}"></button>
+        </div>
+      </fieldset>
+    </div>
+  </div>
+
+  <!-- Inventory -->
+  <hr/>
+  <h2>
+    <img src="https://fpilot.fr/dragonlineage/gui/chest.png"/>
+    Inventaire
+  </h2>
+  <p class="tooltip">
+    Poids total :
+    <input type="number" name="attr_total_kg" value="@{total_kilos}" disabled/><strong>kg</strong>
+    <input type="number" name="attr_total_g" value="@{total_grams}" disabled/><strong>g</strong>
+  </p>
+  <fieldset class="repeating_inventory">
+    <div class="item-wrapper">
+      <input class="item-name" type="text" name="attr_item_name" placeholder="Objet"/>
+      <span>x</span><input type="number" name="attr_item_qty" value="0" min="0" style="margin: 0;"/>
+      <input type="number" name="attr_item_kg" value="0" min="0"/><span>kg</span>
+      <input type="number" name="attr_item_g" value="0" min="0"/><span>g</span>
+    </div>
+  </fieldset>
+
 </div>
 
 <!-- Roll templates -->
 <rolltemplate class="sheet-rolltemplate-carac">
   <table>
-
     <thead>
       <tr>
         <th colspan="2">{{heading}}</th>
@@ -62,13 +535,88 @@
         <th>Cible</th>
       </tr>
     </thead>
-
     <tbody>
       <tr class="sheet-result">
         <td>{{roll}}</td>
         <td>{{target}}</td>
       </tr>
     </tbody>
-
   </table>
 </rolltemplate>
+
+<rolltemplate class="sheet-rolltemplate-attack">
+  <table>
+    <thead>
+      <tr>
+        <th colspan="2">{{heading}}</th>
+      </tr>
+      {{#character}}
+        <tr>
+          <th colspan="2">{{character}}</th>
+        </tr>
+      {{/character}}
+      <tr>
+        <th>Résultat</th>
+        <th>Cible</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="sheet-result">
+        <td>{{roll}}</td>
+        <td>{{target}}</td>
+      </tr>
+      {{#rollBetween() roll 0 target}}
+        <tr>
+          <td style="font-weight: bold;">Dégâts</td>
+          <td>{{damage}}</td>
+        </tr>
+      {{/rollBetween() roll 0 target}}
+    </tbody>
+  </table>
+</rolltemplate>
+
+<!-- Worker scripts -->
+<script type="text/worker">
+
+// On weight change
+on("change:repeating_inventory:item_kg change:repeating_inventory:item_g change:repeating_inventory:item_qty remove:repeating_inventory:item_kg remove:repeating_inventory:item_g remove:repeating_inventory:item_qty", function() {
+  getSectionIDs("repeating_inventory", function(arr) {
+    const kiloFields = arr.map(function(id) {
+      return "repeating_inventory_" + id + "_item_kg";
+    });
+
+    const gramFields = arr.map(function(id) {
+      return "repeating_inventory_" + id + "_item_g";
+    });
+
+    const qtyFields = arr.map(function(id) {
+      return "repeating_inventory_" + id + "_item_qty";
+    });
+
+    // Fetch kilos & grams
+    getAttrs(kiloFields, function(kilos) {
+      getAttrs(gramFields, function(grams) {
+        getAttrs(qtyFields, function(qtys) {
+
+          const totalWeight = arr.reduce(function(total, id) {
+
+            const kg = kilos["repeating_inventory_" + id + "_item_kg"];
+            const g = grams["repeating_inventory_" + id + "_item_g"];
+            const qty = qtys["repeating_inventory_" + id + "_item_qty"];
+
+            return total + ((parseInt(g, 10) + (parseInt(kg, 10) * 1000)) * parseInt(qty, 10))
+
+          }, 0);
+
+          setAttrs({
+            "total_kilos": Math.floor(totalWeight / 1000),
+            "total_grams": totalWeight % 1000
+          });
+        });
+      });
+    });
+
+  });
+});
+
+</script>

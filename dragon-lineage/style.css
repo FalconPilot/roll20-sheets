@@ -13,7 +13,22 @@ button:disabled:hover { cursor: not-allowed; }
 
 div.sheet-dl-wrapper { width: 850px; }
 
+div.sheet-dl-wrapper > h2 {
+  width: 100%;
+  text-align: center;
+}
+
 .sheet-full-width { width: 100%; }
+.sheet-three-quarters-width { width: 75%; }
+.sheet-two-third-width { width: 66%; }
+.sheet-half-width { width: 50%; }
+.sheet-third-width { width: 33%; }
+.sheet-quarter-width { width: 25%; }
+
+.sheet-horizontal-wrapper {
+  display: flex;
+  justify-content: space-around;
+}
 
 .sheet-name-header {
   margin-bottom: 20px;
@@ -27,20 +42,122 @@ div.sheet-dl-wrapper { width: 850px; }
   text-align: center;
 }
 
+p.sheet-tooltip {
+  width: 100%;
+  margin: 5px 0;
+  font-size: 10px;
+  font-style: italic;
+  color: #777;
+  text-align: center;
+}
+
+p.sheet-tooltip > input[type=number] { text-align: right; }
+
+p.sheet-tooltip > strong { margin: 0 5px; }
+
+/*
+**  Character infos
+*/
+
+table.sheet-infos-wrapper td { padding: 5px; }
+
+table.sheet-infos-wrapper td:first-child {
+  padding: 0 10px;
+  font-weight: bold;
+  font-size: 25px;
+  font-family: 'Patrick hand';
+}
+
+table.sheet-infos-wrapper input[type=text],
+table.sheet-infos-wrapper input[type=number] {
+  text-align: right;
+  border: none;
+  border-bottom: 1px dashed #CCC;
+}
+
+table.sheet-infos-wrapper input[type=text],
+table.sheet-infos-wrapper input[type=number],
+table.sheet-infos-wrapper select {
+  margin: auto;
+  width: auto;
+}
+
+table.sheet-infos-wrapper span.sheet-suffix {
+  font-family: 'Patrick hand';
+  font-size: 16px;
+}
+
+/*
+**  HP / Stability
+*/
+
+div.sheet-hp-wrapper,
+div.sheet-stability-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+div.sheet-gauge-wrapper > h3 {
+  width: 100%;
+  text-align: center;
+}
+
+div.sheet-hp-wrapper > input[type=number]:first-child {
+  background-color: #e64f4f;
+}
+
+div.sheet-hp-wrapper > input[type=number]:not(:first-child) {
+  background-color: #b73e3e;
+}
+
+div.sheet-stability-wrapper > input[type=number]:first-child {
+  background-color: #65b551;
+}
+
+div.sheet-stability-wrapper > input[type=number]:not(:first-child) {
+  background-color: #4d8c3d;
+}
+
+div.sheet-hp-wrapper:after,
+div.sheet-stability-wrapper:after {
+  content: " ";
+  position: absolute;
+  width: 8px;
+  top: 0;
+  left: 209px;
+  bottom: 0;
+  transform: skew(-10deg);
+}
+
+div.sheet-hp-wrapper:after { background-color: #b73e3e; }
+div.sheet-stability-wrapper:after { background-color: #65b551; }
+
+div.sheet-gauge-wrapper > div { position: relative; }
+
+div.sheet-gauge-wrapper input[type=number] {
+  border: none;
+  text-align: center;
+  font-size: 20px;
+  color: #FFF;
+  border-radius: 0 5px 5px 0;
+  font-family: 'Patrick hand';
+}
+
+div.sheet-gauge-wrapper input[type=number]:first-child {
+  border-radius: 5px 0 0 5px;
+}
+
 /*
 **  Stats wrapper
 */
 
 table.sheet-stats-wrapper > thead > tr > th,
-table.sheet-stats-wrapper > tbody > tr > td {
-  text-align: center;
-}
+table.sheet-stats-wrapper > tbody > tr > td { text-align: center; }
 
-table.sheet-stats-wrapper > tbody > tr > td {
-  position: relative;
-}
+table.sheet-stats-wrapper > tbody > tr > td { position: relative; }
 
-table.sheet-stats-wrapper > tbody >tr > td:first-child {
+table.sheet-stats-wrapper > tbody > tr > td:first-child {
   font-weight: bold;
   text-align: right;
   font-style: italic;
@@ -57,28 +174,330 @@ table.sheet-stats-wrapper input[type=number] {
 }
 
 /*
+**  Martial skills
+*/
+
+div.sheet-martial-wrapper > label {
+  margin: 0;
+  padding: 5px;
+}
+
+div.sheet-martial-wrapper > label > strong {
+  display: block;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+div.sheet-martial-wrapper > label:hover { cursor: pointer; }
+
+div.sheet-martial-wrapper > label > div {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+div.sheet-martial-wrapper > label > div > input[type=checkbox] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  border: 1px solid #CCC;
+  border-radius: 50%;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  transition: 0.2s;
+}
+
+div.sheet-martial-wrapper > label > div > input[type=checkbox]:active,
+div.sheet-martial-wrapper > label > div > input[type=checkbox]:focus { outline: none; }
+
+div.sheet-martial-wrapper > label > div > input[type=checkbox]:checked {
+
+}
+
+div.sheet-martial-wrapper > label > div > input[type=checkbox]:after {
+  content: "✔";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  font-size: 14px;
+  text-align: right;
+  color: #34ca5e;
+  width: 100%;
+  opacity: 0.0;
+  transition: 0.2s;
+}
+
+div.sheet-martial-wrapper > label > div > input[type=checkbox]:checked:after {
+  opacity: 1.0;
+}
+
+div.sheet-martial-wrapper > label > div > input[type=checkbox] + img { transition: 0.2s; }
+
+div.sheet-martial-wrapper > label > div > input[type=checkbox]:not(:checked) + img {
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+  opacity: 0.7;
+}
+
+/*
+**  Skills table
+*/
+
+table.sheet-skills-wrapper td:not(.sheet-skill-name),
+table.sheet-skills-wrapper th:not(.sheet-skill-name) {
+  width: 50px;
+  text-align: center;
+}
+
+table.sheet-skills-wrapper { border: 1px solid #CCC; }
+
+table.sheet-skills-wrapper td,
+table.sheet-skills-wrapper th { padding: 5px; }
+
+table.sheet-skills-wrapper td > label {
+  width: 100%;
+  text-align: center;
+}
+
+/*
+**  Traits
+*/
+
+textarea.sheet-trait-description {
+  height: 5em;
+  resize: none;
+  font-style: italic;
+}
+
+/*
+**  Knwoledges possessed
+*/
+
+div.sheet-knowledge-before {
+  align-self: center;
+  margin-right: 10px;
+  font-size: 30px;
+  color: #777;
+}
+
+input.sheet-knowledge-input {
+  width: 100%;
+  margin-bottom: 5px;
+  font-size: 26px;
+  border: none;
+  border-bottom: 1px dashed #CCC;
+  font-family: 'Patrick hand';
+}
+
+/*
+**  Currencies
+*/
+
+div.sheet-currencies label {
+  width: auto;
+  margin: auto;
+  padding: 0;
+}
+
+div.sheet-currencies input[type=number] {
+  flex: 1;
+  margin: 0 0 0 10px;
+  font-size: 20px;
+  text-align: right;
+  border: none;
+  border-bottom: 1px dashed #CCC;
+}
+
+div.sheet-currencies img { margin: auto 20px auto 0; }
+
+/*
+**  Armor classes
+*/
+
+div.sheet-armor-wrapper {
+  position: relative;
+  height: 340px;
+}
+
+div.sheet-armor-wrapper > div.sheet-slot {
+  width: 110px;
+  height: 110px;
+  position: absolute;
+  border: 1px solid #CCC;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+div.sheet-armor-wrapper > div.sheet-head,
+div.sheet-armor-wrapper > div.sheet-chest,
+div.sheet-armor-wrapper > div.sheet-bottom { left: 120px; }
+
+div.sheet-armor-wrapper > div.sheet-head { top: 0; }
+div.sheet-armor-wrapper > div.sheet-arms { left: 0; }
+
+div.sheet-armor-wrapper > div.sheet-chest,
+div.sheet-armor-wrapper > div.sheet-arms { top: 120px; }
+
+div.sheet-armor-wrapper > div.sheet-bottom { top: 240px; }
+
+div.sheet-slot > input[type=text] { width: 100%; }
+
+div.sheet-slot > table { margin-top: 2px; }
+
+div.sheet-slot > table th,
+div.sheet-slot > table td {
+  position: relative;
+  width: 33%;
+  text-align: center;
+}
+
+div.sheet-slot > table input[type=number] {
+  width: 28px;
+  height: 28px;
+  margin: 0 4px;
+  text-align: center;
+  border-radius: 50%;
+  border: 1px solid #CCC;
+}
+
+div.sheet-slot > input[type=text] { border: none; }
+div.sheet-slot > input[type=text]:not(.sheet-traits) {
+  border-bottom: 1px dashed #CCC;
+  text-align: center;
+  font-family: 'Patrick hand';
+  font-size: 12px;
+}
+
+div.sheet-slot > input[type=text].sheet-traits { margin-top: 6px; }
+
+div.sheet-slot > table th:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 23px;
+  width: 12px;
+  height: 12px;
+  background-size: contain;
+}
+
+div.sheet-slot > table th.sheet-slice:after {
+  background-image: url("https://fpilot.fr/dragonlineage/Damage/slice.png");
+}
+
+div.sheet-slot > table th.sheet-bash:after {
+  background-image: url("https://fpilot.fr/dragonlineage/Damage/bash.png");
+}
+
+div.sheet-slot > table th.sheet-pierce:after {
+  background-image: url("https://fpilot.fr/dragonlineage/Damage/pierce.png");
+}
+
+/*
+**  Weapons
+*/
+
+div.sheet-weapons-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+div.sheet-weapon-wrapper {
+  display: flex;
+  align-items: center;
+  margin: 5px 0;
+}
+
+div.sheet-weapon-wrapper > select {
+  width: auto;
+  margin: 0 5px;
+}
+
+div.sheet-weapon-wrapper > input[type=text] {
+  width: auto;
+  flex: 1;
+  font-family: 'Patrick hand';
+  font-size: 20px;
+  border: none;
+  border-bottom: 1px dashed #CCC;
+}
+
+/*
+**  Inventory
+*/
+
+div.sheet-item-wrapper {
+  display: flex;
+  align-items: center;
+  margin: 5px 0;
+}
+
+div.sheet-item-wrapper > input[type=number] {
+  width: 35px;
+  height: 35px;
+  padding: 0;
+  border: 1px solid #CCC;
+  border-radius: 50%;
+  text-align: center;
+}
+
+div.sheet-item-wrapper > input:not(:first-child) { margin-left: 10px; }
+
+input.sheet-item-name {
+  flex: 1;
+  font-size: 20px;
+  border: none;
+  border-bottom: 1px dashed #CCC;
+  font-family: 'Patrick hand';
+}
+
+div.sheet-item-wrapper span {
+  display: inline-block;
+  margin: 0 5px;
+  font-family: 'Patrick hand';
+  font-size: 16px;
+}
+
+/*
 **  Rolltemplates
 */
 
 .sheet-rolltemplate-carac,
-.sheet-rolltemplate-carac > table { width: 100%; }
+.sheet-rolltemplate-carac > table,
+.sheet-rolltemplate-attack,
+.sheet-rolltemplate-attack > table { width: 100%; }
 
-.sheet-rolltemplate-carac {
+.sheet-rolltemplate-carac,
+.sheet-rolltemplate-attack {
   border: 1px solid #999;
   border-radius: 3px;
 }
 
-.sheet-rolltemplate-carac > table { margin: 5px 0; }
-
-.sheet-rolltemplate-carac > table tr.sheet-result > td { width: 50%; }
+.sheet-rolltemplate-carac > table,
+.sheet-rolltemplate-attack > table { margin: 5px 0; }
 
 .sheet-rolltemplate-carac > table tr.sheet-result > td,
-.sheet-rolltemplate-carac > table tr.sheet-result > td > span {
+.sheet-rolltemplate-attack > table tr.sheet-result > td { width: 50%; }
+
+.sheet-rolltemplate-carac > table tr.sheet-result > td,
+.sheet-rolltemplate-attack > table tr.sheet-result > td,
+.sheet-rolltemplate-carac > table tr.sheet-result > td > span,
+.sheet-rolltemplate-attack > table tr.sheet-result > td > span {
   height: 50px;
   width: 50px;
 }
 
-.sheet-rolltemplate-carac > table tr.sheet-result > td > span {
+.sheet-rolltemplate-carac > table tr.sheet-result > td > span,
+.sheet-rolltemplate-attack > table tr.sheet-result > td > span {
   display: inline-block;
   padding: 0;
 
@@ -90,7 +509,9 @@ table.sheet-stats-wrapper input[type=number] {
 }
 
 .sheet-rolltemplate-carac > table th,
-.sheet-rolltemplate-carac > table td {
+.sheet-rolltemplate-carac > table td,
+.sheet-rolltemplate-attack > table td,
+.sheet-rolltemplate-attack > table th {
   text-align: center;
   padding: 3px;
   box-sizing: border-box;
