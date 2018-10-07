@@ -47,7 +47,7 @@
         </tr>
         <tr>
           <td>Archétype</td>
-          <td><input type="text" name"attr_character_archetype"/>
+          <td><input type="text" name="attr_character_archetype"/></td>
         </tr>
       </tbody>
     </table>
@@ -279,28 +279,38 @@
       <tbody>
         <tr>
           <td class="skill-name">Acrobatie</td>
-          <td><label><input type="checkbox" name="attr_acrobatie_known"/></label></td>
-          <td><button type="roll" value="&{template:carac} {{heading=Acrobatie}} {{roll=[[1D100]]}} {{target=[[@{total_ref} - 10 + (20 * @{acrobatie_known}) + ?{Bonus/Malus)|0}]]}} {{character=@{character_name}}}"></button></td>
+          <td><label><input type="checkbox" name="attr_acrobatie_known" value="1"/></label></td>
+          <td><button type="roll" value="&{template:carac} {{heading=Acrobatie}} {{roll=[[1D100]]}} {{target=[[(@{total_ref} - 10) + (20 * @{acrobatie_known}) + ?{Bonus/Malus)|0}]]}} {{character=@{character_name}}}"></button></td>
         </tr>
         <tr>
           <td class="skill-name">Athlétisme</td>
-          <td><label><input type="checkbox" name="attr_athletisme_known"/></label></td>
-          <td><button type="roll" value="&{template:carac} {{heading=Athlétisme}} {{roll=[[1D100]]}} {{target=[[@{total_phy} - 10 + (20 * @{athletisme_known}) + ?{Bonus/Malus)|0}]]}} {{character=@{character_name}}}"></button></td>
+          <td><label><input type="checkbox" name="attr_athletisme_known" value="1"/></label></td>
+          <td><button type="roll" value="&{template:carac} {{heading=Athlétisme}} {{roll=[[1D100]]}} {{target=[[(@{total_phy} - 10) + (20 * @{athletisme_known}) + ?{Bonus/Malus)|0}]]}} {{character=@{character_name}}}"></button></td>
         </tr>
         <tr>
           <td class="skill-name">Bricolage</td>
-          <td><label><input type="checkbox" name="attr_bricolage_known"/></label></td>
-          <td><button type="roll" value="&{template:carac} {{heading=Bricolage}} {{roll=[[1D100]]}} {{target=[[@{total_acu} - 10 + (20 * @{bricolage_known}) + ?{Bonus/Malus)|0}]]}} {{character=@{character_name}}}"></button></td>
+          <td><label><input type="checkbox" name="attr_bricolage_known" value="1"/></label></td>
+          <td><button type="roll" value="&{template:carac} {{heading=Bricolage}} {{roll=[[1D100]]}} {{target=[[(@{total_acu} - 10) + (20 * @{bricolage_known}) + ?{Bonus/Malus)|0}]]}} {{character=@{character_name}}}"></button></td>
         </tr>
         <tr>
           <td class="skill-name">Cuisine</td>
-          <td><label><input type="checkbox" name="attr_cuisine_known"/></label></td>
-          <td><button type="roll" value="&{template:carac} {{heading=Cuisine}} {{roll=[[1D100]]}} {{target=[[@{total_vol} - 10 + (20 * @{cuisine_known}) + ?{Bonus/Malus)|0}]]}} {{character=@{character_name}}}"></button></td>
+          <td><label><input type="checkbox" name="attr_cuisine_known" value="1"/></label></td>
+          <td><button type="roll" value="&{template:carac} {{heading=Cuisine}} {{roll=[[1D100]]}} {{target=[[(@{total_vol} - 10) + (20 * @{cuisine_known}) + ?{Bonus/Malus)|0}]]}} {{character=@{character_name}}}"></button></td>
         </tr>
         <tr>
           <td class="skill-name">Diplomatie</td>
-          <td><label><input type="checkbox" name="attr_diplomatie_known"/></label></td>
-          <td><button type="roll" value="&{template:carac} {{heading=Diplomatie}} {{roll=[[1D100]]}} {{target=[[@{total_soc} - 10 + (20 * @{cuisine_known}) + ?{Bonus/Malus)|0}]]}} {{character=@{character_name}}}"></button></td>
+          <td><label><input type="checkbox" name="attr_diplomatie_known" value="1"/></label></td>
+          <td><button type="roll" value="&{template:carac} {{heading=Diplomatie}} {{roll=[[1D100]]}} {{target=[[(@{total_soc} - 10) + (20 * @{cuisine_known}) + ?{Bonus/Malus)|0}]]}} {{character=@{character_name}}}"></button></td>
+        </tr>
+        <tr>
+          <td class="skill-name">Dessin</td>
+          <td><label><input type="checkbox" name="attr_dessin_known" value="1"/></label></td>
+          <td><button type="roll" value="&{template:carac} {{heading=Dessin}} {{roll=[[1D100]]}} {{target=[[(@{total_acu} - 10) + (20 * @{dessin_known}) + ?{Bonus/Malus)|0}]]}} {{character=@{character_name}}}"></button></td>
+        </tr>
+        <tr>
+          <td class="skill-name">Escamotage</td>
+          <td><label><input type="checkbox" name="attr_escamotage_known" value="1"/></label></td>
+          <td><button type="roll" value="&{template:carac} {{heading=Escamotage}} {{roll=[[1D100]]}} {{target=[[(@{total_ref} - 10) + (20 * @{escamotage_known}) + ?{Bonus/Malus)|0}]]}} {{character=@{character_name}}}"></button></td>
         </tr>
       </tbody>
     </table>
@@ -316,29 +326,39 @@
       </thead>
       <tbody>
         <tr>
-          <td class="skill-name">Escamotage</td>
-          <td><label><input type="checkbox" name="attr_escamotage_known"/></label></td>
-          <td><button type="roll" value="&{template:carac} {{heading=Escamotage}} {{roll=[[1D100]]}} {{target=[[@{total_ref} - 10 + (20 * @{escamotage_known}) + ?{Bonus/Malus)|0}]]}} {{character=@{character_name}}}"></button></td>
-        </tr>
-        <tr>
           <td class="skill-name">Furtivité</td>
-          <td><label><input type="checkbox" name="attr_furtivite_known"/></label></td>
-          <td><button type="roll" value="&{template:carac} {{heading=Furtivité}} {{roll=[[1D100]]}} {{target=[[@{total_ref} - 10 + (20 * @{furtivite_known}) + ?{Bonus/Malus)|0}]]}} {{character=@{character_name}}}"></button></td>
+          <td><label><input type="checkbox" name="attr_furtivite_known" value="1"/></label></td>
+          <td><button type="roll" value="&{template:carac} {{heading=Furtivité}} {{roll=[[1D100]]}} {{target=[[(@{total_ref} - 10) + (20 * @{furtivite_known}) + ?{Bonus/Malus)|0}]]}} {{character=@{character_name}}}"></button></td>
         </tr>
         <tr>
           <td class="skill-name">Intimidation</td>
-          <td><label><input type="checkbox" name="attr_intimidation_known"/></label></td>
-          <td><button type="roll" value="&{template:carac} {{heading=Intimidation}} {{roll=[[1D100]]}} {{target=[[@{total_vol} - 10 + (20 * @{intimidation_known}) + ?{Bonus/Malus)|0}]]}} {{character=@{character_name}}}"></button></td>
+          <td><label><input type="checkbox" name="attr_intimidation_known" value="1"/></label></td>
+          <td><button type="roll" value="&{template:carac} {{heading=Intimidation}} {{roll=[[1D100]]}} {{target=[[(@{total_vol} - 10) + (20 * @{intimidation_known}) + ?{Bonus/Malus)|0}]]}} {{character=@{character_name}}}"></button></td>
         </tr>
         <tr>
           <td class="skill-name">Lancer</td>
-          <td><label><input type="checkbox" name="attr_lancer_known"/></label></td>
-          <td><button type="roll" value="&{template:carac} {{heading=Lancer}} {{roll=[[1D100]]}} {{target=[[@{total_acu} - 10 + (20 * @{lancer_known}) + ?{Bonus/Malus)|0}]]}} {{character=@{character_name}}}"></button></td>
+          <td><label><input type="checkbox" name="attr_lancer_known" value="1"/></label></td>
+          <td><button type="roll" value="&{template:carac} {{heading=Lancer}} {{roll=[[1D100]]}} {{target=[[(@{total_acu} - 10) + (20 * @{lancer_known}) + ?{Bonus/Malus)|0}]]}} {{character=@{character_name}}}"></button></td>
+        </tr>
+        <tr>
+          <td class="skill-name">Littérature</td>
+          <td><label><input type="checkbox" name="attr_litterature_known" value="1"/></label></td>
+          <td><button type="roll" value="&{template:carac} {{heading=Littérature}} {{roll=[[1D100]]}} {{target=[[(@{total_vol} - 10) + (20 * @{litterature_known}) + ?{Bonus/Malus)|0}]]}} {{character=@{character_name}}}"></button></td>
+        </tr>
+        <tr>
+          <td class="skill-name">Musique</td>
+          <td><label><input type="checkbox" name="attr_musique_known" value="1"/></label></td>
+          <td><button type="roll" value="&{template:carac} {{heading=Musique}} {{roll=[[1D100]]}} {{target=[[(@{total_vol} - 10) + (20 * @{musique_known}) + ?{Bonus/Malus)|0}]]}} {{character=@{character_name}}}"></button></td>
         </tr>
         <tr>
           <td class="skill-name">Parade</td>
-          <td><label><input type="checkbox" name="attr_parade_known"/></label></td>
-          <td><button type="roll" value="&{template:carac} {{heading=Parade}} {{roll=[[1D100]]}} {{target=[[@{total_ref} - 10 + (20 * @{parade_known}) + ?{Bonus/Malus)|0}]]}} {{character=@{character_name}}}"></button></td>
+          <td><label><input type="checkbox" name="attr_parade_known" value="1"/></label></td>
+          <td><button type="roll" value="&{template:carac} {{heading=Parade}} {{roll=[[1D100]]}} {{target=[[(@{total_ref} - 10) + (20 * @{parade_known}) + ?{Bonus/Malus)|0}]]}} {{character=@{character_name}}}"></button></td>
+        </tr>
+        <tr>
+          <td class="skill-name">Spectacle</td>
+          <td><label><input type="checkbox" name="attr_spectacle_known" value="1"/></label></td>
+          <td><button type="roll" value="&{template:carac} {{heading=Spectacle}} {{roll=[[1D100]]}} {{target=[[(@{total_soc} - 10) + (20 * @{spectacle_known}) + ?{Bonus/Malus)|0}]]}} {{character=@{character_name}}}"></button></td>
         </tr>
       </tbody>
     </table>
@@ -471,6 +491,7 @@
 
     <!-- Weapons -->
     <div class="weapons-wrapper two-third-width">
+      <h2>Armement</h2>
       <fieldset class="repeating_weapons">
         <div class="weapon-wrapper">
           <input type="text" name="attr_weapon_name" placeholder="Nom de l'arme"/>
