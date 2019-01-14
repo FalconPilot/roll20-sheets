@@ -13,7 +13,8 @@ button:disabled:hover { cursor: not-allowed; }
 
 div.sheet-dl-wrapper { width: 850px; }
 
-div.sheet-dl-wrapper > h2 {
+div.sheet-dl-wrapper > h2,
+div.sheet-weapons-wrapper > h2 {
   width: 100%;
   text-align: center;
   font-family: 'Candal';
@@ -93,7 +94,9 @@ table.sheet-infos-wrapper span.sheet-suffix {
 */
 
 div.sheet-hp-wrapper,
-div.sheet-stability-wrapper {
+div.sheet-stability-wrapper,
+div.sheet-xp-wrapper,
+div.sheet-destiny-wrapper {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -120,19 +123,39 @@ div.sheet-stability-wrapper > input[type=number]:not(:first-child) {
   background-color: #4d8c3d;
 }
 
+div.sheet-xp-wrapper > input[type=number]:first-child {
+  background-color: #649fd2;
+}
+
+div.sheet-destiny-wrapper > input[type=number]:first-child {
+  background-color: #8d688e;
+}
+
+div.sheet-xp-wrapper > input[type=number]:not(:first-child) {
+  background-color: #4e7da7;
+}
+
+div.sheet-destiny-wrapper > input[type=number]:not(:first-child) {
+  background-color: #6a506b;
+}
+
 div.sheet-hp-wrapper:after,
-div.sheet-stability-wrapper:after {
+div.sheet-stability-wrapper:after,
+div.sheet-xp-wrapper:after,
+div.sheet-destiny-wrapper:after {
   content: " ";
   position: absolute;
   width: 8px;
   top: 0;
-  left: 209px;
+  left: 102px;
   bottom: 0;
   transform: skew(-10deg);
 }
 
 div.sheet-hp-wrapper:after { background-color: #b73e3e; }
 div.sheet-stability-wrapper:after { background-color: #4d8c3d; }
+div.sheet-xp-wrapper:after { background-color: #4e7da7; }
+div.sheet-destiny-wrapper:after { background-color: #6a506b; }
 
 div.sheet-gauge-wrapper > div { position: relative; }
 

@@ -1,0 +1,11 @@
+{
+  "version": "0.1.0",
+  "private": true,
+  "author": "FalconPilot",
+  "scripts": {
+    "build": "node compile.js"
+  },
+  "dependencies": {
+    "fs-extra": "^7.0.1"
+  }
+}

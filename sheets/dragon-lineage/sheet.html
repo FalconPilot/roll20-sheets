@@ -7,7 +7,7 @@
   <div class="horizontal-wrapper full-width">
 
     <!-- HP display -->
-    <div class="gauge-wrapper half-width">
+    <div class="gauge-wrapper quarter-width">
       <h3>Vitalité</h3>
       <div class="hp-wrapper full-width">
         <input type="number" name="attr_current_hp" value="8"/>
@@ -16,11 +16,29 @@
     </div>
 
     <!-- Stability display -->
-    <div class="gauge-wrapper half-width">
+    <div class="gauge-wrapper quarter-width">
       <h3>Stabilité</h3>
       <div class="stability-wrapper full-width">
         <input type="number" name="attr_current_stability" value="3" min="0"/>
         <input type="number" name="attr_max_stability" value="3" min="0"/>
+      </div>
+    </div>
+
+    <!-- Destiny -->
+    <div class="gauge-wrapper quarter-width">
+      <h3>Destin</h3>
+      <div class="destiny-wrapper full-width">
+        <input type="number" name="attr_current_destiny" value="2"/>
+        <input type="number" name="attr_total_destiny" value="2"/>
+      </div>
+    </div>
+
+    <!-- XP bar -->
+    <div class="gauge-wrapper quarter-width">
+      <h3>Expérience</h3>
+      <div class="xp-wrapper full-width">
+        <input type="number" name="attr_current_xp" value="0"/>
+        <input type="number" name="attr_total_xp" value="0"/>
       </div>
     </div>
   </div>
@@ -624,7 +642,7 @@
 </rolltemplate>
 
 <!-- Worker scripts -->
-<script type="text/worker">
+<script>
 
 // On weight change
 on("change:repeating_inventory:item_kg change:repeating_inventory:item_g change:repeating_inventory:item_qty remove:repeating_inventory:item_kg remove:repeating_inventory:item_g remove:repeating_inventory:item_qty", function() {
