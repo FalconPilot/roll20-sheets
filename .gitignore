@@ -1,3 +1,4 @@
 *.DS_Store
 *build.html
+*build.css
 *node_modules
