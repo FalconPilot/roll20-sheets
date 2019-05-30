@@ -318,7 +318,7 @@
         <tr>
           <td class="skill-name">Diplomatie</td>
           <td><label><input type="checkbox" name="attr_diplomatie_known" value="1"/></label></td>
-          <td><button type="roll" value="&{template:carac} {{heading=Diplomatie}} {{roll=[[1D100]]}} {{target=[[(@{total_soc} - 10) + (20 * @{cuisine_known}) + ?{Bonus/Malus)|0}]]}} {{character=@{character_name}}}"></button></td>
+          <td><button type="roll" value="&{template:carac} {{heading=Diplomatie}} {{roll=[[1D100]]}} {{target=[[(@{total_soc} - 10) + (20 * @{diplomatie_known}) + ?{Bonus/Malus)|0}]]}} {{character=@{character_name}}}"></button></td>
         </tr>
         <tr>
           <td class="skill-name">Dessin</td>
@@ -642,7 +642,7 @@
 </rolltemplate>
 
 <!-- Worker scripts -->
-<script>
+<script type="text/worker">
 
 // On weight change
 on("change:repeating_inventory:item_kg change:repeating_inventory:item_g change:repeating_inventory:item_qty remove:repeating_inventory:item_kg remove:repeating_inventory:item_g remove:repeating_inventory:item_qty", function() {
