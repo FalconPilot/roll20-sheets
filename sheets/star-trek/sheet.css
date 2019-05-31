@@ -1,0 +1,37 @@
+.sheet-st-wrapper { width: 850px; }
+
+.sheet-full-width { width: 100%; }
+.sheet-half-width { width: 50%; }
+.sheet-quarter-width { width: 25%; }
+
+.sheet-full-name > input[type=text] {
+  border: none;
+  display: inline;
+  padding: 0;
+  margin: 0;
+  background-color: none;
+  text-align: center;
+  font-size: 22px;
+  font-weight: bold;
+  font-family: "Contrail One";
+}
+
+.sheet-line-input > input[type=text] {
+  border: none;
+  border-bottom: 1px dashed #AAA;
+  font-size: 12px;
+}
+
+.sheet-horizontal-wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.sheet-vertical-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.sheet-skill-wrapper > select {
+  width: 50px;
+}

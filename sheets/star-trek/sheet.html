@@ -1,0 +1,56 @@
+<div class="st-wrapper">
+  <h1 class="full-name full-width">
+    <input type="hidden" name="attr_character_fullname" />
+    <input type="text" class="full-width" name="attr_character_displayed_fullname" value="@{character_fullname}" disabled />
+  </h1>
+
+  <div class="full-width">
+    <div class="line-input half-width">
+      <h2>Titre</h2>
+      <input type="text" name="attr_character_role" />
+    </div>
+    <div class="line-input half-width">
+      <h2>Nom</h2>
+      <input type="text" name="attr_character_name" />
+    </div>
+  </div>
+</div>
+
+<!-- Skills list -->
+<div class="full-width skills-list">
+  <fieldset class="repeating_skills">
+    <div class="horizontal-wrapper full-width">
+      <input type="text" name="attr_skillname" />
+      <select name="attr_skilldice">
+        <option value="d4">D4</option>
+        <option value="d6">D6</option>
+        <option value="d8">D8</option>
+        <option value="d10">D10</option>
+        <option value="d12">D12</option>
+      </select>
+      <div>
+        <input type="number" name="attr_skillbonus" value="0" min="0" />
+        <button type="roll" value="/r @{skilldice} + @{skillbonus}"></button>
+      </div>
+    </div>
+  </fieldset>
+</div>
+
+<!-- Workers -->
+<script type="text/worker">
+  function exists (elt) {
+    return !!elt;
+  }
+
+  on("change:character_name change:character_role", function() {
+    getAttrs([
+      "character_name",
+      "character_role"
+    ], function(values) {
+      var fullName = [values.character_role, values.character_name]
+        .filter(exists)
+        .join(" ");
+      setAttrs({ character_fullname: fullName });
+    });
+  });
+</script>
