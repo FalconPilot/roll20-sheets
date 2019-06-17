@@ -1,0 +1,31 @@
+.sheet-flex-row,
+.sheet-flex-col { display: flex; }
+
+.sheet-flex-row { flex-direction: row; }
+.sheet-flex-col { flex-direction: column; }
+
+.sheet-full-width { width: 100%; }
+.sheet-half-width { width: 50%; }
+.sheet-third-width { width: 33%; }
+.sheet-quarter-width { width: 25%; }
+
+div.sheet-akhemar-wrapper {
+  width: 850px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+input.sheet-line-input {
+  background-color: transparent;
+  border-radius: 0;
+  border: none;
+  border-bottom: 1px dashed #CCC;
+  font-family: 'Patrick Hand';
+}
+
+h1.sheet-character-name-title > input[type=text] {
+  text-align: center;
+  font-size: 32px;
+}
