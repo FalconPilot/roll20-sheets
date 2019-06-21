@@ -1,13 +1,41 @@
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+/* Flex classes */
 .sheet-flex-row,
 .sheet-flex-col { display: flex; }
 
 .sheet-flex-row { flex-direction: row; }
 .sheet-flex-col { flex-direction: column; }
 
+.sheet-flex-middle {
+  align-items: center;
+  justify-content: center;
+}
+
+/* Width classes */
 .sheet-full-width { width: 100%; }
 .sheet-half-width { width: 50%; }
 .sheet-third-width { width: 33%; }
 .sheet-quarter-width { width: 25%; }
+
+/* Color classes */
+.sheet-str-borders { border-color: #FC6262 !important; }
+.sheet-int-borders { border-color: #68B2E8 !important; }
+.sheet-fin-borders { border-color: #72D87D !important; }
+.sheet-wil-borders { border-color: #C872D8 !important; }
+
+.sheet-str-background { background-color: #FC6262 !important; }
+.sheet-int-background { background-color: #68B2E8 !important; }
+.sheet-fin-background { background-color: #72D87D !important; }
+.sheet-wil-background { background-color: #C872D8 !important; }
 
 div.sheet-akhemar-wrapper {
   width: 850px;
@@ -28,4 +56,50 @@ input.sheet-line-input {
 h1.sheet-character-name-title > input[type=text] {
   text-align: center;
   font-size: 32px;
+}
+
+div.sheet-character-stat {
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+div.sheet-character-stat > p {
+  margin: 0 5px;
+}
+
+div.sheet-character-stat > h2 {
+  flex: 1;
+  font-family: 'Shadows Into Light';
+}
+
+div.sheet-stats-left > div.sheet-character-stat > h2 {
+  margin-right: 10px;
+  text-align: left;
+}
+
+div.sheet-stats-right > div.sheet-character-stat > h2 {
+  margin-left: 10px;
+  text-align: right;
+}
+
+div.sheet-character-stat > input[type=number] {
+  font-family: 'Shadows Into Light';
+  text-align: center;
+}
+
+input[type=number].sheet-stat-base {
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  border: 4px solid transparent;
+  font-size: 40px;
+  color: #FFF;
+}
+
+input[type=number].sheet-stat-mod {
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  border: 3px solid transparent;
+  font-size: 25px;
 }
