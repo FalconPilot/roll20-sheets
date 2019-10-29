@@ -27,15 +27,17 @@ input[type=number] {
 .sheet-quarter-width { width: 25%; }
 
 /* Color classes */
-.sheet-str-borders { border-color: #FC6262 !important; }
-.sheet-int-borders { border-color: #68B2E8 !important; }
-.sheet-fin-borders { border-color: #72D87D !important; }
-.sheet-wil-borders { border-color: #C872D8 !important; }
+.sheet-str-borders { border-color: #BD6868 !important; }
+.sheet-int-borders { border-color: #7FB8C5 !important; }
+.sheet-fin-borders { border-color: #7AB17E !important; }
+.sheet-wil-borders { border-color: #B95ECA !important; }
+.sheet-lck-borders { border-color: #FCD303 !important; }
 
 .sheet-str-background { background-color: #FC6262 !important; }
 .sheet-int-background { background-color: #68B2E8 !important; }
 .sheet-fin-background { background-color: #72D87D !important; }
 .sheet-wil-background { background-color: #C872D8 !important; }
+.sheet-lck-background { background-color: #E8CE47 !important; }
 
 div.sheet-akhemar-wrapper {
   width: 850px;
@@ -58,48 +60,52 @@ h1.sheet-character-name-title > input[type=text] {
   font-size: 32px;
 }
 
-div.sheet-character-stat {
-  padding: 10px;
-  box-sizing: border-box;
+div.sheet-stats-wrapper {
+  position: relative;
+  width: 400px;
+  height: 350px;
 }
 
-div.sheet-character-stat > p {
-  margin: 0 5px;
+div.sheet-character-stat.sheet-top {
+  top: 0;
+  left: 125px;
+}
+
+div.sheet-character-stat.sheet-middle { top: 100px; }
+
+div.sheet-character-stat.sheet-middle.sheet-left { left: 0; }
+div.sheet-character-stat.sheet-middle.sheet-right { right: 0; }
+
+div.sheet-character-stat.sheet-bottom { bottom: 0; }
+
+div.sheet-character-stat.sheet-bottom.sheet-left { left: 20px; }
+div.sheet-character-stat.sheet-bottom.sheet-right { right: 20px; }
+
+div.sheet-character-stat {
+  position: absolute;
+  width: 150px;
+  padding: 10px;
+  box-sizing: border-box;
 }
 
 div.sheet-character-stat > h2 {
   flex: 1;
   font-family: 'Shadows Into Light';
+  margin-bottom: 8px;
 }
 
-div.sheet-stats-left > div.sheet-character-stat > h2 {
-  margin-right: 10px;
-  text-align: left;
-}
-
-div.sheet-stats-right > div.sheet-character-stat > h2 {
-  margin-left: 10px;
-  text-align: right;
-}
-
-div.sheet-character-stat > input[type=number] {
+div.sheet-character-stat input[type=number] {
   font-family: 'Shadows Into Light';
   text-align: center;
 }
 
 input[type=number].sheet-stat-base {
-  width: 50px;
-  height: 50px;
-  border-radius: 25px;
-  border: 4px solid transparent;
-  font-size: 40px;
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
+  border: 1px solid transparent;
+  font-size: 30px;
   color: #FFF;
-}
-
-input[type=number].sheet-stat-mod {
-  width: 30px;
-  height: 30px;
-  border-radius: 15px;
-  border: 3px solid transparent;
-  font-size: 25px;
+  box-shadow: 3px 3px 8px #FFF inset, -1px -1px 2px #FFF inset;
+  text-shadow: 0px 0px 1px #333;
 }

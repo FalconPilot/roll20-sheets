@@ -6,62 +6,63 @@
       class="full-width line-input"
     />
   </h1>
-  <div class="flex-row full-width">
-    <div class="flex-col half-width stats-left">
 
-      <!-- Strength -->
-      <div class="character-stat flex-row full-width flex-middle">
-        <h2>Force</h2>
-        <input class="stat-mod" type="number" value="0" name="attr_mod_str" />
-        <p>+</p>
-        <input
-          class="stat-base str-borders str-background"
-          type="number"
-          value="0"
-          name="attr_base_str"
-        />
-      </div>
+  <!-- Stats -->
+  <div class="stats-wrapper">
 
-      <!-- Finesse -->
-      <div class="character-stat flex-row full-width flex-middle">
-        <h2>Finesse</h2>
-        <input class="stat-mod" type="number" value="0" name="attr_mod_fin" />
-        <p>+</p>
-        <input
-          class="stat-base fin-borders fin-background"
-          type="number"
-          value="0"
-          name="attr_base_fin"
-        />
-      </div>
+    <!-- Strength -->
+    <div class="character-stat top flex-col flex-middle">
+      <h2>Force</h2>
+      <input
+        class="stat-base str-borders str-background"
+        type="number"
+        value="0"
+        name="attr_base_str"
+      />
     </div>
-    <div class="flex-col half-width stats-right">
 
-      <!-- Intelligence -->
-      <div class="character-stat flex-row full-width flex-middle">
-        <input
-          class="stat-base int-borders int-background"
-          type="number"
-          value="0"
-          name="attr_base_int"
-        />
-        <p>+</p>
-        <input class="stat-mod" type="number" value="0" name="attr_int_mod" />
-        <h2>Intelligence</h2>
-      </div>
+    <!-- Finesse -->
+    <div class="character-stat middle left flex-col flex-middle">
+      <h2>Finesse</h2>
+      <input
+        class="stat-base fin-borders fin-background"
+        type="number"
+        value="0"
+        name="attr_base_fin"
+      />
+    </div>
 
-      <!-- Willpower -->
-      <div class="character-stat flex-row full-width flex-middle">
-        <input
-          class="stat-base wil-borders wil-background"
-          type="number"
-          value="0"
-          name="attr_base_wil"
-        />
-        <p>+</p>
-        <input class="stat-mod" type="number" value="0" name="attr_wil_mod" />
-        <h2>Volonté</h2>
-      </div>
+    <!-- Intelligence -->
+    <div class="character-stat middle right flex-col flex-middle">
+      <h2>Intelligence</h2>
+      <input
+        class="stat-base int-borders int-background"
+        type="number"
+        value="0"
+        name="attr_base_int"
+      />
+    </div>
+
+    <!-- Willpower -->
+    <div class="character-stat bottom right flex-col flex-middle">
+      <h2>Volonté</h2>
+      <input
+        class="stat-base wil-borders wil-background"
+        type="number"
+        value="0"
+        name="attr_base_wil"
+      />
+    </div>
+
+    <!-- Luck -->
+    <div class="character-stat bottom left flex-col flex-middle">
+      <h2>Chance</h2>
+      <input
+        class="stat-base lck-borders lck-background"
+        type="number"
+        value="0"
+        name="attr_base_lck"
+      />
     </div>
   </div>
 </div>
