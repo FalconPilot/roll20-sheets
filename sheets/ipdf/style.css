@@ -1,0 +1,385 @@
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+/* Flex classes */
+.sheet-flex-row,
+.sheet-flex-col { display: flex; }
+
+.sheet-flex-row { flex-direction: row; }
+.sheet-flex-col { flex-direction: column; }
+
+.sheet-flex-middle {
+  align-items: center;
+  justify-content: center;
+}
+
+/* Width classes */
+.sheet-full-width { width: 100%; }
+.sheet-half-width { width: 50%; }
+.sheet-third-width { width: 33%; }
+.sheet-quarter-width { width: 25%; }
+
+div.sheet-ipdf-wrapper > div > div.sheet-half-width {
+  padding: 0 15px;
+  box-sizing: border-box;
+}
+
+div.sheet-ipdf-wrapper > h2 {
+  text-align: center;
+  font-family: 'Candal';
+  margin: 50px 0;
+}
+
+div.sheet-ipdf-wrapper > *:disabled:hover { cursor: not-allowed; }
+
+div.sheet-ipdf-wrapper > h2.sheet-no-bottom { margin-bottom: 0; }
+
+div.sheet-ipdf-wrapper .btn:not(.pictos) {
+  font-family: 'Candal';
+}
+
+div.sheet-ipdf-wrapper {
+  position: relative;
+  width: 800px;
+  min-height: 100px;
+  border: 1px solid #333;
+  padding: 5px;
+  padding-top: 20px;
+  box-sizing: border-box;
+  z-index: 1;
+}
+
+div.sheet-ipdf-wrapper:before {
+  content: " ";
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  width: 80px;
+  height: 80px;
+  border-top: 1px solid #FFF;
+  border-right: 1px solid #FFF;
+  border-left: 1px solid #333;
+  border-bottom: 1px solid #333;
+  border-radius: 0 0 0 10px;
+  background-color: #FFF;
+  z-index: 2;
+}
+
+div.sheet-ipdf-wrapper:after {
+  content: " ";
+  position: absolute;
+  top: 39px;
+  right: -17px;
+  width: 115px;
+  height: 1px;
+  transform: rotate(45deg);
+  background-color: #333;
+  z-index: 3;
+}
+
+div.sheet-ipdf-wrapper .repcontrol {
+  height: 30px;
+  padding: 5px;
+  box-sizing: content-box;
+}
+
+input.sheet-line-input,
+select.sheet-line-input {
+  font-family: 'Patrick Hand';
+  border: none;
+  border-bottom: 1px dotted #CCC;
+  border-radius: 0;
+  font-size: 20px;
+}
+
+input.sheet-line-input {
+  font-family: 'Patrick Hand';
+  border: none;
+  border-bottom: 1px dotted #CCC;
+  border-radius: 0;
+  font-size: 20px;
+  padding-bottom: 0;
+}
+
+select.sheet-line-input {
+  margin: 0;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  padding: 0;
+}
+
+div.sheet-identity-field {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 2px 15px;
+  box-sizing: border-box;
+}
+
+div.sheet-identity-field.sheet-free-line {
+  width: auto;
+  justify-content: flex-start;
+}
+
+div.sheet-identity-field.sheet-free-line > select.sheet-line-input {
+  flex: 0 !important;
+}
+
+div.sheet-identity-field > span,
+div.sheet-identity-field > p {
+  font-family: Courier;
+  font-weight: bold;
+  font-size: 16px;
+  margin: 0;
+}
+
+div.sheet-identity-field > span:not(:first-child) {
+  margin-left: 10px;
+}
+
+div.sheet-identity-field > span {
+  margin-right: 10px;
+}
+
+div.sheet-identity-field > span:after {
+  content: ":";
+}
+
+div.sheet-identity-field > .sheet-line-input:not(.sheet-small),
+div.sheet-skill > .sheet-line-input:not(.sheet-small) { flex: 1; }
+
+.sheet-line-input.sheet-small {
+  width: 50px !important;
+  text-align: center;
+}
+
+div.sheet-stats-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+table.sheet-stats {
+  flex: 1;
+  border: 1px solid #333;
+}
+
+table.sheet-stats:not(:last-child) {
+  margin-right: 5px;
+}
+
+table.sheet-stats th,
+table.sheet-stats td { box-sizing: border-box; }
+
+tbody.sheet-stats-body > tr:last-child > td {
+  padding-bottom: 20px;
+}
+
+.sheet-stats-title {
+  padding: 5px;
+  text-align: center;
+  font-family: Courier;
+  font-weight: bold;
+  color: #FFF;
+}
+
+td.sheet-stats-title {
+  margin-top: 5px;
+}
+
+table.sheet-stats.sheet-physical .sheet-stats-title {
+  background-color: #F55;
+}
+
+table.sheet-stats.sheet-mental .sheet-stats-title {
+  background-color: #3AF;
+}
+
+table.sheet-stats.sheet-social .sheet-stats-title {
+  background-color: #3A3;
+}
+
+th.sheet-percent-total {
+  text-align: center;
+}
+
+div.sheet-percent-wrapper > div {
+  position: relative;
+}
+
+div.sheet-percent-wrapper > div:before {
+  content: "000";
+  position: absolute;
+  top: 8px;
+  left: 4px;
+  color: #EEE;
+  z-index: 0;
+}
+
+div.sheet-percent-wrapper > div > input[type=number] {
+  position: relative;
+  width: 36px;
+  text-align: right;
+  border: none;
+  background-color: transparent;
+  padding: 5px;
+  z-index: 1;
+}
+
+div.sheet-percent-wrapper > div > input[type=number],
+div.sheet-percent-wrapper > div > span {
+  margin: 5px 0;
+}
+
+div.sheet-percent-wrapper > div > input[type=number],
+div.sheet-percent-wrapper > div > span,
+div.sheet-percent-wrapper > div:before {
+  font-size: 15px;
+  font-family: 'Monaco';
+}
+
+td.sheet-stat-name {
+  font-family: Courier;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+td.sheet-stat-name:before {
+  content: "* ";
+}
+
+table.sheet-stats.sheet-physical .sheet-stat-name:before {
+  color: #F00;
+}
+
+table.sheet-stats.sheet-mental .sheet-stat-name:before {
+  color: #3AF;
+}
+
+table.sheet-stats.sheet-social .sheet-stat-name:before {
+  color: #3A3;
+}
+
+td.sheet-stat-value {
+  text-align: center;
+}
+
+td.sheet-stat-name,
+td.sheet-stat-value { padding: 3px 5px; }
+
+td.sheet-skills-list {
+  padding: 5px;
+  box-sizing: border-box;
+}
+
+div.sheet-skill {
+  padding: 5px 0;
+  box-sizing: border-box;
+}
+
+div.sheet-skill > select {
+  width: auto;
+  margin: 0 1px;
+  font-family: Courier;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+div.sheet-skill > .sheet-line-input {
+  font-size: 15px;
+  padding-bottom: 5px;
+}
+
+div.sheet-trait {
+  position: relative;
+  padding: 20px 15px;
+  box-sizing: border-box;
+}
+
+div.sheet-ipdf-wrapper .repcontainer[data-groupname="repeating_traits"] > .repitem > .sheet-trait:before {
+  content: "-----";
+  width: 100%;
+  text-align: center;
+  font-family: Courier;
+  font-weight: bold;
+}
+
+div.sheet-ipdf-wrapper .repcontainer[data-groupname="repeating_traits"] > .repitem:first-child > .sheet-trait:before {
+  opacity: 0;
+}
+
+div.sheet-ipdf-wrapper .repcontainer[data-groupname="repeating_traits"] .itemcontrol {
+  z-index: 5 !important;
+}
+
+div.sheet-ipdf-wrapper .repcontainer[data-groupname="repeating_traits"] .itemcontrol > .btn {
+  margin: 5px;
+}
+
+div.sheet-trait-description {
+  position: relative;
+  margin-top: 10px;
+}
+
+div.sheet-trait-description > .sheet-underline {
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  height: 1.4em;
+  border-bottom: 1px dotted #CCC;
+  z-index: 0;
+}
+
+div.sheet-trait-description > .sheet-underline:nth-child(1) { top: 0; }
+div.sheet-trait-description > .sheet-underline:nth-child(2) { top: 1.4em; }
+div.sheet-trait-description > .sheet-underline:nth-child(3) { top: 2.8em; }
+div.sheet-trait-description > .sheet-underline:nth-child(4) { top: 4.2em; }
+
+div.sheet-trait-description > textarea {
+  position: relative;
+  resize: none;
+  height: 5.6em;
+  line-height: 1.4em;
+  font-size: 1em;
+  padding: 0 8px;
+  margin: 0;
+  box-sizing: border-box;
+  background-color: transparent;
+  border: none;
+  font-family: 'Patrick Hand';
+  z-index: 1;
+}
+
+div.sheet-currency-wrapper > input[type=number] {
+  width: auto;
+  flex-grow: 1;
+  text-align: right;
+  font-family: 'Monaco';
+  font-size: 15px;
+  padding: 4px;
+  border-top: 1px solid transparent;
+}
+
+div.sheet-currency-wrapper > input[type=text] {
+  width: 30px;
+  margin: 5px 0;
+  text-align: center;
+  font-weight: bold;
+}
+
+.sheet-currency-input {
+  font-family: 'Candal';
+}

@@ -1,0 +1,647 @@
+<div class="ipdf-wrapper">
+  <h2 class="character-name">Identité de l'agent</h2>
+  <div class="identity full-width flex-col">
+    <div class="full-width identity-field">
+      <span>Nom complet</span>
+      <input
+        type="text"
+        class="line-input"
+        name="attr_character_name"
+      />
+    </div>
+    <div class="full-width identity-field">
+      <span>Nationalité</span>
+      <input
+        type="text"
+        class="line-input"
+        name="attr_character_nationality"
+      />
+    </div>
+    <div class="full-width identity-field">
+      <span>Occupation</span>
+      <input
+        type="text"
+        class="line-input"
+        name="attr_character_job"
+      />
+      <span>Sponsor</span>
+      <input
+        type="text"
+        class="line-input"
+        name="attr_character_sponsor"
+      />
+    </div>
+    <div class="full-width identity-field free-line">
+      <span>Age</span>
+      <input
+        type="number"
+        class="line-input small"
+        name="attr_character_age"
+      />
+      <span>Sexe</span>
+      <input
+        type="text"
+        class="line-input small"
+        name="attr_character_sex"
+      />
+      <span>Groupe sanguin</span>
+      <select class="line-input" name="attr_character_blood_type">
+        <option value="ND">n.d</option>
+        <option value="O+">O+</option>
+        <option value="O-">O-</option>
+        <option value="A+">A+</option>
+        <option value="A-">A-</option>
+        <option value="B+">B+</option>
+        <option value="B-">B-</option>
+        <option value="AB+">AB+</option>
+        <option value="AB-">AB-</option>
+      </select>
+      <span>Taille</span>
+      <input
+        type="number"
+        class="line-input small"
+        name="attr_character_height_meters"
+        value="1"
+        min="1"
+        max="2"
+      />
+      <p>m</p>
+      <input
+        type="number"
+        class="line-input small"
+        name="attr_character_height_centimeters"
+        value="75"
+        min="0"
+        max="99"
+      />
+      <p>cm</p>
+    </div>
+  </div>
+  <h2>Caractéristiques et Compétences</h2>
+  <div class="stats-wrapper full-width">
+
+    <!-- Physical stats -->
+    <table class="stats physical">
+      <thead>
+        <tr><th class="stats-title" colspan="2">Physique</th></tr>
+        <tr>
+          <th class="percent-total" colspan="2">
+            <div class="percent-wrapper flex-row flex-middle">
+              <div class="flex-row flex-middle">
+                <input
+                  type="hidden"
+                  name="attr_phy_score"
+                  value="0"
+                />
+                <input
+                  type="number"
+                  name="attr_phy_score_display"
+                  value="@{phy_score}"
+                  disabled
+                />
+                <span>%</span>
+              </div>
+            </div>
+          </th>
+        </tr>
+      </thead>
+      <tbody class="stats-body">
+        <tr>
+          <td class="stat-name">Force</td>
+          <td class="stat-value">
+            <input
+              type="number"
+              class="line-input small"
+              value="0"
+              name="attr_character_str"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td class="stat-name">Constitution</td>
+          <td class="stat-value">
+            <input
+              type="number"
+              class="line-input small"
+              value="0"
+              name="attr_character_con"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td class="stat-name">Agilité</td>
+          <td class="stat-value">
+            <input
+              type="number"
+              class="line-input small"
+              value="0"
+              name="attr_character_agi"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td class="stat-name">Dextérité</td>
+          <td class="stat-value">
+            <input
+              type="number"
+              class="line-input small"
+              value="0"
+              name="attr_character_dex"
+            />
+          </td>
+        </tr>
+      </tbody>
+      <tbody class="skills">
+        <tr>
+          <td colspan="2" class="stats-title">Compétences</td>
+        </tr>
+        <tr>
+          <td colspan="2" class="skills-list">
+            <fieldset class="repeating_physkills">
+              <div class="skill flex-row flex-middle">
+                <input
+                  type="text"
+                  class="line-input full-width"
+                  name="attr_phy_skillname"
+                  placeholder="Compétence"
+                />
+                <select name="attr_phy_skill_dice">
+                  <option value="1D4">1D4</option>
+                  <option value="1D6">1D6</option>
+                  <option value="1D8">1D8</option>
+                  <option value="1D10">1D10</option>
+                  <option value="1D12">1D12</option>
+                </select>
+                <select name="attr_phy_skill_stat">
+                  <option value="@{character_str}">FOR</option>
+                  <option value="@{character_con}">CON</option>
+                  <option value="@{character_agi}">AGI</option>
+                  <option value="@{character_dex}">DEX</option>
+                </select>
+                <button
+                  type="roll"
+                  value="/r @{phy_skill_dice} + @{phy_skill_stat}"
+                ></button>
+              </div>
+            </fieldset>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Mental stats -->
+    <table class="stats mental">
+      <thead>
+        <tr><th class="stats-title" colspan="2">Mental</th></tr>
+        <tr>
+          <th class="percent-total" colspan="2">
+            <div class="percent-wrapper flex-row flex-middle">
+              <div class="flex-row flex-middle">
+                <input
+                  type="hidden"
+                  name="attr_men_score"
+                  value="0"
+                />
+                <input
+                  type="number"
+                  name="attr_men_score_display"
+                  value="@{men_score}"
+                  disabled
+                />
+                <span>%</span>
+              </div>
+            </div>
+          </th>
+        </tr>
+      </thead>
+      <tbody class="stats-body">
+        <tr>
+        </tr>
+        <tr>
+          <td class="stat-name">Intellect</td>
+          <td class="stat-value">
+            <input
+              type="number"
+              class="line-input small"
+              value="0"
+              name="attr_character_int"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td class="stat-name">Savoir</td>
+          <td class="stat-value">
+            <input
+              type="number"
+              class="line-input small"
+              value="0"
+              name="attr_character_kno"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td class="stat-name">Acuité</td>
+          <td class="stat-value">
+            <input
+              type="number"
+              class="line-input small"
+              value="0"
+              name="attr_character_acu"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td class="stat-name">Courage</td>
+          <td class="stat-value">
+            <input
+              type="number"
+              class="line-input small"
+              value="0"
+              name="attr_character_cou"
+            />
+          </td>
+        </tr>
+      </tbody>
+      <tbody class="skills">
+        <tr>
+          <td colspan="2" class="stats-title">Compétences</td>
+        </tr>
+        <tr>
+          <td colspan="2" class="skills-list">
+            <fieldset class="repeating_menskills">
+              <div class="skill flex-row flex-middle">
+                <input
+                  type="text"
+                  class="line-input full-width"
+                  name="attr_men_skillname"
+                  placeholder="Compétence"
+                />
+                <select name="attr_men_skill_dice">
+                  <option value="1D4">1D4</option>
+                  <option value="1D6">1D6</option>
+                  <option value="1D8">1D8</option>
+                  <option value="1D10">1D10</option>
+                  <option value="1D12">1D12</option>
+                </select>
+                <select name="attr_men_skill_stat">
+                  <option value="@{character_int}">INT</option>
+                  <option value="@{character_kno}">SAV</option>
+                  <option value="@{character_acu}">ACU</option>
+                  <option value="@{character_cou}">COU</option>
+                </select>
+                <button
+                  type="roll"
+                  value="/r @{men_skill_dice} + @{men_skill_stat}"
+                ></button>
+              </div>
+            </fieldset>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Social stats -->
+    <table class="stats social">
+      <thead>
+        <tr><th class="stats-title" colspan="2">Social</th></tr>
+        <tr>
+          <th class="percent-total" colspan="2">
+            <div class="percent-wrapper flex-row flex-middle">
+              <div class="flex-row flex-middle">
+                <input
+                  type="hidden"
+                  name="attr_soc_score"
+                  value="0"
+                />
+                <input
+                  type="number"
+                  name="attr_soc_score_display"
+                  value="@{soc_score}"
+                  disabled
+                />
+                <span>%</span>
+              </div>
+            </div>
+          </th>
+        </tr>
+      </thead>
+      <tbody class="stats-body">
+        <tr>
+          <td class="stat-name">Présence</td>
+          <td class="stat-value">
+            <input
+              type="number"
+              class="line-input small"
+              value="0"
+              name="attr_character_pre"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td class="stat-name">Séduction</td>
+          <td class="stat-value">
+            <input
+              type="number"
+              class="line-input small"
+              value="0"
+              name="attr_character_sed"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td class="stat-name">Eloquence</td>
+          <td class="stat-value">
+            <input
+              type="number"
+              class="line-input small"
+              value="0"
+              name="attr_character_spe"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td class="stat-name">Empathie</td>
+          <td class="stat-value">
+            <input
+              type="number"
+              class="line-input small"
+              value="0"
+              name="attr_character_emp"
+            />
+          </td>
+        </tr>
+      </tbody>
+      <tbody class="skills">
+        <tr>
+          <td colspan="2" class="stats-title">Compétences</td>
+        </tr>
+        <tr>
+          <td colspan="2" class="skills-list">
+            <fieldset class="repeating_socskills">
+              <div class="skill flex-row flex-middle">
+                <input
+                  type="text"
+                  class="line-input full-width"
+                  name="attr_soc_skillname"
+                  placeholder="Compétence"
+                />
+                <select name="attr_soc_skill_dice">
+                  <option value="1D4">1D4</option>
+                  <option value="1D6">1D6</option>
+                  <option value="1D8">1D8</option>
+                  <option value="1D10">1D10</option>
+                  <option value="1D12">1D12</option>
+                </select>
+                <select name="attr_soc_skill_stat">
+                  <option value="@{character_pre}">PRE</option>
+                  <option value="@{character_sed}">SED</option>
+                  <option value="@{character_spe}">ELO</option>
+                  <option value="@{character_emp}">EMP</option>
+                </select>
+                <button
+                  type="roll"
+                  value="/r @{soc_skill_dice} + @{soc_skill_stat}"
+                ></button>
+              </div>
+            </fieldset>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <h2 class="no-bottom">Traits</h2>
+  <fieldset class="repeating_traits">
+    <div class="trait flex-col flex-middle">
+      <input
+        type="text"
+        class="line-input full-width"
+        name="attr_trait_name"
+        placeholder="Nom du trait"
+      />
+      <div class="trait-description full-width">
+        <div class="sheet-underline"></div>
+        <div class="sheet-underline"></div>
+        <div class="sheet-underline"></div>
+        <div class="sheet-underline"></div>
+        <textarea
+          class="full-width"
+          name="attr_trait_description"
+          placeholder="Description du trait"
+        ></textarea>
+      </div>
+    </div>
+  </fieldset>
+  <h2>Compte en banque</h2>
+
+  <div class="flex-row full-width">
+    <div class="half-width currencies">
+      <!-- USD -->
+      <div class="currency flex-col flex-middle">
+        <input
+          type="text"
+          class="currency-input full-width"
+          value="Dollars américains (USD)"
+          disabled
+        />
+        <div class="currency-wrapper full-width flex-row flex-middle">
+          <input
+            type="number"
+            class="line-input"
+            name="attr_usd_amount"
+            value="0"
+            min="0"
+          />
+          <input
+            type="text"
+            maxlength="1"
+            value="$"
+            disabled
+          />
+        </div>
+      </div>
+
+      <!-- EUR -->
+      <div class="currency flex-col flex-middle">
+        <input
+          type="text"
+          class="currency-input full-width"
+          value="Euros (EUR)"
+          disabled
+        />
+        <div class="currency-wrapper full-width flex-row flex-middle">
+          <input
+            type="number"
+            class="line-input"
+            name="attr_eur_amount"
+            value="0"
+            min="0"
+          />
+          <input
+            type="text"
+            maxlength="1"
+            value="€"
+            disabled
+          />
+        </div>
+      </div>
+
+      <!-- GBP -->
+      <div class="currency flex-col flex-middle">
+        <input
+          type="text"
+          class="currency-input full-width"
+          value="Livre Sterling (GBP)"
+          disabled
+        />
+        <div class="currency-wrapper full-width flex-row flex-middle">
+          <input
+            type="number"
+            class="line-input"
+            name="attr_gbp_amount"
+            value="0"
+            min="0"
+          />
+          <input
+            type="text"
+            maxlength="1"
+            value="£"
+            disabled
+          />
+        </div>
+      </div>
+
+      <!-- JPY -->
+      <div class="currency flex-col flex-middle">
+        <input
+          type="text"
+          class="currency-input full-width"
+          value="Yen (JPY)"
+          disabled
+        />
+        <div class="currency-wrapper full-width flex-row flex-middle">
+          <input
+            type="number"
+            class="line-input"
+            name="attr_jpy_amount"
+            value="0"
+            min="0"
+          />
+          <input
+            type="text"
+            maxlength="1"
+            value="円"
+            disabled
+          />
+        </div>
+      </div>
+
+      <!-- CNY -->
+      <div class="currency flex-col flex-middle">
+        <input
+          type="text"
+          class="currency-input full-width"
+          value="Yuan (CNY)"
+          disabled
+        />
+        <div class="currency-wrapper full-width flex-row flex-middle">
+          <input
+            type="number"
+            class="line-input"
+            name="attr_cny_amount"
+            value="0"
+            min="0"
+          />
+          <input
+            type="text"
+            maxlength="1"
+            value="¥"
+            disabled
+          />
+        </div>
+      </div>
+    </div>
+    <div class="half-width currencies">
+      <!-- Repeatable currencies -->
+      <fieldset class="repeating_currencies">
+        <div class="currency flex-col flex-middle">
+          <input
+            type="text"
+            class="currency-input full-width"
+            name="attr_currency_name"
+          />
+          <div class="currency-wrapper full-width flex-row flex-middle">
+            <input
+              type="number"
+              class="line-input"
+              name="attr_currency_amount"
+              value="0"
+              min="0"
+            />
+            <input
+              type="text"
+              maxlength="1"
+              name="attr_currency_symbol"
+            />
+          </div>
+        </div>
+      </fieldset>
+    </div>
+  </div>
+</div>
+
+<script type="text/worker">
+  function mean (stats) {
+    return Math.floor(
+      stats.reduce(function(total, stat) {
+        return total + stat * 10;
+      }, 0) / stats.length
+    )
+  }
+
+  function calculateMean (key, stats) {
+    getAttrs(stats, function (values) {
+      var obj = {};
+      obj[key] = mean(stats.map(function(stat) {
+        return values[stat];
+      }));
+      setAttrs(obj);
+    });
+  }
+
+  function onChange (stats, callback, additional = "") {
+    var condition = stats
+      .map(function (stat) { return "change:" + stat; })
+      .concat([additional])
+      .filter(function (x) { return x; })
+      .join(" ");
+    on(condition, callback);
+  }
+
+  function onMeanChange (key, stats) {
+    var callback = function () {
+      calculateMean(key, stats);
+    }
+    onChange(stats, callback, "sheet:opened");
+  }
+
+  onMeanChange("phy_score", [
+    "character_str",
+    "character_con",
+    "character_agi",
+    "character_dex"
+  ]);
+
+  onMeanChange("men_score", [
+    "character_int",
+    "character_kno",
+    "character_acu",
+    "character_cou"
+  ]);
+
+  onMeanChange("soc_score", [
+    "character_pre",
+    "character_sed",
+    "character_spe",
+    "character_emp"
+  ]);
+</script>

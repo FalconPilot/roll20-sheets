@@ -7,62 +7,126 @@
     />
   </h1>
 
-  <!-- Stats -->
-  <div class="stats-wrapper">
+  <div class="inner-wrapper full-width">
+    <input
+      type="radio"
+      class="tab-button tab-character"
+      name="attr_active_tab"
+      value="character"
+      checked="checked"
+    />
+    <span class="character-title" title="Personnage"></span>
+    <input
+      type="radio"
+      class="tab-button tab-inventory"
+      name="attr_active_tab"
+      value="inventory"
+    />
+    <span class="inventory-title" title="Inventaire"></span>
 
-    <!-- Strength -->
-    <div class="character-stat top flex-col flex-middle">
-      <h2>Force</h2>
-      <input
-        class="stat-base str-borders str-background"
-        type="number"
-        value="0"
-        name="attr_base_str"
-      />
-    </div>
+    <div class="tab-content tab-character flex-col full-width">
+      <div class="flex-row flex-middle full-width">
 
-    <!-- Finesse -->
-    <div class="character-stat middle left flex-col flex-middle">
-      <h2>Finesse</h2>
-      <input
-        class="stat-base fin-borders fin-background"
-        type="number"
-        value="0"
-        name="attr_base_fin"
-      />
-    </div>
+        <!-- Stats -->
+        <div class="stats-wrapper">
 
-    <!-- Intelligence -->
-    <div class="character-stat middle right flex-col flex-middle">
-      <h2>Intelligence</h2>
-      <input
-        class="stat-base int-borders int-background"
-        type="number"
-        value="0"
-        name="attr_base_int"
-      />
-    </div>
+          <!-- Strength -->
+          <div class="character-stat top center flex-col flex-middle">
+            <h3>Force</h3>
+            <div class="stat-wrapper">
+              <input
+                class="stat-base str-borders str-background"
+                type="number"
+                value="0"
+                name="attr_base_str"
+              />
+            </div>
+          </div>
 
-    <!-- Willpower -->
-    <div class="character-stat bottom right flex-col flex-middle">
-      <h2>Volonté</h2>
-      <input
-        class="stat-base wil-borders wil-background"
-        type="number"
-        value="0"
-        name="attr_base_wil"
-      />
-    </div>
+          <!-- Finesse -->
+          <div class="character-stat middle left flex-col flex-middle">
+            <h3>Finesse</h3>
+            <div class="stat-wrapper">
+              <input
+                class="stat-base fin-borders fin-background"
+                type="number"
+                value="0"
+                name="attr_base_fin"
+              />
+            </div>
+          </div>
 
-    <!-- Luck -->
-    <div class="character-stat bottom left flex-col flex-middle">
-      <h2>Chance</h2>
-      <input
-        class="stat-base lck-borders lck-background"
-        type="number"
-        value="0"
-        name="attr_base_lck"
-      />
-    </div>
+          <!-- Intelligence -->
+          <div class="character-stat middle right flex-col flex-middle">
+            <h3>Intelligence</h3>
+            <div class="stat-wrapper">
+              <input
+                class="stat-base int-borders int-background"
+                type="number"
+                value="0"
+                name="attr_base_int"
+              />
+            </div>
+          </div>
+
+          <!-- Willpower -->
+          <div class="character-stat bottom right flex-col flex-middle">
+            <h3>Volonté</h3>
+            <div class="stat-wrapper">
+              <input
+                class="stat-base wil-borders wil-background"
+                type="number"
+                value="0"
+                name="attr_base_wil"
+              />
+            </div>
+          </div>
+
+          <!-- Luck -->
+          <div class="character-stat bottom left flex-col flex-middle">
+            <h3>Chance</h3>
+            <div class="stat-wrapper">
+              <input
+                class="stat-base lck-borders lck-background"
+                type="number"
+                value="0"
+                name="attr_base_lck"
+              />
+            </div>
+          </div>
+
+          <!-- Rethrows -->
+          <div class="character-rethrows middle center flex-col flex-middle">
+            <h3>Relances</h3>
+            <div class="rethrows-wrapper flex-col flex-middle">
+              <input
+                class="rethrows-current"
+                type="number"
+                value="2"
+                min="0"
+                max="2"
+                name="attr_rethrows"
+              />
+              <input
+                class="rethrows-max"
+                type="number"
+                value="2"
+                min="0"
+                name="attr_max_rethrows"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- Notes -->
+        <div class="flex-col notes-wrapper">
+          <h2 class="section-title">Bloc-notes</h2>
+          <textarea class="pc-notes" name="attr_pc_notes"></textarea>
+        </div>
+      </div>
+
+      <!-- Skills -->
+      <h2 class="section-title underlined full-width">Compétences</h2>
+    </div>  
   </div>
 </div>
