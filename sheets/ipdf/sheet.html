@@ -587,6 +587,247 @@
       </fieldset>
     </div>
   </div>
+  <h2>Armement</h2>
+  <fieldset class="repeating_weapons">
+    <div class="weapon flex-col">
+      <div class="flex-row full-width">
+        <div class="weapon-stats full-width">
+          <input
+            type="checkbox"
+            class="is-melee"
+            name="attr_weapon_is_melee"
+          />
+          <p>Arme de mêlée</p>
+          <div class="weapon-input">
+            <p>Modèle</p>
+            <select name="attr_gun_template">
+              <option value="none">Aucun</option>
+              <option value="brak">Brak</option>
+              <option value="celica">Celica</option>
+              <option value="mp200">MP200</option>
+              <option value="p83">P83</option>
+              <option value="rk80">RK80</option>
+              <option value="rk80ct">RK80-CT</option>
+              <option value="xiaofan12">Xiao-fan 12</option>
+            </select>
+            <select name="attr_melee_template">
+              <option value="none">Aucun</option>
+              <option value="knife">Couteau</option>
+            </select>
+          </div>
+
+          <!-- Guns images radio -->
+          <input type="radio" name="attr_gun_template" value="none" />
+          <input type="radio" name="attr_gun_template" value="brak" />
+          <input type="radio" name="attr_gun_template" value="celica" />
+          <input type="radio" name="attr_gun_template" value="mp200" />
+          <input type="radio" name="attr_gun_template" value="p83" />
+          <input type="radio" name="attr_gun_template" value="rk80" />
+          <input type="radio" name="attr_gun_template" value="rk80ct" />
+          <input type="radio" name="attr_gun_template" value="xiaofan12" />
+
+          <!-- Melee images radio -->
+          <input type="radio" name="attr_melee_template" value="none" />
+
+          <!-- Weapon image container -->
+          <div class="full-width weapon-image flex-col flex-middle"></div>
+
+          <!-- Weapon stats -->
+          <table class="weapon-stats-table full-width">
+
+            <!-- Melee header -->
+            <thead class="melee-header">
+              <tr>
+                <th colspan="7">
+                  <input
+                    type="text"
+                    class="line-input"
+                    name="attr_weapon_name"
+                  />
+                </th>
+              </tr>
+              <tr>
+                <th class="full-width" colspan="7">Informations</th>
+              </tr>
+            </thead>
+
+            <!-- Gun header -->
+            <thead class="gun-header">
+              <tr>
+                <th colspan="7">
+                  <input
+                    type="text"
+                    class="line-input"
+                    name="attr_weapon_name"
+                  />
+                </th>
+              </tr>
+              <tr>
+                <th class="full-width" rowspan="2">Catégorie</th>
+                <th rowspan="2">Capacité</th>
+                <th rowspan="2">Munitions</th>
+                <th rowspan="2">Précision</th>
+                <th colspan="3">Portée</th>
+              </tr>
+              <tr>
+                <th>Court</th>
+                <th>Moyen</th>
+                <th>Long</th>
+              </tr>
+            </tbody>
+
+            <!-- Melee body -->
+            <tbody class="melee-body">
+              <td colspan="7"></td>
+            </tbody>
+
+            <!-- Gun body -->
+            <tbody class="gun-body">
+              <tr>
+                <td rowspan="2">
+                  <div class="flex-row full-width flex-middle">
+                    <!-- TODO : DAMAGE ROLL HERE -->
+                    <select name="attr_gun_class">
+                      <option value="pistol">Arme de poing</option>
+                      <option value="shotgun">Dispersion</option>
+                      <option value="assault_rifle">Fusil d'assaut</option>
+                      <option value="lmg">Fusil mitrailleur</option>
+                      <option value="smg">Pistolet mitrailleur</option>
+                    </select>
+                  </div>
+                </td>
+                <td rowspan="2">
+                  <input
+                    type="number"
+                    name="attr_capacity_current"
+                    value="0"
+                    min="0"
+                  />
+                  <span>/</span>
+                  <input
+                    type="number"
+                    name="attr_capacity_max"
+                    value="1"
+                    min="1"
+                  />
+                </td>
+                <td rowspan="2">
+                  <input
+                    type="hidden"
+                    name="attr_gun_damage_short"
+                    value="1D6"
+                  />
+                  <input
+                    type="hidden"
+                    name="attr_gun_damage_medium"
+                    value="1D4"
+                  />
+                  <input
+                    type="hidden"
+                    name="attr_gun_damage_long"
+                    value="1D4-1"
+                  />
+                  <input
+                    type="hidden"
+                    name="attr_gun_pen_short"
+                    value="0"
+                  />
+                  <input
+                    type="hidden"
+                    name="attr_gun_pen_medium"
+                    value="0"
+                  />
+                  <input
+                    type="hidden"
+                    name="attr_gun_pen_long"
+                    value="0"
+                  />
+                  <select name="attr_gun_caliber">
+                    <option value="22lr">.22 LR</option>
+                    <option value="9mm">9mm</option>
+                    <option value="45acp">.45 ACP</option>
+                    <option value="357mag">.357 MAG</option>
+                    <option value="44mag">.44 MAG</option>
+                    <option value="556x45">5.56x45mm</option>
+                    <option value="762x39">7.62x39mm</option>
+                    <option value="762x51">7.62x51mm</option>
+                    <option value="12g">Calibre 12</option>
+                  </select>
+                </td>
+                <td rowspan="2">
+                  <input
+                    type="number"
+                    name="attr_gun_accuracy"
+                    value="0"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="number"
+                    name="attr_gun_range_short"
+                    min="0"
+                  />
+                  <span>m</span>
+                </td>
+                <td>
+                  <input
+                    type="number"
+                    name="attr_gun_range_medium"
+                    min="0"
+                  />
+                  <span>m</span>
+                </td>
+                <td>
+                  <input
+                    type="number"
+                    name="attr_gun_range_long"
+                    min="0"
+                  />
+                  <span>m</span>
+                </td>
+              </tr>
+              <tr>
+                <!--
+                <td>
+                  <input
+                    type="text"
+                    name="attr_gun_damage_short"
+                    disabled
+                  />
+                </td>
+                <td>
+                  <input
+                    type="text"
+                    name="attr_gun_damage_medium"
+                    disabled
+                  />
+                </td>
+                <td>
+                  <input
+                    type="text"
+                    name="attr_gun_damage_long"
+                    disabled
+                  />
+                </td>
+                -->
+                <td colspan="3"></td>
+              </tr>
+              <tr>
+                <td colspan="7">
+                  <input
+                    type="text"
+                    class="line-input"
+                    name="attr_weapon_mods"
+                    placeholder="Mods"
+                  />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </fieldset>
 </div>
 
 <script type="text/worker">
@@ -644,4 +885,290 @@
     "character_spe",
     "character_emp"
   ]);
+
+  /* Gun mods */
+  var gunMods = {
+    red_dot: {
+      modName: "Point rouge",
+      accuracy: 1,
+      ranges: {
+        short: 5,
+        medium: 10,
+        long: 10
+      }
+    },
+    foregrip: {
+      modName: "Poignée avant",
+      accuracy: 1
+    }
+  }
+
+  function swapModValue (val, sub) {
+    return typeof val === "number" ? val + sub : sub;
+  }
+
+  function applyMod (baseList) {
+    return function (weapon, modKey) {
+      var mod = baseList[modKey];
+      return mod
+        ? Object.keys(mod).reduce(function (acc, key) {
+          if (key === "modName") {
+            return acc;
+          }
+          if (typeof mod[key] === "object") {
+            acc[key] = Object.keys(mod[key]).reduce(function (subAcc, subKey) {
+              subAcc[subKey] = swapModValue(subAcc[subKey], mod[key][subKey]);
+              return subAcc;
+            }, Object.assign({}, weapon[key]));
+          } else if (mod[key]) {
+            acc[key] = swapModValue(weapon[key], mod[key]);
+          }
+          return acc;
+        }, weapon)
+        : weapon;
+    }
+  }
+
+  /* Weapons definition */
+  var guns = {
+    brak: {
+      name: "Brak",
+      gun_class: "smg",
+      caliber: "9mm",
+      capacity: 25,
+      accuracy: -2,
+      mods: [],
+      ranges: {
+        short: 30,
+        medium: 90,
+        long: 200
+      }
+    },
+    celica: {
+      name: "Celica",
+      gun_class: "assault_rifle",
+      caliber: "762x51",
+      capacity: 25,
+      accuracy: -1,
+      mods: [],
+      ranges: {
+        short: 100,
+        medium: 300,
+        long: 700
+      }
+    },
+    mp200: {
+      name: "MP200",
+      gun_class: "smg",
+      caliber: "9mm",
+      capacity: 30,
+      accuracy: 0,
+      mods: [],
+      ranges: {
+        short: 50,
+        medium: 200,
+        long: 500
+      }
+    },
+    p83: {
+      name: "P83",
+      gun_class: "pistol",
+      caliber: "9mm",
+      capacity: 8,
+      accuracy: -1,
+      mods: [],
+      ranges: {
+        short: 30,
+        medium: 75,
+        long: 100
+      }
+    },
+    rk80: {
+      name: "RK80",
+      gun_class: "assault_rifle",
+      caliber: "556x45",
+      capacity: 20,
+      accuracy: 1,
+      mods: [],
+      ranges: {
+        short: 80,
+        medium: 200,
+        long: 500
+      }
+    },
+    get rk80ct() {
+      var basis = Object.assign({}, this.rk80);
+      return Object.assign(basis, {
+        name: "RK80-CT",
+        mods: [ "red_dot", "foregrip" ]
+      });
+    },
+    xiaofan12: {
+      name: "Xiao-fan 12",
+      gun_class: "shotgun",
+      caliber: "12g",
+      capacity: 6,
+      accuracy: 0,
+      mods: [],
+      ranges: {
+        short: 20,
+        medium: 50,
+        long: 100
+      }
+    }
+  };
+
+  var melee = {
+    knife: {
+      name: "Couteau",
+      mods: []
+    }
+  };
+
+  var ammunitions = {
+    "22lr": {
+      damage_short: "1D6",
+      damage_medium: "1D4",
+      damage_long: "1D4-1",
+      pen_short: 0,
+      pen_medium: 0,
+      pen_long: 0
+    },
+    "9mm": {
+      damage_short: "1D6+1",
+      damage_medium: "1D6",
+      damage_long: "1D4",
+      pen_short: 1,
+      pen_medium: 0,
+      pen_long: 0
+    },
+    "45acp": {
+      damage_short: "1D8",
+      damage_medium: "1D4",
+      damage_long: "1D4-1",
+      pen_short: 0,
+      pen_medium: 0,
+      pen_long: 0
+    },
+    "357mag": {
+      damage_short: "1D8+1",
+      damage_medium: "1D6",
+      damage_long: "1D4",
+      pen_short: 1,
+      pen_medium: 1,
+      pen_long: 0
+    },
+    "44mag": {
+      damage_short: "1D10+1",
+      damage_medium: "1D6",
+      damage_long: "1D4",
+      pen_short: 1,
+      pen_medium: 1,
+      pen_long: 0
+    },
+    "556x45": {
+      damage_short: "1D8+1",
+      damage_medium: "1D8",
+      damage_long: "1D6",
+      pen_short: 2,
+      pen_medium: 2,
+      pen_long: 1
+    },
+    "762x39": {
+      damage_short: "1D10+1",
+      damage_medium: "1D8",
+      damage_long: "1D6-1",
+      pen_short: 2,
+      pen_medium: 1,
+      pen_long: 1
+    },
+    "762x51": {
+      damage_short: "1D10",
+      damage_medium: "1D10",
+      damage_long: "1D8",
+      pen_short: 3,
+      pen_medium: 2,
+      pen_long: 2
+    },
+    "12g": {
+      damage_short: "1D12",
+      damage_medium: "1D6",
+      damage_long: "1D4-1",
+      pen_short: 2,
+      pen_medium: 0,
+      pen_long: 0
+    }
+  };
+
+  function setRepeatingAttributes (baseId, attributes) {
+    return Object.keys(attributes).reduce(function (acc, key) {
+      acc[baseId + "_" + key] = attributes[key];
+      return acc;
+    }, {});
+  }
+
+  on("change:repeating_weapons:gun_template", function (eventInfo) {
+    var baseId = eventInfo.sourceAttribute.replace(/_gun_template/g, "");
+    var weapon = guns[eventInfo.newValue];
+    if (weapon) {
+      var moddedWeapon = weapon.mods.reduce(applyMod(gunMods), Object.assign({}, weapon));
+      var ranges = typeof weapon.ranges === "object"
+        ? {
+          gun_range_short: moddedWeapon.ranges.short,
+          gun_range_medium: moddedWeapon.ranges.medium,
+          gun_range_long: moddedWeapon.ranges.long
+        }
+        : {}
+      setAttrs(setRepeatingAttributes(baseId, Object.assign(ranges, {
+        weapon_name: moddedWeapon.name,
+        gun_class: moddedWeapon.gun_class,
+        weapon_mods: weapon.mods
+          .map(function (mod) {
+            return gunMods[mod] && gunMods[mod].modName;
+          })
+          .filter(function (mod) {
+            return mod;
+          })
+          .join(", "),
+        gun_caliber: moddedWeapon.caliber,
+        gun_accuracy: moddedWeapon.accuracy,
+        capacity_current: 0,
+        capacity_max: moddedWeapon.capacity
+      })));
+    }
+  });
+
+  on("change:repeating_weapons:melee_template", function (eventInfo) {
+    var baseId = eventInfo.sourceAttribute.replace(/_melee_template/g, "");
+    var weapon = melee[eventInfo.newValue];
+    var moddedWeapon = weapon.mods.reduce(applyMod({}), weapon);
+    if (weapon) {
+      setAttrs(setRepeatingAttributes(baseId, {
+        weapon_name: moddedWeapon.name
+      }));
+    }
+  });
+
+  on("change:repeating_weapons:weapon_is_melee", function (eventInfo) {
+    var baseId = eventInfo.sourceAttribute.replace(/_weapon_is_melee/g, "");
+    setAttrs(setRepeatingAttributes(baseId, {
+      gun_template: "none",
+      melee_template: "none"
+    }));
+  });
+
+  on("change:repeating_weapon:gun_caliber", function (eventInfo) {
+    var baseId = eventInfo.sourceAttribute.replace(/_gun_caliber/g, "");
+    var ammoStat = ammunitions[eventInfo.newValue];
+    if (ammoStat) {
+      setAttrs(setRepeatingAttributes(baseId, {
+        gun_damage_short: ammoStat.damage_short,
+        gun_damage_medium: ammoStat.damage_medium,
+        gun_damage_long: ammoStat.damage_long,
+        gun_pen_short: ammoStat.pen_short,
+        gun_pen_medium: ammoStat.pen_medium,
+        gun_pen_long: ammoStat.pen_long
+      }));
+    }
+  });
 </script>

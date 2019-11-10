@@ -22,6 +22,7 @@ input[type=number] {
 
 /* Width classes */
 .sheet-full-width { width: 100%; }
+.sheet-three-quarters-width { width: 75%; }
 .sheet-half-width { width: 50%; }
 .sheet-third-width { width: 33%; }
 .sheet-quarter-width { width: 25%; }
@@ -303,6 +304,8 @@ div.sheet-skill > .sheet-line-input {
   padding-bottom: 5px;
 }
 
+/* Traits */
+
 div.sheet-trait {
   position: relative;
   padding: 20px 15px;
@@ -363,6 +366,8 @@ div.sheet-trait-description > textarea {
   z-index: 1;
 }
 
+/* Currencies */
+
 div.sheet-currency-wrapper > input[type=number] {
   width: auto;
   flex-grow: 1;
@@ -382,4 +387,159 @@ div.sheet-currency-wrapper > input[type=text] {
 
 .sheet-currency-input {
   font-family: 'Candal';
+}
+
+/* Weapons */
+
+div.sheet-weapon {
+  align-items: flex-start;
+  padding: 15px;
+  box-sizing: border-box;
+}
+
+div.sheet-weapon input[type=text] {
+  width: 100%;
+  flex: 1;
+}
+
+div.sheet-weapon-input > p,
+div.sheet-weapon-stats > p {
+  margin: 10px;
+  margin-bottom: auto;
+  font-family: Courier;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+div.sheet-weapon-input {
+  margin-right: 10px;
+}
+
+div.sheet-weapon-stats {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.sheet-is-melee {
+  margin-bottom: auto;
+  margin-top: 14px;
+}
+
+.sheet-is-melee:checked ~ .sheet-weapon-stats-table > thead.sheet-gun-header,
+.sheet-is-melee:checked ~ .sheet-weapon-stats-table > tbody.sheet-gun-body,
+.sheet-is-melee:checked ~ div.sheet-weapon-input > select[name="attr_gun_template"] {
+  display: none;
+}
+
+.sheet-is-melee:not(:checked) ~ .sheet-weapon-stats-table > thead.sheet-melee-header,
+.sheet-is-melee:not(:checked) ~ .sheet-weapon-stats-table > tbody.sheet-melee-body,
+.sheet-is-melee:not(:checked) ~ div.sheet-weapon-input > select[name="attr_melee_template"] {
+  display: none;
+}
+
+select[name="attr_gun_template"],
+select[name="attr_melee_template"] { width: auto; }
+
+table.sheet-weapon-stats-table {
+  border: 1px dashed #CCC;
+}
+
+table.sheet-weapon-stats-table > thead > tr > th {
+  font-family: 'Courier';
+  font-weight: bold;
+}
+
+table.sheet-weapon-stats-table > thead > tr > th,
+table.sheet-weapon-stats-table > tbody > tr > td {
+  text-align: center;
+  vertical-align: center;
+  padding: 5px;
+  box-sizing: border-box;
+  white-space: nowrap;
+}
+
+table.sheet-weapon-stats-table > thead.sheet-gun-header th[rowspan="2"] {
+  border-bottom: 1px dashed #CCC;
+}
+
+table.sheet-weapon-stats-table > thead.sheet-gun-header th {
+  border-left: 1px dashed #CCC;
+}
+
+table.sheet-weapon-stats-table > thead.sheet-gun-header th:not([colspan="3"]):not([rowspan="2"]) {
+  border: 1px dashed #CCC;
+}
+
+table.sheet-weapon-stats-table > thead.sheet-gun-header th:first-child {
+  border-left: none;
+}
+
+table.sheet-weapon-stats-table > thead.sheet-gun-header th:last-child {
+  border-right: none;
+}
+
+table.sheet-weapon-stats-table select {
+  width: auto;
+  margin: 0;
+}
+
+table.sheet-weapon-stats-table input[type=number] + span {
+  font-weight: bold;
+  font-family: 'Contrail One';
+}
+
+table.sheet-weapon-stats-table > tbody > tr > td > input[type=number] {
+  width: 36px;
+  text-align: center;
+}
+
+table.sheet-weapon-stats-table input.sheet-line-input {
+  margin-bottom: 5px;
+}
+
+div.sheet-weapon-stats > input[type=radio] { display: none; }
+
+div.sheet-weapon-image {
+  height: 120px;
+  margin: 10px 0;
+  padding: 10px;
+  box-sizing: content-box;
+  border: 1px solid #CCC;
+  border-radius: 5px;
+  box-shadow: 1px 1px 4px #CCC;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+/* Gun images */
+
+div.sheet-weapon-stats > input[value="brak"]:checked ~ div.sheet-weapon-image {
+  background-image: url('http://image.noelshack.com/fichiers/2016/42/1477044840-brak.png');
+}
+
+div.sheet-weapon-stats > input[value="celica"]:checked ~ div.sheet-weapon-image {
+  background-image: url('http://image.noelshack.com/fichiers/2017/06/1486834822-celica.png');
+}
+
+div.sheet-weapon-stats > input[value="mp200"]:checked ~ div.sheet-weapon-image {
+  background-image: url('http://image.noelshack.com/fichiers/2017/03/1484779474-mp200.png');
+}
+
+div.sheet-weapon-stats > input[value="p83"]:checked ~ div.sheet-weapon-image {
+  background-image: url('http://image.noelshack.com/fichiers/2017/02/1484434182-p83.png');
+}
+
+div.sheet-weapon-stats > input[value="rk80"]:checked ~ div.sheet-weapon-image {
+  background-image: url('http://image.noelshack.com/fichiers/2016/42/1477214017-rk80.png');
+}
+
+div.sheet-weapon-stats > input[value="rk80ct"]:checked ~ div.sheet-weapon-image {
+  background-image: url('http://image.noelshack.com/fichiers/2016/42/1477230960-rk80-ct.png');
+}
+
+div.sheet-weapon-stats > input[value="xiaofan12"]:checked ~ div.sheet-weapon-image {
+  background-image: url('http://image.noelshack.com/fichiers/2016/44/1477936781-xiao-fan-12.png');
 }
