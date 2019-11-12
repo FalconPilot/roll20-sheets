@@ -81,11 +81,11 @@
   <div class="stats-wrapper full-width">
 
     <!-- Physical stats -->
-    <table class="stats physical">
+    <table class="stats physical third-width">
       <thead>
-        <tr><th class="stats-title" colspan="2">Physique</th></tr>
+        <tr><th class="stats-title" colspan="3">Physique</th></tr>
         <tr>
-          <th class="percent-total" colspan="2">
+          <th class="percent-total" colspan="3">
             <div class="percent-wrapper flex-row flex-middle">
               <div class="flex-row flex-middle">
                 <input
@@ -116,6 +116,12 @@
               name="attr_character_str"
             />
           </td>
+          <td>
+            <button
+              type="roll"
+              value="&{template:standard} {{roll=[[1D6 + @{character_str}]]}} {{header=Test de force}} {{confirmation=[[1D6]]}}"
+            ></button>
+          </td>
         </tr>
         <tr>
           <td class="stat-name">Constitution</td>
@@ -126,6 +132,12 @@
               value="0"
               name="attr_character_con"
             />
+          </td>
+          <td>
+            <button
+              type="roll"
+              value="&{template:standard} {{roll=[[1D6 + @{character_con}]]}} {{header=Test de constitution}} {{confirmation=[[1D6]]}}"
+            ></button>
           </td>
         </tr>
         <tr>
@@ -138,6 +150,12 @@
               name="attr_character_agi"
             />
           </td>
+          <td>
+            <button
+              type="roll"
+              value="&{template:standard} {{roll=[[1D6 + @{character_agi}]]}} {{header=Test d'agilité}} {{confirmation=[[1D6]]}}"
+            ></button>
+          </td>
         </tr>
         <tr>
           <td class="stat-name">Dextérité</td>
@@ -149,14 +167,20 @@
               name="attr_character_dex"
             />
           </td>
+          <td>
+            <button
+              type="roll"
+              value="&{template:standard} {{roll=[[1D6 + @{character_dex}]]}} {{header=Test de dextérité}} {{confirmation=[[1D6]]}}"
+            ></button>
+          </td>
         </tr>
       </tbody>
       <tbody class="skills">
         <tr>
-          <td colspan="2" class="stats-title">Compétences</td>
+          <td colspan="3" class="stats-title">Compétences</td>
         </tr>
         <tr>
-          <td colspan="2" class="skills-list">
+          <td colspan="3" class="skills-list">
             <fieldset class="repeating_physkills">
               <div class="skill flex-row flex-middle">
                 <input
@@ -180,7 +204,7 @@
                 </select>
                 <button
                   type="roll"
-                  value="/r @{phy_skill_dice} + @{phy_skill_stat}"
+                  value="&{template:standard} {{roll=[[@{phy_skill_dice} + @{phy_skill_stat}]]}} {{header=Compétence}} {{subtitle=@{phy_skillname}}}"
                 ></button>
               </div>
             </fieldset>
@@ -190,11 +214,11 @@
     </table>
 
     <!-- Mental stats -->
-    <table class="stats mental">
+    <table class="stats mental third-width">
       <thead>
-        <tr><th class="stats-title" colspan="2">Mental</th></tr>
+        <tr><th class="stats-title" colspan="3">Mental</th></tr>
         <tr>
-          <th class="percent-total" colspan="2">
+          <th class="percent-total" colspan="3">
             <div class="percent-wrapper flex-row flex-middle">
               <div class="flex-row flex-middle">
                 <input
@@ -227,6 +251,12 @@
               name="attr_character_int"
             />
           </td>
+          <td>
+            <button
+              type="roll"
+              value="&{template:standard} {{roll=[[1D6 + @{character_int}]]}} {{header=Test d'intellect}} {{confirmation=[[1D6]]}}"
+            ></button>
+          </td>
         </tr>
         <tr>
           <td class="stat-name">Savoir</td>
@@ -237,6 +267,12 @@
               value="0"
               name="attr_character_kno"
             />
+          </td>
+          <td>
+            <button
+              type="roll"
+              value="&{template:standard} {{roll=[[1D6 + @{character_kno}]]}} {{header=Test de savoir}} {{confirmation=[[1D6]]}}"
+            ></button>
           </td>
         </tr>
         <tr>
@@ -249,6 +285,12 @@
               name="attr_character_acu"
             />
           </td>
+          <td>
+            <button
+              type="roll"
+              value="&{template:standard} {{roll=[[1D6 + @{character_acu}]]}} {{header=Test d'acuité}} {{confirmation=[[1D6]]}}"
+            ></button>
+          </td>
         </tr>
         <tr>
           <td class="stat-name">Courage</td>
@@ -260,14 +302,20 @@
               name="attr_character_cou"
             />
           </td>
+          <td>
+            <button
+              type="roll"
+              value="&{template:standard} {{roll=[[1D6 + @{character_cou}]]}} {{header=Test de courage}} {{confirmation=[[1D6]]}}"
+            ></button>
+          </td>
         </tr>
       </tbody>
       <tbody class="skills">
         <tr>
-          <td colspan="2" class="stats-title">Compétences</td>
+          <td colspan="3" class="stats-title">Compétences</td>
         </tr>
         <tr>
-          <td colspan="2" class="skills-list">
+          <td colspan="3" class="skills-list">
             <fieldset class="repeating_menskills">
               <div class="skill flex-row flex-middle">
                 <input
@@ -291,7 +339,7 @@
                 </select>
                 <button
                   type="roll"
-                  value="/r @{men_skill_dice} + @{men_skill_stat}"
+                  value="&{template:standard} {{roll=[[@{men_skill_dice} + @{men_skill_stat}]]}} {{header=Compétence}} {{subtitle=@{men_skillname}}}"
                 ></button>
               </div>
             </fieldset>
@@ -301,11 +349,11 @@
     </table>
 
     <!-- Social stats -->
-    <table class="stats social">
+    <table class="stats social third-width">
       <thead>
-        <tr><th class="stats-title" colspan="2">Social</th></tr>
+        <tr><th class="stats-title" colspan="3">Social</th></tr>
         <tr>
-          <th class="percent-total" colspan="2">
+          <th class="percent-total" colspan="3">
             <div class="percent-wrapper flex-row flex-middle">
               <div class="flex-row flex-middle">
                 <input
@@ -336,6 +384,12 @@
               name="attr_character_pre"
             />
           </td>
+          <td>
+            <button
+              type="roll"
+              value="&{template:standard} {{roll=[[1D6 + @{character_pre}]]}} {{header=Test de présence}} {{confirmation=[[1D6]]}}"
+            ></button>
+          </td>
         </tr>
         <tr>
           <td class="stat-name">Séduction</td>
@@ -346,6 +400,12 @@
               value="0"
               name="attr_character_sed"
             />
+          </td>
+          <td>
+            <button
+              type="roll"
+              value="&{template:standard} {{roll=[[1D6 + @{character_sed}]]}} {{header=Test de séduction}} {{confirmation=[[1D6]]}}"
+            ></button>
           </td>
         </tr>
         <tr>
@@ -358,6 +418,12 @@
               name="attr_character_spe"
             />
           </td>
+          <td>
+            <button
+              type="roll"
+              value="&{template:standard} {{roll=[[1D6 + @{character_spe}]]}} {{header=Test d'éloquence}} {{confirmation=[[1D6]]}}"
+            ></button>
+          </td>
         </tr>
         <tr>
           <td class="stat-name">Empathie</td>
@@ -369,14 +435,20 @@
               name="attr_character_emp"
             />
           </td>
+          <td>
+            <button
+              type="roll"
+              value="&{template:standard} {{roll=[[1D6 + @{character_emp}]]}} {{header=Test d'empathie}} {{confirmation=[[1D6]]}}"
+            ></button>
+          </td>
         </tr>
       </tbody>
       <tbody class="skills">
         <tr>
-          <td colspan="2" class="stats-title">Compétences</td>
+          <td colspan="3" class="stats-title">Compétences</td>
         </tr>
         <tr>
-          <td colspan="2" class="skills-list">
+          <td colspan="3" class="skills-list">
             <fieldset class="repeating_socskills">
               <div class="skill flex-row flex-middle">
                 <input
@@ -400,7 +472,7 @@
                 </select>
                 <button
                   type="roll"
-                  value="/r @{soc_skill_dice} + @{soc_skill_stat}"
+                  value="&{template:standard} {{roll=[[@{soc_skill_dice} + @{soc_skill_stat}]]}} {{header=Compétence}} {{subtitle=@{soc_skillname}}}"
                 ></button>
               </div>
             </fieldset>
@@ -602,13 +674,45 @@
             <p>Modèle</p>
             <select name="attr_gun_template">
               <option value="none">Aucun</option>
-              <option value="brak">Brak</option>
-              <option value="celica">Celica</option>
-              <option value="mp200">MP200</option>
+
+              <!-- Handguns -->
+              <option disabled></option>
+              <option disabled>-- ARMES DE POING --</option>
+              <option value="m4400clancy">M4400 Clancy</option>
+              <option value="m74g">M74G</option>
               <option value="p83">P83</option>
+              <option value="vp84p">VP84-P</option>
+
+              <!-- Shotguns -->
+              <option disabled></option>
+              <option disabled>-- ARMES A DISPERSION --</option>
+              <option value="m99">M99</option>
+              <option value="type72">Type 72</option>
+              <option value="xiaofan12">Xiao-fan 12</option>
+
+              <!-- Assault Rifles -->
+              <option disabled></option>
+              <option disabled>-- FUSILS --</option>
+              <option value="altermattspr">Altermatt SPR</option>
+              <option value="celica">Celica</option>
               <option value="rk80">RK80</option>
               <option value="rk80ct">RK80-CT</option>
-              <option value="xiaofan12">Xiao-fan 12</option>
+              <option value="type97">Type 97</option>
+
+              <!-- LMGs -->
+              <option disabled></option>
+              <option disabled>-- FUSILS MITRAILLEURS --</option>
+              <option value="snapdragongpgm">SnapDragon GPGM</option>
+
+              <!-- SMGs -->
+              <option disabled></option>
+              <option disabled>-- PISTOLETS MITRAILLEURS --</option>
+              <option value="a918">A918</option>
+              <option value="brak">Brak</option>
+              <option value="mp200">MP200</option>
+              <option value="williamsm4">Williams M4</option>
+              <option value="yurei2">Yurei II</option>
+
             </select>
             <select name="attr_melee_template">
               <option value="none">Aucun</option>
@@ -618,13 +722,24 @@
 
           <!-- Guns images radio -->
           <input type="radio" name="attr_gun_template" value="none" />
+          <input type="radio" name="attr_gun_template" value="a918" />
+          <input type="radio" name="attr_gun_template" value="altermattspr" />
           <input type="radio" name="attr_gun_template" value="brak" />
           <input type="radio" name="attr_gun_template" value="celica" />
+          <input type="radio" name="attr_gun_template" value="m4400clancy" />
+          <input type="radio" name="attr_gun_template" value="m74g" />
+          <input type="radio" name="attr_gun_template" value="m99" />
           <input type="radio" name="attr_gun_template" value="mp200" />
           <input type="radio" name="attr_gun_template" value="p83" />
           <input type="radio" name="attr_gun_template" value="rk80" />
           <input type="radio" name="attr_gun_template" value="rk80ct" />
+          <input type="radio" name="attr_gun_template" value="snapdragongpgm" />
+          <input type="radio" name="attr_gun_template" value="type72" />
+          <input type="radio" name="attr_gun_template" value="type97" />
+          <input type="radio" name="attr_gun_template" value="vp84p" />
+          <input type="radio" name="attr_gun_template" value="williamsm4" />
           <input type="radio" name="attr_gun_template" value="xiaofan12" />
+          <input type="radio" name="attr_gun_template" value="yurei2" />
 
           <!-- Melee images radio -->
           <input type="radio" name="attr_melee_template" value="none" />
@@ -638,7 +753,7 @@
             <!-- Melee header -->
             <thead class="melee-header">
               <tr>
-                <th colspan="7">
+                <th colspan="7" class="weapon-name">
                   <input
                     type="text"
                     class="line-input"
@@ -654,11 +769,40 @@
             <!-- Gun header -->
             <thead class="gun-header">
               <tr>
-                <th colspan="7">
+                <th rowspan="2" colspan="4" class="weapon-name">
                   <input
                     type="text"
                     class="line-input"
                     name="attr_weapon_name"
+                  />
+                </th>
+                <th>Tir seul</th>
+                <th>Semi-auto</th>
+                <th>Automatique</th>
+              </tr>
+              <tr>
+                <th>
+                  <input
+                    type="number"
+                    class="firing-rate"
+                    name="attr_gun_firing_rate_single"
+                    value="0"
+                  />
+                </th>
+                <th>
+                  <input
+                    type="number"
+                    class="firing-rate"
+                    name="attr_gun_firing_rate_semi"
+                    value="0"
+                  />
+                </th>
+                <th>
+                  <input
+                    type="number"
+                    class="firing-rate"
+                    name="attr_gun_firing_rate_full"
+                    value="0"
                   />
                 </th>
               </tr>
@@ -670,9 +814,9 @@
                 <th colspan="3">Portée</th>
               </tr>
               <tr>
-                <th>Court</th>
-                <th>Moyen</th>
-                <th>Long</th>
+                <th>Courte</th>
+                <th>Moyenne</th>
+                <th>Longue</th>
               </tr>
             </tbody>
 
@@ -690,7 +834,7 @@
                     <select name="attr_gun_class">
                       <option value="pistol">Arme de poing</option>
                       <option value="shotgun">Dispersion</option>
-                      <option value="assault_rifle">Fusil d'assaut</option>
+                      <option value="rifle">Fusil</option>
                       <option value="lmg">Fusil mitrailleur</option>
                       <option value="smg">Pistolet mitrailleur</option>
                     </select>
@@ -712,36 +856,6 @@
                   />
                 </td>
                 <td rowspan="2">
-                  <input
-                    type="hidden"
-                    name="attr_gun_damage_short"
-                    value="1D6"
-                  />
-                  <input
-                    type="hidden"
-                    name="attr_gun_damage_medium"
-                    value="1D4"
-                  />
-                  <input
-                    type="hidden"
-                    name="attr_gun_damage_long"
-                    value="1D4-1"
-                  />
-                  <input
-                    type="hidden"
-                    name="attr_gun_pen_short"
-                    value="0"
-                  />
-                  <input
-                    type="hidden"
-                    name="attr_gun_pen_medium"
-                    value="0"
-                  />
-                  <input
-                    type="hidden"
-                    name="attr_gun_pen_long"
-                    value="0"
-                  />
                   <select name="attr_gun_caliber">
                     <option value="22lr">.22 LR</option>
                     <option value="9mm">9mm</option>
@@ -764,6 +878,7 @@
                 <td>
                   <input
                     type="number"
+                    class="gun-range"
                     name="attr_gun_range_short"
                     min="0"
                   />
@@ -772,6 +887,7 @@
                 <td>
                   <input
                     type="number"
+                    class="gun-range"
                     name="attr_gun_range_medium"
                     min="0"
                   />
@@ -780,6 +896,7 @@
                 <td>
                   <input
                     type="number"
+                    class="gun-range"
                     name="attr_gun_range_long"
                     min="0"
                   />
@@ -787,33 +904,48 @@
                 </td>
               </tr>
               <tr>
-                <!--
-                <td>
+                <td class="damage-col">
                   <input
                     type="text"
                     name="attr_gun_damage_short"
-                    disabled
+                    value="1D6"
+                  />
+                  <span>P</span>
+                  <input
+                    type="number"
+                    name="attr_gun_pen_short"
+                    value="0"
                   />
                 </td>
-                <td>
+                <td class="damage-col">
                   <input
                     type="text"
                     name="attr_gun_damage_medium"
-                    disabled
+                    value="1D4"
+                  />
+                  <span>P</span>
+                  <input
+                    type="number"
+                    name="attr_gun_pen_medium"
+                    value="0"
                   />
                 </td>
-                <td>
+                <td class="damage-col">
                   <input
                     type="text"
                     name="attr_gun_damage_long"
-                    disabled
+                    value="1D4-1"
+                  />
+                  <span>P</span>
+                  <input
+                    type="number"
+                    name="attr_gun_pen_long"
+                    value="0"
                   />
                 </td>
-                -->
-                <td colspan="3"></td>
               </tr>
               <tr>
-                <td colspan="7">
+                <td colspan="7" class="weapon-mods">
                   <input
                     type="text"
                     class="line-input"
@@ -829,6 +961,35 @@
     </div>
   </fieldset>
 </div>
+
+<rolltemplate class="sheet-rolltemplate-standard">
+    <table>
+      <thead>
+        <tr>
+          <th class="sheet-roll-title">{{header}}</th>
+        </tr>
+        {{#subtitle}}
+          <tr>
+            <th class="sheet-roll-subtitle">{{subtitle}}</th>
+          </tr>
+        {{/subtitle}}
+      </thead>
+      <tbody>
+        <tr>
+          <td class="sheet-roll-value">{{roll}}</td>
+        </tr>
+        {{#rollWasCrit() roll}}
+          {{#confirmation}}
+            {{#rollWasCrit() confirmation}}
+              <tr>
+                <td class="sheet-critical">CRITIQUE !</td>
+              </tr>
+            {{/rollWasCrit() confirmation}}
+          {{/confirmation}}
+        {{/rollWasCrit() roll}}
+      </tbody>
+    </table>
+</rolltemplate>
 
 <script type="text/worker">
   function mean (stats) {
@@ -891,15 +1052,53 @@
     red_dot: {
       modName: "Point rouge",
       accuracy: 1,
-      ranges: {
-        short: 5,
-        medium: 10,
-        long: 10
+      ranges: function (ranges) {
+        return Object.assign({}, ranges, {
+          short: ranges.short + 10,
+          medium: ranges.medium + 5,
+          long: ranges.long + 5
+        });
+      }
+    },
+    scope: {
+      modName: "Lunette",
+      accuracy: 1,
+      ranges: function (ranges) {
+        return Object.assign({}, ranges, {
+          short: ranges.short - 10,
+          medium: ranges.medium + 20,
+          long: ranges.long + 50
+        });
       }
     },
     foregrip: {
       modName: "Poignée avant",
-      accuracy: 1
+      ranges: function (ranges) {
+        return Object.assign({}, ranges, {
+          short: ranges.short + 10,
+          medium: ranges.medium + 10
+        });
+      }
+    },
+    bipod: {
+      modName: "Bipied"
+    },
+    suppressor: {
+      modName: "Silencieux",
+      ranges: function (ranges) {
+        return Object.assign({}, ranges, {
+          short: Math.floor(ranges.short * 0.90),
+          medium: Math.floor(ranges.medium * 0.90)
+        });
+      }
+    },
+    laser_pointer: {
+      modName: "Pointeur laser",
+      ranges: function (ranges) {
+        return Object.assign({}, ranges, {
+          short: ranges.short + 10
+        });
+      }
     }
   }
 
@@ -915,13 +1114,13 @@
           if (key === "modName") {
             return acc;
           }
-          if (typeof mod[key] === "object") {
-            acc[key] = Object.keys(mod[key]).reduce(function (subAcc, subKey) {
-              subAcc[subKey] = swapModValue(subAcc[subKey], mod[key][subKey]);
-              return subAcc;
-            }, Object.assign({}, weapon[key]));
+
+          if (typeof mod[key] === "function") {
+            acc[key] = mod[key](weapon[key]);
           } else if (mod[key]) {
             acc[key] = swapModValue(weapon[key], mod[key]);
+          } else {
+            acc[key] = weapon[key];
           }
           return acc;
         }, weapon)
@@ -931,22 +1130,63 @@
 
   /* Weapons definition */
   var guns = {
+    a918: {
+      name: "A918",
+      gun_class: "smg",
+      caliber: "9mm",
+      capacity: 15,
+      accuracy: -1,
+      mods: [],
+      ranges: {
+        short: 25,
+        medium: 70,
+        long: 130
+      },
+      firing_rates: {
+        single: 1,
+        semi: 5,
+        full: 10
+      }
+    },
+    altermattspr: {
+      name: "Altermatt SPR",
+      gun_class: "rifle",
+      caliber: "762x51",
+      capacity: 10,
+      accuracy: 1,
+      mods: [ "scope" ],
+      ranges: {
+        short: 100,
+        medium: 400,
+        long: 900
+      },
+      firing_rates: {
+        single: 1,
+        semi: 0,
+        full: 0
+      }
+    },
     brak: {
       name: "Brak",
       gun_class: "smg",
       caliber: "9mm",
       capacity: 25,
-      accuracy: -2,
-      mods: [],
+      accuracy: -3,
+      mods: [ "foregrip" ],
       ranges: {
         short: 30,
         medium: 90,
         long: 200
+      },
+      firing_rates: {
+        single: 1,
+        semi: 3,
+        full: 6
       }
     },
     celica: {
       name: "Celica",
-      gun_class: "assault_rifle",
+      gun_class: "rifle",
       caliber: "762x51",
       capacity: 25,
       accuracy: -1,
@@ -955,6 +1195,65 @@
         short: 100,
         medium: 300,
         long: 700
+      },
+      firing_rates: {
+        single: 1,
+        semi: 2,
+        full: 5
+      }
+    },
+    m4400clancy: {
+      name: "M4400 Clancy",
+      gun_class: "pistol",
+      caliber: "44mag",
+      capacity: 8,
+      accuracy: 0,
+      mods: [],
+      ranges: {
+        short: 70,
+        medium: 150,
+        long: 220
+      },
+      firing_rates: {
+        single: 1,
+        semi: 3,
+        full: 0
+      }
+    },
+    m74g: {
+      name: "M74G",
+      gun_class: "pistol",
+      caliber: "357mag",
+      capacity: 6,
+      accuracy: 0,
+      mods: [],
+      ranges: {
+        short: 60,
+        medium: 120,
+        long: 200
+      },
+      firing_rates: {
+        single: 1,
+        semi: 2,
+        full: 0
+      }
+    },
+    m99: {
+      name: "M99",
+      gun_class: "shotgun",
+      caliber: "12g",
+      capacity: 10,
+      accuracy: -2,
+      mods: [],
+      ranges: {
+        short: 20,
+        medium: 50,
+        long: 70
+      },
+      firing_rates: {
+        single: 1,
+        semi: 0,
+        full: 0
       }
     },
     mp200: {
@@ -967,7 +1266,12 @@
       ranges: {
         short: 50,
         medium: 200,
-        long: 500
+        long: 300
+      },
+      firing_rates: {
+        single: 1,
+        semi: 4,
+        full: 8
       }
     },
     p83: {
@@ -978,14 +1282,19 @@
       accuracy: -1,
       mods: [],
       ranges: {
-        short: 30,
-        medium: 75,
-        long: 100
+        short: 40,
+        medium: 90,
+        long: 180
+      },
+      firing_rates: {
+        single: 1,
+        semi: 3,
+        full: 0
       }
     },
     rk80: {
       name: "RK80",
-      gun_class: "assault_rifle",
+      gun_class: "rifle",
       caliber: "556x45",
       capacity: 20,
       accuracy: 1,
@@ -994,6 +1303,11 @@
         short: 80,
         medium: 200,
         long: 500
+      },
+      firing_rates: {
+        single: 1,
+        semi: 5,
+        full: 10
       }
     },
     get rk80ct() {
@@ -1003,17 +1317,125 @@
         mods: [ "red_dot", "foregrip" ]
       });
     },
+    snapdragongpgm: {
+      name: "SnapDragon GPGM",
+      gun_class: "lmg",
+      caliber: "762x51",
+      capacity: 100,
+      accuracy: -1,
+      mods: [ "bipod" ],
+      ranges: {
+        short: 120,
+        medium: 250,
+        long: 700
+      },
+      firing_rates: {
+        single: 1,
+        semi: 2,
+        full: 10
+      }
+    },
+    type72: {
+      name: "Type 72",
+      gun_class: "shotgun",
+      caliber: "12g",
+      capacity: 4,
+      accuracy: 0,
+      mods: [],
+      ranges: {
+        short: 20,
+        medium: 40,
+        long: 60
+      },
+      firing_rates: {
+        single: 1,
+        semi: 2,
+        full: 0
+      }
+    },
+    type97: {
+      name: "Type 97",
+      gun_class: "rifle",
+      caliber: "556x45",
+      capacity: 30,
+      accuracy: 0,
+      mods: [],
+      ranges: {
+        short: 90,
+        medium: 300,
+        long: 600
+      },
+      firing_rates: {
+        single: 1,
+        semi: 4,
+        full: 8
+      }
+    },
+    vp84p: {
+      name: "VP84-P",
+      gun_class: "pistol",
+      caliber: "9mm",
+      capacity: 18,
+      accuracy: 0,
+      mods: [],
+      ranges: {
+        short: 35,
+        medium: 100,
+        long: 150
+      },
+      firing_rates: {
+        single: 1,
+        semi: 4,
+        full: 0
+      }
+    },
+    williamsm4: {
+      name: "Williams M4",
+      gun_class: "smg",
+      caliber: "45acp",
+      capacity: 20,
+      accuracy: 0,
+      mods: [],
+      ranges: {
+        short: 40,
+        medium: 100,
+        long: 200
+      },
+      firing_rates: {
+        single: 1,
+        semi: 4,
+        full: 8
+      }
+    },
     xiaofan12: {
       name: "Xiao-fan 12",
       gun_class: "shotgun",
       caliber: "12g",
       capacity: 6,
-      accuracy: 0,
+      accuracy: 1,
       mods: [],
       ranges: {
-        short: 20,
+        short: 25,
         medium: 50,
-        long: 100
+        long: 80
+      },
+      firing_rates: {
+        single: 1,
+        semi: 0,
+        full: 0
+      }
+    },
+    yurei2: {
+      name: "Yurei II",
+      gun_class: "smg",
+      caliber: "9mm",
+      capacity: 20,
+      accuracy: 1,
+      mods: [ "suppressor" ],
+      ranges: {
+        short: 50,
+        medium: 100,
+        long: 250
       }
     }
   };
@@ -1119,7 +1541,15 @@
           gun_range_long: moddedWeapon.ranges.long
         }
         : {}
-      setAttrs(setRepeatingAttributes(baseId, Object.assign(ranges, {
+
+      var rates = typeof weapon.firing_rates === "object"
+        ? {
+          gun_firing_rate_single: weapon.firing_rates.single,
+          gun_firing_rate_semi: weapon.firing_rates.semi,
+          gun_firing_rate_full: weapon.firing_rates.full
+        }
+        : {}
+      setAttrs(setRepeatingAttributes(baseId, Object.assign(ranges, rates, {
         weapon_name: moddedWeapon.name,
         gun_class: moddedWeapon.gun_class,
         weapon_mods: weapon.mods
@@ -1157,7 +1587,7 @@
     }));
   });
 
-  on("change:repeating_weapon:gun_caliber", function (eventInfo) {
+  on("change:repeating_weapons:gun_caliber", function (eventInfo) {
     var baseId = eventInfo.sourceAttribute.replace(/_gun_caliber/g, "");
     var ammoStat = ammunitions[eventInfo.newValue];
     if (ammoStat) {

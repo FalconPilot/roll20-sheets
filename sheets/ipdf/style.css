@@ -100,6 +100,11 @@ select.sheet-line-input {
   font-size: 20px;
 }
 
+select[name="attr_character_blood_type"] {
+  width: 60px;
+  min-width: 60px;
+}
+
 input.sheet-line-input {
   font-family: 'Patrick Hand';
   border: none;
@@ -449,6 +454,7 @@ table.sheet-weapon-stats-table {
 table.sheet-weapon-stats-table > thead > tr > th {
   font-family: 'Courier';
   font-weight: bold;
+  font-size: 10px;
 }
 
 table.sheet-weapon-stats-table > thead > tr > th,
@@ -460,24 +466,23 @@ table.sheet-weapon-stats-table > tbody > tr > td {
   white-space: nowrap;
 }
 
-table.sheet-weapon-stats-table > thead.sheet-gun-header th[rowspan="2"] {
-  border-bottom: 1px dashed #CCC;
+table.sheet-weapon-stats-table > thead > tr > th,
+table.sheet-weapon-stats-table > tbody > tr > td {
+  border: 1px solid #CCC;
 }
 
-table.sheet-weapon-stats-table > thead.sheet-gun-header th {
-  border-left: 1px dashed #CCC;
+table.sheet-weapon-stats-table .sheet-weapon-name:before {
+  content: "*";
+  font-family: 'Courier';
+  font-weight: bold;
+  color: #F55;
 }
 
-table.sheet-weapon-stats-table > thead.sheet-gun-header th:not([colspan="3"]):not([rowspan="2"]) {
-  border: 1px dashed #CCC;
-}
-
-table.sheet-weapon-stats-table > thead.sheet-gun-header th:first-child {
-  border-left: none;
-}
-
-table.sheet-weapon-stats-table > thead.sheet-gun-header th:last-child {
-  border-right: none;
+table.sheet-weapon-stats-table .sheet-weapon-mods:before {
+  content: "x";
+  font-family: 'Pictos';
+  font-size: 20px;
+  color: #F55;
 }
 
 table.sheet-weapon-stats-table select {
@@ -491,15 +496,51 @@ table.sheet-weapon-stats-table input[type=number] + span {
 }
 
 table.sheet-weapon-stats-table > tbody > tr > td > input[type=number] {
-  width: 36px;
+  width: 26px;
   text-align: center;
+  font-family: 'Monaco';
+  font-size: 11px;
 }
 
 table.sheet-weapon-stats-table input.sheet-line-input {
   margin-bottom: 5px;
+  width: 95%;
+}
+
+input[type=number].sheet-gun-range {
+  width: 40px !important;
 }
 
 div.sheet-weapon-stats > input[type=radio] { display: none; }
+
+input[type=number].sheet-firing-rate {
+  text-align: center;
+  width: 30px;
+  font-weight: bold;
+  font-size: 15px;
+  font-family: 'Courier';
+}
+
+input[type=number][name="attr_capacity_current"],
+input[type=number][name="attr_capacity_max"] {
+  width: 35px !important;
+}
+
+td.sheet-damage-col > input[type=text] {
+  width: 55px;
+  font-size: 11px;
+  text-align: center;
+}
+
+td.sheet-damage-col > input[type=number] {
+  width: 20px;
+  font-size: 11px;
+  text-align: center;
+}
+
+td.sheet-damage-col > span {
+  font-family: 'Contrail One';
+}
 
 div.sheet-weapon-image {
   height: 120px;
@@ -514,7 +555,36 @@ div.sheet-weapon-image {
   background-size: contain;
 }
 
+.sheet-rolltemplate-standard,
+.sheet-rolltemplate-standard > table {
+  width: 100%;
+}
+
+.sheet-rolltemplate-standard {
+  position: relative;
+  background-color: inherit;
+  background-color: #FFF;
+  border: 2px dashed #CCC;
+  border-radius: 5px;;
+  box-sizing: border-box;
+}
+
+.sheet-rolltemplate-standard td,
+.sheet-rolltemplate-standard th {
+  padding: 5px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
 /* Gun images */
+
+div.sheet-weapon-stats > input[value="a918"]:checked ~ div.sheet-weapon-image {
+  background-image: url('http://image.noelshack.com/fichiers/2017/06/1486849602-a918.png');
+}
+
+div.sheet-weapon-stats > input[value="altermattspr"]:checked ~ div.sheet-weapon-image {
+  background-image: url('http://image.noelshack.com/fichiers/2017/38/5/1506107638-jackal-spr.png');
+}
 
 div.sheet-weapon-stats > input[value="brak"]:checked ~ div.sheet-weapon-image {
   background-image: url('http://image.noelshack.com/fichiers/2016/42/1477044840-brak.png');
@@ -522,6 +592,18 @@ div.sheet-weapon-stats > input[value="brak"]:checked ~ div.sheet-weapon-image {
 
 div.sheet-weapon-stats > input[value="celica"]:checked ~ div.sheet-weapon-image {
   background-image: url('http://image.noelshack.com/fichiers/2017/06/1486834822-celica.png');
+}
+
+div.sheet-weapon-stats > input[value="m4400clancy"]:checked ~ div.sheet-weapon-image {
+  background-image: url('http://image.noelshack.com/fichiers/2017/12/1490126526-m4400-clancy.png');
+}
+
+div.sheet-weapon-stats > input[value="m74g"]:checked ~ div.sheet-weapon-image {
+  background-image: url('http://image.noelshack.com/fichiers/2016/42/1476955408-m74g.png');
+}
+
+div.sheet-weapon-stats > input[value="m99"]:checked ~ div.sheet-weapon-image {
+  background-image: url('http://image.noelshack.com/fichiers/2017/06/1486829151-m-99.png');
 }
 
 div.sheet-weapon-stats > input[value="mp200"]:checked ~ div.sheet-weapon-image {
@@ -540,6 +622,30 @@ div.sheet-weapon-stats > input[value="rk80ct"]:checked ~ div.sheet-weapon-image 
   background-image: url('http://image.noelshack.com/fichiers/2016/42/1477230960-rk80-ct.png');
 }
 
+div.sheet-weapon-stats > input[value="snapdragongpgm"]:checked ~ div.sheet-weapon-image {
+  background-image: url('http://image.noelshack.com/fichiers/2017/07/1487382727-snapdragon-gpgm.png');
+}
+
+div.sheet-weapon-stats > input[value="type72"]:checked ~ div.sheet-weapon-image {
+  background-image: url('http://image.noelshack.com/fichiers/2017/03/1484777113-type-72.png');
+}
+
+div.sheet-weapon-stats > input[value="type97"]:checked ~ div.sheet-weapon-image {
+  background-image: url('http://image.noelshack.com/fichiers/2017/03/1484759665-type-97.png');
+}
+
+div.sheet-weapon-stats > input[value="vp84p"]:checked ~ div.sheet-weapon-image {
+  background-image: url('http://image.noelshack.com/fichiers/2016/43/1477585384-vp84-p.png');
+}
+
+div.sheet-weapon-stats > input[value="williamsm4"]:checked ~ div.sheet-weapon-image {
+  background-image: url('http://image.noelshack.com/fichiers/2017/38/5/1506106421-williams-m4.png');
+}
+
 div.sheet-weapon-stats > input[value="xiaofan12"]:checked ~ div.sheet-weapon-image {
   background-image: url('http://image.noelshack.com/fichiers/2016/44/1477936781-xiao-fan-12.png');
+}
+
+div.sheet-weapon-stats > input[value="yurei2"]:checked ~ div.sheet-weapon-image {
+  background-image: url('http://image.noelshack.com/fichiers/2017/03/1484880413-type-413.png');
 }
