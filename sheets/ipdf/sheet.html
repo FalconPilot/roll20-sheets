@@ -204,7 +204,7 @@
                 </select>
                 <button
                   type="roll"
-                  value="&{template:standard} {{roll=[[@{phy_skill_dice} + @{phy_skill_stat}]]}} {{header=Compétence}} {{subtitle=@{phy_skillname}}}"
+                  value="&{template:standard} {{roll=[[@{phy_skill_dice} + @{phy_skill_stat}]]}} {{header=@{phy_skillname}}}"
                 ></button>
               </div>
             </fieldset>
@@ -339,7 +339,7 @@
                 </select>
                 <button
                   type="roll"
-                  value="&{template:standard} {{roll=[[@{men_skill_dice} + @{men_skill_stat}]]}} {{header=Compétence}} {{subtitle=@{men_skillname}}}"
+                  value="&{template:standard} {{roll=[[@{men_skill_dice} + @{men_skill_stat}]]}} {{header=@{men_skillname}}}"
                 ></button>
               </div>
             </fieldset>
@@ -472,7 +472,7 @@
                 </select>
                 <button
                   type="roll"
-                  value="&{template:standard} {{roll=[[@{soc_skill_dice} + @{soc_skill_stat}]]}} {{header=Compétence}} {{subtitle=@{soc_skillname}}}"
+                  value="&{template:standard} {{roll=[[@{soc_skill_dice} + @{soc_skill_stat}]]}} {{header=@{soc_skillname}}}"
                 ></button>
               </div>
             </fieldset>
@@ -697,11 +697,13 @@
               <option value="celica">Celica</option>
               <option value="rk80">RK80</option>
               <option value="rk80ct">RK80-CT</option>
+              <option value="scout73">Scout 73</option>
               <option value="type97">Type 97</option>
 
               <!-- LMGs -->
               <option disabled></option>
-              <option disabled>-- FUSILS MITRAILLEURS --</option>
+              <option disabled>-- MITRAILLEUSES --</option>
+              <option value="gepardgpmg">Gepard MG82</option>
               <option value="snapdragongpgm">SnapDragon GPGM</option>
 
               <!-- SMGs -->
@@ -726,6 +728,7 @@
           <input type="radio" name="attr_gun_template" value="altermattspr" />
           <input type="radio" name="attr_gun_template" value="brak" />
           <input type="radio" name="attr_gun_template" value="celica" />
+          <input type="radio" name="attr_gun_template" value="gepardgpmg" />
           <input type="radio" name="attr_gun_template" value="m4400clancy" />
           <input type="radio" name="attr_gun_template" value="m74g" />
           <input type="radio" name="attr_gun_template" value="m99" />
@@ -733,6 +736,7 @@
           <input type="radio" name="attr_gun_template" value="p83" />
           <input type="radio" name="attr_gun_template" value="rk80" />
           <input type="radio" name="attr_gun_template" value="rk80ct" />
+          <input type="radio" name="attr_gun_template" value="scout73" />
           <input type="radio" name="attr_gun_template" value="snapdragongpgm" />
           <input type="radio" name="attr_gun_template" value="type72" />
           <input type="radio" name="attr_gun_template" value="type97" />
@@ -745,7 +749,14 @@
           <input type="radio" name="attr_melee_template" value="none" />
 
           <!-- Weapon image container -->
-          <div class="full-width weapon-image flex-col flex-middle"></div>
+          <div class="full-width weapon-image flex-col flex-middle">
+            <input
+              type="text"
+              class="author-credit"
+              name="attr_author_name"
+              value=""
+            />
+          </div>
 
           <!-- Weapon stats -->
           <table class="weapon-stats-table full-width">
@@ -809,7 +820,7 @@
               <tr>
                 <th class="full-width" rowspan="2">Catégorie</th>
                 <th rowspan="2">Capacité</th>
-                <th rowspan="2">Munitions</th>
+                <th rowspan="2">Calibre</th>
                 <th rowspan="2">Précision</th>
                 <th colspan="3">Portée</th>
               </tr>
@@ -830,12 +841,11 @@
               <tr>
                 <td rowspan="2">
                   <div class="flex-row full-width flex-middle">
-                    <!-- TODO : DAMAGE ROLL HERE -->
                     <select name="attr_gun_class">
                       <option value="pistol">Arme de poing</option>
                       <option value="shotgun">Dispersion</option>
                       <option value="rifle">Fusil</option>
-                      <option value="lmg">Fusil mitrailleur</option>
+                      <option value="lmg">Mitrailleuse</option>
                       <option value="smg">Pistolet mitrailleur</option>
                     </select>
                   </div>
@@ -876,31 +886,103 @@
                   />
                 </td>
                 <td>
-                  <input
-                    type="number"
-                    class="gun-range"
-                    name="attr_gun_range_short"
-                    min="0"
-                  />
-                  <span>m</span>
+                  <div class="sheet-flex-row sheet-flex-middle">
+                    <div class="sheet-gun-range-wrapper">
+                      <input
+                        type="number"
+                        class="gun-range"
+                        name="attr_gun_range_short"
+                        min="0"
+                      />
+                      <span>m</span>
+                    </div>
+                    <div class="sheet-gunshot-rolls sheet-flex-col sheet-flex-middle">
+                      <button
+                        type="roll"
+                        title="Tir seul"
+                        class="sheet-gunshot-button sheet-single-shot"
+                        value="&{template:gunshot} {{weapon_name=@{weapon_name}}} {{firing_mode=Tir seul}} {{attack_amount=[[@{gun_firing_rate_single}]]}} {{damage=[[@{gun_damage_short}]]}} {{penetration=[[@{gun_pen_short}]]}}"
+                      ></button>
+                      <button
+                        type="roll"
+                        title="Rafale semi-automatique"
+                        class="sheet-gunshot-button sheet-semi-auto"
+                        value="&{template:gunshot} {{weapon_name=@{weapon_name}}} {{firing_mode=Semi-auto}} {{attack_amount=[[@{gun_firing_rate_semi}]]}} {{damage=[[@{gun_damage_short}]]}} {{penetration=[[@{gun_pen_short}]]}}"
+                      ></button>
+                      <button
+                        type="roll"
+                        title="Rafale automatique"
+                        class="sheet-gunshot-button sheet-full-auto"
+                        value="&{template:gunshot} {{weapon_name=@{weapon_name}}} {{firing_mode=Automatique}} {{attack_amount=[[@{gun_firing_rate_full}]]}} {{damage=[[@{gun_damage_short}]]}} {{penetration=[[@{gun_pen_short}]]}}"
+                      ></button>
+                    </div>
+                  </div>
                 </td>
                 <td>
-                  <input
-                    type="number"
-                    class="gun-range"
-                    name="attr_gun_range_medium"
-                    min="0"
-                  />
-                  <span>m</span>
+                  <div class="sheet-flex-row sheet-flex-middle">
+                    <div class="sheet-gun-range-wrapper">
+                      <input
+                        type="number"
+                        class="sheet-gun-range"
+                        name="attr_gun_range_medium"
+                        min="0"
+                      />
+                      <span>m</span>
+                    </div>
+                    <div class="sheet-gunshot-rolls sheet-flex-col sheet-flex-middle">
+                      <button
+                        type="roll"
+                        title="Tir seul"
+                        class="sheet-gunshot-button sheet-single-shot"
+                        value="&{template:gunshot} {{weapon_name=@{weapon_name}}} {{firing_mode=Tir seul}} {{attack_amount=[[@{gun_firing_rate_single}]]}} {{damage=[[@{gun_damage_medium}]]}} {{penetration=[[@{gun_pen_medium}]]}}"
+                      ></button>
+                      <button
+                        type="roll"
+                        title="Rafale semi-automatique"
+                        class="sheet-gunshot-button sheet-semi-auto"
+                        value="&{template:gunshot} {{weapon_name=@{weapon_name}}} {{firing_mode=Semi-auto}} {{attack_amount=[[@{gun_firing_rate_semi}]]}} {{damage=[[@{gun_damage_medium}]]}} {{penetration=[[@{gun_pen_medium}]]}}"
+                      ></button>
+                      <button
+                        type="roll"
+                        title="Rafale automatique"
+                        class="sheet-gunshot-button sheet-full-auto"
+                        value="&{template:gunshot} {{weapon_name=@{weapon_name}}} {{firing_mode=Automatique}} {{attack_amount=[[@{gun_firing_rate_full}]]}} {{damage=[[@{gun_damage_medium}]]}} {{penetration=[[@{gun_pen_medium}]]}}"
+                      ></button>
+                    </div>
+                  </div>
                 </td>
                 <td>
-                  <input
-                    type="number"
-                    class="gun-range"
-                    name="attr_gun_range_long"
-                    min="0"
-                  />
-                  <span>m</span>
+                  <div class="sheet-flex-row sheet-flex-middle">
+                    <div class="sheet-gun-range-wrapper">
+                      <input
+                        type="number"
+                        class="sheet-gun-range"
+                        name="attr_gun_range_long"
+                        min="0"
+                      />
+                      <span>m</span>
+                    </div>
+                    <div class="sheet-gunshot-rolls sheet-flex-col sheet-flex-middle">
+                      <button
+                        type="roll"
+                        title="Tir seul"
+                        class="sheet-gunshot-button sheet-single-shot"
+                        value="&{template:gunshot} {{weapon_name=@{weapon_name}}} {{firing_mode=Tir seul}} {{attack_amount=[[@{gun_firing_rate_single}]]}} {{damage=[[@{gun_damage_long}]]}} {{penetration=[[@{gun_pen_long}]]}}"
+                      ></button>
+                      <button
+                        type="roll"
+                        title="Rafale semi-automatique"
+                        class="sheet-gunshot-button sheet-semi-auto"
+                        value="&{template:gunshot} {{weapon_name=@{weapon_name}}} {{firing_mode=Semi-auto}} {{attack_amount=[[@{gun_firing_rate_semi}]]}} {{damage=[[@{gun_damage_long}]]}} {{penetration=[[@{gun_pen_long}]]}}"
+                      ></button>
+                      <button
+                        type="roll"
+                        title="Rafale automatique"
+                        class="sheet-gunshot-button sheet-full-auto"
+                        value="&{template:gunshot} {{weapon_name=@{weapon_name}}} {{firing_mode=Automatique}} {{attack_amount=[[@{gun_firing_rate_full}]]}} {{damage=[[@{gun_damage_long}]]}} {{penetration=[[@{gun_pen_long}]]}}"
+                      ></button>
+                    </div>
+                  </div>
                 </td>
               </tr>
               <tr>
@@ -962,33 +1044,73 @@
   </fieldset>
 </div>
 
+<!-- Standard Rolltemplate -->
 <rolltemplate class="sheet-rolltemplate-standard">
-    <table>
-      <thead>
+  <table>
+    <thead>
+      <tr>
+        <th class="sheet-roll-title">{{header}}</th>
+      </tr>
+      {{#subtitle}}
         <tr>
-          <th class="sheet-roll-title">{{header}}</th>
+          <th class="sheet-roll-subtitle">{{subtitle}}</th>
         </tr>
-        {{#subtitle}}
-          <tr>
-            <th class="sheet-roll-subtitle">{{subtitle}}</th>
-          </tr>
-        {{/subtitle}}
-      </thead>
-      <tbody>
-        <tr>
-          <td class="sheet-roll-value">{{roll}}</td>
-        </tr>
-        {{#rollWasCrit() roll}}
-          {{#confirmation}}
-            {{#rollWasCrit() confirmation}}
-              <tr>
-                <td class="sheet-critical">CRITIQUE !</td>
-              </tr>
-            {{/rollWasCrit() confirmation}}
-          {{/confirmation}}
-        {{/rollWasCrit() roll}}
-      </tbody>
-    </table>
+      {{/subtitle}}
+      <tr>
+        <th><hr /></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="sheet-roll-value">{{roll}}</td>
+      </tr>
+      {{#rollWasCrit() roll}}
+        {{#confirmation}}
+          {{#rollWasCrit() confirmation}}
+            <tr>
+              <td class="sheet-critical">CRITIQUE !</td>
+            </tr>
+          {{/rollWasCrit() confirmation}}
+        {{/confirmation}}
+      {{/rollWasCrit() roll}}
+    </tbody>
+  </table>
+</rolltemplate>
+
+<!-- Gunshot Rolltemplate -->
+<rolltemplate class="sheet-rolltemplate-gunshot">
+  <table>
+    <thead>
+      <tr>
+        <th colspan="2" class="sheet-roll-attack-name">{{weapon_name}}</th>
+      </tr>
+      <tr>
+        <th colspan="2" class="sheet-roll-attack-amount">{{firing_mode}} ({{attack_amount}} tir{{#rollGreater() attack_amount 1}}s{{/rollGreater() attack_amount 1}} max)</th>
+      </tr>
+      <tr>
+        <th colspan="2"><hr /></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="sheet-damage-roll">
+        <td class="sheet-result-title">Dégâts</td>
+        <td>
+          {{damage}}
+          <div class="sheet-result-icon sheet-damage"></div>
+        </td>
+        <td>
+          
+        </td>
+      </tr>
+      <tr class="sheet-penetration-roll">
+        <td class="sheet-result-title sheet-penetration">Pénétration</td>
+        <td>
+          {{penetration}}
+          <div class="sheet-result-icon sheet-penetration"></div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </rolltemplate>
 
 <script type="text/worker">
@@ -1128,9 +1250,17 @@
     }
   }
 
+  /* Weapon authors */
+  var authors = {
+    alice_mcentire: {
+      name: "Alice McEntire"
+    }
+  }
+
   /* Weapons definition */
   var guns = {
     a918: {
+      author: authors.alice_mcentire,
       name: "A918",
       gun_class: "smg",
       caliber: "9mm",
@@ -1149,12 +1279,13 @@
       }
     },
     altermattspr: {
+      author: authors.alice_mcentire,
       name: "Altermatt SPR",
       gun_class: "rifle",
       caliber: "762x51",
       capacity: 10,
       accuracy: 1,
-      mods: [ "scope" ],
+      mods: ["scope"],
       ranges: {
         short: 100,
         medium: 400,
@@ -1167,12 +1298,13 @@
       }
     },
     brak: {
+      author: authors.alice_mcentire,
       name: "Brak",
       gun_class: "smg",
       caliber: "9mm",
       capacity: 25,
       accuracy: -3,
-      mods: [ "foregrip" ],
+      mods: ["foregrip"],
       ranges: {
         short: 30,
         medium: 90,
@@ -1185,6 +1317,7 @@
       }
     },
     celica: {
+      author: authors.alice_mcentire,
       name: "Celica",
       gun_class: "rifle",
       caliber: "762x51",
@@ -1202,7 +1335,27 @@
         full: 5
       }
     },
+    gepardgpmg: {
+      author: authors.alice_mcentire,
+      name: "Gepard MG82",
+      gun_class: "lmg",
+      caliber: "556x45",
+      capacity: 100,
+      accuracy: 1,
+      mods: [],
+      ranges: {
+        short: 100,
+        medium: 300,
+        long: 600
+      },
+      firing_rates: {
+        single: 1,
+        semi: 4,
+        full: 12
+      }
+    },
     m4400clancy: {
+      author: authors.alice_mcentire,
       name: "M4400 Clancy",
       gun_class: "pistol",
       caliber: "44mag",
@@ -1221,6 +1374,7 @@
       }
     },
     m74g: {
+      author: authors.alice_mcentire,
       name: "M74G",
       gun_class: "pistol",
       caliber: "357mag",
@@ -1239,6 +1393,7 @@
       }
     },
     m99: {
+      author: authors.alice_mcentire,
       name: "M99",
       gun_class: "shotgun",
       caliber: "12g",
@@ -1257,6 +1412,7 @@
       }
     },
     mp200: {
+      author: authors.alice_mcentire,
       name: "MP200",
       gun_class: "smg",
       caliber: "9mm",
@@ -1275,6 +1431,7 @@
       }
     },
     p83: {
+      author: authors.alice_mcentire,
       name: "P83",
       gun_class: "pistol",
       caliber: "9mm",
@@ -1293,6 +1450,7 @@
       }
     },
     rk80: {
+      author: authors.alice_mcentire,
       name: "RK80",
       gun_class: "rifle",
       caliber: "556x45",
@@ -1314,16 +1472,36 @@
       var basis = Object.assign({}, this.rk80);
       return Object.assign(basis, {
         name: "RK80-CT",
-        mods: [ "red_dot", "foregrip" ]
+        mods: ["red_dot", "foregrip"]
       });
     },
+    scout73: {
+      author: authors.alice_mcentire,
+      name: "Scout 73",
+      gun_class: "rifle",
+      caliber: "762x51",
+      capacity: 10,
+      accuracy: 0,
+      mods: ["scope"],
+      ranges: {
+        short: 100,
+        medium: 350,
+        long: 800
+      },
+      firing_rates: {
+        single: 1,
+        semi: 2,
+        full: 0
+      }
+    },
     snapdragongpgm: {
+      author: authors.alice_mcentire,
       name: "SnapDragon GPGM",
       gun_class: "lmg",
       caliber: "762x51",
       capacity: 100,
       accuracy: -1,
-      mods: [ "bipod" ],
+      mods: ["bipod"],
       ranges: {
         short: 120,
         medium: 250,
@@ -1336,6 +1514,7 @@
       }
     },
     type72: {
+      author: authors.alice_mcentire,
       name: "Type 72",
       gun_class: "shotgun",
       caliber: "12g",
@@ -1354,6 +1533,7 @@
       }
     },
     type97: {
+      author: authors.alice_mcentire,
       name: "Type 97",
       gun_class: "rifle",
       caliber: "556x45",
@@ -1372,6 +1552,7 @@
       }
     },
     vp84p: {
+      author: authors.alice_mcentire,
       name: "VP84-P",
       gun_class: "pistol",
       caliber: "9mm",
@@ -1390,6 +1571,7 @@
       }
     },
     williamsm4: {
+      author: authors.alice_mcentire,
       name: "Williams M4",
       gun_class: "smg",
       caliber: "45acp",
@@ -1408,6 +1590,7 @@
       }
     },
     xiaofan12: {
+      author: authors.alice_mcentire,
       name: "Xiao-fan 12",
       gun_class: "shotgun",
       caliber: "12g",
@@ -1426,12 +1609,13 @@
       }
     },
     yurei2: {
+      author: authors.alice_mcentire,
       name: "Yurei II",
       gun_class: "smg",
       caliber: "9mm",
       capacity: 20,
       accuracy: 1,
-      mods: [ "suppressor" ],
+      mods: ["suppressor"],
       ranges: {
         short: 50,
         medium: 100,
@@ -1484,7 +1668,7 @@
       damage_short: "1D10+1",
       damage_medium: "1D6",
       damage_long: "1D4",
-      pen_short: 1,
+      pen_short: 2,
       pen_medium: 1,
       pen_long: 0
     },
@@ -1492,16 +1676,16 @@
       damage_short: "1D8+1",
       damage_medium: "1D8",
       damage_long: "1D6",
-      pen_short: 2,
+      pen_short: 3,
       pen_medium: 2,
-      pen_long: 1
+      pen_long: 2
     },
     "762x39": {
       damage_short: "1D10+1",
       damage_medium: "1D8",
       damage_long: "1D6-1",
-      pen_short: 2,
-      pen_medium: 1,
+      pen_short: 3,
+      pen_medium: 2,
       pen_long: 1
     },
     "762x51": {
@@ -1509,16 +1693,53 @@
       damage_medium: "1D10",
       damage_long: "1D8",
       pen_short: 3,
-      pen_medium: 2,
+      pen_medium: 3,
       pen_long: 2
     },
     "12g": {
       damage_short: "1D12",
       damage_medium: "1D6",
       damage_long: "1D4-1",
-      pen_short: 2,
+      pen_short: 1,
       pen_medium: 0,
       pen_long: 0
+    }
+  };
+
+  /* Body areas definitions */
+  var humanBody = {
+    head: "head",
+    torso: "torso",
+    leftArm: "left_arm",
+    rightArm: "right_arm",
+    leftLeg: "left_leg",
+    rightLeg: "right_leg"
+  };
+
+  /* Armor definition */
+
+  var armors = {
+    ballistic: {
+      vest: {
+        name: "Veste balistique",
+        protection_gun: 1,
+        protection_melee: 1,
+        areas: [
+          humanBody.torso
+        ]
+      },
+      jacket: {
+        name: "Chemise balistique",
+        protection_gun: 1,
+        protection_melee: 1,
+        areas: {
+          areas: [
+            humanBody.torso,
+            humanBody.leftArm,
+            humanBody.rightArm
+          ]
+        }
+      }
     }
   };
 
@@ -1563,7 +1784,12 @@
         gun_caliber: moddedWeapon.caliber,
         gun_accuracy: moddedWeapon.accuracy,
         capacity_current: 0,
-        capacity_max: moddedWeapon.capacity
+        capacity_max: moddedWeapon.capacity,
+        author_name: (
+          moddedWeapon.author &&
+          moddedWeapon.author.name &&
+          "Artiste : " + moddedWeapon.author.name
+        ) || ""
       })));
     }
   });
@@ -1574,7 +1800,12 @@
     var moddedWeapon = weapon.mods.reduce(applyMod({}), weapon);
     if (weapon) {
       setAttrs(setRepeatingAttributes(baseId, {
-        weapon_name: moddedWeapon.name
+        weapon_name: moddedWeapon.name,
+        author_name: (
+          moddedWeapon.author &&
+          moddedWeapon.author.name &&
+          "Artiste : " + moddedWeapon.author.name
+        ) || ""
       }));
     }
   });
@@ -1583,7 +1814,8 @@
     var baseId = eventInfo.sourceAttribute.replace(/_weapon_is_melee/g, "");
     setAttrs(setRepeatingAttributes(baseId, {
       gun_template: "none",
-      melee_template: "none"
+      melee_template: "none",
+      author_name: ""
     }));
   });
 

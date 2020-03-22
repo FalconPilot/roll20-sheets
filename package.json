@@ -11,5 +11,8 @@
     "fs-extra": "^7.0.1",
     "html-minifier": "^3.5.21",
     "minimist": "^1.2.0"
+  },
+  "devDependencies": {
+    "standard": "^14.3.3"
   }
 }

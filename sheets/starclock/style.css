@@ -3,13 +3,24 @@
 */
 
 .sheet-sc-wrapper {
-  width: 100%;
-  font-family: 'Trebuchet MS';
+  width: 800px;
+  margin: auto;
 }
 
+.sheet-sc-wrapper *:disabled:hover { cursor: not-allowed; }
+
 .sheet-sc-wrapper > h1 {
-  width: 100%;
-  text-align: center;
+  margin: 20px 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 /*
@@ -23,40 +34,234 @@
 .sheet-flex-col { flex-direction: column; }
 
 .sheet-flex-row.sheet-center-h,
-.sheet-flex-col.sheet-center-v { justify-content: center; }
+.sheet-flex-col.sheet-center-v,
+.sheet-flex-row.sheet-flex-middle,
+.sheet-flex-col.sheet-flex-middle { justify-content: center; }
 
 .sheet-flex-row.sheet-center-v,
-.sheet-flex-col.sheet-center-h { align-items: center; }
+.sheet-flex-col.sheet-center-h,
+.sheet-flex-row.sheet-flex-middle,
+.sheet-flex-col.sheet-flex-middle { align-items: center; }
 
 .sheet-flex-up { flex: 1; }
 
 .sheet-flex-stretch { align-items: stretch; }
 
 /*
-**  Sheet weapon cards
+**  Width classes
 */
 
-.sheet-weapon-card {
-  width: 350px;
+.sheet-full-width { width: 100%; }
+.sheet-two-thirds-width { width: 66%; }
+.sheet-half-width { width: 50%; }
+.sheet-third-width { width: 33%; }
+.sheet-quarter-width { width: 25%; }
+
+/*
+**  Tabs classes
+*/
+
+.sheet-tab {
+  display: none !important;
+  border: 2px solid #333;
+  border-radius: 0 4px 4px 4px;
+  box-sizing: border-box;
+}
+
+input.sheet-tabs-control[value="character"] ~ .sheet-tab.sheet-character { display: flex !important; }
+input.sheet-tabs-control[value="character"] ~ .sheet-tab-selector > button[name="act_character"] {
+  background-color: #333;
+  color: #FFF;
+}
+
+input.sheet-tabs-control[value="psy"] ~ .sheet-tab.sheet-psy { display: flex !important; }
+input.sheet-tabs-control[value="psy"] ~ .sheet-tab-selector > button[name="act_psy"] {
+  background-color: #333;
+  color: #FFF;
+}
+
+.sheet-tab-selector > button {
+  border: 2px solid #333;
+  border-bottom: 0;
+  font-family: 'Candal';
+  outline: none;
+}
+
+.sheet-tab-selector > button:first-child { border-top-left-radius: 4px; }
+.sheet-tab-selector > button:last-child { border-top-right-radius: 4px; }
+
+.sheet-tab-selector > button:not(:first-child) { border-left: none; }
+
+/*
+**  Sheet tablet
+*/
+
+.sheet-tablet {
+  background-color: #333;
+  border-radius: 4px;
   padding: 10px;
   box-sizing: border-box;
-  background-color: #EEE;
-  border: 1px solid #CCC;
-  border-radius: 5px;
 }
 
-.sheet-weapon-card > select {
+.sheet-tablet.sheet-character { border-radius: 0; }
+
+.sheet-tablet .sheet-label {
+  color: #FFF;
+  padding-right: 20px;
+  font-family: 'Contrail One';
+  white-space: nowrap;
+}
+
+.sheet-tablet-line input[type=text] {
+  color: #FFF;
+  background-color: transparent;
+  font-family: 'Contrail One';
+  border: none;
+  border-bottom: 1px solid #BBB;
+  border-radius: 0;
+}
+
+/*
+**  Sheet stats
+*/
+
+.sheet-stat {
+  margin: 10px 0;
+  padding: 5px;
+}
+
+.sheet-stat input[type=number] {
   width: 100%;
+  height: 100%;
+  padding: 0;
+  border: none;
+  text-align: center;
+  background-color: transparent;
+  outline: none;
+  font-family: "Contrail One";
 }
 
-.sheet-weapon-card > select[value="bar51"]:after {
-  content: "BAR-51";
+.sheet-stat-total {
+  font-size: 25px;
 }
 
-.sheet-weapon-rof {
-  max-width: 100%;
+.sheet-stat-bubble {
+  position: relative;
+  width: 70px;
+  height: 70px;
+  background-color: #FFF;
+  border: 1px solid #333;
+  border-radius: 50%;
 }
 
-.sheet-weapon-rof > input[type=text] {
-  width: 2em;
+.sheet-stat-base {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  bottom: -5px;
+  z-index: 3;
 }
+
+.sheet-stat.sheet-left .sheet-stat-base { right: -5px; }
+.sheet-stat.sheet-right .sheet-stat-base { left: -5px; }
+
+.sheet-stat-base input[type=number] {
+  position: relative;
+  color: #FFF;
+}
+
+.sheet-stat-base:before {
+  content: " ";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transform: rotate(45deg);
+  border: 1px solid #333;
+  background-color: #333;
+  border-radius: 2px;
+}
+
+.sheet-stat-label {
+  position: relative;
+  width: 130px;
+  height: 30px;
+  padding: 5px 10px;
+  box-sizing: border-box;
+  border: 1px solid #333;
+}
+
+.sheet-stat.sheet-left .sheet-stat-label {
+  padding-right: 25px;
+  margin-right: 20px;
+}
+
+.sheet-stat.sheet-right .sheet-stat-label {
+  padding-left: 25px;
+  margin-left: 20px;
+}
+
+.sheet-stat-label p {
+  font-family: "Contrail one";
+}
+
+.sheet-stat.sheet-left .sheet-stat-label {
+  border-left: none;
+  margin-left: -3px;
+  border-radius: 0 2px 2px 0;
+  text-align: left;
+}
+
+.sheet-stat.sheet-right .sheet-stat-label {
+  border-right: none;
+  margin-right: -3px;
+  border-radius: 2px 0 0 2px;
+  text-align: right;
+}
+
+.sheet-stat-plus {
+  position: absolute;
+  top: -5px;
+  bottom: -5px;
+  border: 1px solid #333;
+  width: 38px;
+  border-radius: 50%;
+  background-color: #333;
+  box-sizing: border-box;
+}
+
+
+.sheet-stat-plus > input[type=number] {
+  text-align: center;
+  color: #FFF;
+}
+
+.sheet-stat.sheet-left .sheet-stat-plus { right: -10px; }
+.sheet-stat.sheet-right .sheet-stat-plus { left: -10px; }
+
+.sheet-stat-plus > p {
+  position: absolute;
+  top: -7px;
+  left: -3px;
+  font-family: 'Candal';
+  color: #FFF;
+  text-shadow: 1px 1px 0px #333, -1px -1px 0px #333, 1px -1px 0px #333, -1px 1px 0px #333;
+  font-size: 30px;
+}
+
+.sheet-stat-label p {
+  margin: 0;
+}
+
+/* .sheet-stat-label input[type=number] {
+  width: 20px;
+} */
+
+.sheet-stat-name {
+  flex-grow: 1;
+}
+
+/*
+**  Sheet weapon cards
+*/

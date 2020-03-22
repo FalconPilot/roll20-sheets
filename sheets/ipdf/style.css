@@ -50,6 +50,7 @@ div.sheet-ipdf-wrapper {
   position: relative;
   width: 800px;
   min-height: 100px;
+  background-color: #FFF;
   border: 1px solid #333;
   padding: 5px;
   padding-top: 20px;
@@ -254,7 +255,7 @@ div.sheet-percent-wrapper > div > input[type=number],
 div.sheet-percent-wrapper > div > span,
 div.sheet-percent-wrapper > div:before {
   font-size: 15px;
-  font-family: 'Monaco';
+  font-family: 'Courier';
 }
 
 td.sheet-stat-name {
@@ -377,7 +378,7 @@ div.sheet-currency-wrapper > input[type=number] {
   width: auto;
   flex-grow: 1;
   text-align: right;
-  font-family: 'Monaco';
+  font-family: 'Courier';
   font-size: 15px;
   padding: 4px;
   border-top: 1px solid transparent;
@@ -460,7 +461,7 @@ table.sheet-weapon-stats-table > thead > tr > th {
 table.sheet-weapon-stats-table > thead > tr > th,
 table.sheet-weapon-stats-table > tbody > tr > td {
   text-align: center;
-  vertical-align: center;
+  vertical-align: middle;
   padding: 5px;
   box-sizing: border-box;
   white-space: nowrap;
@@ -495,10 +496,11 @@ table.sheet-weapon-stats-table input[type=number] + span {
   font-family: 'Contrail One';
 }
 
-table.sheet-weapon-stats-table > tbody > tr > td > input[type=number] {
+table.sheet-weapon-stats-table > tbody > tr > td input[type=number] {
   width: 26px;
   text-align: center;
-  font-family: 'Monaco';
+  font-family: 'Courier';
+  font-weight: bold;
   font-size: 11px;
 }
 
@@ -543,6 +545,7 @@ td.sheet-damage-col > span {
 }
 
 div.sheet-weapon-image {
+  position: relative;
   height: 120px;
   margin: 10px 0;
   padding: 10px;
@@ -555,14 +558,78 @@ div.sheet-weapon-image {
   background-size: contain;
 }
 
+div.sheet-gunshot-rolls {
+  display: inline-flex;
+}
+
+div.sheet-gunshot-rolls > button[type=roll] {
+  position: relative;
+  outline: none;
+}
+
+div.sheet-gunshot-rolls > button[type=roll]:before {
+  content: '';
+}
+
+div.sheet-gunshot-rolls > button[type=roll]:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  line-height: 10px;
+  font-family: 'Courier';
+  font-size: 7px;
+  text-align: center;
+}
+
+div.sheet-gunshot-rolls > button.sheet-single-shot:after {
+  content: '•';
+  color: #05F;
+}
+
+div.sheet-gunshot-rolls > button.sheet-semi-auto:after {
+  content: '•••';
+}
+
+div.sheet-gunshot-rolls > button.sheet-full-auto:after {
+  content: '•••••';
+  color: #C00;
+}
+
+div.sheet-gunshot-rolls > button {
+  height: 10px;
+  width: 25px;
+  padding: 0 !important;
+  margin: 0 0 0 4px !important;
+  border-radius: 0;
+  border: 1px solid #CCC;
+}
+
+div.sheet-gunshot-rolls > button:first-child {
+  border-radius: 4px 4px 0 0;
+}
+
+div.sheet-gunshot-rolls > button:last-child {
+  border-radius: 0 0 4px 4px;
+}
+
+div.sheet-gunshot-rolls > button:not(:first-child) {
+  border-top: none;
+}
+
+/* Rolltemplates */
+
 .sheet-rolltemplate-standard,
-.sheet-rolltemplate-standard > table {
+.sheet-rolltemplate-standard > table,
+.sheet-rolltemplate-gunshot,
+.sheet-rolltemplate-gunshot > table {
   width: 100%;
 }
 
-.sheet-rolltemplate-standard {
+.sheet-rolltemplate-standard,
+.sheet-rolltemplate-gunshot {
   position: relative;
-  background-color: inherit;
   background-color: #FFF;
   border: 2px dashed #CCC;
   border-radius: 5px;;
@@ -570,82 +637,131 @@ div.sheet-weapon-image {
 }
 
 .sheet-rolltemplate-standard td,
-.sheet-rolltemplate-standard th {
-  padding: 5px;
+.sheet-rolltemplate-standard th,
+.sheet-rolltemplate-gunshot td,
+.sheet-rolltemplate-gunshot th {
+  padding: 6px;
   box-sizing: border-box;
   text-align: center;
+  font-family: 'Courier';
+}
+
+.sheet-rolltemplate-gunshot .sheet-result-title {
+  text-align: left;
+  font-weight: bold;
+}
+
+.sheet-rolltemplate-gunshot hr,
+.sheet-rolltemplate-standard hr {
+  margin: 8px 0;
+}
+
+.sheet-rolltemplate-gunshot .sheet-result-icon {
+  display: inline-block;
+}
+
+.sheet-rolltemplate-gunshot .sheet-result-icon:before {
+  font-family: 'Pictos Custom';
+  font-size: 20px;
+  color: #C00;
+}
+
+.sheet-rolltemplate-gunshot .sheet-result-icon.sheet-damage:before {
+  content: 't';
+}
+
+.sheet-rolltemplate-gunshot .sheet-result-icon.sheet-penetration:before {
+  content: 'e';
+}
+
+.sheet-author-credit {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: transparent;
+  border: none;
+  font-family: 'Courier';
+  text-align: right;
 }
 
 /* Gun images */
 
 div.sheet-weapon-stats > input[value="a918"]:checked ~ div.sheet-weapon-image {
-  background-image: url('https://image.noelshack.com/fichiers/2017/06/1486849602-a918.png');
+  background-image: url('https://fpilot.fr/ipdf/guns/a918.png');
 }
 
 div.sheet-weapon-stats > input[value="altermattspr"]:checked ~ div.sheet-weapon-image {
-  background-image: url('https://image.noelshack.com/fichiers/2017/38/5/1506107638-jackal-spr.png');
+  background-image: url('https://fpilot.fr/ipdf/guns/altermatt_spr.png');
 }
 
 div.sheet-weapon-stats > input[value="brak"]:checked ~ div.sheet-weapon-image {
-  background-image: url('https://image.noelshack.com/fichiers/2016/42/1477044840-brak.png');
+  background-image: url('https://fpilot.fr/ipdf/guns/brak.png');
 }
 
 div.sheet-weapon-stats > input[value="celica"]:checked ~ div.sheet-weapon-image {
-  background-image: url('https://image.noelshack.com/fichiers/2017/06/1486834822-celica.png');
+  background-image: url('https://fpilot.fr/ipdf/guns/celica.png');
+}
+
+div.sheet-weapon-stats > input[value="gepardgpmg"]:checked ~ div.sheet-weapon-image {
+  background-image: url('https://fpilot.fr/ipdf/guns/gepard_gpgm.png');
 }
 
 div.sheet-weapon-stats > input[value="m4400clancy"]:checked ~ div.sheet-weapon-image {
-  background-image: url('https://image.noelshack.com/fichiers/2017/12/1490126526-m4400-clancy.png');
+  background-image: url('https://fpilot.fr/ipdf/guns/m4400_clancy.png');
 }
 
 div.sheet-weapon-stats > input[value="m74g"]:checked ~ div.sheet-weapon-image {
-  background-image: url('https://image.noelshack.com/fichiers/2016/42/1476955408-m74g.png');
+  background-image: url('https://fpilot.fr/ipdf/guns/m74g.png');
 }
 
 div.sheet-weapon-stats > input[value="m99"]:checked ~ div.sheet-weapon-image {
-  background-image: url('https://image.noelshack.com/fichiers/2017/06/1486829151-m-99.png');
+  background-image: url('https://fpilot.fr/ipdf/guns/m-99.png');
 }
 
 div.sheet-weapon-stats > input[value="mp200"]:checked ~ div.sheet-weapon-image {
-  background-image: url('https://image.noelshack.com/fichiers/2017/03/1484779474-mp200.png');
+  background-image: url('https://fpilot.fr/ipdf/guns/mp200.png');
 }
 
 div.sheet-weapon-stats > input[value="p83"]:checked ~ div.sheet-weapon-image {
-  background-image: url('https://image.noelshack.com/fichiers/2017/02/1484434182-p83.png');
+  background-image: url('https://fpilot.fr/ipdf/guns/p83.png');
 }
 
 div.sheet-weapon-stats > input[value="rk80"]:checked ~ div.sheet-weapon-image {
-  background-image: url('https://image.noelshack.com/fichiers/2016/42/1477214017-rk80.png');
+  background-image: url('https://fpilot.fr/ipdf/guns/rk80.png');
 }
 
 div.sheet-weapon-stats > input[value="rk80ct"]:checked ~ div.sheet-weapon-image {
-  background-image: url('https://image.noelshack.com/fichiers/2016/42/1477230960-rk80-ct.png');
+  background-image: url('https://fpilot.fr/ipdf/guns/rk80-ct.png');
+}
+
+div.sheet-weapon-stats > input[value="scout73"]:checked ~ div.sheet-weapon-image {
+  background-image: url('https://fpilot.fr/ipdf/guns/scout-73.png');
 }
 
 div.sheet-weapon-stats > input[value="snapdragongpgm"]:checked ~ div.sheet-weapon-image {
-  background-image: url('https://image.noelshack.com/fichiers/2017/07/1487382727-snapdragon-gpgm.png');
+  background-image: url('https://fpilot.fr/ipdf/guns/snapdragon_gpgm.png');
 }
 
 div.sheet-weapon-stats > input[value="type72"]:checked ~ div.sheet-weapon-image {
-  background-image: url('https://image.noelshack.com/fichiers/2017/03/1484777113-type-72.png');
+  background-image: url('https://fpilot.fr/ipdf/guns/type-72.png');
 }
 
 div.sheet-weapon-stats > input[value="type97"]:checked ~ div.sheet-weapon-image {
-  background-image: url('https://image.noelshack.com/fichiers/2017/03/1484759665-type-97.png');
+  background-image: url('https://fpilot.fr/ipdf/guns/type-97.png');
 }
 
 div.sheet-weapon-stats > input[value="vp84p"]:checked ~ div.sheet-weapon-image {
-  background-image: url('https://image.noelshack.com/fichiers/2016/43/1477585384-vp84-p.png');
+  background-image: url('https://fpilot.fr/ipdf/guns/vp84-p.png');
 }
 
 div.sheet-weapon-stats > input[value="williamsm4"]:checked ~ div.sheet-weapon-image {
-  background-image: url('https://image.noelshack.com/fichiers/2017/38/5/1506106421-williams-m4.png');
+  background-image: url('https://fpilot.fr/ipdf/guns/williams_m4.png');
 }
 
 div.sheet-weapon-stats > input[value="xiaofan12"]:checked ~ div.sheet-weapon-image {
-  background-image: url('https://image.noelshack.com/fichiers/2016/44/1477936781-xiao-fan-12.png');
+  background-image: url('https://fpilot.fr/ipdf/guns/xiao-fan_12.png');
 }
 
 div.sheet-weapon-stats > input[value="yurei2"]:checked ~ div.sheet-weapon-image {
-  background-image: url('https://image.noelshack.com/fichiers/2017/03/1484880413-type-413.png');
+  background-image: url('https://fpilot.fr/ipdf/guns/yurei_II.png');
 }

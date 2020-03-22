@@ -1,164 +1,384 @@
-<!-- Worker scripts -->
+<div class="sheet-sc-wrapper sheet-flex-col sheet-flex-middle">
+
+  <input type="hidden" name="attr_current_tab" class="sheet-tabs-control" value="character" />
+
+  <!-- Tab selector -->
+  <div class="sheet-tab-selector sheet-full-width sheet-flex-row">
+    <button type="action" name="act_character">Personnage</button>
+    <button type="action" name="act_psy">Psy</button>
+  </div>
+
+  <!-- Character tab -->
+  <div class="sheet-tab sheet-flex-col sheet-full-width sheet-flex-middle sheet-character">
+
+    <!-- Character bio -->
+    <div class="sheet-tablet sheet-character sheet-full-width">
+      <table class="sheet-full-width">
+        <tbody>
+          <tr class="sheet-tablet-line">
+            <td class="sheet-label">Nom complet</td>
+            <td class="sheet-full-width">
+              <input type="text" class="sheet-full-width" name="attr_character_name" />
+            </td>
+          </tr>
+          <tr class="sheet-tablet-line">
+            <td class="sheet-label">Race</td>
+            <td class="sheet-full-width">
+              <input type="text" class="sheet-full-width" name="attr_character_race" />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Character stats -->
+    <table class="sheet-stats">
+      <tbody>
+        <tr>
+
+          <!-- Physique -->
+          <td>
+            <div class="sheet-stat sheet-left sheet-flex-row sheet-flex-middle">
+              <div class="sheet-stat-bubble sheet-flex-col sheet-flex-middle">
+                <input type="hidden" name="attr_phy_total" value="0" />
+                <input
+                  disabled
+                  type="number"
+                  name="attr_phy_total_display"
+                  value="@{phy_total}"
+                  class="sheet-stat-total"
+                />
+                <div class="sheet-stat-base">
+                  <input type="number" value="0" min="0" name="attr_phy_base" />
+                </div>
+              </div>
+              <div class="sheet-stat-label sheet-flex-row">
+                <p class="sheet-stat-name">Physique</p>
+                <div class="sheet-stat-plus sheet-flex-row sheet-flex-middle">
+                  <p>+</p>
+                  <input type="number" value="0" min="0" name="attr_phy_bonus" />
+                </div>
+              </div>
+            </div>
+          </td>
+
+          <!-- Acuité -->
+          <td>
+            <div class="sheet-stat sheet-right sheet-flex-row sheet-flex-middle">
+              <div class="sheet-stat-label">
+                <div class="sheet-stat-plus sheet-flex-row sheet-flex-middle">
+                  <p>+</p>
+                  <input type="number" value="0" min="0" name="attr_acu_bonus" />
+                </div>
+                <p class="sheet-stat-name">Acuité</p>
+              </div>
+              <div class="sheet-stat-bubble sheet-flex-col sheet-flex-middle">
+                <input type="hidden" name="attr_acu_total" value="0" />
+                <input
+                  disabled
+                  type="number"
+                  name="attr_acu_total_display"
+                  value="@{acu_total}"
+                  class="sheet-stat-total"
+                />
+                <div class="sheet-stat-base">
+                  <input type="number" value="0" min="0" name="attr_acu_base" />
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+
+          <!-- Habilité -->
+          <td>
+            <div class="sheet-stat sheet-left sheet-flex-row sheet-flex-middle">
+              <div class="sheet-stat-bubble sheet-flex-col sheet-flex-middle">
+                <input type="hidden" name="attr_hab_total" value="0" />
+                <input
+                  disabled
+                  type="number"
+                  name="attr_hab_total_display"
+                  value="@{hab_total}"
+                  class="sheet-stat-total"
+                />
+                <div class="sheet-stat-base">
+                  <input type="number" value="0" min="0" name="attr_int_base" />
+                </div>
+              </div>
+              <div class="sheet-stat-label sheet-flex-row">
+                <p class="sheet-stat-name">Habilité</p>
+                <div class="sheet-stat-plus sheet-flex-row sheet-flex-middle">
+                  <p>+</p>
+                  <input type="number" value="0" min="0" name="attr_hab_bonus" />
+                </div>
+              </div>
+            </div>
+          </td>
+
+          <!-- Charisme -->
+          <td>
+            <div class="sheet-stat sheet-right sheet-flex-row sheet-flex-middle">
+              <div class="sheet-stat-label">
+                <div class="sheet-stat-plus sheet-flex-row sheet-flex-middle">
+                  <p>+</p>
+                  <input type="number" value="0" min="0" name="attr_cha_bonus" />
+                </div>
+                <p class="sheet-stat-name">Charisme</p>
+              </div>
+              <div class="sheet-stat-bubble sheet-flex-col sheet-flex-middle">
+                <input type="hidden" name="attr_cha_total" value="0" />
+                <input
+                  disabled
+                  type="number"
+                  name="attr_cha_total_display"
+                  value="@{cha_total}"
+                  class="sheet-stat-total"
+                />
+                <div class="sheet-stat-base">
+                  <input type="number" value="0" min="0" name="attr_cha_base" />
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+
+          <!-- Intelligence -->
+          <td>
+            <div class="sheet-stat sheet-left sheet-flex-row sheet-flex-middle">
+              <div class="sheet-stat-bubble sheet-flex-col sheet-flex-middle">
+                <input type="hidden" name="attr_int_total" value="0" />
+                <input
+                  disabled
+                  type="number"
+                  name="attr_int_total_display"
+                  value="@{int_total}"
+                  class="sheet-stat-total"
+                />
+                <div class="sheet-stat-base">
+                  <input type="number" value="0" min="0" name="attr_int_base" />
+                </div>
+              </div>
+              <div class="sheet-stat-label sheet-flex-row">
+                <p class="sheet-stat-name">Intelligence</p>
+                <div class="sheet-stat-plus sheet-flex-row sheet-flex-middle">
+                  <p>+</p>
+                  <input type="number" value="0" min="0" name="attr_int_bonus" />
+                </div>
+              </div>
+            </div>
+          </td>
+
+          <!-- Volonté -->
+          <td>
+            <div class="sheet-stat sheet-right sheet-flex-row sheet-flex-middle">
+              <div class="sheet-stat-label">
+                <div class="sheet-stat-plus sheet-flex-row sheet-flex-middle">
+                  <p>+</p>
+                  <input type="number" value="0" min="0" name="attr_wil_bonus" />
+                </div>
+                <p class="sheet-stat-name">Volonté</p>
+              </div>
+              <div class="sheet-stat-bubble sheet-flex-col sheet-flex-middle">
+                <input type="hidden" name="attr_wil_total" value="0" />
+                <input
+                  disabled
+                  type="number"
+                  name="attr_wil_total_display"
+                  value="@{wil_total}"
+                  class="sheet-stat-total"
+                />
+                <div class="sheet-stat-base">
+                  <input type="number" value="0" min="0" name="attr_wil_base" />
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="sheet-full-width sheet-flex-row">
+      <!-- Traits -->
+      <table class="sheet-traits sheet-half-width">
+        <thead></thead>
+        <tbody></tbody>
+      </table>
+      <!-- Skills -->
+      <table class="sheet-skills sheet-half-width">
+        <thead></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Psy tab -->
+  <div class="sheet-tab sheet-flex-col sheet-full-width sheet-flex-middle sheet-psy">
+    Coucou
+  </div>
+</div>
+
+<!-- Workers -->
 <script type="text/worker">
 
-  /* Compendium */
-  var starClock = starClock || {};
-  starClock.data = {
+  /*
+  **  Constants
+  */
 
-    /*
-    **  Inventory
-    */
+  var calculationKeys = ["base", "bonus"];
+  var statsKeys = ["phy", "acu", "hab", "cha", "int", "wil"];
+  var tabs = ["character", "psy"];
 
-    inventory: {
+  /*
+  **  Helper functions
+  */
 
-      /* Guns */
-      guns: {
+  function noop (x) {
+    return x;
+  }
 
-        /* BAR-51 */
-        bar51: {
-          caliber: "7.62x51mm",
-          damage_bonus: 0,
-          single: 1,
-          semi: 3,
-          full: 6,
-          failure: 2,
-          picture_url: "http://image.noelshack.com/fichiers/2016/38/1474628722-bar-51.png",
-          company: "voz_technika"
-        },
+  function getRangeForWeaponType (weaponType, distance, range) {
+    var defaultRanges = {
+      short: range,
+      medium: range,
+      long: range
+    };
 
-        /* Brak-39 */
-        brak39: {
-          caliber: "7.62x39mm",
-          damage_bonus: 0,
-          single: 1,
-          semi: 3,
-          full: 6,
-          failure: 3,
-          picture_url: "http://image.noelshack.com/fichiers/2016/38/1474630195-brak-39.png",
-          company: "voz_technika"
+    return ({
+      pistol: defaultRanges
+    }[weaponType] || defaultRanges)[distance] || range;
+  }
+
+  function getWeaponRanges (weaponType, caliber) {
+    return (
+      Object.keys(caliber.ranges)
+        .reduce(function (acc, distance) {
+          const range = caliber.ranges[distance];
+          return Object.assign(acc, {
+            distance: getRangeForWeaponType(weaponType, distance, range)
+          });
+        }, {})
+    );
+  }
+
+  function calculateTotal (statKey) {
+    var keys = calculationKeys.map(function (key) { return statKey + "_" + key; });
+
+    getAttrs(keys, function (values) {
+      var obj = {};
+      obj[statKey + "_total"] = (
+        Object.values(values)
+          .reduce(function (total, num) { return parseInt(num, 10) + total; }, 0)
+      );
+      setAttrs(obj);
+    });
+  }
+
+  function computeStatChanges (statKey) {
+    var callback = function () {
+      calculateTotal(statKey)
+    };
+
+    var query = (
+      calculationKeys
+        .map(function (key) { return "change:" + statKey + "_" + key })
+        .concat(["sheet:opened"])
+        .join(" ")
+    );
+
+    on(query, callback);
+  }
+
+  function computeTabChange (tabKey) {
+    on("clicked:" + tabKey, function () {
+      setAttrs({
+        current_tab: tabKey
+      });
+    });
+  }
+
+  /*
+  **  StarClock data compendium
+  */
+
+  var Compendium = {
+
+    /* Guns */
+    get guns () {
+      return {
+        star51: {
+          name: "STAR-51",
+          caliber: Compendium.calibers["10mm"]
         }
-      },
-
-      /* Other weapons */
-      weapons: {
-
-      },
-
-      /* Ammo */
-      ammo: {
-        "7.62x51mm": {
-          dice_count: 3,
-          dice_faces: 4,
-          damage_bonus: 2,
-          perforation: 4
-        },
-        "7.62x39mm": {
-          dice_count: 2,
-          dice_faces: 6,
-          damage_bonus: 2,
-          perforation: 3
-        }
-      }
+      };
     },
 
-    /*
-    **  Resources
-    */
+    /* Melee weapons */
+    get meleeWeapons () {
+      return {};
+    },
 
-    resources: {
+    /* Armor */
+    get armors () {
+      return {};
+    },
 
-      /* Logos */
-      logos: {
-        voz_technika: "http://image.noelshack.com/fichiers/2016/38/1474744257-voz-technika.png"
-      }
+    /* Ammunition types */
+    get ammo () {
+      return {
+        slap: {
+          name: "SLAP",
+          modifiers: {
+            penetration: 2,
+            damage: -1
+          }
+        }
+      };
+    },
+
+    /* Calibers */
+    get calibers () {
+      return {
+        "9mm": {
+          name: "9mm",
+          damage: 10,
+          penetration: 1,
+          ranges: {
+            short: 20,
+            medium: 50,
+            long: 150
+          }
+        },
+        "10mm": {
+          name: "10mm",
+          damage: 15,
+          penetration: 1,
+          ranges: {
+            short: 30,
+            medium: 60,
+            long: 150
+          }
+        },
+        "556x45": {
+          name: "5.56x45mm",
+          damage: 15,
+          penetration: 2,
+          ranges: {
+            short: 50,
+            medium: 100,
+            long: 250
+          }
+        }
+      };
     }
   };
 
-  log("--- StarClock compendium loaded ! ---");
-
   /*
-  ** Actual workers
+  **  Effective code
   */
 
-  on("change:repeating_guns", function() {
-    getSectionIDs("guns", function(list) {
-      var options = {};
+  statsKeys.forEach(computeStatChanges);
+  tabs.forEach(computeTabChange);
 
-      /* Iterate over each weapon */
-      list.forEach(function(idArray) {
-        var baseKey = "repeating_guns_" + idArray + "_";
-        var attributes = getAttrs([ baseKey + "gunname" ], function(values) {
-          var wname = values[baseKey + "gunname"];
-          var weaponData = exists(starClock.data.inventory.guns[wname])
-            ? starClock.data.inventory.guns[wname]
-            : null;
-
-          var ammoData = exists(weaponData)
-            ? starClock.data.inventory.ammo[weaponData.caliber]
-            : null;
-
-          if (exists(weaponData) && exists(ammoData)) {
-
-            options[baseKey + "singleDices"] = ammoData.dice_count;
-            options[baseKey + "semiDices"] = ammoData.dice_count * weaponData.semi;
-            options[baseKey + "fullDices"] = ammoData.dice_count * weaponData.full;
-
-            options[baseKey + "gunFaces"] = ammoData.dice_faces;
-            options[baseKey + "gunBonus"] = ammoData.damage_bonus;
-
-            options[baseKey + "semiCount"] = weaponData.semi;
-            options[baseKey + "autoCount"] = weaponData.full;
-          }
-        });
-      });
-      console.log(options);
-      setAttrs(options);
-    });
-  });
-
-  function exists(item) {
-    return (item !== null && item !== undefined);
-  }
 </script>
-
-<!-- Main sheet code -->
-<div class="sheet-sc-wrapper sheet-flex-col sheet-center-v sheet-flex-stretch">
-
-  <h1>StarClock</h1>
-
-  <!-- Inventory tab -->
-  <div data-section="sc-inventory" class="sheet-flex-col sheet-center-h">
-    <section name="sc-weapons">
-
-      <!-- weapon template -->
-      <fieldset class="repeating_guns">
-        <div class="sheet-weapon-card sheet-flex-col">
-          <select name="attr_gunname">
-            <option disabled>Rifles</option>
-            <option value="bar51">BAR-51</option>
-            <option value="brak39">Brak-39</option>
-          </select>
-
-          <!-- Properties -->
-          <h3>Rates of Fire</h3>
-          <div class="sheet-flex-row sheet-weapon-rof">
-            <input type="text" value="S" disabled/>
-            <span>/</span>
-            <input type="text" name="attr_semiCount" disabled/>
-            <span>/</span>
-            <input type="text" name="attr_autoCount" disabled/>
-          </div>
-
-          <fieldset class="sheet-flex-row" name="sc-rolltypes">
-
-            <!-- Gun rolls -->
-            <button type="roll" value="/r @{singleDices}D@{gunFaces}+@{gunBonus}">S</button>
-            <button type="roll" value="/r @{semiDices}D@{gunFaces}+@{gunBonus}">@{semiCount}</button>
-            <button type="roll" value="/r @{fullDices}D@{gunFaces}+@{gunBonus}">@{autoCount}</button>
-          </fieldset>
-        </div>
-      </fieldset>
-
-    </section>
-  </fieldset>
-</div>
