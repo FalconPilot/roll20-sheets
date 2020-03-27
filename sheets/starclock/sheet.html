@@ -26,15 +26,18 @@
           <tr class="sheet-tablet-line">
             <td class="sheet-label">Race</td>
             <td class="sheet-full-width">
-              <select name="attr_character_race">
-                <option value="human">Humain</option>
-                <option value="doppleganger">Doppleganger</option>
-                <option value="endaari">Endaari</option>
-                <option value="alkor">Alkor</option>
-                <option value="drone">Drone</option>
-                <option value="other">Autre</option>
-              </select>
-              <input type="text" name="attr_character_race_other" />
+              <div class="sheet-full-width sheet-flex-row sheet-center-v">
+                <select name="attr_character_race">
+                  <option value="human">Humain</option>
+                  <option value="doppleganger">Doppleganger</option>
+                  <option value="endaari">Endaari</option>
+                  <option value="alkor">Alkor</option>
+                  <option value="drone">Drone</option>
+                  <option value="other">Autre</option>
+                </select>
+                <input type="hidden" name="attr_character_race" value="human" />
+                <input type="text" name="attr_character_race_other" class="sheet-full-width" placeholder="Nom de la race" />
+              </div>
             </td>
           </tr>
         </tbody>
@@ -350,31 +353,32 @@
               placeholder="Nom de la protection"
             />
             <div class="sheet-flex-row sheet-protection-locations sheet-flex-middle">
-                <div class="sheet-flex-col sheet-flex-middle">
-                  <span>Tête</span>
-                  <input type="number" name="attr_head_armor" />
-                </div>
-                <div class="sheet-flex-col sheet-flex-middle">
-                  <span>Torse</span>
-                  <input type="number" name="attr_torso_armor" />
-                </div>
-                <div class="sheet-flex-col sheet-flex-middle">
-                  <span>Bras gauche</span>
-                  <input type="number" name="attr_left_arm_armor" />
-                </div>
-                <div class="sheet-flex-col sheet-flex-middle">
-                  <span>Bras droit</span>
-                  <input type="number" name="attr_right_arm_armor" />
-                </div>
-                <div class="sheet-flex-col sheet-flex-middle">
-                  <span>Jambe gauche</span>
-                  <input type="number" name="attr_left_leg_armor" />
-                </div>
-                <div class="sheet-flex-col sheet-flex-middle">
-                  <span>Jambe droite</span>
-                  <input type="number" name="attr_right_leg_armor" />
-                </div>
+              <div class="sheet-flex-col sheet-flex-middle">
+                <span>Tête</span>
+                <input type="number" name="attr_head_armor" placeholder="0" />
+              </div>
+              <div class="sheet-flex-col sheet-flex-middle">
+                <span>Torse</span>
+                <input type="number" name="attr_torso_armor" placeholder="0" />
+              </div>
+              <div class="sheet-flex-col sheet-flex-middle">
+                <span>Bras gauche</span>
+                <input type="number" name="attr_left_arm_armor" placeholder="0" />
+              </div>
+              <div class="sheet-flex-col sheet-flex-middle">
+                <span>Bras droit</span>
+                <input type="number" name="attr_right_arm_armor" placeholder="0" />
+              </div>
+              <div class="sheet-flex-col sheet-flex-middle">
+                <span>Jambe gauche</span>
+                <input type="number" name="attr_left_leg_armor" placeholder="0" />
+              </div>
+              <div class="sheet-flex-col sheet-flex-middle">
+                <span>Jambe droite</span>
+                <input type="number" name="attr_right_leg_armor" placeholder="0" />
+              </div>
             </div>
+            <textarea class="sheet-armor-extra" placeholder="Description et effets supplémentaires"></textarea>
           </div>
         </fieldset>
       </div>
@@ -629,8 +633,6 @@
           return total + parseInt(values[prefix + id + "_container_capacity"] || "0", 10);
         }, 0);
 
-        console.log(values);
-
         var phyMod = Math.floor(parseInt(values.phy_total || "0", 10) / 10);
 
         setAttrs({
@@ -645,7 +647,7 @@
     "change:repeating_character-items:item_qty",
     "change:repeating_character-items:item_weight",
     "remove:repeating_character-items:item_qty",
-    "remove:repeating_character-items:item_weight"
+    "remove:repeating_character-items:item_weight",
   ], function () {
     getSectionIDs("repeating_character-items", function (ids) {
       var prefix = "repeating_character-items_";
@@ -676,7 +678,12 @@
     "change:repeating_armors:right_arm_armor",
     "change:repeating_armors:left_leg_armor",
     "change:repeating_armors:right_leg_armor"
-  ], function () {
+  ].concat(bodyLocations.reduce(function (acc, location) {
+    return acc.concat([
+      "change:" + location + "_protection_bonus",
+      "remove:" + location + "_protection_bonus"
+    ]);
+  }, [])), function () {
     getSectionIDs("repeating_armors", function (ids) {
       var prefix = "repeating_armors_";
       var fields = ids.reduce(function (acc, id) {
@@ -690,7 +697,7 @@
       })), function (values) {
         var armorValues = bodyLocations.reduce(function (acc, location) {
           var obj = {};
-          obj[location + "_protection_total"] = values[location + "_protection_bonus"] + (
+          obj[location + "_protection_total"] = parseInt(values[location + "_protection_bonus"] || "0", 10) + (
             ids.reduce(function (total, id) {
               return total + parseInt(values[prefix + id + "_" + location + "_armor"] || "0", 10);
             }, 0)

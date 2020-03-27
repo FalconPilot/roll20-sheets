@@ -269,6 +269,28 @@ input[type=number].sheet-tablet-bubble-input {
   box-sizing: border-box;
 }
 
+.sheet-tablet select {
+  width: auto;
+  margin: 0;
+  background-color: #444;
+  color: #FFF;
+  font-family: 'Contrail One';
+  border: none;
+}
+
+/*
+**  Sheet bio
+*/
+
+input[name="attr_character_race"] + input[name="attr_character_race_other"] {
+  display: none;
+}
+
+input[name="attr_character_race"][value="other"] + input[name="attr_character_race_other"] {
+  display: inline;
+  margin-left: 10px;
+}
+
 /*
 **  Sheet stats
 */
@@ -513,12 +535,6 @@ input[name="attr_overweight"][value="true"] + .sheet-capacity-header {
   z-index: 1;
 }
 
-input[type=hidden][name="attr_character_race"][value="human"] + .sheet-character-silhouette {
-  background-image: url("https://fpilot.fr/starclock/gui/human_sil.png");
-  width: 162px;
-  height: 384px;
-}
-
 .sheet-character-location {
   position: absolute;
   width: 30px;
@@ -550,13 +566,20 @@ input[type=hidden][name="attr_character_race"][value="human"] + .sheet-character
   border-radius: 50%;
   font-size: 11px;
   background-color: #444;
-  border: none;
+  border: 1px solid #FFF;
   z-index: 3;
 }
 
 /*
+**  Human silhouette
 **  TODO - Make it different for each race
 */
+
+input[type=hidden][name="attr_character_race"] + .sheet-character-silhouette {
+  background-image: url("https://fpilot.fr/starclock/gui/human_sil.png");
+  width: 162px;
+  height: 384px;
+}
 
 input[type=hidden][name="attr_character_race"] + .sheet-character-silhouette .sheet-character-location.sheet-head {
   top: 5px;
@@ -599,4 +622,40 @@ input[type=hidden][name="attr_character_race"] + .sheet-character-silhouette .sh
 
 .sheet-armors {
   flex: 1;
+}
+
+.sheet-protection-locations {
+  margin: 10px 0;
+}
+
+.sheet-protection-locations > div {
+  width: 65px;
+  margin: 0 5px;
+}
+
+.sheet-protection-locations > div > span {
+  font-family: 'Contrail One';
+  color: #FFF;
+  font-size: 10px;
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.sheet-protection-locations > div > input[type=number] {
+  width: 35px;
+  height: 35px;
+  padding: 0;
+  border-radius: 5px;
+}
+
+.sheet-armor-extra {
+  height: 5em;
+  padding: 7px;
+  background-color: #444;
+  border-radius: 5px;
+  border: none;
+  font-family: 'Contrail One';
+  color: #FFF;
+  font-size: 11px;
+  box-sizing: border-box;
 }
