@@ -5,6 +5,8 @@
   <!-- Tab selector -->
   <div class="sheet-tab-selector sheet-full-width sheet-flex-row">
     <button type="action" name="act_character">Personnage</button>
+    <button type="action" name="act_arsenal">Arsenal</button>
+    <button type="action" name="act_gear">Inventaire</button>
     <button type="action" name="act_psy">Psy</button>
   </div>
 
@@ -12,7 +14,7 @@
   <div class="sheet-tab sheet-flex-col sheet-full-width sheet-flex-middle sheet-character">
 
     <!-- Character bio -->
-    <div class="sheet-tablet sheet-character sheet-full-width">
+    <div class="sheet-tablet sheet-heading sheet-full-width">
       <table class="sheet-full-width">
         <tbody>
           <tr class="sheet-tablet-line">
@@ -24,198 +26,423 @@
           <tr class="sheet-tablet-line">
             <td class="sheet-label">Race</td>
             <td class="sheet-full-width">
-              <input type="text" class="sheet-full-width" name="attr_character_race" />
+              <select name="attr_character_race">
+                <option value="human">Humain</option>
+                <option value="doppleganger">Doppleganger</option>
+                <option value="endaari">Endaari</option>
+                <option value="alkor">Alkor</option>
+                <option value="drone">Drone</option>
+                <option value="other">Autre</option>
+              </select>
+              <input type="text" name="attr_character_race_other" />
             </td>
           </tr>
         </tbody>
       </table>
     </div>
+    <div class="sheet-tablet-content sheet-flex-col sheet-flex-middle sheet-full-width">
 
-    <!-- Character stats -->
-    <table class="sheet-stats">
-      <tbody>
-        <tr>
+      <!-- Character stats -->
+      <table class="sheet-stats">
+        <tbody>
+          <tr>
 
-          <!-- Physique -->
-          <td>
-            <div class="sheet-stat sheet-left sheet-flex-row sheet-flex-middle">
-              <div class="sheet-stat-bubble sheet-flex-col sheet-flex-middle">
-                <input type="hidden" name="attr_phy_total" value="0" />
-                <input
-                  disabled
-                  type="number"
-                  name="attr_phy_total_display"
-                  value="@{phy_total}"
-                  class="sheet-stat-total"
-                />
-                <div class="sheet-stat-base">
-                  <input type="number" value="0" min="0" name="attr_phy_base" />
+            <!-- Physique -->
+            <td>
+              <div class="sheet-stat sheet-left sheet-flex-row sheet-flex-middle">
+                <div class="sheet-stat-bubble sheet-flex-col sheet-flex-middle">
+                  <input type="hidden" name="attr_phy_total" value="0" />
+                  <input
+                    disabled
+                    type="number"
+                    name="attr_phy_total_display"
+                    value="@{phy_total}"
+                    class="sheet-stat-total"
+                  />
+                  <div class="sheet-stat-base">
+                    <input type="number" value="0" min="0" name="attr_phy_base" />
+                  </div>
+                </div>
+                <div class="sheet-stat-label sheet-flex-row">
+                  <p class="sheet-stat-name">Physique</p>
+                  <div class="sheet-stat-plus sheet-flex-row sheet-flex-middle">
+                    <p>+</p>
+                    <input type="number" value="0" min="0" name="attr_phy_bonus" />
+                  </div>
                 </div>
               </div>
-              <div class="sheet-stat-label sheet-flex-row">
-                <p class="sheet-stat-name">Physique</p>
-                <div class="sheet-stat-plus sheet-flex-row sheet-flex-middle">
-                  <p>+</p>
-                  <input type="number" value="0" min="0" name="attr_phy_bonus" />
-                </div>
-              </div>
-            </div>
-          </td>
+            </td>
 
-          <!-- Acuité -->
-          <td>
-            <div class="sheet-stat sheet-right sheet-flex-row sheet-flex-middle">
-              <div class="sheet-stat-label">
-                <div class="sheet-stat-plus sheet-flex-row sheet-flex-middle">
-                  <p>+</p>
-                  <input type="number" value="0" min="0" name="attr_acu_bonus" />
+            <!-- Acuité -->
+            <td>
+              <div class="sheet-stat sheet-right sheet-flex-row sheet-flex-middle">
+                <div class="sheet-stat-label">
+                  <div class="sheet-stat-plus sheet-flex-row sheet-flex-middle">
+                    <p>+</p>
+                    <input type="number" value="0" min="0" name="attr_acu_bonus" />
+                  </div>
+                  <p class="sheet-stat-name">Acuité</p>
                 </div>
-                <p class="sheet-stat-name">Acuité</p>
-              </div>
-              <div class="sheet-stat-bubble sheet-flex-col sheet-flex-middle">
-                <input type="hidden" name="attr_acu_total" value="0" />
-                <input
-                  disabled
-                  type="number"
-                  name="attr_acu_total_display"
-                  value="@{acu_total}"
-                  class="sheet-stat-total"
-                />
-                <div class="sheet-stat-base">
-                  <input type="number" value="0" min="0" name="attr_acu_base" />
+                <div class="sheet-stat-bubble sheet-flex-col sheet-flex-middle">
+                  <input type="hidden" name="attr_acu_total" value="0" />
+                  <input
+                    disabled
+                    type="number"
+                    name="attr_acu_total_display"
+                    value="@{acu_total}"
+                    class="sheet-stat-total"
+                  />
+                  <div class="sheet-stat-base">
+                    <input type="number" value="0" min="0" name="attr_acu_base" />
+                  </div>
                 </div>
               </div>
-            </div>
-          </td>
-        </tr>
-        <tr>
+            </td>
+          </tr>
+          <tr>
 
-          <!-- Habilité -->
-          <td>
-            <div class="sheet-stat sheet-left sheet-flex-row sheet-flex-middle">
-              <div class="sheet-stat-bubble sheet-flex-col sheet-flex-middle">
-                <input type="hidden" name="attr_hab_total" value="0" />
-                <input
-                  disabled
-                  type="number"
-                  name="attr_hab_total_display"
-                  value="@{hab_total}"
-                  class="sheet-stat-total"
-                />
-                <div class="sheet-stat-base">
-                  <input type="number" value="0" min="0" name="attr_int_base" />
+            <!-- Habilité -->
+            <td>
+              <div class="sheet-stat sheet-left sheet-flex-row sheet-flex-middle">
+                <div class="sheet-stat-bubble sheet-flex-col sheet-flex-middle">
+                  <input type="hidden" name="attr_hab_total" value="0" />
+                  <input
+                    disabled
+                    type="number"
+                    name="attr_hab_total_display"
+                    value="@{hab_total}"
+                    class="sheet-stat-total"
+                  />
+                  <div class="sheet-stat-base">
+                    <input type="number" value="0" min="0" name="attr_int_base" />
+                  </div>
+                </div>
+                <div class="sheet-stat-label sheet-flex-row">
+                  <p class="sheet-stat-name">Habilité</p>
+                  <div class="sheet-stat-plus sheet-flex-row sheet-flex-middle">
+                    <p>+</p>
+                    <input type="number" value="0" min="0" name="attr_hab_bonus" />
+                  </div>
                 </div>
               </div>
-              <div class="sheet-stat-label sheet-flex-row">
-                <p class="sheet-stat-name">Habilité</p>
-                <div class="sheet-stat-plus sheet-flex-row sheet-flex-middle">
-                  <p>+</p>
-                  <input type="number" value="0" min="0" name="attr_hab_bonus" />
-                </div>
-              </div>
-            </div>
-          </td>
+            </td>
 
-          <!-- Charisme -->
-          <td>
-            <div class="sheet-stat sheet-right sheet-flex-row sheet-flex-middle">
-              <div class="sheet-stat-label">
-                <div class="sheet-stat-plus sheet-flex-row sheet-flex-middle">
-                  <p>+</p>
-                  <input type="number" value="0" min="0" name="attr_cha_bonus" />
+            <!-- Charisme -->
+            <td>
+              <div class="sheet-stat sheet-right sheet-flex-row sheet-flex-middle">
+                <div class="sheet-stat-label">
+                  <div class="sheet-stat-plus sheet-flex-row sheet-flex-middle">
+                    <p>+</p>
+                    <input type="number" value="0" min="0" name="attr_cha_bonus" />
+                  </div>
+                  <p class="sheet-stat-name">Charisme</p>
                 </div>
-                <p class="sheet-stat-name">Charisme</p>
-              </div>
-              <div class="sheet-stat-bubble sheet-flex-col sheet-flex-middle">
-                <input type="hidden" name="attr_cha_total" value="0" />
-                <input
-                  disabled
-                  type="number"
-                  name="attr_cha_total_display"
-                  value="@{cha_total}"
-                  class="sheet-stat-total"
-                />
-                <div class="sheet-stat-base">
-                  <input type="number" value="0" min="0" name="attr_cha_base" />
+                <div class="sheet-stat-bubble sheet-flex-col sheet-flex-middle">
+                  <input type="hidden" name="attr_cha_total" value="0" />
+                  <input
+                    disabled
+                    type="number"
+                    name="attr_cha_total_display"
+                    value="@{cha_total}"
+                    class="sheet-stat-total"
+                  />
+                  <div class="sheet-stat-base">
+                    <input type="number" value="0" min="0" name="attr_cha_base" />
+                  </div>
                 </div>
               </div>
-            </div>
-          </td>
-        </tr>
-        <tr>
+            </td>
+          </tr>
+          <tr>
 
-          <!-- Intelligence -->
-          <td>
-            <div class="sheet-stat sheet-left sheet-flex-row sheet-flex-middle">
-              <div class="sheet-stat-bubble sheet-flex-col sheet-flex-middle">
-                <input type="hidden" name="attr_int_total" value="0" />
-                <input
-                  disabled
-                  type="number"
-                  name="attr_int_total_display"
-                  value="@{int_total}"
-                  class="sheet-stat-total"
-                />
-                <div class="sheet-stat-base">
-                  <input type="number" value="0" min="0" name="attr_int_base" />
+            <!-- Intelligence -->
+            <td>
+              <div class="sheet-stat sheet-left sheet-flex-row sheet-flex-middle">
+                <div class="sheet-stat-bubble sheet-flex-col sheet-flex-middle">
+                  <input type="hidden" name="attr_int_total" value="0" />
+                  <input
+                    disabled
+                    type="number"
+                    name="attr_int_total_display"
+                    value="@{int_total}"
+                    class="sheet-stat-total"
+                  />
+                  <div class="sheet-stat-base">
+                    <input type="number" value="0" min="0" name="attr_int_base" />
+                  </div>
+                </div>
+                <div class="sheet-stat-label sheet-flex-row">
+                  <p class="sheet-stat-name">Intelligence</p>
+                  <div class="sheet-stat-plus sheet-flex-row sheet-flex-middle">
+                    <p>+</p>
+                    <input type="number" value="0" min="0" name="attr_int_bonus" />
+                  </div>
                 </div>
               </div>
-              <div class="sheet-stat-label sheet-flex-row">
-                <p class="sheet-stat-name">Intelligence</p>
-                <div class="sheet-stat-plus sheet-flex-row sheet-flex-middle">
-                  <p>+</p>
-                  <input type="number" value="0" min="0" name="attr_int_bonus" />
-                </div>
-              </div>
-            </div>
-          </td>
+            </td>
 
-          <!-- Volonté -->
-          <td>
-            <div class="sheet-stat sheet-right sheet-flex-row sheet-flex-middle">
-              <div class="sheet-stat-label">
-                <div class="sheet-stat-plus sheet-flex-row sheet-flex-middle">
-                  <p>+</p>
-                  <input type="number" value="0" min="0" name="attr_wil_bonus" />
+            <!-- Volonté -->
+            <td>
+              <div class="sheet-stat sheet-right sheet-flex-row sheet-flex-middle">
+                <div class="sheet-stat-label">
+                  <div class="sheet-stat-plus sheet-flex-row sheet-flex-middle">
+                    <p>+</p>
+                    <input type="number" value="0" min="0" name="attr_wil_bonus" />
+                  </div>
+                  <p class="sheet-stat-name">Volonté</p>
                 </div>
-                <p class="sheet-stat-name">Volonté</p>
-              </div>
-              <div class="sheet-stat-bubble sheet-flex-col sheet-flex-middle">
-                <input type="hidden" name="attr_wil_total" value="0" />
-                <input
-                  disabled
-                  type="number"
-                  name="attr_wil_total_display"
-                  value="@{wil_total}"
-                  class="sheet-stat-total"
-                />
-                <div class="sheet-stat-base">
-                  <input type="number" value="0" min="0" name="attr_wil_base" />
+                <div class="sheet-stat-bubble sheet-flex-col sheet-flex-middle">
+                  <input type="hidden" name="attr_wil_total" value="0" />
+                  <input
+                    disabled
+                    type="number"
+                    name="attr_wil_total_display"
+                    value="@{wil_total}"
+                    class="sheet-stat-total"
+                  />
+                  <div class="sheet-stat-base">
+                    <input type="number" value="0" min="0" name="attr_wil_base" />
+                  </div>
                 </div>
               </div>
-            </div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-
-    <div class="sheet-full-width sheet-flex-row">
-      <!-- Traits -->
-      <table class="sheet-traits sheet-half-width">
-        <thead></thead>
-        <tbody></tbody>
+            </td>
+          </tr>
+        </tbody>
       </table>
-      <!-- Skills -->
-      <table class="sheet-skills sheet-half-width">
-        <thead></thead>
-        <tbody></tbody>
-      </table>
+
+      <div class="sheet-full-width sheet-flex-row">
+        <!-- Traits -->
+        <table class="sheet-traits sheet-half-width">
+          <thead></thead>
+          <tbody></tbody>
+        </table>
+        <!-- Skills -->
+        <table class="sheet-skills sheet-half-width">
+          <thead></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Arsenal tab -->
+  <div class="sheet-tab sheet-flex-col sheet-full-width sheet-flex-middle sheet-arsenal">
+    <div class="sheet-character-defenses sheet-flex-row sheet-full-width">
+      <input type="hidden" name="attr_character_race" />
+      <div class="sheet-character-silhouette">
+
+        <!-- Head -->
+        <div class="sheet-character-location sheet-head">
+          <input type="hidden" name="attr_head_protection_total" value="0" />
+          <input
+            disabled
+            type="number"
+            class="sheet-protection-total"
+            name="attr_head_protection_display"
+            value="@{head_protection_total}"
+          />
+          <input
+            type="number"
+            class="sheet-protection-bonus"
+            name="attr_head_protection_bonus"
+            value="0"
+          />
+        </div>
+
+        <!-- Left arm -->
+        <div class="sheet-character-location sheet-left-arm">
+          <input type="hidden" name="attr_left_arm_protection_total" value="0" />
+          <input
+            disabled
+            type="number"
+            class="sheet-protection-total"
+            name="attr_left_arm_protection_display"
+            value="@{left_arm_protection_total}"
+          />
+          <input
+            type="number"
+            class="sheet-protection-bonus"
+            name="attr_left_arm_protection_bonus"
+            value="0"
+          />
+        </div>
+
+        <!-- Right arm -->
+        <div class="sheet-character-location sheet-right-arm">
+          <input type="hidden" name="attr_right_arm_protection_total" value="0" />
+          <input
+            disabled
+            type="number"
+            class="sheet-protection-total"
+            name="attr_right_arm_protection_display"
+            value="@{right_arm_protection_total}"
+          />
+          <input
+            type="number"
+            class="sheet-protection-bonus"
+            name="attr_right_arm_protection_bonus"
+            value="0"
+          />
+        </div>
+
+        <!-- Torso -->
+        <div class="sheet-character-location sheet-torso">
+          <input type="hidden" name="attr_torso_protection_total" value="0" />
+          <input
+            disabled
+            type="number"
+            class="sheet-protection-total"
+            name="attr_torso_protection_display"
+            value="@{torso_protection_total}"
+          />
+          <input
+            type="number"
+            class="sheet-protection-bonus"
+            name="attr_torso_protection_bonus"
+            value="0"
+          />
+        </div>
+
+        <!-- Left leg -->
+        <div class="sheet-character-location sheet-left-leg">
+          <input type="hidden" name="attr_left_leg_protection_total" value="0" />
+          <input
+            disabled
+            type="number"
+            class="sheet-protection-total"
+            name="attr_left_leg_protection_display"
+            value="@{left_leg_protection_total}"
+          />
+          <input
+            type="number"
+            class="sheet-protection-bonus"
+            name="attr_left_leg_protection_bonus"
+            value="0"
+          />
+        </div>
+
+        <!-- Right leg -->
+        <div class="sheet-character-location sheet-right-leg">
+          <input type="hidden" name="attr_right_leg_protection_total" value="0" />
+          <input
+            disabled
+            type="number"
+            class="sheet-protection-total"
+            name="attr_right_leg_protection_display"
+            value="@{right_leg_protection_total}"
+          />
+          <input
+            type="number"
+            class="sheet-protection-bonus"
+            name="attr_right_leg_protection_bonus"
+            value="0"
+          />
+        </div>
+      </div>
+      <div class="sheet-armors">
+        <h2 class="sheet-tablet-title">Protections</h2>
+        <fieldset class="repeating_armors">
+          <div class="sheet-armor sheet-flex-col sheet-flex-width sheet-tablet-line">
+            <input
+              type="text"
+              name="attr_armor_name"
+              class="sheet-full-width"
+              placeholder="Nom de la protection"
+            />
+            <div class="sheet-flex-row sheet-protection-locations sheet-flex-middle">
+                <div class="sheet-flex-col sheet-flex-middle">
+                  <span>Tête</span>
+                  <input type="number" name="attr_head_armor" />
+                </div>
+                <div class="sheet-flex-col sheet-flex-middle">
+                  <span>Torse</span>
+                  <input type="number" name="attr_torso_armor" />
+                </div>
+                <div class="sheet-flex-col sheet-flex-middle">
+                  <span>Bras gauche</span>
+                  <input type="number" name="attr_left_arm_armor" />
+                </div>
+                <div class="sheet-flex-col sheet-flex-middle">
+                  <span>Bras droit</span>
+                  <input type="number" name="attr_right_arm_armor" />
+                </div>
+                <div class="sheet-flex-col sheet-flex-middle">
+                  <span>Jambe gauche</span>
+                  <input type="number" name="attr_left_leg_armor" />
+                </div>
+                <div class="sheet-flex-col sheet-flex-middle">
+                  <span>Jambe droite</span>
+                  <input type="number" name="attr_right_leg_armor" />
+                </div>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+    </div>
+  </div>
+
+  <!-- Gear tab -->
+  <div class="sheet-tab sheet-flex-col sheet-full-width sheet-flex-middle sheet-gear">
+
+    <!-- Inventory global stats -->
+    <div class="sheet-tablet sheet-flex-column sheet-flex-middle sheet-heading sheet-full-width">
+      <h2 class="sheet-tablet-title">Conteneurs</h2>
+      <fieldset class="repeating_character-containers">
+        <div class="sheet-container sheet-flex-row sheet-flex-middle sheet-full-width sheet-tablet-line">
+          <input type="text" placeholder="Nom du conteneur" class="sheet-full-width" name="attr_container_name" />
+          <input
+            type="number"
+            placeholder="0"
+            class="sheet-tablet-bubble-input"
+            title="Capacité"
+            name="attr_container_capacity"
+          />
+        </div>
+      </fieldset>
+      <input type="hidden" name="attr_overweight" value="false" />
+      <div class="sheet-capacity-header">
+        <img src="https://fpilot.fr/starclock/gui/weight.png" />
+      </div>
+      <input type="hidden" name="attr_total_weight" value="0" />
+      <input type="hidden" name="attr_total_capacity" value="0" />
+      <div class="sheet-capacity-summary sheet-flex-row sheet-flex-middle">
+        <input type="number" name="attr_total_weight_display" value="@{total_weight}" disabled />
+        <span>/</span>
+        <input type="number" name="attr_total_capacity_display" value="@{total_capacity}" disabled />
+      </div>
+    </div>
+
+    <div class="sheet-tablet-content sheet-flex-col sheet-flex-middle sheet-full-width">
+      <fieldset class="repeating_character-items">
+        <div class="sheet-item-container sheet-full-width sheet-flex-row sheet-flex-middle">
+          <input
+            type="text"
+            name="attr_item_name"
+            class="sheet-full-width sheet-line-input"
+            placeholder="Nom de l'objet"
+          />
+          <span>x</span>
+          <input
+            type="number"
+            name="attr_item_qty"
+            class="sheet-item-qty sheet-line-input"
+            value="0"
+          />
+          <img src="https://fpilot.fr/starclock/gui/weight.png" />
+          <input
+            type="number"
+            name="attr_item_weight"
+            class="sheet-item-weight sheet-line-input"
+            value="0"
+          />
+        </div>
+      </fieldset>
     </div>
   </div>
 
   <!-- Psy tab -->
   <div class="sheet-tab sheet-flex-col sheet-full-width sheet-flex-middle sheet-psy">
-    Coucou
+    Psy
   </div>
 </div>
 
@@ -228,7 +455,8 @@
 
   var calculationKeys = ["base", "bonus"];
   var statsKeys = ["phy", "acu", "hab", "cha", "int", "wil"];
-  var tabs = ["character", "psy"];
+  var tabs = ["character", "arsenal", "gear", "psy"];
+  var bodyLocations = ["head", "torso", "left_arm", "right_arm", "left_leg", "right_leg"];
 
   /*
   **  Helper functions
@@ -296,6 +524,10 @@
         current_tab: tabKey
       });
     });
+  }
+
+  function onEvents (events, callback) {
+    on(events.join(" "), callback)
   }
 
   /*
@@ -380,5 +612,96 @@
 
   statsKeys.forEach(computeStatChanges);
   tabs.forEach(computeTabChange);
+
+  onEvents([
+    "sheet:opened",
+    "change:repeating_character-containers:container_capacity",
+    "remove:repeating_character-containers:container_capacity"
+  ], function () {
+    getSectionIDs("repeating_character-containers", function (ids) {
+      var prefix = "repeating_character-containers_";
+      var fields = ids.map(function (id) {
+        return prefix + id + "_container_capacity";
+      });
+
+      getAttrs(fields.concat(["phy_total"]), function (values) {
+        var containerCapacity = ids.reduce(function (total, id) {
+          return total + parseInt(values[prefix + id + "_container_capacity"] || "0", 10);
+        }, 0);
+
+        console.log(values);
+
+        var phyMod = Math.floor(parseInt(values.phy_total || "0", 10) / 10);
+
+        setAttrs({
+          total_capacity: containerCapacity + phyMod
+        });
+      });
+    });
+  });
+
+  onEvents([
+    "sheet:opened",
+    "change:repeating_character-items:item_qty",
+    "change:repeating_character-items:item_weight",
+    "remove:repeating_character-items:item_qty",
+    "remove:repeating_character-items:item_weight"
+  ], function () {
+    getSectionIDs("repeating_character-items", function (ids) {
+      var prefix = "repeating_character-items_";
+      var fields = ids.reduce(function (acc, id) {
+        return acc.concat([prefix + id + "_item_qty", prefix + id + "_item_weight"]);
+      }, []);
+
+      getAttrs(fields.concat(["total_capacity"]), function (values) {
+        var totalWeight = ids.reduce(function (total, id) {
+          var weight = parseInt(values[prefix + id + "_item_weight"] || "0", 10);
+          var qty = parseInt(values[prefix + id + "_item_qty"] || "0", 10);
+          return total + (weight * qty);
+        }, 0);
+
+        setAttrs({
+          total_weight: totalWeight,
+          overweight: parseInt(values.total_capacity || "0", 10) >= totalWeight ? "false" : "true"
+        });
+      });
+    });
+  });
+
+  onEvents([
+    "sheet:opened",
+    "change:repeating_armors:head_armor",
+    "change:repeating_armors:torso_armor",
+    "change:repeating_armors:left_arm_armor",
+    "change:repeating_armors:right_arm_armor",
+    "change:repeating_armors:left_leg_armor",
+    "change:repeating_armors:right_leg_armor"
+  ], function () {
+    getSectionIDs("repeating_armors", function (ids) {
+      var prefix = "repeating_armors_";
+      var fields = ids.reduce(function (acc, id) {
+        return acc.concat(bodyLocations.map(function (location) {
+          return prefix + id + "_" + location + "_armor";
+        }));
+      }, []);
+
+      getAttrs(fields.concat(bodyLocations.map(function (location) {
+        return location + "_protection_bonus";
+      })), function (values) {
+        var armorValues = bodyLocations.reduce(function (acc, location) {
+          var obj = {};
+          obj[location + "_protection_total"] = values[location + "_protection_bonus"] + (
+            ids.reduce(function (total, id) {
+              return total + parseInt(values[prefix + id + "_" + location + "_armor"] || "0", 10);
+            }, 0)
+          );
+
+          return Object.assign(acc, obj);
+        }, {});
+
+        setAttrs(armorValues);
+      });
+    });
+  });
 
 </script>
