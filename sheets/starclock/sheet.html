@@ -1,9 +1,13 @@
-<div class="sheet-sc-wrapper sheet-flex-col sheet-flex-middle">
+<div class="sc-wrapper flex-col flex-middle">
 
-  <input type="hidden" name="attr_current_tab" class="sheet-tabs-control" value="character" />
+  <input type="hidden" name="attr_expert_skill_multiplier" value="2" />
+  <input type="hidden" name="attr_master_skill_multiplier" value="3" />
+  <input type="hidden" name="attr_basic_skill_malus" value="10" />
+  <input type="hidden" name="attr_advanced_skill_malus" value="20" />
+  <input type="hidden" name="attr_current_tab" class="tabs-control" value="character" />
 
   <!-- Tab selector -->
-  <div class="sheet-tab-selector sheet-full-width sheet-flex-row">
+  <div class="tab-selector full-width flex-row">
     <button type="action" name="act_character">Personnage</button>
     <button type="action" name="act_arsenal">Arsenal</button>
     <button type="action" name="act_gear">Inventaire</button>
@@ -11,64 +15,81 @@
   </div>
 
   <!-- Character tab -->
-  <div class="sheet-tab sheet-flex-col sheet-full-width sheet-flex-middle sheet-character">
+  <div class="tab flex-col full-width flex-middle character">
 
     <!-- Character bio -->
-    <div class="sheet-tablet sheet-heading sheet-full-width">
-      <table class="sheet-full-width">
+    <div class="tablet heading full-width">
+      <table class="full-width">
         <tbody>
-          <tr class="sheet-tablet-line">
-            <td class="sheet-label">Nom complet</td>
-            <td class="sheet-full-width">
-              <input type="text" class="sheet-full-width" name="attr_character_name" />
+          <tr class="tablet-line">
+            <td class="label">Nom complet</td>
+            <td class="full-width">
+              <input type="text" class="full-width" name="attr_character_name" />
             </td>
           </tr>
-          <tr class="sheet-tablet-line">
-            <td class="sheet-label">Race</td>
-            <td class="sheet-full-width">
-              <div class="sheet-full-width sheet-flex-row sheet-center-v">
+          <tr class="tablet-line">
+            <td class="label">Race</td>
+            <td class="full-width">
+              <div class="full-width flex-row center-v">
                 <select name="attr_character_race">
                   <option value="human">Humain</option>
                   <option value="doppleganger">Doppleganger</option>
                   <option value="endaari">Endaari</option>
                   <option value="alkor">Alkor</option>
                   <option value="drone">Drone</option>
+                  <option value="troll">Troll</option>
+                  <option value="changelin">Changelin</option>
                   <option value="other">Autre</option>
                 </select>
                 <input type="hidden" name="attr_character_race" value="human" />
-                <input type="text" name="attr_character_race_other" class="sheet-full-width" placeholder="Nom de la race" />
+                <input type="text" name="attr_character_race_other" class="full-width" placeholder="Nom de la race" />
+              </div>
+            </td>
+          </tr>
+          <tr class="tablet-line">
+            <td class="label">Sexe</td>
+            <td class="full-width">
+              <div class="full-width flex-row center-v">
+                <select name="attr_character_gender">
+                  <option value="?">?</option>
+                  <option value="m">M</option>
+                  <option value="f">F</option>
+                  <option value="other">Autre</option>
+                </select>
+                <input type="hidden" name="attr_character_gender" value="?" />
+                <input type="text" name="attr_character_gender_other" class="full-width" placeholder="Genre" />
               </div>
             </td>
           </tr>
         </tbody>
       </table>
     </div>
-    <div class="sheet-tablet-content sheet-flex-col sheet-flex-middle sheet-full-width">
+    <div class="tablet-content flex-col flex-middle full-width">
 
       <!-- Character stats -->
-      <table class="sheet-stats">
+      <table class="stats">
         <tbody>
           <tr>
 
             <!-- Physique -->
             <td>
-              <div class="sheet-stat sheet-left sheet-flex-row sheet-flex-middle">
-                <div class="sheet-stat-bubble sheet-flex-col sheet-flex-middle">
+              <div class="stat left flex-row flex-middle">
+                <div class="stat-bubble flex-col flex-middle">
                   <input type="hidden" name="attr_phy_total" value="0" />
                   <input
                     disabled
                     type="number"
                     name="attr_phy_total_display"
                     value="@{phy_total}"
-                    class="sheet-stat-total"
+                    class="stat-total"
                   />
-                  <div class="sheet-stat-base">
+                  <div class="stat-base">
                     <input type="number" value="0" min="0" name="attr_phy_base" />
                   </div>
                 </div>
-                <div class="sheet-stat-label sheet-flex-row">
-                  <p class="sheet-stat-name">Physique</p>
-                  <div class="sheet-stat-plus sheet-flex-row sheet-flex-middle">
+                <div class="stat-label flex-row">
+                  <p class="stat-name">Physique</p>
+                  <div class="stat-plus flex-row flex-middle">
                     <p>+</p>
                     <input type="number" value="0" min="0" name="attr_phy_bonus" />
                   </div>
@@ -76,27 +97,27 @@
               </div>
             </td>
 
-            <!-- Acuité -->
+            <!-- Agilité -->
             <td>
-              <div class="sheet-stat sheet-right sheet-flex-row sheet-flex-middle">
-                <div class="sheet-stat-label">
-                  <div class="sheet-stat-plus sheet-flex-row sheet-flex-middle">
-                    <p>+</p>
-                    <input type="number" value="0" min="0" name="attr_acu_bonus" />
+              <div class="stat right flex-row flex-middle">
+                <div class="stat-label flex-row">
+                    <p class="stat-name">Agilité</p>
+                    <div class="stat-plus flex-row flex-middle">
+                      <p>+</p>
+                      <input type="number" value="0" min="0" name="attr_agi_bonus" />
+                    </div>
                   </div>
-                  <p class="sheet-stat-name">Acuité</p>
-                </div>
-                <div class="sheet-stat-bubble sheet-flex-col sheet-flex-middle">
-                  <input type="hidden" name="attr_acu_total" value="0" />
+                <div class="stat-bubble flex-col flex-middle">
+                  <input type="hidden" name="attr_agi_total" value="0" />
                   <input
                     disabled
                     type="number"
-                    name="attr_acu_total_display"
-                    value="@{acu_total}"
-                    class="sheet-stat-total"
+                    name="attr_agi_total_display"
+                    value="@{agi_total}"
+                    class="stat-total"
                   />
-                  <div class="sheet-stat-base">
-                    <input type="number" value="0" min="0" name="attr_acu_base" />
+                  <div class="stat-base">
+                    <input type="number" value="0" min="0" name="attr_agi_base" />
                   </div>
                 </div>
               </div>
@@ -104,53 +125,107 @@
           </tr>
           <tr>
 
+            <!-- Acuité -->
+            <td>
+              <div class="stat left flex-row flex-middle">
+                <div class="stat-bubble flex-col flex-middle">
+                  <input type="hidden" name="attr_acu_total" value="0" />
+                  <input
+                    disabled
+                    type="number"
+                    name="attr_acu_total_display"
+                    value="@{acu_total}"
+                    class="stat-total"
+                  />
+                  <div class="stat-base">
+                    <input type="number" value="0" min="0" name="attr_acu_base" />
+                  </div>
+                </div>
+                <div class="stat-label">
+                  <div class="stat-plus flex-row flex-middle">
+                    <p>+</p>
+                    <input type="number" value="0" min="0" name="attr_acu_bonus" />
+                  </div>
+                  <p class="stat-name">Acuité</p>
+                </div>
+              </div>
+            </td>
+
             <!-- Habilité -->
             <td>
-              <div class="sheet-stat sheet-left sheet-flex-row sheet-flex-middle">
-                <div class="sheet-stat-bubble sheet-flex-col sheet-flex-middle">
+              <div class="stat right flex-row flex-middle">
+                <div class="stat-label flex-row">
+                  <p class="stat-name">Habilité</p>
+                  <div class="stat-plus flex-row flex-middle">
+                    <p>+</p>
+                    <input type="number" value="0" min="0" name="attr_hab_bonus" />
+                  </div>
+                </div>
+                <div class="stat-bubble flex-col flex-middle">
                   <input type="hidden" name="attr_hab_total" value="0" />
                   <input
                     disabled
                     type="number"
                     name="attr_hab_total_display"
                     value="@{hab_total}"
-                    class="sheet-stat-total"
+                    class="stat-total"
                   />
-                  <div class="sheet-stat-base">
-                    <input type="number" value="0" min="0" name="attr_int_base" />
-                  </div>
-                </div>
-                <div class="sheet-stat-label sheet-flex-row">
-                  <p class="sheet-stat-name">Habilité</p>
-                  <div class="sheet-stat-plus sheet-flex-row sheet-flex-middle">
-                    <p>+</p>
-                    <input type="number" value="0" min="0" name="attr_hab_bonus" />
+                  <div class="stat-base">
+                    <input type="number" value="0" min="0" name="attr_hab_base" />
                   </div>
                 </div>
               </div>
             </td>
+          </tr>
+          <tr>
 
             <!-- Charisme -->
             <td>
-              <div class="sheet-stat sheet-right sheet-flex-row sheet-flex-middle">
-                <div class="sheet-stat-label">
-                  <div class="sheet-stat-plus sheet-flex-row sheet-flex-middle">
-                    <p>+</p>
-                    <input type="number" value="0" min="0" name="attr_cha_bonus" />
-                  </div>
-                  <p class="sheet-stat-name">Charisme</p>
-                </div>
-                <div class="sheet-stat-bubble sheet-flex-col sheet-flex-middle">
+              <div class="stat left flex-row flex-middle">
+                <div class="stat-bubble flex-col flex-middle">
                   <input type="hidden" name="attr_cha_total" value="0" />
                   <input
                     disabled
                     type="number"
                     name="attr_cha_total_display"
                     value="@{cha_total}"
-                    class="sheet-stat-total"
+                    class="stat-total"
                   />
-                  <div class="sheet-stat-base">
+                  <div class="stat-base">
                     <input type="number" value="0" min="0" name="attr_cha_base" />
+                  </div>
+                </div>
+                <div class="stat-label">
+                  <div class="stat-plus flex-row flex-middle">
+                    <p>+</p>
+                    <input type="number" value="0" min="0" name="attr_cha_bonus" />
+                  </div>
+                  <p class="stat-name">Charisme</p>
+                </div>
+              </div>
+            </td>
+
+            <!-- Empathie -->
+            <td>
+              <div class="stat right flex-row flex-middle">
+                <div class="stat-label">
+                  <div class="stat-plus flex-row flex-middle">
+                    <p>+</p>
+                    <input type="number" value="0" min="0" name="attr_emp_bonus" />
+                  </div>
+                  <p class="stat-name">Empathie</p>
+                </div>
+                <div class="stat-bubble flex-col flex-middle">
+                  <input type="hidden" name="attr_emp_total" value="0" />
+                  <input
+                    disabled
+                    type="number"
+                    name="attr_emp_total_display"
+                    value="@{emp_total}"
+                    class="stat-total"
+                  />
+                  <div class="stat-base">
+                    <input type="number" value="0" min="0" name="attr_emp_base" />
                   </div>
                 </div>
               </div>
@@ -160,23 +235,23 @@
 
             <!-- Intelligence -->
             <td>
-              <div class="sheet-stat sheet-left sheet-flex-row sheet-flex-middle">
-                <div class="sheet-stat-bubble sheet-flex-col sheet-flex-middle">
+              <div class="stat left flex-row flex-middle">
+                <div class="stat-bubble flex-col flex-middle">
                   <input type="hidden" name="attr_int_total" value="0" />
                   <input
                     disabled
                     type="number"
                     name="attr_int_total_display"
                     value="@{int_total}"
-                    class="sheet-stat-total"
+                    class="stat-total"
                   />
-                  <div class="sheet-stat-base">
+                  <div class="stat-base">
                     <input type="number" value="0" min="0" name="attr_int_base" />
                   </div>
                 </div>
-                <div class="sheet-stat-label sheet-flex-row">
-                  <p class="sheet-stat-name">Intelligence</p>
-                  <div class="sheet-stat-plus sheet-flex-row sheet-flex-middle">
+                <div class="stat-label flex-row">
+                  <p class="stat-name">Intelligence</p>
+                  <div class="stat-plus flex-row flex-middle">
                     <p>+</p>
                     <input type="number" value="0" min="0" name="attr_int_bonus" />
                   </div>
@@ -186,24 +261,24 @@
 
             <!-- Volonté -->
             <td>
-              <div class="sheet-stat sheet-right sheet-flex-row sheet-flex-middle">
-                <div class="sheet-stat-label">
-                  <div class="sheet-stat-plus sheet-flex-row sheet-flex-middle">
+              <div class="stat right flex-row flex-middle">
+                <div class="stat-label">
+                  <div class="stat-plus flex-row flex-middle">
                     <p>+</p>
                     <input type="number" value="0" min="0" name="attr_wil_bonus" />
                   </div>
-                  <p class="sheet-stat-name">Volonté</p>
+                  <p class="stat-name">Volonté</p>
                 </div>
-                <div class="sheet-stat-bubble sheet-flex-col sheet-flex-middle">
+                <div class="stat-bubble flex-col flex-middle">
                   <input type="hidden" name="attr_wil_total" value="0" />
                   <input
                     disabled
                     type="number"
                     name="attr_wil_total_display"
                     value="@{wil_total}"
-                    class="sheet-stat-total"
+                    class="stat-total"
                   />
-                  <div class="sheet-stat-base">
+                  <div class="stat-base">
                     <input type="number" value="0" min="0" name="attr_wil_base" />
                   </div>
                 </div>
@@ -213,172 +288,1242 @@
         </tbody>
       </table>
 
-      <div class="sheet-full-width sheet-flex-row">
-        <!-- Traits -->
-        <table class="sheet-traits sheet-half-width">
-          <thead></thead>
-          <tbody></tbody>
+      <div class="full-width flex-row">
+
+        <!-- Basic Skills -->
+        <table class="skills half-width">
+          <thead>
+            <tr>
+              <th colspan="8">
+                <div class="table-title">Compétences de base</div>
+              </th>
+            </tr>
+            <tr>
+              <th>Nom</th>
+              <th>1.</th>
+              <th></th>
+              <th>2.</th>
+              <th class="trained"></th>
+              <th class="expert"></th>
+              <th class="master"></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="skill">
+              <td class="full-width">
+                <input
+                  type="text"
+                  class="full-width line-input"
+                  name="attr_skill_name"
+                  value="Acrobaties"
+                  disabled
+                />
+              </td>
+              <td>
+                <input type="hidden" name="attr_main_stat" value="@{agi_total}" />
+                <select disabled>
+                  <option selected>AGI</option>
+                </select>
+              </td>
+              <td class="bonus"></td>
+              <td>
+                <input type="hidden" name="attr_bonus_stat" value="@{phy_total}" />
+                <select disabled>
+                  <option selected>PHY</option>
+                </select>
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  value="1"
+                  name="attr_acro_trained"
+                />
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  value="1"
+                  name="attr_acro_expert"
+                />
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  value="1"
+                  name="attr_acro_master"
+                />
+              </td>
+              <td>
+                <button
+                  type="roll"
+                  value="&{template:general} {{character_name=@{character_name}}} {{roll_title=@{skill_name}}} {{target=[[?{Bonus/Malus|0} + @{main_stat} - @{basic_skill_malus} + @{acro_trained} * @{basic_skill_malus} + @{acro_expert} * (floor(@{bonus_stat} / 10) * @{expert_skill_multiplier}) + @{acro_master} * (floor(@{bonus_stat} / 10) * @{master_skill_multiplier})]]}} {{roll=[[1D100cs<5cf>96]]}}"
+                ></button>
+              </td>
+            </tr>
+            <tr class="skill">
+              <td class="full-width">
+                <input
+                  type="text"
+                  class="full-width line-input"
+                  name="attr_skill_name"
+                  value="Armes à feu"
+                  disabled
+                />
+              </td>
+              <td>
+                <input type="hidden" name="attr_main_stat" value="@{acu_total}" />
+                <select disabled>
+                  <option selected>ACU</option>
+                </select>
+              </td>
+              <td class="bonus"></td>
+              <td>
+                <input type="hidden" name="attr_bonus_stat" value="@{hab_total}" />
+                <select disabled>
+                  <option selected>HAB</option>
+                </select>
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  value="1"
+                  name="attr_guns_trained"
+                />
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  value="1"
+                  name="attr_guns_expert"
+                />
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  value="1"
+                  name="attr_guns_master"
+                />
+              </td>
+              <td>
+                <button
+                  type="roll"
+                  value="&{template:general} {{character_name=@{character_name}}} {{roll_title=@{skill_name}}} {{target=[[?{Bonus/Malus|0} + @{main_stat} - @{basic_skill_malus} + @{guns_trained} * @{basic_skill_malus} + @{guns_expert} * (floor(@{bonus_stat} / 10) * @{expert_skill_multiplier}) + @{guns_master} * (floor(@{bonus_stat} / 10) * @{master_skill_multiplier})]]}} {{roll=[[1D100cs<5cf>96]]}}"
+                ></button>
+              </td>
+            </tr>
+            <tr class="skill">
+              <td class="full-width">
+                <input
+                  type="text"
+                  class="full-width line-input"
+                  name="attr_skill_name"
+                  value="Armes de jet"
+                  disabled
+                />
+              </td>
+              <td>
+                <input type="hidden" name="attr_main_stat" value="@{hab_total}" />
+                <select disabled>
+                  <option selected>HAB</option>
+                </select>
+              </td>
+              <td class="bonus"></td>
+              <td>
+                <input type="hidden" name="attr_bonus_stat" value="@{acu_total}" />
+                <select disabled>
+                  <option selected>ACU</option>
+                </select>
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  value="1"
+                  name="attr_throw_trained"
+                />
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  value="1"
+                  name="attr_throw_expert"
+                />
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  value="1"
+                  name="attr_throw_master"
+                />
+              </td>
+              <td>
+                <button
+                  type="roll"
+                  value="&{template:general} {{character_name=@{character_name}}} {{roll_title=@{skill_name}}} {{target=[[?{Bonus/Malus|0} + @{main_stat} - @{basic_skill_malus} + @{throw_trained} * @{basic_skill_malus} + @{throw_expert} * (floor(@{bonus_stat} / 10) * @{expert_skill_multiplier}) + @{throw_master} * (floor(@{bonus_stat} / 10) * @{master_skill_multiplier})]]}} {{roll=[[1D100cs<5cf>96]]}}"
+                ></button>
+              </td>
+            </tr>
+            <tr class="skill">
+              <td class="full-width">
+                <input
+                  type="text"
+                  class="full-width line-input"
+                  name="attr_skill_name"
+                  value="Armes de mêlée"
+                  disabled
+                />
+              </td>
+              <td>
+                <input type="hidden" name="attr_main_stat" value="@{phy_total}" />
+                <select disabled>
+                  <option selected>PHY</option>
+                </select>
+              </td>
+              <td class="bonus"></td>
+              <td>
+                <input type="hidden" name="attr_bonus_stat" value="@{hab_total}" />
+                <select disabled>
+                  <option selected>HAB</option>
+                </select>
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  value="1"
+                  name="attr_melee_trained"
+                />
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  value="1"
+                  name="attr_melee_expert"
+                />
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  value="1"
+                  name="attr_melee_master"
+                />
+              </td>
+              <td>
+                <button
+                  type="roll"
+                  value="&{template:general} {{character_name=@{character_name}}} {{roll_title=@{skill_name}}} {{target=[[?{Bonus/Malus|0} + @{main_stat} - @{basic_skill_malus} + @{melee_trained} * @{basic_skill_malus} + @{melee_expert} * (floor(@{bonus_stat} / 10) * @{expert_skill_multiplier}) + @{melee_master} * (floor(@{bonus_stat} / 10) * @{master_skill_multiplier})]]}} {{roll=[[1D100cs<5cf>96]]}}"
+                ></button>
+              </td>
+            </tr>
+            <tr class="skill">
+              <td class="full-width">
+                <input
+                  type="text"
+                  class="full-width line-input"
+                  name="attr_skill_name"
+                  value="Armes de trait"
+                  disabled
+                />
+              </td>
+              <td>
+                <input type="hidden" name="attr_main_stat" value="@{hab_total}" />
+                <select disabled>
+                  <option selected>HAB</option>
+                </select>
+              </td>
+              <td class="bonus"></td>
+              <td>
+                <input type="hidden" name="attr_bonus_stat" value="@{phy_total}" />
+                <select disabled>
+                  <option selected>PHY</option>
+                </select>
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  value="1"
+                  name="attr_ranged_trained"
+                />
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  value="1"
+                  name="attr_ranged_expert"
+                />
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  value="1"
+                  name="attr_ranged_master"
+                />
+              </td>
+              <td>
+                <button
+                  type="roll"
+                  value="&{template:general} {{character_name=@{character_name}}} {{roll_title=@{skill_name}}} {{target=[[?{Bonus/Malus|0} + @{main_stat} - @{basic_skill_malus} + @{ranged_trained} * @{basic_skill_malus} + @{ranged_expert} * (floor(@{bonus_stat} / 10) * @{expert_skill_multiplier}) + @{ranged_master} * (floor(@{bonus_stat} / 10) * @{master_skill_multiplier})]]}} {{roll=[[1D100cs<5cf>96]]}}"
+                ></button>
+              </td>
+            </tr>
+            <tr class="skill">
+              <td class="full-width">
+                <input
+                  type="text"
+                  class="full-width line-input"
+                  name="attr_skill_name"
+                  value="Athlétisme"
+                  disabled
+                />
+              </td>
+              <td>
+                <input type="hidden" name="attr_main_stat" value="@{phy_total}" />
+                <select disabled>
+                  <option selected>PHY</option>
+                </select>
+              </td>
+              <td class="bonus"></td>
+              <td>
+                <input type="hidden" name="attr_bonus_stat" value="@{agi_total}" />
+                <select disabled>
+                  <option selected>AGI</option>
+                </select>
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  value="1"
+                  name="attr_athl_trained"
+                />
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  value="1"
+                  name="attr_athl_expert"
+                />
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  value="1"
+                  name="attr_athl_master"
+                />
+              </td>
+              <td>
+                <button
+                  type="roll"
+                  value="&{template:general} {{character_name=@{character_name}}} {{roll_title=@{skill_name}}} {{target=[[?{Bonus/Malus|0} + @{main_stat} - @{basic_skill_malus} + @{athl_trained} * @{basic_skill_malus} + @{athl_expert} * (floor(@{bonus_stat} / 10) * @{expert_skill_multiplier}) + @{athl_master} * (floor(@{bonus_stat} / 10) * @{master_skill_multiplier})]]}} {{roll=[[1D100cs<5cf>96]]}}"
+                ></button>
+              </td>
+            </tr>
+            <tr class="skill">
+              <td class="full-width">
+                <input
+                  type="text"
+                  class="full-width line-input"
+                  name="attr_skill_name"
+                  value="Baratin"
+                  disabled
+                />
+              </td>
+              <td>
+                <input type="hidden" name="attr_main_stat" value="@{cha_total}" />
+                <select disabled>
+                  <option selected>CHA</option>
+                </select>
+              </td>
+              <td class="bonus"></td>
+              <td>
+                <input type="hidden" name="attr_bonus_stat" value="@{int_total}" />
+                <select disabled>
+                  <option selected>INT</option>
+                </select>
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  value="1"
+                  name="attr_decep_trained"
+                />
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  value="1"
+                  name="attr_decep_expert"
+                />
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  value="1"
+                  name="attr_decep_master"
+                />
+              </td>
+              <td>
+                <button
+                  type="roll"
+                  value="&{template:general} {{character_name=@{character_name}}} {{roll_title=@{skill_name}}} {{target=[[?{Bonus/Malus|0} + @{main_stat} - @{basic_skill_malus} + @{decep_trained} * @{basic_skill_malus} + @{decep_expert} * (floor(@{bonus_stat} / 10) * @{expert_skill_multiplier}) + @{decep_master} * (floor(@{bonus_stat} / 10) * @{master_skill_multiplier})]]}} {{roll=[[1D100cs<5cf>96]]}}"
+                ></button>
+              </td>
+            </tr>
+            <tr class="skill">
+              <td class="full-width">
+                <input
+                  type="text"
+                  class="full-width line-input"
+                  name="attr_skill_name"
+                  value="Bricolage"
+                  disabled
+                />
+              </td>
+              <td>
+                <input type="hidden" name="attr_main_stat" value="@{hab_total}" />
+                <select disabled>
+                  <option selected>HAB</option>
+                </select>
+              </td>
+              <td class="bonus"></td>
+              <td>
+                <input type="hidden" name="attr_bonus_stat" value="@{int_total}" />
+                <select disabled>
+                  <option selected>INT</option>
+                </select>
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  value="1"
+                  name="attr_tinker_trained"
+                />
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  value="1"
+                  name="attr_tinker_expert"
+                />
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  value="1"
+                  name="attr_tinker_master"
+                />
+              </td>
+              <td>
+                <button
+                  type="roll"
+                  value="&{template:general} {{character_name=@{character_name}}} {{roll_title=@{skill_name}}} {{target=[[?{Bonus/Malus|0} + @{main_stat} - @{basic_skill_malus} + @{tinker_trained} * @{basic_skill_malus} + @{tinker_expert} * (floor(@{bonus_stat} / 10) * @{expert_skill_multiplier}) + @{tinker_master} * (floor(@{bonus_stat} / 10) * @{master_skill_multiplier})]]}} {{roll=[[1D100cs<5cf>96]]}}"
+                ></button>
+              </td>
+            </tr>
+            <tr class="skill">
+              <td class="full-width">
+                <input
+                  type="text"
+                  class="full-width line-input"
+                  name="attr_skill_name"
+                  value="Charme"
+                  disabled
+                />
+              </td>
+              <td>
+                <input type="hidden" name="attr_main_stat" value="@{cha_total}" />
+                <select disabled>
+                  <option selected>CHA</option>
+                </select>
+              </td>
+              <td class="bonus"></td>
+              <td>
+                <input type="hidden" name="attr_bonus_stat" value="@{emp_total}" />
+                <select disabled>
+                  <option selected>EMP</option>
+                </select>
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  value="1"
+                  name="attr_charm_trained"
+                />
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  value="1"
+                  name="attr_charm_expert"
+                />
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  value="1"
+                  name="attr_charm_master"
+                />
+              </td>
+              <td>
+                <button
+                  type="roll"
+                  value="&{template:general} {{character_name=@{character_name}}} {{roll_title=@{skill_name}}} {{target=[[?{Bonus/Malus|0} + @{main_stat} - @{basic_skill_malus} + @{charm_trained} * @{basic_skill_malus} + @{charm_expert} * (floor(@{bonus_stat} / 10) * @{expert_skill_multiplier}) + @{charm_master} * (floor(@{bonus_stat} / 10) * @{master_skill_multiplier})]]}} {{roll=[[1D100cs<5cf>96]]}}"
+                ></button>
+              </td>
+            </tr>
+            <tr class="skill">
+              <td class="full-width">
+                <input
+                  type="text"
+                  class="full-width line-input"
+                  name="attr_skill_name"
+                  value="Dissimulation"
+                  disabled
+                />
+              </td>
+              <td>
+                <input type="hidden" name="attr_main_stat" value="@{agi_total}" />
+                <select disabled>
+                  <option selected>AGI</option>
+                </select>
+              </td>
+              <td class="bonus"></td>
+              <td>
+                <input type="hidden" name="attr_bonus_stat" value="@{acu_total}" />
+                <select disabled>
+                  <option selected>ACU</option>
+                </select>
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  value="1"
+                  name="attr_stealth_trained"
+                />
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  value="1"
+                  name="attr_stealth_expert"
+                />
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  value="1"
+                  name="attr_stealth_master"
+                />
+              </td>
+              <td>
+                <button
+                  type="roll"
+                  value="&{template:general} {{character_name=@{character_name}}} {{roll_title=@{skill_name}}} {{target=[[?{Bonus/Malus|0} + @{main_stat} - @{basic_skill_malus} + @{stealth_trained} * @{basic_skill_malus} + @{stealth_expert} * (floor(@{bonus_stat} / 10) * @{expert_skill_multiplier}) + @{stealth_master} * (floor(@{bonus_stat} / 10) * @{master_skill_multiplier})]]}} {{roll=[[1D100cs<5cf>96]]}}"
+                ></button>
+              </td>
+            </tr>
+            <tr class="skill">
+              <td class="full-width">
+                <input
+                  type="text"
+                  class="full-width line-input"
+                  name="attr_skill_name"
+                  value="Esquive"
+                  disabled
+                />
+              </td>
+              <td>
+                <input type="hidden" name="attr_main_stat" value="@{agi_total}" />
+                <select disabled>
+                  <option selected>AGI</option>
+                </select>
+              </td>
+              <td class="bonus"></td>
+              <td>
+                <input type="hidden" name="attr_bonus_stat" value="@{acu_total}" />
+                <select disabled>
+                  <option selected>ACU</option>
+                </select>
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  value="1"
+                  name="attr_dodge_trained"
+                />
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  value="1"
+                  name="attr_dodge_expert"
+                />
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  value="1"
+                  name="attr_dodge_master"
+                />
+              </td>
+              <td>
+                <button
+                  type="roll"
+                  value="&{template:general} {{character_name=@{character_name}}} {{roll_title=@{skill_name}}} {{target=[[?{Bonus/Malus|0} + @{main_stat} - @{basic_skill_malus} + @{dodge_trained} * @{basic_skill_malus} + @{dodge_expert} * (floor(@{bonus_stat} / 10) * @{expert_skill_multiplier}) + @{dodge_master} * (floor(@{bonus_stat} / 10) * @{master_skill_multiplier})]]}} {{roll=[[1D100cs<5cf>96]]}}"
+                ></button>
+              </td>
+            </tr>
+            <tr class="skill">
+              <td class="full-width">
+                <input
+                  type="text"
+                  class="full-width line-input"
+                  name="attr_skill_name"
+                  value="Intimidation"
+                  disabled
+                />
+              </td>
+              <td>
+                <input type="hidden" name="attr_main_stat" value="@{cha_total}" />
+                <select disabled>
+                  <option selected>CHA</option>
+                </select>
+              </td>
+              <td class="bonus"></td>
+              <td>
+                <input type="hidden" name="attr_bonus_stat" value="@{wil_total}" />
+                <select disabled>
+                  <option selected>VOL</option>
+                </select>
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  value="1"
+                  name="attr_threat_trained"
+                />
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  value="1"
+                  name="attr_threat_expert"
+                />
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  value="1"
+                  name="attr_threat_master"
+                />
+              </td>
+              <td>
+                <button
+                  type="roll"
+                  value="&{template:general} {{character_name=@{character_name}}} {{roll_title=@{skill_name}}} {{target=[[?{Bonus/Malus|0} + @{main_stat} - @{basic_skill_malus} + @{threat_trained} * @{basic_skill_malus} + @{threat_expert} * (floor(@{bonus_stat} / 10) * @{expert_skill_multiplier}) + @{threat_master} * (floor(@{bonus_stat} / 10) * @{master_skill_multiplier})]]}} {{roll=[[1D100cs<5cf>96]]}}"
+                ></button>
+              </td>
+            </tr>
+            <tr class="skill">
+              <td class="full-width">
+                <input
+                  type="text"
+                  class="full-width line-input"
+                  name="attr_skill_name"
+                  value="Parade"
+                  disabled
+                />
+              </td>
+              <td>
+                <input type="hidden" name="attr_main_stat" value="@{phy_total}" />
+                <select disabled>
+                  <option selected>PHY</option>
+                </select>
+              </td>
+              <td class="bonus"></td>
+              <td>
+                <input type="hidden" name="attr_bonus_stat" value="@{agi_total}" />
+                <select disabled>
+                  <option selected>AGI</option>
+                </select>
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  value="1"
+                  name="attr_parry_trained"
+                />
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  value="1"
+                  name="attr_parry_expert"
+                />
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  value="1"
+                  name="attr_parry_master"
+                />
+              </td>
+              <td>
+                <button
+                  type="roll"
+                  value="&{template:general} {{character_name=@{character_name}}} {{roll_title=@{skill_name}}} {{target=[[?{Bonus/Malus|0} + @{main_stat} - @{basic_skill_malus} + @{parry_trained} * @{basic_skill_malus} + @{parry_expert} * (floor(@{bonus_stat} / 10) * @{expert_skill_multiplier}) + @{parry_master} * (floor(@{bonus_stat} / 10) * @{master_skill_multiplier})]]}} {{roll=[[1D100cs<5cf>96]]}}"
+                ></button>
+              </td>
+            </tr>
+            <tr class="skill">
+              <td class="full-width">
+                <input
+                  type="text"
+                  class="full-width line-input"
+                  name="attr_skill_name"
+                  value="Perception"
+                  disabled
+                />
+              </td>
+              <td>
+                <input type="hidden" name="attr_main_stat" value="@{acu_total}" />
+                <select disabled>
+                  <option selected>ACU</option>
+                </select>
+              </td>
+              <td class="bonus"></td>
+              <td>
+                <input type="hidden" name="attr_bonus_stat" value="@{int_total}" />
+                <select disabled>
+                  <option selected>INT</option>
+                </select>
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  value="1"
+                  name="attr_percep_trained"
+                />
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  value="1"
+                  name="attr_percep_expert"
+                />
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  value="1"
+                  name="attr_percep_master"
+                />
+              </td>
+              <td>
+                <button
+                  type="roll"
+                  value="&{template:general} {{character_name=@{character_name}}} {{roll_title=@{skill_name}}} {{target=[[?{Bonus/Malus|0} + @{main_stat} - @{basic_skill_malus} + @{percep_trained} * @{basic_skill_malus} + @{percep_expert} * (floor(@{bonus_stat} / 10) * @{expert_skill_multiplier}) + @{percep_master} * (floor(@{bonus_stat} / 10) * @{master_skill_multiplier})]]}} {{roll=[[1D100cs<5cf>96]]}}"
+                ></button>
+              </td>
+            </tr>
+            <tr class="skill">
+              <td class="full-width">
+                <input
+                  type="text"
+                  class="full-width line-input"
+                  name="attr_skill_name"
+                  value="Pilotage (Véhicules terrestres)"
+                  disabled
+                />
+              </td>
+              <td>
+                <input type="hidden" name="attr_main_stat" value="@{acu_total}" />
+                <select disabled>
+                  <option selected>ACU</option>
+                </select>
+              </td>
+              <td class="bonus"></td>
+              <td>
+                <input type="hidden" name="attr_bonus_stat" value="@{hab_total}" />
+                <select disabled>
+                  <option selected>HAB</option>
+                </select>
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  value="1"
+                  name="attr_land_vhc_trained"
+                />
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  value="1"
+                  name="attr_land_vhc_expert"
+                />
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  value="1"
+                  name="attr_land_vhc_master"
+                />
+              </td>
+              <td>
+                <button
+                  type="roll"
+                  value="&{template:general} {{character_name=@{character_name}}} {{roll_title=@{skill_name}}} {{target=[[?{Bonus/Malus|0} + @{main_stat} - @{basic_skill_malus} + @{land_vhc_trained} * @{basic_skill_malus} + @{land_vhc_expert} * (floor(@{bonus_stat} / 10) * @{expert_skill_multiplier}) + @{land_vhc_master} * (floor(@{bonus_stat} / 10) * @{master_skill_multiplier})]]}} {{roll=[[1D100cs<5cf>96]]}}"
+                ></button>
+              </td>
+            </tr>
+            <tr class="skill">
+              <td class="full-width">
+                <input
+                  type="text"
+                  class="full-width line-input"
+                  name="attr_skill_name"
+                  value="Premiers soins"
+                  disabled
+                />
+              </td>
+              <td>
+                <input type="hidden" name="attr_main_stat" value="@{hab_total}" />
+                <select disabled>
+                  <option selected>HAB</option>
+                </select>
+              </td>
+              <td class="bonus"></td>
+              <td>
+                <input type="hidden" name="attr_bonus_stat" value="@{int_total}" />
+                <select disabled>
+                  <option selected>INT</option>
+                </select>
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  value="1"
+                  name="attr_firstaid_trained"
+                />
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  value="1"
+                  name="attr_firstaid_expert"
+                />
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  value="1"
+                  name="attr_firstaid_master"
+                />
+              </td>
+              <td>
+                <button
+                  type="roll"
+                  value="&{template:general} {{character_name=@{character_name}}} {{roll_title=@{skill_name}}} {{target=[[?{Bonus/Malus|0} + @{main_stat} - @{basic_skill_malus} + @{firstaid_trained} * @{basic_skill_malus} + @{firstaid_expert} * (floor(@{bonus_stat} / 10) * @{expert_skill_multiplier}) + @{firstaid_master} * (floor(@{bonus_stat} / 10) * @{master_skill_multiplier})]]}} {{roll=[[1D100cs<5cf>96]]}}"
+                ></button>
+              </td>
+            </tr>
+            <tr class="skill">
+              <td class="full-width">
+                <input
+                  type="text"
+                  class="full-width line-input"
+                  name="attr_skill_name"
+                  value="Recherche"
+                  disabled
+                />
+              </td>
+              <td>
+                <input type="hidden" name="attr_main_stat" value="@{int_total}" />
+                <select disabled>
+                  <option selected>INT</option>
+                </select>
+              </td>
+              <td class="bonus"></td>
+              <td>
+                <input type="hidden" name="attr_bonus_stat" value="@{wil_total}" />
+                <select disabled>
+                  <option selected>VOL</option>
+                </select>
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  value="1"
+                  name="attr_vigilance_trained"
+                />
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  value="1"
+                  name="attr_vigilance_expert"
+                />
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  value="1"
+                  name="attr_vigilance_master"
+                />
+              </td>
+              <td>
+                <button
+                  type="roll"
+                  value="&{template:general} {{character_name=@{character_name}}} {{roll_title=@{skill_name}}} {{target=[[?{Bonus/Malus|0} + @{main_stat} - @{basic_skill_malus} + @{vigilance_trained} * @{basic_skill_malus} + @{vigilance_expert} * (floor(@{bonus_stat} / 10) * @{expert_skill_multiplier}) + @{vigilance_master} * (floor(@{bonus_stat} / 10) * @{master_skill_multiplier})]]}} {{roll=[[1D100cs<5cf>96]]}}"
+                ></button>
+              </td>
+            </tr>
+            <tr class="skill">
+              <td class="full-width">
+                <input
+                  type="text"
+                  class="full-width line-input"
+                  name="attr_skill_name"
+                  value="Vigilance"
+                  disabled
+                />
+              </td>
+              <td>
+                <input type="hidden" name="attr_main_stat" value="@{acu_total}" />
+                <select disabled>
+                  <option selected>ACU</option>
+                </select>
+              </td>
+              <td class="bonus"></td>
+              <td>
+                <input type="hidden" name="attr_bonus_stat" value="@{int_total}" />
+                <select disabled>
+                  <option selected>INT</option>
+                </select>
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  value="1"
+                  name="attr_vigilance_trained"
+                />
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  value="1"
+                  name="attr_vigilance_expert"
+                />
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  value="1"
+                  name="attr_vigilance_master"
+                />
+              </td>
+              <td>
+                <button
+                  type="roll"
+                  value="&{template:general} {{character_name=@{character_name}}} {{roll_title=@{skill_name}}} {{target=[[?{Bonus/Malus|0} + @{main_stat} - @{basic_skill_malus} + @{vigilance_trained} * @{basic_skill_malus} + @{vigilance_expert} * (floor(@{bonus_stat} / 10) * @{expert_skill_multiplier}) + @{vigilance_master} * (floor(@{bonus_stat} / 10) * @{master_skill_multiplier})]]}} {{roll=[[1D100cs<5cf>96]]}}"
+                ></button>
+              </td>
+            </tr>
+          </tbody>
         </table>
-        <!-- Skills -->
-        <table class="sheet-skills sheet-half-width">
-          <thead></thead>
-          <tbody></tbody>
+
+        <!-- Advanced skills -->
+        <table class="skills half-width">
+          <thead>
+            <tr>
+              <th colspan="8">
+                <div class="table-title">Compétences avancées</div>
+              </th>
+            </tr>
+            <tr>
+              <th>Nom</th>
+              <th>1.</th>
+              <th></th>
+              <th>2.</th>
+              <th class="trained"></th>
+              <th class="expert"></th>
+              <th class="master"></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="skill">
+              <td class="full-width">
+                <input
+                  type="text"
+                  class="full-width line-input"
+                  name="attr_skill_name"
+                  value="Armes lourdes"
+                  disabled
+                />
+              </td>
+              <td>
+                <input type="hidden" name="attr_main_stat" value="@{acu_total}" />
+                <select disabled>
+                  <option selected>ACU</option>
+                </select>
+              </td>
+              <td class="bonus"></td>
+              <td>
+                <input type="hidden" name="attr_bonus_stat" value="@{hab_total}" />
+                <select disabled>
+                  <option selected>HAB</option>
+                </select>
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  value="1"
+                  name="attr_heavy_trained"
+                />
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  value="1"
+                  name="attr_heavy_expert"
+                />
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  value="1"
+                  name="attr_heavy_master"
+                />
+              </td>
+              <td>
+                <button
+                  type="roll"
+                  value="&{template:general} {{character_name=@{character_name}}} {{roll_title=@{skill_name}}} {{target=[[?{Bonus/Malus|0} + @{main_stat} - @{advanced_skill_malus} + @{heavy_trained} * @{advanced_skill_malus} + @{heavy_expert} * (floor(@{bonus_stat} / 10) * @{expert_skill_multiplier}) + @{heavy_master} * (floor(@{bonus_stat} / 10) * @{master_skill_multiplier})]]}} {{roll=[[1D100cs<5cf>96]]}}"
+                ></button>
+              </td>
+            </tr>
+            <tr class="skill">
+              <td class="full-width">
+                <input
+                  type="text"
+                  class="full-width line-input"
+                  name="attr_skill_name"
+                  value="Chimie"
+                  disabled
+                />
+              </td>
+              <td>
+                <input type="hidden" name="attr_main_stat" value="@{int_total}" />
+                <select disabled>
+                  <option selected>INT</option>
+                </select>
+              </td>
+              <td class="bonus"></td>
+              <td>
+                <input type="hidden" name="attr_bonus_stat" value="@{vol_total}" />
+                <select disabled>
+                  <option selected>VOL</option>
+                </select>
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  value="1"
+                  name="attr_chemistry_trained"
+                />
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  value="1"
+                  name="attr_chemistry_expert"
+                />
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  value="1"
+                  name="attr_chemistry_master"
+                />
+              </td>
+              <td>
+                <button
+                  type="roll"
+                  value="&{template:general} {{character_name=@{character_name}}} {{roll_title=@{skill_name}}} {{target=[[?{Bonus/Malus|0} + @{main_stat} - @{advanced_skill_malus} + @{chemistry_trained} * @{advanced_skill_malus} + @{chemistry_expert} * (floor(@{bonus_stat} / 10) * @{expert_skill_multiplier}) + @{chemistry_master} * (floor(@{bonus_stat} / 10) * @{master_skill_multiplier})]]}} {{roll=[[1D100cs<5cf>96]]}}"
+                ></button>
+              </td>
+            </tr>
+          </tbody>
         </table>
       </div>
     </div>
   </div>
 
   <!-- Arsenal tab -->
-  <div class="sheet-tab sheet-flex-col sheet-full-width sheet-flex-middle sheet-arsenal">
-    <div class="sheet-character-defenses sheet-flex-row sheet-full-width">
+  <div class="tab flex-col full-width flex-middle arsenal">
+    <div class="character-defenses flex-row full-width">
       <input type="hidden" name="attr_character_race" />
-      <div class="sheet-character-silhouette">
+      <div class="character-silhouette">
 
         <!-- Head -->
-        <div class="sheet-character-location sheet-head">
+        <div class="character-location head">
           <input type="hidden" name="attr_head_protection_total" value="0" />
           <input
             disabled
             type="number"
-            class="sheet-protection-total"
+            class="protection-total"
             name="attr_head_protection_display"
             value="@{head_protection_total}"
           />
           <input
             type="number"
-            class="sheet-protection-bonus"
+            class="protection-bonus"
             name="attr_head_protection_bonus"
             value="0"
           />
         </div>
 
         <!-- Left arm -->
-        <div class="sheet-character-location sheet-left-arm">
+        <div class="character-location left-arm">
           <input type="hidden" name="attr_left_arm_protection_total" value="0" />
           <input
             disabled
             type="number"
-            class="sheet-protection-total"
+            class="protection-total"
             name="attr_left_arm_protection_display"
             value="@{left_arm_protection_total}"
           />
           <input
             type="number"
-            class="sheet-protection-bonus"
+            class="protection-bonus"
             name="attr_left_arm_protection_bonus"
             value="0"
           />
         </div>
 
         <!-- Right arm -->
-        <div class="sheet-character-location sheet-right-arm">
+        <div class="character-location right-arm">
           <input type="hidden" name="attr_right_arm_protection_total" value="0" />
           <input
             disabled
             type="number"
-            class="sheet-protection-total"
+            class="protection-total"
             name="attr_right_arm_protection_display"
             value="@{right_arm_protection_total}"
           />
           <input
             type="number"
-            class="sheet-protection-bonus"
+            class="protection-bonus"
             name="attr_right_arm_protection_bonus"
             value="0"
           />
         </div>
 
         <!-- Torso -->
-        <div class="sheet-character-location sheet-torso">
+        <div class="character-location torso">
           <input type="hidden" name="attr_torso_protection_total" value="0" />
           <input
             disabled
             type="number"
-            class="sheet-protection-total"
+            class="protection-total"
             name="attr_torso_protection_display"
             value="@{torso_protection_total}"
           />
           <input
             type="number"
-            class="sheet-protection-bonus"
+            class="protection-bonus"
             name="attr_torso_protection_bonus"
             value="0"
           />
         </div>
 
         <!-- Left leg -->
-        <div class="sheet-character-location sheet-left-leg">
+        <div class="character-location left-leg">
           <input type="hidden" name="attr_left_leg_protection_total" value="0" />
           <input
             disabled
             type="number"
-            class="sheet-protection-total"
+            class="protection-total"
             name="attr_left_leg_protection_display"
             value="@{left_leg_protection_total}"
           />
           <input
             type="number"
-            class="sheet-protection-bonus"
+            class="protection-bonus"
             name="attr_left_leg_protection_bonus"
             value="0"
           />
         </div>
 
         <!-- Right leg -->
-        <div class="sheet-character-location sheet-right-leg">
+        <div class="character-location right-leg">
           <input type="hidden" name="attr_right_leg_protection_total" value="0" />
           <input
             disabled
             type="number"
-            class="sheet-protection-total"
+            class="protection-total"
             name="attr_right_leg_protection_display"
             value="@{right_leg_protection_total}"
           />
           <input
             type="number"
-            class="sheet-protection-bonus"
+            class="protection-bonus"
             name="attr_right_leg_protection_bonus"
             value="0"
           />
         </div>
       </div>
-      <div class="sheet-armors">
-        <h2 class="sheet-tablet-title">Protections</h2>
+      <div class="armors">
+        <h2 class="tablet-title">Protections</h2>
         <fieldset class="repeating_armors">
-          <div class="sheet-armor sheet-flex-col sheet-flex-width sheet-tablet-line">
-            <input
-              type="text"
-              name="attr_armor_name"
-              class="sheet-full-width"
-              placeholder="Nom de la protection"
-            />
-            <div class="sheet-flex-row sheet-protection-locations sheet-flex-middle">
-              <div class="sheet-flex-col sheet-flex-middle">
+          <div class="armor flex-col flex-width tablet-line">
+            <div class="armor-details flex-row flex-middle full-width">
+              <input
+                type="text"
+                name="attr_armor_name"
+                class="full-width"
+                placeholder="Nom de la protection"
+              />
+              <input
+                type="number"
+                name="attr_armor_weight"
+                placeholder="0"
+              />
+              <input
+                type="checkbox"
+                name="attr_armor_is_expanded"
+                class="modif-toggle"
+                checked
+              />
+            </div>
+            <input type="hidden" name="attr_armor_is_expanded" value="on" />
+            <div class="flex-row protection-locations flex-middle">
+              <div class="flex-col flex-middle">
                 <span>Tête</span>
                 <input type="number" name="attr_head_armor" placeholder="0" />
               </div>
-              <div class="sheet-flex-col sheet-flex-middle">
+              <div class="flex-col flex-middle">
                 <span>Torse</span>
                 <input type="number" name="attr_torso_armor" placeholder="0" />
               </div>
-              <div class="sheet-flex-col sheet-flex-middle">
+              <div class="flex-col flex-middle">
                 <span>Bras gauche</span>
                 <input type="number" name="attr_left_arm_armor" placeholder="0" />
               </div>
-              <div class="sheet-flex-col sheet-flex-middle">
+              <div class="flex-col flex-middle">
                 <span>Bras droit</span>
                 <input type="number" name="attr_right_arm_armor" placeholder="0" />
               </div>
-              <div class="sheet-flex-col sheet-flex-middle">
+              <div class="flex-col flex-middle">
                 <span>Jambe gauche</span>
                 <input type="number" name="attr_left_leg_armor" placeholder="0" />
               </div>
-              <div class="sheet-flex-col sheet-flex-middle">
+              <div class="flex-col flex-middle">
                 <span>Jambe droite</span>
                 <input type="number" name="attr_right_leg_armor" placeholder="0" />
               </div>
             </div>
-            <textarea class="sheet-armor-extra" placeholder="Description et effets supplémentaires"></textarea>
+            <textarea class="armor-extra" placeholder="Description et effets supplémentaires"></textarea>
           </div>
         </fieldset>
       </div>
@@ -386,57 +1531,72 @@
   </div>
 
   <!-- Gear tab -->
-  <div class="sheet-tab sheet-flex-col sheet-full-width sheet-flex-middle sheet-gear">
+  <div class="tab flex-col full-width flex-middle gear">
 
     <!-- Inventory global stats -->
-    <div class="sheet-tablet sheet-flex-column sheet-flex-middle sheet-heading sheet-full-width">
-      <h2 class="sheet-tablet-title">Conteneurs</h2>
+    <div class="tablet flex-column flex-middle heading full-width">
+      <h2 class="tablet-title">Conteneurs</h2>
       <fieldset class="repeating_character-containers">
-        <div class="sheet-container sheet-flex-row sheet-flex-middle sheet-full-width sheet-tablet-line">
-          <input type="text" placeholder="Nom du conteneur" class="sheet-full-width" name="attr_container_name" />
+        <div class="container flex-row flex-middle full-width tablet-line">
+          <input type="text" placeholder="Nom du conteneur" class="full-width" name="attr_container_name" />
           <input
             type="number"
             placeholder="0"
-            class="sheet-tablet-bubble-input"
+            class="tablet-bubble-input"
             title="Capacité"
             name="attr_container_capacity"
           />
         </div>
       </fieldset>
       <input type="hidden" name="attr_overweight" value="false" />
-      <div class="sheet-capacity-header">
+      <div class="capacity-header">
         <img src="https://fpilot.fr/starclock/gui/weight.png" />
       </div>
       <input type="hidden" name="attr_total_weight" value="0" />
       <input type="hidden" name="attr_total_capacity" value="0" />
-      <div class="sheet-capacity-summary sheet-flex-row sheet-flex-middle">
-        <input type="number" name="attr_total_weight_display" value="@{total_weight}" disabled />
-        <span>/</span>
-        <input type="number" name="attr_total_capacity_display" value="@{total_capacity}" disabled />
+      <input type="hidden" name="attr_total_eqp_weight" value="0" />
+      <input type="hidden" name="attr_total_eqp_capacity" value="0" />
+      <div class="flex-row flex-middle">
+        <div class="weight-wrapper flex-col flex-middle">
+          <h3>Inventaire</h3>
+          <div class="capacity-summary flex-row flex-middle">
+            <input type="number" name="attr_total_eqp_weight_display" value="@{total_weight}" disabled />
+            <span>/</span>
+            <input type="number" name="attr_total_eqp_capacity_display" value="@{total_capacity}" disabled />
+          </div>
+        </div>
+        <div class="weight-wrapper flex-col flex-middle">
+          <h3>Équipement</h3>
+          <div class="capacity-summary flex-row flex-middle">
+            <input type="number" name="attr_total_eqp_weight_display" value="@{total_eqp_weight}" disabled />
+            <span>/</span>
+            <input type="number" name="attr_total_eqp_capacity_display" value="@{total_eqp_capacity}" disabled />
+          </div>
+        </div>
       </div>
-    </div>
+      </div>
 
-    <div class="sheet-tablet-content sheet-flex-col sheet-flex-middle sheet-full-width">
+    <div class="tablet-content flex-col flex-middle full-width">
       <fieldset class="repeating_character-items">
-        <div class="sheet-item-container sheet-full-width sheet-flex-row sheet-flex-middle">
+        <div class="item-container full-width flex-row flex-middle">
           <input
             type="text"
             name="attr_item_name"
-            class="sheet-full-width sheet-line-input"
+            class="full-width line-input"
             placeholder="Nom de l'objet"
           />
           <span>x</span>
           <input
             type="number"
             name="attr_item_qty"
-            class="sheet-item-qty sheet-line-input"
+            class="item-qty line-input"
             value="0"
           />
           <img src="https://fpilot.fr/starclock/gui/weight.png" />
           <input
             type="number"
             name="attr_item_weight"
-            class="sheet-item-weight sheet-line-input"
+            class="item-weight line-input"
             value="0"
           />
         </div>
@@ -445,10 +1605,29 @@
   </div>
 
   <!-- Psy tab -->
-  <div class="sheet-tab sheet-flex-col sheet-full-width sheet-flex-middle sheet-psy">
+  <div class="tab flex-col full-width flex-middle psy">
     Psy
   </div>
 </div>
+
+<!-- General rolltemplate -->
+<rolltemplate class="sheet-rolltemplate-general">
+  <table class="sheet-rolltable sheet-full-width">
+    <thead>
+      <tr>
+        <th colspan="3">{{character_name}}</th>
+      </tr>
+      <tr>
+        <th colspan="3">{{roll_title}}</th>
+      </tr>
+      <tr>
+        <td>{{roll}}</td>
+        <td class="sheet-full-width"></td>
+        <td>{{target}}</td>
+      </tr>
+    </thead>
+  </table>
+</rolltemplate>
 
 <!-- Workers -->
 <script type="text/worker">
@@ -458,7 +1637,7 @@
   */
 
   var calculationKeys = ["base", "bonus"];
-  var statsKeys = ["phy", "acu", "hab", "cha", "int", "wil"];
+  var statsKeys = ["phy", "agi", "acu", "hab", "cha", "emp", "int", "wil"];
   var tabs = ["character", "arsenal", "gear", "psy"];
   var bodyLocations = ["head", "torso", "left_arm", "right_arm", "left_leg", "right_leg"];
 
@@ -563,6 +1742,13 @@
     /* Ammunition types */
     get ammo () {
       return {
+        regular: {
+          name: "",
+          modifiers: {
+            penetration: 0,
+            damage: 0
+          }
+        },
         slap: {
           name: "SLAP",
           modifiers: {
@@ -619,6 +1805,7 @@
 
   onEvents([
     "sheet:opened",
+    "change:phy_total",
     "change:repeating_character-containers:container_capacity",
     "remove:repeating_character-containers:container_capacity"
   ], function () {
@@ -636,7 +1823,8 @@
         var phyMod = Math.floor(parseInt(values.phy_total || "0", 10) / 10);
 
         setAttrs({
-          total_capacity: containerCapacity + phyMod
+          total_capacity: containerCapacity + phyMod,
+          total_eqp_capacity: phyMod * 2
         });
       });
     });
@@ -646,40 +1834,52 @@
     "sheet:opened",
     "change:repeating_character-items:item_qty",
     "change:repeating_character-items:item_weight",
+    "change:repeating_armors:armor_weight",
     "remove:repeating_character-items:item_qty",
     "remove:repeating_character-items:item_weight",
+    "remove:repeating_armors:armor_weight"
   ], function () {
-    getSectionIDs("repeating_character-items", function (ids) {
-      var prefix = "repeating_character-items_";
-      var fields = ids.reduce(function (acc, id) {
-        return acc.concat([prefix + id + "_item_qty", prefix + id + "_item_weight"]);
+    getSectionIDs("repeating_character-items", function (itemIds) {
+      var itemPrefix = "repeating_character-items_";
+      var fields = itemIds.reduce(function (acc, id) {
+        return acc.concat([itemPrefix + id + "_item_qty", itemPrefix + id + "_item_weight"]);
       }, []);
 
-      getAttrs(fields.concat(["total_capacity"]), function (values) {
-        var totalWeight = ids.reduce(function (total, id) {
-          var weight = parseInt(values[prefix + id + "_item_weight"] || "0", 10);
-          var qty = parseInt(values[prefix + id + "_item_qty"] || "0", 10);
-          return total + (weight * qty);
-        }, 0);
+      getSectionIDs("repeating_armors", function (equipIds) {
+        var equipPrefix = "repeating_armors_";
+        var equipFields = equipIds.reduce(function (acc, id) {
+        return acc.concat([equipPrefix + id + "_armor_weight"]);
+      }, []);
 
-        setAttrs({
-          total_weight: totalWeight,
-          overweight: parseInt(values.total_capacity || "0", 10) >= totalWeight ? "false" : "true"
+        getAttrs(fields.concat(equipFields).concat(["total_capacity", "total_eqp_capacity"]), function (values) {
+          var totalWeight = itemIds.reduce(function (total, id) {
+            var weight = parseInt(values[itemPrefix + id + "_item_weight"] || "0", 10);
+            var qty = parseInt(values[itemPrefix + id + "_item_qty"] || "0", 10);
+            return total + (weight * qty);
+          }, 0);
+
+          var totalEquipWeight = equipIds.reduce(function (total, id) {
+            var weight = parseInt(values[equipPrefix + id + "_armor_weight"] || "0", 10);
+            return total + weight;
+          }, 0);
+
+          setAttrs({
+            total_weight: totalWeight,
+            total_eqp_weight: totalEquipWeight,
+            overweight: (
+              totalWeight > parseInt(values.total_capacity || "0", 10) ||
+              totalEquipWeight > parseInt(values.total_eqp_capacity || "0", 10)
+            ) ? "true" : "false"
+          });
         });
       });
     });
   });
 
-  onEvents([
-    "sheet:opened",
-    "change:repeating_armors:head_armor",
-    "change:repeating_armors:torso_armor",
-    "change:repeating_armors:left_arm_armor",
-    "change:repeating_armors:right_arm_armor",
-    "change:repeating_armors:left_leg_armor",
-    "change:repeating_armors:right_leg_armor"
-  ].concat(bodyLocations.reduce(function (acc, location) {
+  onEvents(["sheet:opened"].concat(bodyLocations.reduce(function (acc, location) {
     return acc.concat([
+      "change:repeating_armors:" + location + "_armor",
+      "remove:repeating_armors:" + location + "_armor",
       "change:" + location + "_protection_bonus",
       "remove:" + location + "_protection_bonus"
     ]);

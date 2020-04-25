@@ -170,6 +170,23 @@ div.sheet-skill > .sheet-line-input:not(.sheet-small) { flex: 1; }
   text-align: center;
 }
 
+.sheet-hp-wrapper {
+  margin: 10px auto;
+  border: none;
+}
+
+.sheet-hp-wrapper input[type=number] {
+  text-align: center;
+}
+
+.sheet-hp-wrapper td {
+  padding: 5px;
+  box-sizing: border-box;
+  font-family: Courier;
+  font-size: 13px;
+  font-weight: bold;
+}
+
 div.sheet-stats-wrapper {
   display: flex;
   flex-direction: row;
@@ -479,7 +496,8 @@ table.sheet-weapon-stats-table .sheet-weapon-name:before {
   color: #F55;
 }
 
-table.sheet-weapon-stats-table .sheet-weapon-mods:before {
+table.sheet-weapon-stats-table .sheet-weapon-mods:before,
+.sheet-armor-mods:before {
   content: "x";
   font-family: 'Pictos';
   font-size: 20px;
@@ -528,20 +546,47 @@ input[type=number][name="attr_capacity_max"] {
   width: 35px !important;
 }
 
-td.sheet-damage-col > input[type=text] {
+td.sheet-damage-col input[type=text] {
   width: 55px;
   font-size: 11px;
   text-align: center;
 }
 
-td.sheet-damage-col > input[type=number] {
+td.sheet-damage-col input[type=number] {
   width: 20px;
   font-size: 11px;
   text-align: center;
 }
 
-td.sheet-damage-col > span {
+td.sheet-damage-col span {
   font-family: 'Contrail One';
+}
+
+td.sheet-damage-col > table { margin: auto; }
+
+td.sheet-damage-col th,
+td.sheet-damage-col td {
+  text-align: center;
+}
+
+td.sheet-damage-col td {
+  margin: 0;
+}
+
+td.sheet-damage-col td input[type=number] {
+  border-radius: 0;
+}
+
+td.sheet-damage-col td:first-child input[type=number] {
+  border-radius: 5px 0 0 5px;
+}
+
+td.sheet-damage-col td:last-child input[type=number] {
+  border-radius: 0 5px 5px 0;
+}
+
+td.sheet-damage-col td:not(:first-child) input[type=number] {
+  border-left: 0;
 }
 
 div.sheet-weapon-image {
@@ -562,16 +607,16 @@ div.sheet-gunshot-rolls {
   display: inline-flex;
 }
 
-div.sheet-gunshot-rolls > button[type=roll] {
+div.sheet-gunshot-rolls button[type=roll] {
   position: relative;
   outline: none;
 }
 
-div.sheet-gunshot-rolls > button[type=roll]:before {
+div.sheet-gunshot-rolls button[type=roll]:before {
   content: '';
 }
 
-div.sheet-gunshot-rolls > button[type=roll]:after {
+div.sheet-gunshot-rolls button[type=roll]:after {
   position: absolute;
   top: 0;
   left: 0;
@@ -583,21 +628,41 @@ div.sheet-gunshot-rolls > button[type=roll]:after {
   text-align: center;
 }
 
-div.sheet-gunshot-rolls > button.sheet-single-shot:after {
+.sheet-gunshot-button:disabled { display: none; }
+
+div.sheet-gunshot-rolls > div { display: flex; }
+
+.sheet-weapon-firing-control[name="attr_gun_firing_rate_single"][value="0"] ~ div.sheet-gunshot-rolls button.sheet-single-shot:not(:disabled),
+.sheet-weapon-firing-control[name="attr_gun_firing_rate_semi"][value="0"] ~ div.sheet-gunshot-rolls button.sheet-semi-auto:not(:disabled),
+.sheet-weapon-firing-control[name="attr_gun_firing_rate_full"][value="0"] ~ div.sheet-gunshot-rolls button.sheet-full-auto:not(:disabled) {
+  display: none;
+}
+
+.sheet-weapon-firing-control[name="attr_gun_firing_rate_single"][value="0"] ~ div.sheet-gunshot-rolls button.sheet-single-shot:disabled,
+.sheet-weapon-firing-control[name="attr_gun_firing_rate_semi"][value="0"] ~ div.sheet-gunshot-rolls button.sheet-semi-auto:disabled,
+.sheet-weapon-firing-control[name="attr_gun_firing_rate_full"][value="0"] ~ div.sheet-gunshot-rolls button.sheet-full-auto:disabled {
+  display: inline;
+}
+
+div.sheet-gunshot-rolls button.sheet-single-shot:after {
   content: '•';
   color: #05F;
 }
 
-div.sheet-gunshot-rolls > button.sheet-semi-auto:after {
+div.sheet-gunshot-rolls button.sheet-semi-auto:after {
   content: '•••';
 }
 
-div.sheet-gunshot-rolls > button.sheet-full-auto:after {
+div.sheet-gunshot-rolls button.sheet-full-auto:after {
   content: '•••••';
   color: #C00;
 }
 
-div.sheet-gunshot-rolls > button {
+div.sheet-gunshot-rolls button:disabled:after {
+  color: #AAA !important;
+}
+
+div.sheet-gunshot-rolls > div > button {
   height: 10px;
   width: 25px;
   padding: 0 !important;
@@ -606,15 +671,15 @@ div.sheet-gunshot-rolls > button {
   border: 1px solid #CCC;
 }
 
-div.sheet-gunshot-rolls > button:first-child {
+div.sheet-gunshot-rolls > div:first-child > button {
   border-radius: 4px 4px 0 0;
 }
 
-div.sheet-gunshot-rolls > button:last-child {
+div.sheet-gunshot-rolls > div:last-child > button {
   border-radius: 0 0 4px 4px;
 }
 
-div.sheet-gunshot-rolls > button:not(:first-child) {
+div.sheet-gunshot-rolls > div:not(:first-child) > button {
   border-top: none;
 }
 
@@ -658,20 +723,62 @@ div.sheet-gunshot-rolls > button:not(:first-child) {
 
 .sheet-rolltemplate-gunshot .sheet-result-icon {
   display: inline-block;
+  width: 20px;
+  height: 20px;
+  text-align: center;
 }
 
 .sheet-rolltemplate-gunshot .sheet-result-icon:before {
-  font-family: 'Pictos Custom';
   font-size: 20px;
   color: #C00;
 }
 
 .sheet-rolltemplate-gunshot .sheet-result-icon.sheet-damage:before {
+  font-family: 'Pictos Custom';
   content: 't';
 }
 
 .sheet-rolltemplate-gunshot .sheet-result-icon.sheet-penetration:before {
+  font-family: 'Pictos Custom';
+  font-size: 18px;
   content: 'e';
+}
+
+.sheet-rolltemplate-gunshot .sheet-result-icon.sheet-shock:before {
+  font-family: 'Pictos Three';
+  font-size: 21px;
+  content: 'j';
+}
+
+.sheet-rolltemplate-gunshot .sheet-damage-roll td:last-child,
+.sheet-rolltemplate-gunshot .sheet-penetration-roll td:last-child,
+.sheet-rolltemplate-gunshot .sheet-shock-roll td:last-child {
+  text-align: right;
+}
+
+.sheet-rolltemplate-gunshot .sheet-player-fail {
+  width: 100%;
+  padding: 5px;
+  box-sizing: border-box;
+  text-align: left;
+  font-style: italic;
+  font-size: 11px;
+  line-height: 17px;
+  font-family: 'Courier';
+}
+
+.sheet-rolltemplate-gunshot .sheet-player-fail-caption {
+  width: 100%;
+  padding: 10px 5px 5px 5px;
+  box-sizing: border-box;
+  text-align: right;
+  font-style: italic;
+  color: #AAA;
+  font-family: 'Courier';
+}
+
+.sheet-rolltemplate-gunshot .sheet-player-fail-caption:before {
+  content: '- ';
 }
 
 .sheet-author-credit {
@@ -682,6 +789,30 @@ div.sheet-gunshot-rolls > button:not(:first-child) {
   border: none;
   font-family: 'Courier';
   text-align: right;
+}
+
+.sheet-armor {
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.sheet-armor > div > label {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.sheet-armor > div > label > span {
+  font-family: 'Courier';
+  font-size: 12px;
+}
+
+.sheet-armor > div > label > input[type=number] {
+  width: 30px;
+  text-align: center;
 }
 
 /* Gun images */

@@ -148,6 +148,32 @@ input::-webkit-inner-spin-button {
 }
 
 /*
+**  Sheet modif
+*/
+
+input[type=checkbox].sheet-modif-toggle {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  margin: 5px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  border-width: 2px;
+  transition: 0.2s;
+  outline: none;
+}
+
+input[type=checkbox].sheet-modif-toggle:checked {
+  border-radius: 4px;
+}
+
+.sheet-tablet input[type=checkbox].sheet-modif-toggle {
+  border-color: #FFF;
+}
+
+/*
 **  Tabs classes
 */
 
@@ -287,6 +313,15 @@ input[name="attr_character_race"] + input[name="attr_character_race_other"] {
 }
 
 input[name="attr_character_race"][value="other"] + input[name="attr_character_race_other"] {
+  display: inline;
+  margin-left: 10px;
+}
+
+input[name="attr_character_gender"] + input[name="attr_character_gender_other"] {
+  display: none;
+}
+
+input[name="attr_character_gender"][value="other"] + input[name="attr_character_gender_other"] {
   display: inline;
   margin-left: 10px;
 }
@@ -433,6 +468,62 @@ input[name="attr_character_race"][value="other"] + input[name="attr_character_ra
 }
 
 /*
+**  Sheet skills
+*/
+
+.sheet-table-title {
+  width: 90%;
+  padding: 5px;
+  margin: 5px auto;
+  background-color: #333;
+  color: #FFF;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.sheet-skill td {
+  padding: 3px;
+  box-sizing: border-box;
+}
+
+.sheet-skill select {
+  width: auto;
+  margin: 0;
+  text-align: center;
+  font-family: 'Trebuchet MS';
+  font-weight: bold;
+}
+
+.sheet-skills .sheet-trained:before,
+.sheet-skills .sheet-expert:before,
+.sheet-skills .sheet-master:before {
+  content: 'S';
+  font-family: 'Pictos';
+}
+
+.sheet-skills .sheet-trained:before { color: #B87333; }
+
+.sheet-skills .sheet-expert:before { color: #C0C0C0 }
+
+.sheet-skills .sheet-master:before { color: #D4AF37 }
+
+.sheet-skills .sheet-bonus:before {
+  content: '&';
+  font-family: 'Pictos';
+}
+
+input[type=number].sheet-skill-bonus {
+  width: 20px;
+  text-align: center;
+}
+
+.sheet-skills th {
+  text-align: center;
+  font-family: 'Candal';
+  font-size: 11px;
+}
+
+/*
 **  Sheet containers
 */
 
@@ -454,6 +545,18 @@ input[name="attr_overweight"][value="true"] + .sheet-capacity-header {
 
 .sheet-capacity-header > img {
   width: 15px;
+}
+
+.sheet-weight-wrapper {
+  margin: 0 5px;
+}
+
+.sheet-weight-wrapper > h3 {
+  color: #FFF;
+  font-family: 'Contrail One';
+  font-size: 14px;
+  text-align: center;
+  margin: 4px 0;
 }
 
 .sheet-capacity-summary {
@@ -648,8 +751,16 @@ input[type=hidden][name="attr_character_race"] + .sheet-character-silhouette .sh
   border-radius: 5px;
 }
 
+input[name="attr_armor_is_expanded"][value="0"] ~ .sheet-protection-locations,
+input[name="attr_armor_is_expanded"][value="0"] ~ .sheet-armor-extra {
+  display: none;
+}
+
+.sheet-armor-details > input[type=number] { margin-left: 5px; }
+
 .sheet-armor-extra {
   height: 5em;
+  margin: 0;
   padding: 7px;
   background-color: #444;
   border-radius: 5px;

@@ -5,7 +5,7 @@
       <span>Nom complet</span>
       <input
         type="text"
-        class="line-input"
+        class="sheet-line-input"
         name="attr_character_name"
       />
     </div>
@@ -13,7 +13,7 @@
       <span>Nationalité</span>
       <input
         type="text"
-        class="line-input"
+        class="sheet-line-input"
         name="attr_character_nationality"
       />
     </div>
@@ -21,13 +21,13 @@
       <span>Occupation</span>
       <input
         type="text"
-        class="line-input"
+        class="sheet-line-input"
         name="attr_character_job"
       />
       <span>Sponsor</span>
       <input
         type="text"
-        class="line-input"
+        class="sheet-line-input"
         name="attr_character_sponsor"
       />
     </div>
@@ -35,17 +35,17 @@
       <span>Age</span>
       <input
         type="number"
-        class="line-input small"
+        class="sheet-line-input small"
         name="attr_character_age"
       />
       <span>Sexe</span>
       <input
         type="text"
-        class="line-input small"
+        class="sheet-line-input small"
         name="attr_character_sex"
       />
       <span>Groupe sanguin</span>
-      <select class="line-input" name="attr_character_blood_type">
+      <select class="sheet-line-input" name="attr_character_blood_type">
         <option value="ND">n.d</option>
         <option value="O+">O+</option>
         <option value="O-">O-</option>
@@ -59,7 +59,7 @@
       <span>Taille</span>
       <input
         type="number"
-        class="line-input small"
+        class="sheet-line-input small"
         name="attr_character_height_meters"
         value="1"
         min="1"
@@ -68,7 +68,7 @@
       <p>m</p>
       <input
         type="number"
-        class="line-input small"
+        class="sheet-line-input small"
         name="attr_character_height_centimeters"
         value="75"
         min="0"
@@ -78,6 +78,30 @@
     </div>
   </div>
   <h2>Caractéristiques et Compétences</h2>
+  <table class="hp-wrapper">
+    <tbody>
+      <tr>
+        <td>
+          <input type="number" class="line-input" name="attr_current_wounds" value="0" />
+        </td>
+        <td>/</td>
+        <td>
+          <input type="number" class="line-input" name="attr_max_wounds_base" value="1" min="1" />
+        </td>
+        <td>Blessures</td>
+      </tr>
+      <tr>
+        <td>
+          <input type="number" class="line-input" name="attr_current_pain" value="0" />
+        </td>
+        <td>/</td>
+        <td>
+          <input type="number" class="line-input" name="attr_max_pain_base" value="1" min="1" />
+        </td>
+        <td>Douleur</td>
+      </tr>
+    </tbody>
+  </table>
   <div class="stats-wrapper full-width">
 
     <!-- Physical stats -->
@@ -111,7 +135,7 @@
           <td class="stat-value">
             <input
               type="number"
-              class="line-input small"
+              class="sheet-line-input small"
               value="0"
               name="attr_character_str"
             />
@@ -119,7 +143,7 @@
           <td>
             <button
               type="roll"
-              value="&{template:standard} {{roll=[[1D6 + @{character_str}]]}} {{header=Test de force}} {{confirmation=[[1D6]]}}"
+              value="&{template:standard} {{character_name=@{character_name}}} {{roll=[[?{Bonus/Malus|0} + 1D4 + @{character_str}]]}} {{header=Test de force}} {{confirmation=[[1D6]]}}"
             ></button>
           </td>
         </tr>
@@ -128,7 +152,7 @@
           <td class="stat-value">
             <input
               type="number"
-              class="line-input small"
+              class="sheet-line-input small"
               value="0"
               name="attr_character_con"
             />
@@ -136,7 +160,7 @@
           <td>
             <button
               type="roll"
-              value="&{template:standard} {{roll=[[1D6 + @{character_con}]]}} {{header=Test de constitution}} {{confirmation=[[1D6]]}}"
+              value="&{template:standard} {{character_name=@{character_name}}} {{roll=[[?{Bonus/Malus|0} + 1D4 + @{character_con}]]}} {{header=Test de constitution}} {{confirmation=[[1D6]]}}"
             ></button>
           </td>
         </tr>
@@ -145,7 +169,7 @@
           <td class="stat-value">
             <input
               type="number"
-              class="line-input small"
+              class="sheet-line-input small"
               value="0"
               name="attr_character_agi"
             />
@@ -153,7 +177,7 @@
           <td>
             <button
               type="roll"
-              value="&{template:standard} {{roll=[[1D6 + @{character_agi}]]}} {{header=Test d'agilité}} {{confirmation=[[1D6]]}}"
+              value="&{template:standard} {{character_name=@{character_name}}} {{roll=[[?{Bonus/Malus|0} + 1D4 + @{character_agi}]]}} {{header=Test d'agilité}} {{confirmation=[[1D6]]}}"
             ></button>
           </td>
         </tr>
@@ -162,7 +186,7 @@
           <td class="stat-value">
             <input
               type="number"
-              class="line-input small"
+              class="sheet-line-input small"
               value="0"
               name="attr_character_dex"
             />
@@ -170,7 +194,7 @@
           <td>
             <button
               type="roll"
-              value="&{template:standard} {{roll=[[1D6 + @{character_dex}]]}} {{header=Test de dextérité}} {{confirmation=[[1D6]]}}"
+              value="&{template:standard} {{character_name=@{character_name}}} {{roll=[[?{Bonus/Malus|0} + 1D4 + @{character_dex}]]}} {{header=Test de dextérité}} {{confirmation=[[1D6]]}}"
             ></button>
           </td>
         </tr>
@@ -185,7 +209,7 @@
               <div class="skill flex-row flex-middle">
                 <input
                   type="text"
-                  class="line-input full-width"
+                  class="sheet-line-input full-width"
                   name="attr_phy_skillname"
                   placeholder="Compétence"
                 />
@@ -196,15 +220,9 @@
                   <option value="1D10">1D10</option>
                   <option value="1D12">1D12</option>
                 </select>
-                <select name="attr_phy_skill_stat">
-                  <option value="@{character_str}">FOR</option>
-                  <option value="@{character_con}">CON</option>
-                  <option value="@{character_agi}">AGI</option>
-                  <option value="@{character_dex}">DEX</option>
-                </select>
                 <button
                   type="roll"
-                  value="&{template:standard} {{roll=[[@{phy_skill_dice} + @{phy_skill_stat}]]}} {{header=@{phy_skillname}}}"
+                  value="&{template:standard} {{character_name=@{character_name}}} {{roll=[[?{Bonus/Malus|0} + @{phy_skill_dice} + ?{Caractéristique|Force, @{character_str}|Constitution, @{character_con}|Agilité, @{character_agi}|Dextérité, @{character_dex}}]]}} {{header=@{phy_skillname}}}"
                 ></button>
               </div>
             </fieldset>
@@ -246,7 +264,7 @@
           <td class="stat-value">
             <input
               type="number"
-              class="line-input small"
+              class="sheet-line-input small"
               value="0"
               name="attr_character_int"
             />
@@ -254,7 +272,7 @@
           <td>
             <button
               type="roll"
-              value="&{template:standard} {{roll=[[1D6 + @{character_int}]]}} {{header=Test d'intellect}} {{confirmation=[[1D6]]}}"
+              value="&{template:standard} {{character_name=@{character_name}}} {{roll=[[?{Bonus/Malus|0} + 1D4 + @{character_int}]]}} {{header=Test d'intellect}} {{confirmation=[[1D6]]}}"
             ></button>
           </td>
         </tr>
@@ -263,7 +281,7 @@
           <td class="stat-value">
             <input
               type="number"
-              class="line-input small"
+              class="sheet-line-input small"
               value="0"
               name="attr_character_kno"
             />
@@ -271,7 +289,7 @@
           <td>
             <button
               type="roll"
-              value="&{template:standard} {{roll=[[1D6 + @{character_kno}]]}} {{header=Test de savoir}} {{confirmation=[[1D6]]}}"
+              value="&{template:standard} {{character_name=@{character_name}}} {{roll=[[?{Bonus/Malus|0} + 1D4 + @{character_kno}]]}} {{header=Test de savoir}} {{confirmation=[[1D6]]}}"
             ></button>
           </td>
         </tr>
@@ -280,7 +298,7 @@
           <td class="stat-value">
             <input
               type="number"
-              class="line-input small"
+              class="sheet-line-input small"
               value="0"
               name="attr_character_acu"
             />
@@ -288,7 +306,7 @@
           <td>
             <button
               type="roll"
-              value="&{template:standard} {{roll=[[1D6 + @{character_acu}]]}} {{header=Test d'acuité}} {{confirmation=[[1D6]]}}"
+              value="&{template:standard} {{character_name=@{character_name}}} {{roll=[[?{Bonus/Malus|0} + 1D4 + @{character_acu}]]}} {{header=Test d'acuité}} {{confirmation=[[1D6]]}}"
             ></button>
           </td>
         </tr>
@@ -297,7 +315,7 @@
           <td class="stat-value">
             <input
               type="number"
-              class="line-input small"
+              class="sheet-line-input small"
               value="0"
               name="attr_character_cou"
             />
@@ -305,7 +323,7 @@
           <td>
             <button
               type="roll"
-              value="&{template:standard} {{roll=[[1D6 + @{character_cou}]]}} {{header=Test de courage}} {{confirmation=[[1D6]]}}"
+              value="&{template:standard} {{character_name=@{character_name}}} {{roll=[[?{Bonus/Malus|0} + 1D4 + @{character_cou}]]}} {{header=Test de courage}} {{confirmation=[[1D6]]}}"
             ></button>
           </td>
         </tr>
@@ -320,7 +338,7 @@
               <div class="skill flex-row flex-middle">
                 <input
                   type="text"
-                  class="line-input full-width"
+                  class="sheet-line-input full-width"
                   name="attr_men_skillname"
                   placeholder="Compétence"
                 />
@@ -331,15 +349,9 @@
                   <option value="1D10">1D10</option>
                   <option value="1D12">1D12</option>
                 </select>
-                <select name="attr_men_skill_stat">
-                  <option value="@{character_int}">INT</option>
-                  <option value="@{character_kno}">SAV</option>
-                  <option value="@{character_acu}">ACU</option>
-                  <option value="@{character_cou}">COU</option>
-                </select>
                 <button
                   type="roll"
-                  value="&{template:standard} {{roll=[[@{men_skill_dice} + @{men_skill_stat}]]}} {{header=@{men_skillname}}}"
+                  value="&{template:standard} {{character_name=@{character_name}}} {{roll=[[?{Bonus/Malus|0} + @{men_skill_dice} + ?{Caractéristique|Intellect, @{character_int}|Savoir, @{character_kno}|Acuité, @{character_acu}|Courage, @{character_cou}}]]}} {{header=@{men_skillname}}}"
                 ></button>
               </div>
             </fieldset>
@@ -379,7 +391,7 @@
           <td class="stat-value">
             <input
               type="number"
-              class="line-input small"
+              class="sheet-line-input small"
               value="0"
               name="attr_character_pre"
             />
@@ -387,7 +399,7 @@
           <td>
             <button
               type="roll"
-              value="&{template:standard} {{roll=[[1D6 + @{character_pre}]]}} {{header=Test de présence}} {{confirmation=[[1D6]]}}"
+              value="&{template:standard} {{character_name=@{character_name}}} {{roll=[[?{Bonus/Malus|0} + 1D4 + @{character_pre}]]}} {{header=Test de présence}} {{confirmation=[[1D6]]}}"
             ></button>
           </td>
         </tr>
@@ -396,7 +408,7 @@
           <td class="stat-value">
             <input
               type="number"
-              class="line-input small"
+              class="sheet-line-input small"
               value="0"
               name="attr_character_sed"
             />
@@ -404,7 +416,7 @@
           <td>
             <button
               type="roll"
-              value="&{template:standard} {{roll=[[1D6 + @{character_sed}]]}} {{header=Test de séduction}} {{confirmation=[[1D6]]}}"
+              value="&{template:standard} {{character_name=@{character_name}}} {{roll=[[?{Bonus/Malus|0} + 1D4 + @{character_sed}]]}} {{header=Test de séduction}} {{confirmation=[[1D6]]}}"
             ></button>
           </td>
         </tr>
@@ -413,7 +425,7 @@
           <td class="stat-value">
             <input
               type="number"
-              class="line-input small"
+              class="sheet-line-input small"
               value="0"
               name="attr_character_spe"
             />
@@ -421,7 +433,7 @@
           <td>
             <button
               type="roll"
-              value="&{template:standard} {{roll=[[1D6 + @{character_spe}]]}} {{header=Test d'éloquence}} {{confirmation=[[1D6]]}}"
+              value="&{template:standard} {{character_name=@{character_name}}} {{roll=[[?{Bonus/Malus|0} + 1D4 + @{character_spe}]]}} {{header=Test d'éloquence}} {{confirmation=[[1D6]]}}"
             ></button>
           </td>
         </tr>
@@ -430,7 +442,7 @@
           <td class="stat-value">
             <input
               type="number"
-              class="line-input small"
+              class="sheet-line-input small"
               value="0"
               name="attr_character_emp"
             />
@@ -438,7 +450,7 @@
           <td>
             <button
               type="roll"
-              value="&{template:standard} {{roll=[[1D6 + @{character_emp}]]}} {{header=Test d'empathie}} {{confirmation=[[1D6]]}}"
+              value="&{template:standard} {{character_name=@{character_name}}} {{roll=[[?{Bonus/Malus|0} + 1D4 + @{character_emp}]]}} {{header=Test d'empathie}} {{confirmation=[[1D6]]}}"
             ></button>
           </td>
         </tr>
@@ -453,7 +465,7 @@
               <div class="skill flex-row flex-middle">
                 <input
                   type="text"
-                  class="line-input full-width"
+                  class="sheet-line-input full-width"
                   name="attr_soc_skillname"
                   placeholder="Compétence"
                 />
@@ -464,15 +476,9 @@
                   <option value="1D10">1D10</option>
                   <option value="1D12">1D12</option>
                 </select>
-                <select name="attr_soc_skill_stat">
-                  <option value="@{character_pre}">PRE</option>
-                  <option value="@{character_sed}">SED</option>
-                  <option value="@{character_spe}">ELO</option>
-                  <option value="@{character_emp}">EMP</option>
-                </select>
                 <button
                   type="roll"
-                  value="&{template:standard} {{roll=[[@{soc_skill_dice} + @{soc_skill_stat}]]}} {{header=@{soc_skillname}}}"
+                  value="&{template:standard} {{character_name=@{character_name}}} {{roll=[[?{Bonus/Malus|0} + @{soc_skill_dice} + ?{Caractéristique|Présence, @{character_pre}|Séduction, @{character_sed}|Éloquence, @{character_spe}|Empathie, @{character_emp}}]]}} {{header=@{soc_skillname}}}"
                 ></button>
               </div>
             </fieldset>
@@ -486,7 +492,7 @@
     <div class="trait flex-col flex-middle">
       <input
         type="text"
-        class="line-input full-width"
+        class="sheet-line-input full-width"
         name="attr_trait_name"
         placeholder="Nom du trait"
       />
@@ -518,7 +524,7 @@
         <div class="currency-wrapper full-width flex-row flex-middle">
           <input
             type="number"
-            class="line-input"
+            class="sheet-line-input"
             name="attr_usd_amount"
             value="0"
             min="0"
@@ -543,7 +549,7 @@
         <div class="currency-wrapper full-width flex-row flex-middle">
           <input
             type="number"
-            class="line-input"
+            class="sheet-line-input"
             name="attr_eur_amount"
             value="0"
             min="0"
@@ -568,7 +574,7 @@
         <div class="currency-wrapper full-width flex-row flex-middle">
           <input
             type="number"
-            class="line-input"
+            class="sheet-line-input"
             name="attr_gbp_amount"
             value="0"
             min="0"
@@ -593,7 +599,7 @@
         <div class="currency-wrapper full-width flex-row flex-middle">
           <input
             type="number"
-            class="line-input"
+            class="sheet-line-input"
             name="attr_jpy_amount"
             value="0"
             min="0"
@@ -618,7 +624,7 @@
         <div class="currency-wrapper full-width flex-row flex-middle">
           <input
             type="number"
-            class="line-input"
+            class="sheet-line-input"
             name="attr_cny_amount"
             value="0"
             min="0"
@@ -644,7 +650,7 @@
           <div class="currency-wrapper full-width flex-row flex-middle">
             <input
               type="number"
-              class="line-input"
+              class="sheet-line-input"
               name="attr_currency_amount"
               value="0"
               min="0"
@@ -767,7 +773,7 @@
                 <th colspan="7" class="weapon-name">
                   <input
                     type="text"
-                    class="line-input"
+                    class="sheet-line-input"
                     name="attr_weapon_name"
                   />
                 </th>
@@ -783,7 +789,7 @@
                 <th rowspan="2" colspan="4" class="weapon-name">
                   <input
                     type="text"
-                    class="line-input"
+                    class="sheet-line-input"
                     name="attr_weapon_name"
                   />
                 </th>
@@ -798,6 +804,7 @@
                     class="firing-rate"
                     name="attr_gun_firing_rate_single"
                     value="0"
+                    min="0"
                   />
                 </th>
                 <th>
@@ -806,6 +813,7 @@
                     class="firing-rate"
                     name="attr_gun_firing_rate_semi"
                     value="0"
+                    min="0"
                   />
                 </th>
                 <th>
@@ -814,6 +822,7 @@
                     class="firing-rate"
                     name="attr_gun_firing_rate_full"
                     value="0"
+                    min="0"
                   />
                 </th>
               </tr>
@@ -896,25 +905,52 @@
                       />
                       <span>m</span>
                     </div>
+                    <input type="hidden" class="sheet-weapon-firing-control" name="attr_gun_firing_rate_single" />
+                    <input type="hidden" class="sheet-weapon-firing-control" name="attr_gun_firing_rate_semi" />
+                    <input type="hidden" class="sheet-weapon-firing-control" name="attr_gun_firing_rate_full" />
                     <div class="sheet-gunshot-rolls sheet-flex-col sheet-flex-middle">
-                      <button
-                        type="roll"
-                        title="Tir seul"
-                        class="sheet-gunshot-button sheet-single-shot"
-                        value="&{template:gunshot} {{weapon_name=@{weapon_name}}} {{firing_mode=Tir seul}} {{attack_amount=[[@{gun_firing_rate_single}]]}} {{damage=[[@{gun_damage_short}]]}} {{penetration=[[@{gun_pen_short}]]}}"
-                      ></button>
-                      <button
-                        type="roll"
-                        title="Rafale semi-automatique"
-                        class="sheet-gunshot-button sheet-semi-auto"
-                        value="&{template:gunshot} {{weapon_name=@{weapon_name}}} {{firing_mode=Semi-auto}} {{attack_amount=[[@{gun_firing_rate_semi}]]}} {{damage=[[@{gun_damage_short}]]}} {{penetration=[[@{gun_pen_short}]]}}"
-                      ></button>
-                      <button
-                        type="roll"
-                        title="Rafale automatique"
-                        class="sheet-gunshot-button sheet-full-auto"
-                        value="&{template:gunshot} {{weapon_name=@{weapon_name}}} {{firing_mode=Automatique}} {{attack_amount=[[@{gun_firing_rate_full}]]}} {{damage=[[@{gun_damage_short}]]}} {{penetration=[[@{gun_pen_short}]]}}"
-                      ></button>
+                      <div>
+                        <button
+                          type="roll"
+                          title="Tir seul"
+                          class="sheet-gunshot-button sheet-single-shot"
+                          value="&{template:gunshot} {{character_name=@{character_name}}} {{weapon_name=@{weapon_name}}} {{firing_mode=Tir seul}} {{attack_amount=[[?{Nombre de tirs|@{gun_firing_rate_single}}]]}} {{max_attack_amount=[[@{gun_firing_rate_single}]]}} {{max_attack_amount_plus_one=[[@{gun_firing_rate_single} + 1]]}} {{damage=[[@{gun_damage_short}]]}} {{penetration=[[@{gun_pen_short}]]}} {{shock=[[@{gun_shock_short}]]}}"
+                        ></button>
+                        <button
+                          disabled
+                          type="roll"
+                          title="Tir seul"
+                          class="sheet-gunshot-button sheet-single-shot"
+                        ></button>
+                      </div>
+                      <div>
+                        <button
+                          type="roll"
+                          title="Rafale semi-automatique"
+                          class="sheet-gunshot-button sheet-semi-auto"
+                          value="&{template:gunshot} {{character_name=@{character_name}}} {{weapon_name=@{weapon_name}}} {{firing_mode=Semi-auto}} {{attack_amount=[[?{Nombre de tirs|@{gun_firing_rate_semi}}]]}} {{max_attack_amount=[[@{gun_firing_rate_semi}]]}} {{max_attack_amount_plus_one=[[@{gun_firing_rate_semi} + 1]]}} {{damage=[[@{gun_damage_short}]]}} {{penetration=[[@{gun_pen_short}]]}} {{shock=[[@{gun_shock_short}]]}}"
+                        ></button>
+                        <button
+                          disabled
+                          type="roll"
+                          title="Rafale semi-automatique"
+                          class="sheet-gunshot-button sheet-semi-auto"
+                        ></button>
+                      </div>
+                      <div>
+                        <button
+                          type="roll"
+                          title="Rafale automatique"
+                          class="sheet-gunshot-button sheet-full-auto"
+                          value="&{template:gunshot} {{character_name=@{character_name}}} {{weapon_name=@{weapon_name}}} {{firing_mode=Automatique}} {{attack_amount=[[?{Nombre de tirs|@{gun_firing_rate_full}}]]}} {{max_attack_amount=[[@{gun_firing_rate_full}]]}} {{max_attack_amount_plus_one=[[@{gun_firing_rate_full} + 1]]}} {{damage=[[@{gun_damage_short}]]}} {{penetration=[[@{gun_pen_short}]]}} {{shock=[[@{gun_shock_short}]]}}"
+                        ></button>
+                        <button
+                          disabled
+                          type="roll"
+                          title="Rafale automatique"
+                          class="sheet-gunshot-button sheet-full-auto"
+                        ></button>
+                      </div>
                     </div>
                   </div>
                 </td>
@@ -929,25 +965,52 @@
                       />
                       <span>m</span>
                     </div>
+                    <input type="hidden" class="sheet-weapon-firing-control" name="attr_gun_firing_rate_single" />
+                    <input type="hidden" class="sheet-weapon-firing-control" name="attr_gun_firing_rate_semi" />
+                    <input type="hidden" class="sheet-weapon-firing-control" name="attr_gun_firing_rate_full" />
                     <div class="sheet-gunshot-rolls sheet-flex-col sheet-flex-middle">
-                      <button
-                        type="roll"
-                        title="Tir seul"
-                        class="sheet-gunshot-button sheet-single-shot"
-                        value="&{template:gunshot} {{weapon_name=@{weapon_name}}} {{firing_mode=Tir seul}} {{attack_amount=[[@{gun_firing_rate_single}]]}} {{damage=[[@{gun_damage_medium}]]}} {{penetration=[[@{gun_pen_medium}]]}}"
-                      ></button>
-                      <button
-                        type="roll"
-                        title="Rafale semi-automatique"
-                        class="sheet-gunshot-button sheet-semi-auto"
-                        value="&{template:gunshot} {{weapon_name=@{weapon_name}}} {{firing_mode=Semi-auto}} {{attack_amount=[[@{gun_firing_rate_semi}]]}} {{damage=[[@{gun_damage_medium}]]}} {{penetration=[[@{gun_pen_medium}]]}}"
-                      ></button>
-                      <button
-                        type="roll"
-                        title="Rafale automatique"
-                        class="sheet-gunshot-button sheet-full-auto"
-                        value="&{template:gunshot} {{weapon_name=@{weapon_name}}} {{firing_mode=Automatique}} {{attack_amount=[[@{gun_firing_rate_full}]]}} {{damage=[[@{gun_damage_medium}]]}} {{penetration=[[@{gun_pen_medium}]]}}"
-                      ></button>
+                      <div>
+                        <button
+                          type="roll"
+                          title="Tir seul"
+                          class="sheet-gunshot-button sheet-single-shot"
+                          value="&{template:gunshot} {{character_name=@{character_name}}} {{weapon_name=@{weapon_name}}} {{firing_mode=Tir seul}} {{attack_amount=[[?{Nombre de tirs|@{gun_firing_rate_single}}]]}} {{max_attack_amount=[[@{gun_firing_rate_single}]]}} {{max_attack_amount_plus_one=[[@{gun_firing_rate_single} + 1]]}} {{damage=[[@{gun_damage_medium}]]}} {{penetration=[[@{gun_pen_medium}]]}} {{shock=[[@{gun_shock_medium}]]}}"
+                        ></button>
+                        <button
+                          disabled
+                          type="roll"
+                          title="Tir seul"
+                          class="sheet-gunshot-button sheet-single-shot"
+                        ></button>
+                      </div>
+                      <div>
+                        <button
+                          type="roll"
+                          title="Rafale semi-automatique"
+                          class="sheet-gunshot-button sheet-semi-auto"
+                          value="&{template:gunshot} {{character_name=@{character_name}}} {{weapon_name=@{weapon_name}}} {{firing_mode=Semi-auto}} {{attack_amount=[[?{Nombre de tirs|@{gun_firing_rate_semi}}]]}} {{max_attack_amount=[[@{gun_firing_rate_semi}]]}} {{max_attack_amount_plus_one=[[@{gun_firing_rate_semi} + 1]]}} {{damage=[[@{gun_damage_medium}]]}} {{penetration=[[@{gun_pen_medium}]]}} {{shock=[[@{gun_shock_medium}]]}}"
+                        ></button>
+                        <button
+                          disabled
+                          type="roll"
+                          title="Rafale semi-automatique"
+                          class="sheet-gunshot-button sheet-semi-auto"
+                        ></button>
+                      </div>
+                      <div>
+                        <button
+                          type="roll"
+                          title="Rafale automatique"
+                          class="sheet-gunshot-button sheet-full-auto"
+                          value="&{template:gunshot} {{character_name=@{character_name}}} {{weapon_name=@{weapon_name}}} {{firing_mode=Automatique}} {{attack_amount=[[?{Nombre de tirs|@{gun_firing_rate_full}}]]}} {{max_attack_amount=[[@{gun_firing_rate_full}]]}} {{max_attack_amount_plus_one=[[@{gun_firing_rate_full} + 1]]}} {{damage=[[@{gun_damage_medium}]]}} {{penetration=[[@{gun_pen_medium}]]}} {{shock=[[@{gun_shock_medium}]]}}"
+                        ></button>
+                        <button
+                          disabled
+                          type="roll"
+                          title="Rafale automatique"
+                          class="sheet-gunshot-button sheet-full-auto"
+                        ></button>
+                      </div>
                     </div>
                   </div>
                 </td>
@@ -962,75 +1025,186 @@
                       />
                       <span>m</span>
                     </div>
+                    <input type="hidden" class="sheet-weapon-firing-control" name="attr_gun_firing_rate_single" />
+                    <input type="hidden" class="sheet-weapon-firing-control" name="attr_gun_firing_rate_semi" />
+                    <input type="hidden" class="sheet-weapon-firing-control" name="attr_gun_firing_rate_full" />
                     <div class="sheet-gunshot-rolls sheet-flex-col sheet-flex-middle">
-                      <button
-                        type="roll"
-                        title="Tir seul"
-                        class="sheet-gunshot-button sheet-single-shot"
-                        value="&{template:gunshot} {{weapon_name=@{weapon_name}}} {{firing_mode=Tir seul}} {{attack_amount=[[@{gun_firing_rate_single}]]}} {{damage=[[@{gun_damage_long}]]}} {{penetration=[[@{gun_pen_long}]]}}"
-                      ></button>
-                      <button
-                        type="roll"
-                        title="Rafale semi-automatique"
-                        class="sheet-gunshot-button sheet-semi-auto"
-                        value="&{template:gunshot} {{weapon_name=@{weapon_name}}} {{firing_mode=Semi-auto}} {{attack_amount=[[@{gun_firing_rate_semi}]]}} {{damage=[[@{gun_damage_long}]]}} {{penetration=[[@{gun_pen_long}]]}}"
-                      ></button>
-                      <button
-                        type="roll"
-                        title="Rafale automatique"
-                        class="sheet-gunshot-button sheet-full-auto"
-                        value="&{template:gunshot} {{weapon_name=@{weapon_name}}} {{firing_mode=Automatique}} {{attack_amount=[[@{gun_firing_rate_full}]]}} {{damage=[[@{gun_damage_long}]]}} {{penetration=[[@{gun_pen_long}]]}}"
-                      ></button>
+                      <div>
+                        <button
+                          type="roll"
+                          title="Tir seul"
+                          class="sheet-gunshot-button sheet-single-shot"
+                          value="&{template:gunshot} {{character_name=@{character_name}}} {{weapon_name=@{weapon_name}}} {{firing_mode=Tir seul}} {{attack_amount=[[?{Nombre de tirs|@{gun_firing_rate_single}}]]}} {{max_attack_amount=[[@{gun_firing_rate_single}]]}} {{max_attack_amount_plus_one=[[@{gun_firing_rate_single} + 1]]}} {{damage=[[@{gun_damage_long}]]}} {{penetration=[[@{gun_pen_long}]]}} {{shock=[[@{gun_shock_long}]]}}"
+                        ></button>
+                        <button
+                          disabled
+                          type="roll"
+                          title="Tir seul"
+                          class="sheet-gunshot-button sheet-single-shot"
+                        ></button>
+                      </div>
+                      <div>
+                        <button
+                          type="roll"
+                          title="Rafale semi-automatique"
+                          class="sheet-gunshot-button sheet-semi-auto"
+                          value="&{template:gunshot} {{character_name=@{character_name}}} {{weapon_name=@{weapon_name}}} {{firing_mode=Semi-auto}} {{attack_amount=[[?{Nombre de tirs|@{gun_firing_rate_semi}}]]}} {{max_attack_amount=[[@{gun_firing_rate_semi}]]}} {{max_attack_amount_plus_one=[[@{gun_firing_rate_semi} + 1]]}} {{damage=[[@{gun_damage_long}]]}} {{penetration=[[@{gun_pen_long}]]}} {{shock=[[@{gun_shock_long}]]}}"
+                        ></button>
+                        <button
+                          disabled
+                          type="roll"
+                          title="Rafale semi-automatique"
+                          class="sheet-gunshot-button sheet-semi-auto"
+                        ></button>
+                      </div>
+                      <div>
+                        <button
+                          type="roll"
+                          title="Rafale automatique"
+                          class="sheet-gunshot-button sheet-full-auto"
+                          value="&{template:gunshot} {{character_name=@{character_name}}} {{weapon_name=@{weapon_name}}} {{firing_mode=Automatique}} {{attack_amount=[[?{Nombre de tirs|@{gun_firing_rate_full}}]]}} {{max_attack_amount=[[@{gun_firing_rate_full}]]}} {{max_attack_amount_plus_one=[[@{gun_firing_rate_full} + 1]]}} {{damage=[[@{gun_damage_long}]]}} {{penetration=[[@{gun_pen_long}]]}} {{shock=[[@{gun_shock_long}]]}}"
+                        ></button>
+                        <button
+                          disabled
+                          type="roll"
+                          title="Rafale automatique"
+                          class="sheet-gunshot-button sheet-full-auto"
+                        ></button>
+                      </div>
                     </div>
                   </div>
                 </td>
               </tr>
               <tr>
-                <td class="damage-col">
-                  <input
-                    type="text"
-                    name="attr_gun_damage_short"
-                    value="1D6"
-                  />
-                  <span>P</span>
-                  <input
-                    type="number"
-                    name="attr_gun_pen_short"
-                    value="0"
-                  />
+                <td class="sheet-damage-col">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th><span>D</span></th>
+                        <th><span>C</span></th>
+                        <th><span>P</span></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <input
+                            type="number"
+                            name="attr_gun_damage_short"
+                            title="Dégâts"
+                            value="0"
+                            min="0"
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            name="attr_gun_shock_short"
+                            title="Choc"
+                            value="0"
+                            min="0"
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            name="attr_gun_pen_short"
+                            title="Pénétration"
+                            value="0"
+                          />
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </td>
-                <td class="damage-col">
-                  <input
-                    type="text"
-                    name="attr_gun_damage_medium"
-                    value="1D4"
-                  />
-                  <span>P</span>
-                  <input
-                    type="number"
-                    name="attr_gun_pen_medium"
-                    value="0"
-                  />
+                <td class="sheet-damage-col">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th><span>D</span></th>
+                        <th><span>C</span></th>
+                        <th><span>P</span></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <input
+                            type="number"
+                            name="attr_gun_damage_medium"
+                            title="Dégâts"
+                            value="0"
+                            min="0"
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            name="attr_gun_shock_medium"
+                            title="Choc"
+                            value="0"
+                            min="0"
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            name="attr_gun_pen_medium"
+                            title="Pénétration"
+                            value="0"
+                          />
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </td>
-                <td class="damage-col">
-                  <input
-                    type="text"
-                    name="attr_gun_damage_long"
-                    value="1D4-1"
-                  />
-                  <span>P</span>
-                  <input
-                    type="number"
-                    name="attr_gun_pen_long"
-                    value="0"
-                  />
+                <td class="sheet-damage-col">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th><span>D</span></th>
+                        <th><span>C</span></th>
+                        <th><span>P</span></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <input
+                            type="number"
+                            name="attr_gun_damage_long"
+                            title="Dégâts"
+                            value="0"
+                            min="0"
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            name="attr_gun_shock_long"
+                            title="Choc"
+                            value="0"
+                            min="0"
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            name="attr_gun_pen_long"
+                            title="Pénétration"
+                            value="0"
+                          />
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </td>
               </tr>
               <tr>
                 <td colspan="7" class="weapon-mods">
                   <input
                     type="text"
-                    class="line-input"
+                    class="sheet-line-input"
                     name="attr_weapon_mods"
                     placeholder="Mods"
                   />
@@ -1042,12 +1216,92 @@
       </div>
     </div>
   </fieldset>
+  <h2>Protections</h2>
+  <fieldset class="repeating_armors">
+    <div class="sheet-armor">
+      <div class="sheet-full-width sheet-armor-details">
+        <input
+          type="text"
+          class="sheet-line-input sheet-full-width"
+          name="attr_armor_name"
+          placeholder="Nom de la protection"
+        />
+      </div>
+      <div class="sheet-full-width sheet-flex-row sheet-flex-middle">
+        <label>
+          <span>Tête</span>
+          <input
+            type="number"
+            class="sheet-line-input"
+            name="attr_armor_defense_head"
+            value="0"
+          />
+        </label>
+        <label>
+          <span>Corps</span>
+          <input
+            type="number"
+            class="sheet-line-input"
+            name="attr_armor_defense_body"
+            value="0"
+          />
+        </label>
+        <label>
+          <span>Bras gauche</span>
+          <input
+            type="number"
+            class="sheet-line-input"
+            name="attr_armor_defense_arm_left"
+            value="0"
+          />
+        </label>
+        <label>
+          <span>Bras droit</span>
+          <input
+            type="number"
+            class="sheet-line-input"
+            name="attr_armor_defense_arm_right"
+            value="0"
+          />
+        </label>
+        <label>
+          <span>Jambe gauche</span>
+          <input
+            type="number"
+            class="sheet-line-input"
+            name="attr_armor_defense_leg_left"
+            value="0"
+          />
+        </label>
+        <label>
+          <span>Jambe droite</span>
+          <input
+            type="number"
+            class="sheet-line-input"
+            name="attr_armor_defense_leg_right"
+            value="0"
+          />
+        </label>
+      </div>
+      <div class="sheet-full-width sheet-armor-mods sheet-flex-row sheet-flex-middle">
+        <input
+          type="text"
+          class="sheet-line-input sheet-full-width"
+          name="attr_armor_mods"
+          placeholder="Mods"
+        />
+      </div>
+    </div>
+  </fieldset>
 </div>
 
 <!-- Standard Rolltemplate -->
 <rolltemplate class="sheet-rolltemplate-standard">
   <table>
     <thead>
+      <tr>
+        <th class="sheet-roll-charname">{{character_name}}</th>
+      </tr>
       <tr>
         <th class="sheet-roll-title">{{header}}</th>
       </tr>
@@ -1068,49 +1322,96 @@
         {{#confirmation}}
           {{#rollWasCrit() confirmation}}
             <tr>
-              <td class="sheet-critical">CRITIQUE !</td>
+              <td class="sheet-critical">RÉUSSITE CRITIQUE :)</td>
             </tr>
           {{/rollWasCrit() confirmation}}
         {{/confirmation}}
       {{/rollWasCrit() roll}}
+      {{#rollWasFumble() roll}}
+        {{#confirmation}}
+          {{#rollWasFumble() confirmation}}
+            <tr>
+              <td class="sheet-critical">ÉCHEC CRITIQUE :(</td>
+            </tr>
+          {{/rollWasFumble() confirmation}}
+        {{/confirmation}}
+      {{/rollWasFumble() roll}}
     </tbody>
   </table>
 </rolltemplate>
 
 <!-- Gunshot Rolltemplate -->
 <rolltemplate class="sheet-rolltemplate-gunshot">
-  <table>
-    <thead>
-      <tr>
-        <th colspan="2" class="sheet-roll-attack-name">{{weapon_name}}</th>
-      </tr>
-      <tr>
-        <th colspan="2" class="sheet-roll-attack-amount">{{firing_mode}} ({{attack_amount}} tir{{#rollGreater() attack_amount 1}}s{{/rollGreater() attack_amount 1}} max)</th>
-      </tr>
-      <tr>
-        <th colspan="2"><hr /></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr class="sheet-damage-roll">
-        <td class="sheet-result-title">Dégâts</td>
-        <td>
-          {{damage}}
-          <div class="sheet-result-icon sheet-damage"></div>
-        </td>
-        <td>
-          
-        </td>
-      </tr>
-      <tr class="sheet-penetration-roll">
-        <td class="sheet-result-title sheet-penetration">Pénétration</td>
-        <td>
-          {{penetration}}
-          <div class="sheet-result-icon sheet-penetration"></div>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  {{#rollGreater() attack_amount 0}}
+    <table>
+      <thead>
+        <tr>
+          <th colspan="2" class="sheet-roll-charname">{{character_name}}</th>
+        </tr>
+        <tr>
+          <th colspan="2" class="sheet-roll-attack-name">{{weapon_name}}, {{firing_mode}}</th>
+        </tr>
+        <tr>
+          <th colspan="2"><hr /></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="sheet-damage-roll">
+          <td class="sheet-result-title">
+            <div class="sheet-result-icon sheet-damage"></div>
+            Dégâts
+          </td>
+          <td>
+            {{#rollGreater() attack_amount max_attack_amount}}
+              {{damage}}x<span class="sheet-attack-amount">{{max_attack_amount}}</span>
+            {{/rollGreater() attack_amount max_attack_amount}}
+            {{#rollLess() attack_amount max_attack_amount_plus_one}}
+              {{damage}}x<span class="sheet-attack-amount">{{attack_amount}}</span>
+            {{/rollLess() attack_amount max_attack_amount_plus_one}}
+          </td>
+        </tr>
+        <tr class="sheet-shock-roll">
+          <td class="sheet-result-title sheet-shock">
+            <div class="sheet-result-icon sheet-shock"></div>
+            Choc
+          </td>
+          <td>
+            {{#rollGreater() attack_amount max_attack_amount}}
+              {{shock}}x<span class="sheet-attack-amount">{{max_attack_amount}}</span>
+            {{/rollGreater() attack_amount max_attack_amount}}
+            {{#rollLess() attack_amount max_attack_amount_plus_one}}
+              {{shock}}x<span class="sheet-attack-amount">{{attack_amount}}</span>
+            {{/rollLess() attack_amount max_attack_amount_plus_one}}
+          </td>
+        </tr>
+        <tr class="sheet-penetration-roll">
+          <td class="sheet-result-title sheet-penetration">
+            <div class="sheet-result-icon sheet-penetration"></div>
+            Pénétration
+          </td>
+          <td>
+            {{penetration}}
+          </td>
+        </tr>
+        {{#rollGreater() attack_amount max_attack_amount}}
+          <tr>
+            <td colspan="2">
+              <div class="sheet-player-fail">
+                Soldat, avec un <strong>{{weapon_name}}</strong>, en <strong>{{firing_mode}}</strong>, vous pouvez tirer au maximum {{max_attack_amount}} balle{{#rollGreater() max_attack_amount 1}}s{{/rollGreater() max_attack_amount 1}}, et vous avez tenté de briser les règles en tirant {{attack_amount}} balle{{#rollGreater() attack_amount 1}}s{{/rollGreater() attack_amount 1}} ! Cessez vos âneries ! Heureusement que je suis là pour vous empêcher de tricher...
+              </div>
+              <div class="sheet-player-fail-caption">Sergent Johnson</div>
+            </td>
+          </tr>
+        {{/rollGreater() attack_amount max_attack_amount}}
+      </tbody>
+    </table>
+  {{/rollGreater() attack_amount 0}}
+  {{#rollLess() attack_amount 1}}
+    <div class="sheet-player-fail">
+      Soldat <strong>{{character_name}}</strong>, quand on tire sur un ennemi, on s'assure de tirer au moins <strong>1</strong> balle ou plus !
+    </div>
+    <div class="sheet-player-fail-caption">Sergent Johnson</div>
+  {{/rollLess() attack_amount 1}}
 </rolltemplate>
 
 <script type="text/worker">
@@ -1633,73 +1934,100 @@
 
   var ammunitions = {
     "22lr": {
-      damage_short: "1D6",
-      damage_medium: "1D4",
-      damage_long: "1D4-1",
+      damage_short: 2,
+      damage_medium: 1,
+      damage_long: 1,
+      shock_short: 0,
+      shock_medium: 0,
+      shock_long: 0,
       pen_short: 0,
       pen_medium: 0,
       pen_long: 0
     },
     "9mm": {
-      damage_short: "1D6+1",
-      damage_medium: "1D6",
-      damage_long: "1D4",
+      damage_short: 3,
+      damage_medium: 2,
+      damage_long: 1,
+      shock_short: 0,
+      shock_medium: 0,
+      shock_long: 0,
       pen_short: 1,
       pen_medium: 0,
       pen_long: 0
     },
     "45acp": {
-      damage_short: "1D8",
-      damage_medium: "1D4",
-      damage_long: "1D4-1",
+      damage_short: 3,
+      damage_medium: 2,
+      damage_long: 1,
+      shock_short: 1,
+      shock_medium: 0,
+      shock_long: 0,
       pen_short: 0,
       pen_medium: 0,
       pen_long: 0
     },
     "357mag": {
-      damage_short: "1D8+1",
-      damage_medium: "1D6",
-      damage_long: "1D4",
+      damage_short: 4,
+      damage_medium: 3,
+      damage_long: 2,
+      shock_short: 2,
+      shock_medium: 1,
+      shock_long: 0,
       pen_short: 1,
       pen_medium: 1,
       pen_long: 0
     },
     "44mag": {
-      damage_short: "1D10+1",
-      damage_medium: "1D6",
-      damage_long: "1D4",
+      damage_short: 4,
+      damage_medium: 3,
+      damage_long: 2,
+      shock_short: 3,
+      shock_medium: 2,
+      shock_long: 1,
       pen_short: 2,
       pen_medium: 1,
       pen_long: 0
     },
     "556x45": {
-      damage_short: "1D8+1",
-      damage_medium: "1D8",
-      damage_long: "1D6",
+      damage_short: 4,
+      damage_medium: 3,
+      damage_long: 3,
+      shock_short: 1,
+      shock_medium: 1,
+      shock_long: 1,
       pen_short: 3,
       pen_medium: 2,
       pen_long: 2
     },
     "762x39": {
-      damage_short: "1D10+1",
-      damage_medium: "1D8",
-      damage_long: "1D6-1",
+      damage_short: 4,
+      damage_medium: 3,
+      damage_long: 2,
+      shock_short: 2,
+      shock_medium: 2,
+      shock_long: 1,
       pen_short: 3,
       pen_medium: 2,
       pen_long: 1
     },
     "762x51": {
-      damage_short: "1D10",
-      damage_medium: "1D10",
-      damage_long: "1D8",
+      damage_short: 5,
+      damage_medium: 4,
+      damage_long: 3,
+      shock_short: 1,
+      shock_medium: 1,
+      shock_long: 1,
       pen_short: 3,
       pen_medium: 3,
       pen_long: 2
     },
     "12g": {
-      damage_short: "1D12",
-      damage_medium: "1D6",
-      damage_long: "1D4-1",
+      damage_short: 5,
+      damage_medium: 2,
+      damage_long: 1,
+      shock_short: 3,
+      shock_medium: 0,
+      shock_long: 0,
       pen_short: 1,
       pen_medium: 0,
       pen_long: 0
@@ -1827,6 +2155,9 @@
         gun_damage_short: ammoStat.damage_short,
         gun_damage_medium: ammoStat.damage_medium,
         gun_damage_long: ammoStat.damage_long,
+        gun_shock_short: ammoStat.shock_short,
+        gun_shock_medium: ammoStat.shock_medium,
+        gun_shock_long: ammoStat.shock_long,
         gun_pen_short: ammoStat.pen_short,
         gun_pen_medium: ammoStat.pen_medium,
         gun_pen_long: ammoStat.pen_long
