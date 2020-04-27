@@ -32,15 +32,15 @@ div.sheet-ipdf-wrapper > div > div.sheet-half-width {
   box-sizing: border-box;
 }
 
-div.sheet-ipdf-wrapper > h2 {
+div.sheet-ipdf-wrapper h2 {
   text-align: center;
   font-family: 'Candal';
   margin: 50px 0;
 }
 
-div.sheet-ipdf-wrapper > *:disabled:hover { cursor: not-allowed; }
+div.sheet-ipdf-wrapper *:disabled:hover { cursor: not-allowed; }
 
-div.sheet-ipdf-wrapper > h2.sheet-no-bottom { margin-bottom: 0; }
+div.sheet-ipdf-wrapper h2.sheet-no-bottom { margin-bottom: 0; }
 
 div.sheet-ipdf-wrapper .btn:not(.pictos) {
   font-family: 'Candal';
@@ -52,8 +52,9 @@ div.sheet-ipdf-wrapper {
   min-height: 100px;
   background-color: #FFF;
   border: 1px solid #333;
+  margin-top: 20px;
   padding: 5px;
-  padding-top: 20px;
+  padding-top: 30px;
   box-sizing: border-box;
   z-index: 1;
 }
@@ -85,6 +86,65 @@ div.sheet-ipdf-wrapper:after {
   background-color: #333;
   z-index: 3;
 }
+
+div.sheet-tabs-selector {
+  position: absolute;
+  top: -30px;
+  left: -1px;
+  height: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-end;
+  z-index: 5;
+}
+
+div.sheet-tabs-selector > label {
+  height: 22px;
+  margin: 0 1px 0 0;
+  padding: 4px;
+  border: 1px solid #333;
+  border-radius: 4px 4px 0 0;
+  background-color: #E0E0E0;
+  font-size: 15px;
+  font-family: 'Courier';
+  box-sizing: border-box;
+  text-align: center;
+  transition: 0.2s;
+}
+
+input[name="attr_current_tab"][type="hidden"][value="agent"] ~ div.sheet-tabs-selector label.sheet-agent,
+input[name="attr_current_tab"][type="hidden"][value="arsenal"] ~ div.sheet-tabs-selector label.sheet-arsenal,
+input[name="attr_current_tab"][type="hidden"][value="inventory"] ~ div.sheet-tabs-selector label.sheet-inventory,
+input[name="attr_current_tab"][type="hidden"][value="protections"] ~ div.sheet-tabs-selector label.sheet-protections {
+  height: 30px;
+  background-color: #FFF;
+  border-bottom-color: #FFF;
+}
+
+.sheet-tab {
+  display: none;
+}
+
+/* Agent */
+input[name="attr_current_tab"][type="hidden"][value="agent"] ~ .sheet-tab.sheet-identity,
+input[name="attr_current_tab"][type="hidden"][value="agent"] ~ .sheet-tab.sheet-stats-tab,
+input[name="attr_current_tab"][type="hidden"][value="agent"] ~ .sheet-tab.sheet-traits,
+/* Inventory */
+input[name="attr_current_tab"][type="hidden"][value="inventory"] ~ .sheet-tab.sheet-cash,
+input[name="attr_current_tab"][type="hidden"][value="inventory"] ~ .sheet-tab.sheet-inventory,
+/* Arsenal */
+input[name="attr_current_tab"][type="hidden"][value="arsenal"] ~ .sheet-tab.sheet-weapons,
+/* Protections */
+input[name="attr_current_tab"][type="hidden"][value="protections"] ~ .sheet-tab.sheet-armors {
+  display: flex;
+}
+
+div.sheet-tabs-selector > label:hover {
+  cursor: pointer;
+}
+
+div.sheet-tabs-selector > label > input[type=checkbox] { display: none; }
 
 div.sheet-ipdf-wrapper .repcontrol {
   height: 30px;
@@ -170,21 +230,121 @@ div.sheet-skill > .sheet-line-input:not(.sheet-small) { flex: 1; }
   text-align: center;
 }
 
-.sheet-hp-wrapper {
-  margin: 10px auto;
-  border: none;
+div.sheet-silhouette {
+  position: relative;
+  height: 380px;
+  width: 250px;
+  margin: 30px 30px 0 30px;
+  background-image: url("https://fpilot.fr/starclock/gui/human_sil_blk.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position-x: center;
 }
 
-.sheet-hp-wrapper input[type=number] {
+div.sheet-silhouette > div.sheet-part {
+  position: absolute;
+  width: 100px;
+}
+
+div.sheet-silhouette > div.sheet-part > h3 {
   text-align: center;
+  font-family: 'Courier';
+  font-size: 12px;
 }
 
-.sheet-hp-wrapper td {
-  padding: 5px;
+div.sheet-silhouette > div.sheet-part .sheet-part-hp,
+div.sheet-silhouette > div.sheet-part .sheet-part-pain {
+  position: relative;
+  padding: 2px;
   box-sizing: border-box;
-  font-family: Courier;
+}
+
+div.sheet-silhouette > div.sheet-part .sheet-part-hp:after,
+div.sheet-silhouette > div.sheet-part .sheet-part-pain:after {
+  pointer-events: none;
+  z-index: 5;
+}
+
+div.sheet-silhouette > div.sheet-part .sheet-part-hp:after {
+  content: "&";
+  position: absolute;
+  top: -7px;
+  right: 19px;
+  font-family: 'Pictos';
   font-size: 13px;
+  color: #C00;
+}
+
+div.sheet-silhouette > div.sheet-part .sheet-part-pain:after {
+  content: "Y";
+  position: absolute;
+  top: -7px;
+  right: 19px;
+  font-family: 'Pictos';
+  font-size: 13px;
+  color: #1C1;
+}
+
+div.sheet-silhouette > div.sheet-part .sheet-slash {
+  margin: 0 2px;
+  font-family: 'Courier';
   font-weight: bold;
+}
+
+div.sheet-silhouette > div.sheet-part.sheet-head {
+  top: -55px;
+  left: 75px;
+}
+
+div.sheet-silhouette > div.sheet-part.sheet-body {
+  top: 55px;
+  left: 75px;
+}
+
+div.sheet-silhouette > div.sheet-part.sheet-left-arm {
+  left: -30px;
+}
+
+div.sheet-silhouette > div.sheet-part.sheet-right-arm {
+  right: -30px;
+}
+
+div.sheet-silhouette > div.sheet-part.sheet-left-arm,
+div.sheet-silhouette > div.sheet-part.sheet-right-arm {
+  top: 85px;
+}
+
+div.sheet-silhouette > div.sheet-part.sheet-left-leg,
+div.sheet-silhouette > div.sheet-part.sheet-right-leg {
+  bottom: 0;
+}
+
+div.sheet-silhouette > div.sheet-part.sheet-left-leg {
+  left: -10px;
+}
+
+div.sheet-silhouette > div.sheet-part.sheet-right-leg {
+  right: -10px;
+}
+
+div.sheet-part.sheet-head .sheet-part-pain .sheet-slash,
+div.sheet-part.sheet-body .sheet-slash,
+div.sheet-part.sheet-body h3 {
+  color: #FFF;
+}
+
+div.sheet-silhouette input[type=number] {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  margin: 0 2px;
+  border: 1px solid #CCC;
+  background-color: #FFF;
+  border-radius: 4px;
+  font-family: 'Courier';
+  text-align: center;
+  z-index: 4;
 }
 
 div.sheet-stats-wrapper {
@@ -412,6 +572,20 @@ div.sheet-currency-wrapper > input[type=text] {
   font-family: 'Candal';
 }
 
+.sheet-currency {
+  padding: 0 5px;
+  box-sizing: border-box;
+}
+
+.sheet-item-container {
+  align-items: center;
+}
+
+.sheet-mult:before {
+  content: "*";
+  font-family: 'Pictos';
+}
+
 /* Weapons */
 
 div.sheet-weapon {
@@ -426,12 +600,17 @@ div.sheet-weapon input[type=text] {
 }
 
 div.sheet-weapon-input > p,
-div.sheet-weapon-stats > p {
+div.sheet-weapon-options-group > p {
   margin: 10px;
   margin-bottom: auto;
   font-family: Courier;
   font-weight: bold;
   font-size: 16px;
+}
+
+div.sheet-weapon-options-group > input {
+  margin-bottom: auto;
+  margin-top: 14px;
 }
 
 div.sheet-weapon-input {
@@ -445,20 +624,15 @@ div.sheet-weapon-stats {
   align-items: center;
 }
 
-.sheet-is-melee {
-  margin-bottom: auto;
-  margin-top: 14px;
-}
-
-.sheet-is-melee:checked ~ .sheet-weapon-stats-table > thead.sheet-gun-header,
-.sheet-is-melee:checked ~ .sheet-weapon-stats-table > tbody.sheet-gun-body,
-.sheet-is-melee:checked ~ div.sheet-weapon-input > select[name="attr_gun_template"] {
+input[type="hidden"][name="attr_weapon_is_melee"][value="1"] ~ .sheet-weapon-stats-table > thead.sheet-gun-header,
+input[type="hidden"][name="attr_weapon_is_melee"][value="1"] ~ .sheet-weapon-stats-table > tbody.sheet-gun-body,
+input[type="hidden"][name="attr_weapon_is_melee"][value="1"] ~ div.sheet-weapon-input > select[name="attr_gun_template"] {
   display: none;
 }
 
-.sheet-is-melee:not(:checked) ~ .sheet-weapon-stats-table > thead.sheet-melee-header,
-.sheet-is-melee:not(:checked) ~ .sheet-weapon-stats-table > tbody.sheet-melee-body,
-.sheet-is-melee:not(:checked) ~ div.sheet-weapon-input > select[name="attr_melee_template"] {
+input[type="hidden"][name="attr_weapon_is_melee"][value="0"] ~ .sheet-weapon-stats-table > thead.sheet-melee-header,
+input[type="hidden"][name="attr_weapon_is_melee"][value="0"] ~ .sheet-weapon-stats-table > tbody.sheet-melee-body,
+input[type="hidden"][name="attr_weapon_is_melee"][value="0"] ~ div.sheet-weapon-input > select[name="attr_melee_template"] {
   display: none;
 }
 

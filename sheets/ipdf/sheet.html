@@ -1,11 +1,30 @@
 <div class="ipdf-wrapper">
-  <h2 class="character-name">Identité de l'agent</h2>
-  <div class="identity full-width flex-col">
+  <input type="hidden" name="attr_current_tab" value="agent" />
+  <div class="tabs-selector">
+    <label class="agent">
+      <span>Agent</span>
+      <input type="checkbox" name="attr_current_tab" value="agent" />
+    </label>
+    <label class="protections">
+      <span>Santé/Protections</span>
+      <input type="checkbox" name="attr_current_tab" value="protections" />
+    </label>
+    <label class="inventory">
+      <span>Matériel</span>
+      <input type="checkbox" name="attr_current_tab" value="inventory" />
+    </label>
+    <label class="arsenal">
+      <span>Arsenal</span>
+      <input type="checkbox" name="attr_current_tab" value="arsenal" />
+    </label>
+  </div>
+  <div class="tab identity full-width flex-col">
+    <h2 class="character-name">Identité de l'agent</h2>
     <div class="full-width identity-field">
       <span>Nom complet</span>
       <input
         type="text"
-        class="sheet-line-input"
+        class="line-input"
         name="attr_character_name"
       />
     </div>
@@ -13,7 +32,7 @@
       <span>Nationalité</span>
       <input
         type="text"
-        class="sheet-line-input"
+        class="line-input"
         name="attr_character_nationality"
       />
     </div>
@@ -21,13 +40,13 @@
       <span>Occupation</span>
       <input
         type="text"
-        class="sheet-line-input"
+        class="line-input"
         name="attr_character_job"
       />
       <span>Sponsor</span>
       <input
         type="text"
-        class="sheet-line-input"
+        class="line-input"
         name="attr_character_sponsor"
       />
     </div>
@@ -35,17 +54,17 @@
       <span>Age</span>
       <input
         type="number"
-        class="sheet-line-input small"
+        class="line-input small"
         name="attr_character_age"
       />
       <span>Sexe</span>
       <input
         type="text"
-        class="sheet-line-input small"
+        class="line-input small"
         name="attr_character_sex"
       />
       <span>Groupe sanguin</span>
-      <select class="sheet-line-input" name="attr_character_blood_type">
+      <select class="line-input" name="attr_character_blood_type">
         <option value="ND">n.d</option>
         <option value="O+">O+</option>
         <option value="O-">O-</option>
@@ -59,7 +78,7 @@
       <span>Taille</span>
       <input
         type="number"
-        class="sheet-line-input small"
+        class="line-input small"
         name="attr_character_height_meters"
         value="1"
         min="1"
@@ -68,7 +87,7 @@
       <p>m</p>
       <input
         type="number"
-        class="sheet-line-input small"
+        class="line-input small"
         name="attr_character_height_centimeters"
         value="75"
         min="0"
@@ -77,1222 +96,1438 @@
       <p>cm</p>
     </div>
   </div>
-  <h2>Caractéristiques et Compétences</h2>
-  <table class="hp-wrapper">
-    <tbody>
-      <tr>
-        <td>
-          <input type="number" class="line-input" name="attr_current_wounds" value="0" />
-        </td>
-        <td>/</td>
-        <td>
-          <input type="number" class="line-input" name="attr_max_wounds_base" value="1" min="1" />
-        </td>
-        <td>Blessures</td>
-      </tr>
-      <tr>
-        <td>
-          <input type="number" class="line-input" name="attr_current_pain" value="0" />
-        </td>
-        <td>/</td>
-        <td>
-          <input type="number" class="line-input" name="attr_max_pain_base" value="1" min="1" />
-        </td>
-        <td>Douleur</td>
-      </tr>
-    </tbody>
-  </table>
-  <div class="stats-wrapper full-width">
+  <div class="tab stats-tab full-width flex-col">
+    <h2>Caractéristiques et Compétences</h2>
+    <div class="stats-wrapper full-width">
 
-    <!-- Physical stats -->
-    <table class="stats physical third-width">
-      <thead>
-        <tr><th class="stats-title" colspan="3">Physique</th></tr>
-        <tr>
-          <th class="percent-total" colspan="3">
-            <div class="percent-wrapper flex-row flex-middle">
-              <div class="flex-row flex-middle">
-                <input
-                  type="hidden"
-                  name="attr_phy_score"
-                  value="0"
-                />
-                <input
-                  type="number"
-                  name="attr_phy_score_display"
-                  value="@{phy_score}"
-                  disabled
-                />
-                <span>%</span>
+      <!-- Physical stats -->
+      <table class="stats physical third-width">
+        <thead>
+          <tr><th class="stats-title" colspan="3">Physique</th></tr>
+          <tr>
+            <th class="percent-total" colspan="3">
+              <div class="percent-wrapper flex-row flex-middle">
+                <div class="flex-row flex-middle">
+                  <input
+                    type="hidden"
+                    name="attr_phy_score"
+                    value="0"
+                  />
+                  <input
+                    type="number"
+                    name="attr_phy_score_display"
+                    value="@{phy_score}"
+                    disabled
+                  />
+                  <span>%</span>
+                </div>
               </div>
-            </div>
-          </th>
-        </tr>
-      </thead>
-      <tbody class="stats-body">
-        <tr>
-          <td class="stat-name">Force</td>
-          <td class="stat-value">
-            <input
-              type="number"
-              class="sheet-line-input small"
-              value="0"
-              name="attr_character_str"
-            />
-          </td>
-          <td>
-            <button
-              type="roll"
-              value="&{template:standard} {{character_name=@{character_name}}} {{roll=[[?{Bonus/Malus|0} + 1D4 + @{character_str}]]}} {{header=Test de force}} {{confirmation=[[1D6]]}}"
-            ></button>
-          </td>
-        </tr>
-        <tr>
-          <td class="stat-name">Constitution</td>
-          <td class="stat-value">
-            <input
-              type="number"
-              class="sheet-line-input small"
-              value="0"
-              name="attr_character_con"
-            />
-          </td>
-          <td>
-            <button
-              type="roll"
-              value="&{template:standard} {{character_name=@{character_name}}} {{roll=[[?{Bonus/Malus|0} + 1D4 + @{character_con}]]}} {{header=Test de constitution}} {{confirmation=[[1D6]]}}"
-            ></button>
-          </td>
-        </tr>
-        <tr>
-          <td class="stat-name">Agilité</td>
-          <td class="stat-value">
-            <input
-              type="number"
-              class="sheet-line-input small"
-              value="0"
-              name="attr_character_agi"
-            />
-          </td>
-          <td>
-            <button
-              type="roll"
-              value="&{template:standard} {{character_name=@{character_name}}} {{roll=[[?{Bonus/Malus|0} + 1D4 + @{character_agi}]]}} {{header=Test d'agilité}} {{confirmation=[[1D6]]}}"
-            ></button>
-          </td>
-        </tr>
-        <tr>
-          <td class="stat-name">Dextérité</td>
-          <td class="stat-value">
-            <input
-              type="number"
-              class="sheet-line-input small"
-              value="0"
-              name="attr_character_dex"
-            />
-          </td>
-          <td>
-            <button
-              type="roll"
-              value="&{template:standard} {{character_name=@{character_name}}} {{roll=[[?{Bonus/Malus|0} + 1D4 + @{character_dex}]]}} {{header=Test de dextérité}} {{confirmation=[[1D6]]}}"
-            ></button>
-          </td>
-        </tr>
-      </tbody>
-      <tbody class="skills">
-        <tr>
-          <td colspan="3" class="stats-title">Compétences</td>
-        </tr>
-        <tr>
-          <td colspan="3" class="skills-list">
-            <fieldset class="repeating_physkills">
-              <div class="skill flex-row flex-middle">
-                <input
-                  type="text"
-                  class="sheet-line-input full-width"
-                  name="attr_phy_skillname"
-                  placeholder="Compétence"
-                />
-                <select name="attr_phy_skill_dice">
-                  <option value="1D4">1D4</option>
-                  <option value="1D6">1D6</option>
-                  <option value="1D8">1D8</option>
-                  <option value="1D10">1D10</option>
-                  <option value="1D12">1D12</option>
-                </select>
-                <button
-                  type="roll"
-                  value="&{template:standard} {{character_name=@{character_name}}} {{roll=[[?{Bonus/Malus|0} + @{phy_skill_dice} + ?{Caractéristique|Force, @{character_str}|Constitution, @{character_con}|Agilité, @{character_agi}|Dextérité, @{character_dex}}]]}} {{header=@{phy_skillname}}}"
-                ></button>
-              </div>
-            </fieldset>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+            </th>
+          </tr>
+        </thead>
+        <tbody class="stats-body">
+          <tr>
+            <td class="stat-name">Force</td>
+            <td class="stat-value">
+              <input
+                type="number"
+                class="line-input small"
+                value="0"
+                name="attr_character_str"
+              />
+            </td>
+            <td>
+              <button
+                type="roll"
+                value="&{template:standard} {{character_name=@{character_name}}} {{roll=[[?{Bonus/Malus|0} + 1D4 + @{character_str}]]}} {{header=Test de force}} {{confirmation=[[1D6]]}}"
+              ></button>
+            </td>
+          </tr>
+          <tr>
+            <td class="stat-name">Constitution</td>
+            <td class="stat-value">
+              <input
+                type="number"
+                class="line-input small"
+                value="0"
+                name="attr_character_con"
+              />
+            </td>
+            <td>
+              <button
+                type="roll"
+                value="&{template:standard} {{character_name=@{character_name}}} {{roll=[[?{Bonus/Malus|0} + 1D4 + @{character_con}]]}} {{header=Test de constitution}} {{confirmation=[[1D6]]}}"
+              ></button>
+            </td>
+          </tr>
+          <tr>
+            <td class="stat-name">Agilité</td>
+            <td class="stat-value">
+              <input
+                type="number"
+                class="line-input small"
+                value="0"
+                name="attr_character_agi"
+              />
+            </td>
+            <td>
+              <button
+                type="roll"
+                value="&{template:standard} {{character_name=@{character_name}}} {{roll=[[?{Bonus/Malus|0} + 1D4 + @{character_agi}]]}} {{header=Test d'agilité}} {{confirmation=[[1D6]]}}"
+              ></button>
+            </td>
+          </tr>
+          <tr>
+            <td class="stat-name">Dextérité</td>
+            <td class="stat-value">
+              <input
+                type="number"
+                class="line-input small"
+                value="0"
+                name="attr_character_dex"
+              />
+            </td>
+            <td>
+              <button
+                type="roll"
+                value="&{template:standard} {{character_name=@{character_name}}} {{roll=[[?{Bonus/Malus|0} + 1D4 + @{character_dex}]]}} {{header=Test de dextérité}} {{confirmation=[[1D6]]}}"
+              ></button>
+            </td>
+          </tr>
+        </tbody>
+        <tbody class="skills">
+          <tr>
+            <td colspan="3" class="stats-title">Compétences</td>
+          </tr>
+          <tr>
+            <td colspan="3" class="skills-list">
+              <fieldset class="repeating_physkills">
+                <div class="skill flex-row flex-middle">
+                  <input
+                    type="text"
+                    class="line-input full-width"
+                    name="attr_phy_skillname"
+                    placeholder="Compétence"
+                  />
+                  <select name="attr_phy_skill_dice">
+                    <option value="1D4">1D4</option>
+                    <option value="1D6">1D6</option>
+                    <option value="1D8">1D8</option>
+                    <option value="1D10">1D10</option>
+                    <option value="1D12">1D12</option>
+                  </select>
+                  <button
+                    type="roll"
+                    value="&{template:standard} {{character_name=@{character_name}}} {{roll=[[?{Bonus/Malus|0} + @{phy_skill_dice} + ?{Caractéristique|Force, @{character_str}|Constitution, @{character_con}|Agilité, @{character_agi}|Dextérité, @{character_dex}}]]}} {{header=@{phy_skillname}}}"
+                  ></button>
+                </div>
+              </fieldset>
+            </td>
+          </tr>
+        </tbody>
+      </table>
 
-    <!-- Mental stats -->
-    <table class="stats mental third-width">
-      <thead>
-        <tr><th class="stats-title" colspan="3">Mental</th></tr>
-        <tr>
-          <th class="percent-total" colspan="3">
-            <div class="percent-wrapper flex-row flex-middle">
-              <div class="flex-row flex-middle">
-                <input
-                  type="hidden"
-                  name="attr_men_score"
-                  value="0"
-                />
-                <input
-                  type="number"
-                  name="attr_men_score_display"
-                  value="@{men_score}"
-                  disabled
-                />
-                <span>%</span>
+      <!-- Mental stats -->
+      <table class="stats mental third-width">
+        <thead>
+          <tr><th class="stats-title" colspan="3">Mental</th></tr>
+          <tr>
+            <th class="percent-total" colspan="3">
+              <div class="percent-wrapper flex-row flex-middle">
+                <div class="flex-row flex-middle">
+                  <input
+                    type="hidden"
+                    name="attr_men_score"
+                    value="0"
+                  />
+                  <input
+                    type="number"
+                    name="attr_men_score_display"
+                    value="@{men_score}"
+                    disabled
+                  />
+                  <span>%</span>
+                </div>
               </div>
-            </div>
-          </th>
-        </tr>
-      </thead>
-      <tbody class="stats-body">
-        <tr>
-        </tr>
-        <tr>
-          <td class="stat-name">Intellect</td>
-          <td class="stat-value">
-            <input
-              type="number"
-              class="sheet-line-input small"
-              value="0"
-              name="attr_character_int"
-            />
-          </td>
-          <td>
-            <button
-              type="roll"
-              value="&{template:standard} {{character_name=@{character_name}}} {{roll=[[?{Bonus/Malus|0} + 1D4 + @{character_int}]]}} {{header=Test d'intellect}} {{confirmation=[[1D6]]}}"
-            ></button>
-          </td>
-        </tr>
-        <tr>
-          <td class="stat-name">Savoir</td>
-          <td class="stat-value">
-            <input
-              type="number"
-              class="sheet-line-input small"
-              value="0"
-              name="attr_character_kno"
-            />
-          </td>
-          <td>
-            <button
-              type="roll"
-              value="&{template:standard} {{character_name=@{character_name}}} {{roll=[[?{Bonus/Malus|0} + 1D4 + @{character_kno}]]}} {{header=Test de savoir}} {{confirmation=[[1D6]]}}"
-            ></button>
-          </td>
-        </tr>
-        <tr>
-          <td class="stat-name">Acuité</td>
-          <td class="stat-value">
-            <input
-              type="number"
-              class="sheet-line-input small"
-              value="0"
-              name="attr_character_acu"
-            />
-          </td>
-          <td>
-            <button
-              type="roll"
-              value="&{template:standard} {{character_name=@{character_name}}} {{roll=[[?{Bonus/Malus|0} + 1D4 + @{character_acu}]]}} {{header=Test d'acuité}} {{confirmation=[[1D6]]}}"
-            ></button>
-          </td>
-        </tr>
-        <tr>
-          <td class="stat-name">Courage</td>
-          <td class="stat-value">
-            <input
-              type="number"
-              class="sheet-line-input small"
-              value="0"
-              name="attr_character_cou"
-            />
-          </td>
-          <td>
-            <button
-              type="roll"
-              value="&{template:standard} {{character_name=@{character_name}}} {{roll=[[?{Bonus/Malus|0} + 1D4 + @{character_cou}]]}} {{header=Test de courage}} {{confirmation=[[1D6]]}}"
-            ></button>
-          </td>
-        </tr>
-      </tbody>
-      <tbody class="skills">
-        <tr>
-          <td colspan="3" class="stats-title">Compétences</td>
-        </tr>
-        <tr>
-          <td colspan="3" class="skills-list">
-            <fieldset class="repeating_menskills">
-              <div class="skill flex-row flex-middle">
-                <input
-                  type="text"
-                  class="sheet-line-input full-width"
-                  name="attr_men_skillname"
-                  placeholder="Compétence"
-                />
-                <select name="attr_men_skill_dice">
-                  <option value="1D4">1D4</option>
-                  <option value="1D6">1D6</option>
-                  <option value="1D8">1D8</option>
-                  <option value="1D10">1D10</option>
-                  <option value="1D12">1D12</option>
-                </select>
-                <button
-                  type="roll"
-                  value="&{template:standard} {{character_name=@{character_name}}} {{roll=[[?{Bonus/Malus|0} + @{men_skill_dice} + ?{Caractéristique|Intellect, @{character_int}|Savoir, @{character_kno}|Acuité, @{character_acu}|Courage, @{character_cou}}]]}} {{header=@{men_skillname}}}"
-                ></button>
-              </div>
-            </fieldset>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+            </th>
+          </tr>
+        </thead>
+        <tbody class="stats-body">
+          <tr>
+          </tr>
+          <tr>
+            <td class="stat-name">Intellect</td>
+            <td class="stat-value">
+              <input
+                type="number"
+                class="line-input small"
+                value="0"
+                name="attr_character_int"
+              />
+            </td>
+            <td>
+              <button
+                type="roll"
+                value="&{template:standard} {{character_name=@{character_name}}} {{roll=[[?{Bonus/Malus|0} + 1D4 + @{character_int}]]}} {{header=Test d'intellect}} {{confirmation=[[1D6]]}}"
+              ></button>
+            </td>
+          </tr>
+          <tr>
+            <td class="stat-name">Savoir</td>
+            <td class="stat-value">
+              <input
+                type="number"
+                class="line-input small"
+                value="0"
+                name="attr_character_kno"
+              />
+            </td>
+            <td>
+              <button
+                type="roll"
+                value="&{template:standard} {{character_name=@{character_name}}} {{roll=[[?{Bonus/Malus|0} + 1D4 + @{character_kno}]]}} {{header=Test de savoir}} {{confirmation=[[1D6]]}}"
+              ></button>
+            </td>
+          </tr>
+          <tr>
+            <td class="stat-name">Acuité</td>
+            <td class="stat-value">
+              <input
+                type="number"
+                class="line-input small"
+                value="0"
+                name="attr_character_acu"
+              />
+            </td>
+            <td>
+              <button
+                type="roll"
+                value="&{template:standard} {{character_name=@{character_name}}} {{roll=[[?{Bonus/Malus|0} + 1D4 + @{character_acu}]]}} {{header=Test d'acuité}} {{confirmation=[[1D6]]}}"
+              ></button>
+            </td>
+          </tr>
+          <tr>
+            <td class="stat-name">Courage</td>
+            <td class="stat-value">
+              <input
+                type="number"
+                class="line-input small"
+                value="0"
+                name="attr_character_cou"
+              />
+            </td>
+            <td>
+              <button
+                type="roll"
+                value="&{template:standard} {{character_name=@{character_name}}} {{roll=[[?{Bonus/Malus|0} + 1D4 + @{character_cou}]]}} {{header=Test de courage}} {{confirmation=[[1D6]]}}"
+              ></button>
+            </td>
+          </tr>
+        </tbody>
+        <tbody class="skills">
+          <tr>
+            <td colspan="3" class="stats-title">Compétences</td>
+          </tr>
+          <tr>
+            <td colspan="3" class="skills-list">
+              <fieldset class="repeating_menskills">
+                <div class="skill flex-row flex-middle">
+                  <input
+                    type="text"
+                    class="line-input full-width"
+                    name="attr_men_skillname"
+                    placeholder="Compétence"
+                  />
+                  <select name="attr_men_skill_dice">
+                    <option value="1D4">1D4</option>
+                    <option value="1D6">1D6</option>
+                    <option value="1D8">1D8</option>
+                    <option value="1D10">1D10</option>
+                    <option value="1D12">1D12</option>
+                  </select>
+                  <button
+                    type="roll"
+                    value="&{template:standard} {{character_name=@{character_name}}} {{roll=[[?{Bonus/Malus|0} + @{men_skill_dice} + ?{Caractéristique|Intellect, @{character_int}|Savoir, @{character_kno}|Acuité, @{character_acu}|Courage, @{character_cou}}]]}} {{header=@{men_skillname}}}"
+                  ></button>
+                </div>
+              </fieldset>
+            </td>
+          </tr>
+        </tbody>
+      </table>
 
-    <!-- Social stats -->
-    <table class="stats social third-width">
-      <thead>
-        <tr><th class="stats-title" colspan="3">Social</th></tr>
-        <tr>
-          <th class="percent-total" colspan="3">
-            <div class="percent-wrapper flex-row flex-middle">
-              <div class="flex-row flex-middle">
-                <input
-                  type="hidden"
-                  name="attr_soc_score"
-                  value="0"
-                />
-                <input
-                  type="number"
-                  name="attr_soc_score_display"
-                  value="@{soc_score}"
-                  disabled
-                />
-                <span>%</span>
+      <!-- Social stats -->
+      <table class="stats social third-width">
+        <thead>
+          <tr><th class="stats-title" colspan="3">Social</th></tr>
+          <tr>
+            <th class="percent-total" colspan="3">
+              <div class="percent-wrapper flex-row flex-middle">
+                <div class="flex-row flex-middle">
+                  <input
+                    type="hidden"
+                    name="attr_soc_score"
+                    value="0"
+                  />
+                  <input
+                    type="number"
+                    name="attr_soc_score_display"
+                    value="@{soc_score}"
+                    disabled
+                  />
+                  <span>%</span>
+                </div>
               </div>
-            </div>
-          </th>
-        </tr>
-      </thead>
-      <tbody class="stats-body">
-        <tr>
-          <td class="stat-name">Présence</td>
-          <td class="stat-value">
-            <input
-              type="number"
-              class="sheet-line-input small"
-              value="0"
-              name="attr_character_pre"
-            />
-          </td>
-          <td>
-            <button
-              type="roll"
-              value="&{template:standard} {{character_name=@{character_name}}} {{roll=[[?{Bonus/Malus|0} + 1D4 + @{character_pre}]]}} {{header=Test de présence}} {{confirmation=[[1D6]]}}"
-            ></button>
-          </td>
-        </tr>
-        <tr>
-          <td class="stat-name">Séduction</td>
-          <td class="stat-value">
-            <input
-              type="number"
-              class="sheet-line-input small"
-              value="0"
-              name="attr_character_sed"
-            />
-          </td>
-          <td>
-            <button
-              type="roll"
-              value="&{template:standard} {{character_name=@{character_name}}} {{roll=[[?{Bonus/Malus|0} + 1D4 + @{character_sed}]]}} {{header=Test de séduction}} {{confirmation=[[1D6]]}}"
-            ></button>
-          </td>
-        </tr>
-        <tr>
-          <td class="stat-name">Eloquence</td>
-          <td class="stat-value">
-            <input
-              type="number"
-              class="sheet-line-input small"
-              value="0"
-              name="attr_character_spe"
-            />
-          </td>
-          <td>
-            <button
-              type="roll"
-              value="&{template:standard} {{character_name=@{character_name}}} {{roll=[[?{Bonus/Malus|0} + 1D4 + @{character_spe}]]}} {{header=Test d'éloquence}} {{confirmation=[[1D6]]}}"
-            ></button>
-          </td>
-        </tr>
-        <tr>
-          <td class="stat-name">Empathie</td>
-          <td class="stat-value">
-            <input
-              type="number"
-              class="sheet-line-input small"
-              value="0"
-              name="attr_character_emp"
-            />
-          </td>
-          <td>
-            <button
-              type="roll"
-              value="&{template:standard} {{character_name=@{character_name}}} {{roll=[[?{Bonus/Malus|0} + 1D4 + @{character_emp}]]}} {{header=Test d'empathie}} {{confirmation=[[1D6]]}}"
-            ></button>
-          </td>
-        </tr>
-      </tbody>
-      <tbody class="skills">
-        <tr>
-          <td colspan="3" class="stats-title">Compétences</td>
-        </tr>
-        <tr>
-          <td colspan="3" class="skills-list">
-            <fieldset class="repeating_socskills">
-              <div class="skill flex-row flex-middle">
-                <input
-                  type="text"
-                  class="sheet-line-input full-width"
-                  name="attr_soc_skillname"
-                  placeholder="Compétence"
-                />
-                <select name="attr_soc_skill_dice">
-                  <option value="1D4">1D4</option>
-                  <option value="1D6">1D6</option>
-                  <option value="1D8">1D8</option>
-                  <option value="1D10">1D10</option>
-                  <option value="1D12">1D12</option>
-                </select>
-                <button
-                  type="roll"
-                  value="&{template:standard} {{character_name=@{character_name}}} {{roll=[[?{Bonus/Malus|0} + @{soc_skill_dice} + ?{Caractéristique|Présence, @{character_pre}|Séduction, @{character_sed}|Éloquence, @{character_spe}|Empathie, @{character_emp}}]]}} {{header=@{soc_skillname}}}"
-                ></button>
-              </div>
-            </fieldset>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+            </th>
+          </tr>
+        </thead>
+        <tbody class="stats-body">
+          <tr>
+            <td class="stat-name">Présence</td>
+            <td class="stat-value">
+              <input
+                type="number"
+                class="line-input small"
+                value="0"
+                name="attr_character_pre"
+              />
+            </td>
+            <td>
+              <button
+                type="roll"
+                value="&{template:standard} {{character_name=@{character_name}}} {{roll=[[?{Bonus/Malus|0} + 1D4 + @{character_pre}]]}} {{header=Test de présence}} {{confirmation=[[1D6]]}}"
+              ></button>
+            </td>
+          </tr>
+          <tr>
+            <td class="stat-name">Séduction</td>
+            <td class="stat-value">
+              <input
+                type="number"
+                class="line-input small"
+                value="0"
+                name="attr_character_sed"
+              />
+            </td>
+            <td>
+              <button
+                type="roll"
+                value="&{template:standard} {{character_name=@{character_name}}} {{roll=[[?{Bonus/Malus|0} + 1D4 + @{character_sed}]]}} {{header=Test de séduction}} {{confirmation=[[1D6]]}}"
+              ></button>
+            </td>
+          </tr>
+          <tr>
+            <td class="stat-name">Eloquence</td>
+            <td class="stat-value">
+              <input
+                type="number"
+                class="line-input small"
+                value="0"
+                name="attr_character_spe"
+              />
+            </td>
+            <td>
+              <button
+                type="roll"
+                value="&{template:standard} {{character_name=@{character_name}}} {{roll=[[?{Bonus/Malus|0} + 1D4 + @{character_spe}]]}} {{header=Test d'éloquence}} {{confirmation=[[1D6]]}}"
+              ></button>
+            </td>
+          </tr>
+          <tr>
+            <td class="stat-name">Empathie</td>
+            <td class="stat-value">
+              <input
+                type="number"
+                class="line-input small"
+                value="0"
+                name="attr_character_emp"
+              />
+            </td>
+            <td>
+              <button
+                type="roll"
+                value="&{template:standard} {{character_name=@{character_name}}} {{roll=[[?{Bonus/Malus|0} + 1D4 + @{character_emp}]]}} {{header=Test d'empathie}} {{confirmation=[[1D6]]}}"
+              ></button>
+            </td>
+          </tr>
+        </tbody>
+        <tbody class="skills">
+          <tr>
+            <td colspan="3" class="stats-title">Compétences</td>
+          </tr>
+          <tr>
+            <td colspan="3" class="skills-list">
+              <fieldset class="repeating_socskills">
+                <div class="skill flex-row flex-middle">
+                  <input
+                    type="text"
+                    class="line-input full-width"
+                    name="attr_soc_skillname"
+                    placeholder="Compétence"
+                  />
+                  <select name="attr_soc_skill_dice">
+                    <option value="1D4">1D4</option>
+                    <option value="1D6">1D6</option>
+                    <option value="1D8">1D8</option>
+                    <option value="1D10">1D10</option>
+                    <option value="1D12">1D12</option>
+                  </select>
+                  <button
+                    type="roll"
+                    value="&{template:standard} {{character_name=@{character_name}}} {{roll=[[?{Bonus/Malus|0} + @{soc_skill_dice} + ?{Caractéristique|Présence, @{character_pre}|Séduction, @{character_sed}|Éloquence, @{character_spe}|Empathie, @{character_emp}}]]}} {{header=@{soc_skillname}}}"
+                  ></button>
+                </div>
+              </fieldset>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
-  <h2 class="no-bottom">Traits</h2>
-  <fieldset class="repeating_traits">
-    <div class="trait flex-col flex-middle">
-      <input
-        type="text"
-        class="sheet-line-input full-width"
-        name="attr_trait_name"
-        placeholder="Nom du trait"
-      />
-      <div class="trait-description full-width">
-        <div class="sheet-underline"></div>
-        <div class="sheet-underline"></div>
-        <div class="sheet-underline"></div>
-        <div class="sheet-underline"></div>
-        <textarea
-          class="full-width"
-          name="attr_trait_description"
-          placeholder="Description du trait"
-        ></textarea>
-      </div>
-    </div>
-  </fieldset>
-  <h2>Compte en banque</h2>
-
-  <div class="flex-row full-width">
-    <div class="half-width currencies">
-      <!-- USD -->
-      <div class="currency flex-col flex-middle">
+  <div class="tab traits full-width flex-col">
+    <h2 class="no-bottom">Traits</h2>
+    <fieldset class="repeating_traits">
+      <div class="trait flex-col flex-middle">
         <input
           type="text"
-          class="currency-input full-width"
-          value="Dollars américains (USD)"
-          disabled
+          class="line-input full-width"
+          name="attr_trait_name"
+          placeholder="Nom du trait"
         />
-        <div class="currency-wrapper full-width flex-row flex-middle">
-          <input
-            type="number"
-            class="sheet-line-input"
-            name="attr_usd_amount"
-            value="0"
-            min="0"
-          />
-          <input
-            type="text"
-            maxlength="1"
-            value="$"
-            disabled
-          />
+        <div class="trait-description full-width">
+          <div class="underline"></div>
+          <div class="underline"></div>
+          <div class="underline"></div>
+          <div class="underline"></div>
+          <textarea
+            class="full-width"
+            name="attr_trait_description"
+            placeholder="Description du trait"
+          ></textarea>
         </div>
       </div>
-
-      <!-- EUR -->
-      <div class="currency flex-col flex-middle">
-        <input
-          type="text"
-          class="currency-input full-width"
-          value="Euros (EUR)"
-          disabled
-        />
-        <div class="currency-wrapper full-width flex-row flex-middle">
-          <input
-            type="number"
-            class="sheet-line-input"
-            name="attr_eur_amount"
-            value="0"
-            min="0"
-          />
-          <input
-            type="text"
-            maxlength="1"
-            value="€"
-            disabled
-          />
-        </div>
-      </div>
-
-      <!-- GBP -->
-      <div class="currency flex-col flex-middle">
-        <input
-          type="text"
-          class="currency-input full-width"
-          value="Livre Sterling (GBP)"
-          disabled
-        />
-        <div class="currency-wrapper full-width flex-row flex-middle">
-          <input
-            type="number"
-            class="sheet-line-input"
-            name="attr_gbp_amount"
-            value="0"
-            min="0"
-          />
-          <input
-            type="text"
-            maxlength="1"
-            value="£"
-            disabled
-          />
-        </div>
-      </div>
-
-      <!-- JPY -->
-      <div class="currency flex-col flex-middle">
-        <input
-          type="text"
-          class="currency-input full-width"
-          value="Yen (JPY)"
-          disabled
-        />
-        <div class="currency-wrapper full-width flex-row flex-middle">
-          <input
-            type="number"
-            class="sheet-line-input"
-            name="attr_jpy_amount"
-            value="0"
-            min="0"
-          />
-          <input
-            type="text"
-            maxlength="1"
-            value="円"
-            disabled
-          />
-        </div>
-      </div>
-
-      <!-- CNY -->
-      <div class="currency flex-col flex-middle">
-        <input
-          type="text"
-          class="currency-input full-width"
-          value="Yuan (CNY)"
-          disabled
-        />
-        <div class="currency-wrapper full-width flex-row flex-middle">
-          <input
-            type="number"
-            class="sheet-line-input"
-            name="attr_cny_amount"
-            value="0"
-            min="0"
-          />
-          <input
-            type="text"
-            maxlength="1"
-            value="¥"
-            disabled
-          />
-        </div>
-      </div>
-    </div>
-    <div class="half-width currencies">
-      <!-- Repeatable currencies -->
-      <fieldset class="repeating_currencies">
+    </fieldset>
+  </div>
+  <div class="tab cash full-width flex-col">
+    <h2>Compte en banque</h2>
+    <div class="full-width flex-row">
+      <div class="half-width currencies">
+        <!-- USD -->
         <div class="currency flex-col flex-middle">
           <input
             type="text"
             class="currency-input full-width"
-            name="attr_currency_name"
+            value="Dollars américains (USD)"
+            disabled
           />
           <div class="currency-wrapper full-width flex-row flex-middle">
             <input
               type="number"
-              class="sheet-line-input"
-              name="attr_currency_amount"
+              class="line-input"
+              name="attr_usd_amount"
               value="0"
               min="0"
             />
             <input
               type="text"
               maxlength="1"
-              name="attr_currency_symbol"
+              value="$"
+              disabled
             />
           </div>
         </div>
-      </fieldset>
-    </div>
-  </div>
-  <h2>Armement</h2>
-  <fieldset class="repeating_weapons">
-    <div class="weapon flex-col">
-      <div class="flex-row full-width">
-        <div class="weapon-stats full-width">
+
+        <!-- EUR -->
+        <div class="currency flex-col flex-middle">
           <input
-            type="checkbox"
-            class="is-melee"
-            name="attr_weapon_is_melee"
+            type="text"
+            class="currency-input full-width"
+            value="Euros (EUR)"
+            disabled
           />
-          <p>Arme de mêlée</p>
-          <div class="weapon-input">
-            <p>Modèle</p>
-            <select name="attr_gun_template">
-              <option value="none">Aucun</option>
-
-              <!-- Handguns -->
-              <option disabled></option>
-              <option disabled>-- ARMES DE POING --</option>
-              <option value="m4400clancy">M4400 Clancy</option>
-              <option value="m74g">M74G</option>
-              <option value="p83">P83</option>
-              <option value="vp84p">VP84-P</option>
-
-              <!-- Shotguns -->
-              <option disabled></option>
-              <option disabled>-- ARMES A DISPERSION --</option>
-              <option value="m99">M99</option>
-              <option value="type72">Type 72</option>
-              <option value="xiaofan12">Xiao-fan 12</option>
-
-              <!-- Assault Rifles -->
-              <option disabled></option>
-              <option disabled>-- FUSILS --</option>
-              <option value="altermattspr">Altermatt SPR</option>
-              <option value="celica">Celica</option>
-              <option value="rk80">RK80</option>
-              <option value="rk80ct">RK80-CT</option>
-              <option value="scout73">Scout 73</option>
-              <option value="type97">Type 97</option>
-
-              <!-- LMGs -->
-              <option disabled></option>
-              <option disabled>-- MITRAILLEUSES --</option>
-              <option value="gepardgpmg">Gepard MG82</option>
-              <option value="snapdragongpgm">SnapDragon GPGM</option>
-
-              <!-- SMGs -->
-              <option disabled></option>
-              <option disabled>-- PISTOLETS MITRAILLEURS --</option>
-              <option value="a918">A918</option>
-              <option value="brak">Brak</option>
-              <option value="mp200">MP200</option>
-              <option value="williamsm4">Williams M4</option>
-              <option value="yurei2">Yurei II</option>
-
-            </select>
-            <select name="attr_melee_template">
-              <option value="none">Aucun</option>
-              <option value="knife">Couteau</option>
-            </select>
-          </div>
-
-          <!-- Guns images radio -->
-          <input type="radio" name="attr_gun_template" value="none" />
-          <input type="radio" name="attr_gun_template" value="a918" />
-          <input type="radio" name="attr_gun_template" value="altermattspr" />
-          <input type="radio" name="attr_gun_template" value="brak" />
-          <input type="radio" name="attr_gun_template" value="celica" />
-          <input type="radio" name="attr_gun_template" value="gepardgpmg" />
-          <input type="radio" name="attr_gun_template" value="m4400clancy" />
-          <input type="radio" name="attr_gun_template" value="m74g" />
-          <input type="radio" name="attr_gun_template" value="m99" />
-          <input type="radio" name="attr_gun_template" value="mp200" />
-          <input type="radio" name="attr_gun_template" value="p83" />
-          <input type="radio" name="attr_gun_template" value="rk80" />
-          <input type="radio" name="attr_gun_template" value="rk80ct" />
-          <input type="radio" name="attr_gun_template" value="scout73" />
-          <input type="radio" name="attr_gun_template" value="snapdragongpgm" />
-          <input type="radio" name="attr_gun_template" value="type72" />
-          <input type="radio" name="attr_gun_template" value="type97" />
-          <input type="radio" name="attr_gun_template" value="vp84p" />
-          <input type="radio" name="attr_gun_template" value="williamsm4" />
-          <input type="radio" name="attr_gun_template" value="xiaofan12" />
-          <input type="radio" name="attr_gun_template" value="yurei2" />
-
-          <!-- Melee images radio -->
-          <input type="radio" name="attr_melee_template" value="none" />
-
-          <!-- Weapon image container -->
-          <div class="full-width weapon-image flex-col flex-middle">
+          <div class="currency-wrapper full-width flex-row flex-middle">
+            <input
+              type="number"
+              class="line-input"
+              name="attr_eur_amount"
+              value="0"
+              min="0"
+            />
             <input
               type="text"
-              class="author-credit"
-              name="attr_author_name"
-              value=""
+              maxlength="1"
+              value="€"
+              disabled
             />
           </div>
+        </div>
 
-          <!-- Weapon stats -->
-          <table class="weapon-stats-table full-width">
+        <!-- GBP -->
+        <div class="currency flex-col flex-middle">
+          <input
+            type="text"
+            class="currency-input full-width"
+            value="Livre Sterling (GBP)"
+            disabled
+          />
+          <div class="currency-wrapper full-width flex-row flex-middle">
+            <input
+              type="number"
+              class="line-input"
+              name="attr_gbp_amount"
+              value="0"
+              min="0"
+            />
+            <input
+              type="text"
+              maxlength="1"
+              value="£"
+              disabled
+            />
+          </div>
+        </div>
 
-            <!-- Melee header -->
-            <thead class="melee-header">
-              <tr>
-                <th colspan="7" class="weapon-name">
-                  <input
-                    type="text"
-                    class="sheet-line-input"
-                    name="attr_weapon_name"
-                  />
-                </th>
-              </tr>
-              <tr>
-                <th class="full-width" colspan="7">Informations</th>
-              </tr>
-            </thead>
+        <!-- JPY -->
+        <div class="currency flex-col flex-middle">
+          <input
+            type="text"
+            class="currency-input full-width"
+            value="Yen (JPY)"
+            disabled
+          />
+          <div class="currency-wrapper full-width flex-row flex-middle">
+            <input
+              type="number"
+              class="line-input"
+              name="attr_jpy_amount"
+              value="0"
+              min="0"
+            />
+            <input
+              type="text"
+              maxlength="1"
+              value="円"
+              disabled
+            />
+          </div>
+        </div>
 
-            <!-- Gun header -->
-            <thead class="gun-header">
-              <tr>
-                <th rowspan="2" colspan="4" class="weapon-name">
-                  <input
-                    type="text"
-                    class="sheet-line-input"
-                    name="attr_weapon_name"
-                  />
-                </th>
-                <th>Tir seul</th>
-                <th>Semi-auto</th>
-                <th>Automatique</th>
-              </tr>
-              <tr>
-                <th>
-                  <input
-                    type="number"
-                    class="firing-rate"
-                    name="attr_gun_firing_rate_single"
-                    value="0"
-                    min="0"
-                  />
-                </th>
-                <th>
-                  <input
-                    type="number"
-                    class="firing-rate"
-                    name="attr_gun_firing_rate_semi"
-                    value="0"
-                    min="0"
-                  />
-                </th>
-                <th>
-                  <input
-                    type="number"
-                    class="firing-rate"
-                    name="attr_gun_firing_rate_full"
-                    value="0"
-                    min="0"
-                  />
-                </th>
-              </tr>
-              <tr>
-                <th class="full-width" rowspan="2">Catégorie</th>
-                <th rowspan="2">Capacité</th>
-                <th rowspan="2">Calibre</th>
-                <th rowspan="2">Précision</th>
-                <th colspan="3">Portée</th>
-              </tr>
-              <tr>
-                <th>Courte</th>
-                <th>Moyenne</th>
-                <th>Longue</th>
-              </tr>
-            </tbody>
-
-            <!-- Melee body -->
-            <tbody class="melee-body">
-              <td colspan="7"></td>
-            </tbody>
-
-            <!-- Gun body -->
-            <tbody class="gun-body">
-              <tr>
-                <td rowspan="2">
-                  <div class="flex-row full-width flex-middle">
-                    <select name="attr_gun_class">
-                      <option value="pistol">Arme de poing</option>
-                      <option value="shotgun">Dispersion</option>
-                      <option value="rifle">Fusil</option>
-                      <option value="lmg">Mitrailleuse</option>
-                      <option value="smg">Pistolet mitrailleur</option>
-                    </select>
-                  </div>
-                </td>
-                <td rowspan="2">
-                  <input
-                    type="number"
-                    name="attr_capacity_current"
-                    value="0"
-                    min="0"
-                  />
-                  <span>/</span>
-                  <input
-                    type="number"
-                    name="attr_capacity_max"
-                    value="1"
-                    min="1"
-                  />
-                </td>
-                <td rowspan="2">
-                  <select name="attr_gun_caliber">
-                    <option value="22lr">.22 LR</option>
-                    <option value="9mm">9mm</option>
-                    <option value="45acp">.45 ACP</option>
-                    <option value="357mag">.357 MAG</option>
-                    <option value="44mag">.44 MAG</option>
-                    <option value="556x45">5.56x45mm</option>
-                    <option value="762x39">7.62x39mm</option>
-                    <option value="762x51">7.62x51mm</option>
-                    <option value="12g">Calibre 12</option>
-                  </select>
-                </td>
-                <td rowspan="2">
-                  <input
-                    type="number"
-                    name="attr_gun_accuracy"
-                    value="0"
-                  />
-                </td>
-                <td>
-                  <div class="sheet-flex-row sheet-flex-middle">
-                    <div class="sheet-gun-range-wrapper">
-                      <input
-                        type="number"
-                        class="gun-range"
-                        name="attr_gun_range_short"
-                        min="0"
-                      />
-                      <span>m</span>
-                    </div>
-                    <input type="hidden" class="sheet-weapon-firing-control" name="attr_gun_firing_rate_single" />
-                    <input type="hidden" class="sheet-weapon-firing-control" name="attr_gun_firing_rate_semi" />
-                    <input type="hidden" class="sheet-weapon-firing-control" name="attr_gun_firing_rate_full" />
-                    <div class="sheet-gunshot-rolls sheet-flex-col sheet-flex-middle">
-                      <div>
-                        <button
-                          type="roll"
-                          title="Tir seul"
-                          class="sheet-gunshot-button sheet-single-shot"
-                          value="&{template:gunshot} {{character_name=@{character_name}}} {{weapon_name=@{weapon_name}}} {{firing_mode=Tir seul}} {{attack_amount=[[?{Nombre de tirs|@{gun_firing_rate_single}}]]}} {{max_attack_amount=[[@{gun_firing_rate_single}]]}} {{max_attack_amount_plus_one=[[@{gun_firing_rate_single} + 1]]}} {{damage=[[@{gun_damage_short}]]}} {{penetration=[[@{gun_pen_short}]]}} {{shock=[[@{gun_shock_short}]]}}"
-                        ></button>
-                        <button
-                          disabled
-                          type="roll"
-                          title="Tir seul"
-                          class="sheet-gunshot-button sheet-single-shot"
-                        ></button>
-                      </div>
-                      <div>
-                        <button
-                          type="roll"
-                          title="Rafale semi-automatique"
-                          class="sheet-gunshot-button sheet-semi-auto"
-                          value="&{template:gunshot} {{character_name=@{character_name}}} {{weapon_name=@{weapon_name}}} {{firing_mode=Semi-auto}} {{attack_amount=[[?{Nombre de tirs|@{gun_firing_rate_semi}}]]}} {{max_attack_amount=[[@{gun_firing_rate_semi}]]}} {{max_attack_amount_plus_one=[[@{gun_firing_rate_semi} + 1]]}} {{damage=[[@{gun_damage_short}]]}} {{penetration=[[@{gun_pen_short}]]}} {{shock=[[@{gun_shock_short}]]}}"
-                        ></button>
-                        <button
-                          disabled
-                          type="roll"
-                          title="Rafale semi-automatique"
-                          class="sheet-gunshot-button sheet-semi-auto"
-                        ></button>
-                      </div>
-                      <div>
-                        <button
-                          type="roll"
-                          title="Rafale automatique"
-                          class="sheet-gunshot-button sheet-full-auto"
-                          value="&{template:gunshot} {{character_name=@{character_name}}} {{weapon_name=@{weapon_name}}} {{firing_mode=Automatique}} {{attack_amount=[[?{Nombre de tirs|@{gun_firing_rate_full}}]]}} {{max_attack_amount=[[@{gun_firing_rate_full}]]}} {{max_attack_amount_plus_one=[[@{gun_firing_rate_full} + 1]]}} {{damage=[[@{gun_damage_short}]]}} {{penetration=[[@{gun_pen_short}]]}} {{shock=[[@{gun_shock_short}]]}}"
-                        ></button>
-                        <button
-                          disabled
-                          type="roll"
-                          title="Rafale automatique"
-                          class="sheet-gunshot-button sheet-full-auto"
-                        ></button>
-                      </div>
-                    </div>
-                  </div>
-                </td>
-                <td>
-                  <div class="sheet-flex-row sheet-flex-middle">
-                    <div class="sheet-gun-range-wrapper">
-                      <input
-                        type="number"
-                        class="sheet-gun-range"
-                        name="attr_gun_range_medium"
-                        min="0"
-                      />
-                      <span>m</span>
-                    </div>
-                    <input type="hidden" class="sheet-weapon-firing-control" name="attr_gun_firing_rate_single" />
-                    <input type="hidden" class="sheet-weapon-firing-control" name="attr_gun_firing_rate_semi" />
-                    <input type="hidden" class="sheet-weapon-firing-control" name="attr_gun_firing_rate_full" />
-                    <div class="sheet-gunshot-rolls sheet-flex-col sheet-flex-middle">
-                      <div>
-                        <button
-                          type="roll"
-                          title="Tir seul"
-                          class="sheet-gunshot-button sheet-single-shot"
-                          value="&{template:gunshot} {{character_name=@{character_name}}} {{weapon_name=@{weapon_name}}} {{firing_mode=Tir seul}} {{attack_amount=[[?{Nombre de tirs|@{gun_firing_rate_single}}]]}} {{max_attack_amount=[[@{gun_firing_rate_single}]]}} {{max_attack_amount_plus_one=[[@{gun_firing_rate_single} + 1]]}} {{damage=[[@{gun_damage_medium}]]}} {{penetration=[[@{gun_pen_medium}]]}} {{shock=[[@{gun_shock_medium}]]}}"
-                        ></button>
-                        <button
-                          disabled
-                          type="roll"
-                          title="Tir seul"
-                          class="sheet-gunshot-button sheet-single-shot"
-                        ></button>
-                      </div>
-                      <div>
-                        <button
-                          type="roll"
-                          title="Rafale semi-automatique"
-                          class="sheet-gunshot-button sheet-semi-auto"
-                          value="&{template:gunshot} {{character_name=@{character_name}}} {{weapon_name=@{weapon_name}}} {{firing_mode=Semi-auto}} {{attack_amount=[[?{Nombre de tirs|@{gun_firing_rate_semi}}]]}} {{max_attack_amount=[[@{gun_firing_rate_semi}]]}} {{max_attack_amount_plus_one=[[@{gun_firing_rate_semi} + 1]]}} {{damage=[[@{gun_damage_medium}]]}} {{penetration=[[@{gun_pen_medium}]]}} {{shock=[[@{gun_shock_medium}]]}}"
-                        ></button>
-                        <button
-                          disabled
-                          type="roll"
-                          title="Rafale semi-automatique"
-                          class="sheet-gunshot-button sheet-semi-auto"
-                        ></button>
-                      </div>
-                      <div>
-                        <button
-                          type="roll"
-                          title="Rafale automatique"
-                          class="sheet-gunshot-button sheet-full-auto"
-                          value="&{template:gunshot} {{character_name=@{character_name}}} {{weapon_name=@{weapon_name}}} {{firing_mode=Automatique}} {{attack_amount=[[?{Nombre de tirs|@{gun_firing_rate_full}}]]}} {{max_attack_amount=[[@{gun_firing_rate_full}]]}} {{max_attack_amount_plus_one=[[@{gun_firing_rate_full} + 1]]}} {{damage=[[@{gun_damage_medium}]]}} {{penetration=[[@{gun_pen_medium}]]}} {{shock=[[@{gun_shock_medium}]]}}"
-                        ></button>
-                        <button
-                          disabled
-                          type="roll"
-                          title="Rafale automatique"
-                          class="sheet-gunshot-button sheet-full-auto"
-                        ></button>
-                      </div>
-                    </div>
-                  </div>
-                </td>
-                <td>
-                  <div class="sheet-flex-row sheet-flex-middle">
-                    <div class="sheet-gun-range-wrapper">
-                      <input
-                        type="number"
-                        class="sheet-gun-range"
-                        name="attr_gun_range_long"
-                        min="0"
-                      />
-                      <span>m</span>
-                    </div>
-                    <input type="hidden" class="sheet-weapon-firing-control" name="attr_gun_firing_rate_single" />
-                    <input type="hidden" class="sheet-weapon-firing-control" name="attr_gun_firing_rate_semi" />
-                    <input type="hidden" class="sheet-weapon-firing-control" name="attr_gun_firing_rate_full" />
-                    <div class="sheet-gunshot-rolls sheet-flex-col sheet-flex-middle">
-                      <div>
-                        <button
-                          type="roll"
-                          title="Tir seul"
-                          class="sheet-gunshot-button sheet-single-shot"
-                          value="&{template:gunshot} {{character_name=@{character_name}}} {{weapon_name=@{weapon_name}}} {{firing_mode=Tir seul}} {{attack_amount=[[?{Nombre de tirs|@{gun_firing_rate_single}}]]}} {{max_attack_amount=[[@{gun_firing_rate_single}]]}} {{max_attack_amount_plus_one=[[@{gun_firing_rate_single} + 1]]}} {{damage=[[@{gun_damage_long}]]}} {{penetration=[[@{gun_pen_long}]]}} {{shock=[[@{gun_shock_long}]]}}"
-                        ></button>
-                        <button
-                          disabled
-                          type="roll"
-                          title="Tir seul"
-                          class="sheet-gunshot-button sheet-single-shot"
-                        ></button>
-                      </div>
-                      <div>
-                        <button
-                          type="roll"
-                          title="Rafale semi-automatique"
-                          class="sheet-gunshot-button sheet-semi-auto"
-                          value="&{template:gunshot} {{character_name=@{character_name}}} {{weapon_name=@{weapon_name}}} {{firing_mode=Semi-auto}} {{attack_amount=[[?{Nombre de tirs|@{gun_firing_rate_semi}}]]}} {{max_attack_amount=[[@{gun_firing_rate_semi}]]}} {{max_attack_amount_plus_one=[[@{gun_firing_rate_semi} + 1]]}} {{damage=[[@{gun_damage_long}]]}} {{penetration=[[@{gun_pen_long}]]}} {{shock=[[@{gun_shock_long}]]}}"
-                        ></button>
-                        <button
-                          disabled
-                          type="roll"
-                          title="Rafale semi-automatique"
-                          class="sheet-gunshot-button sheet-semi-auto"
-                        ></button>
-                      </div>
-                      <div>
-                        <button
-                          type="roll"
-                          title="Rafale automatique"
-                          class="sheet-gunshot-button sheet-full-auto"
-                          value="&{template:gunshot} {{character_name=@{character_name}}} {{weapon_name=@{weapon_name}}} {{firing_mode=Automatique}} {{attack_amount=[[?{Nombre de tirs|@{gun_firing_rate_full}}]]}} {{max_attack_amount=[[@{gun_firing_rate_full}]]}} {{max_attack_amount_plus_one=[[@{gun_firing_rate_full} + 1]]}} {{damage=[[@{gun_damage_long}]]}} {{penetration=[[@{gun_pen_long}]]}} {{shock=[[@{gun_shock_long}]]}}"
-                        ></button>
-                        <button
-                          disabled
-                          type="roll"
-                          title="Rafale automatique"
-                          class="sheet-gunshot-button sheet-full-auto"
-                        ></button>
-                      </div>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td class="sheet-damage-col">
-                  <table>
-                    <thead>
-                      <tr>
-                        <th><span>D</span></th>
-                        <th><span>C</span></th>
-                        <th><span>P</span></th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>
-                          <input
-                            type="number"
-                            name="attr_gun_damage_short"
-                            title="Dégâts"
-                            value="0"
-                            min="0"
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="number"
-                            name="attr_gun_shock_short"
-                            title="Choc"
-                            value="0"
-                            min="0"
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="number"
-                            name="attr_gun_pen_short"
-                            title="Pénétration"
-                            value="0"
-                          />
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </td>
-                <td class="sheet-damage-col">
-                  <table>
-                    <thead>
-                      <tr>
-                        <th><span>D</span></th>
-                        <th><span>C</span></th>
-                        <th><span>P</span></th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>
-                          <input
-                            type="number"
-                            name="attr_gun_damage_medium"
-                            title="Dégâts"
-                            value="0"
-                            min="0"
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="number"
-                            name="attr_gun_shock_medium"
-                            title="Choc"
-                            value="0"
-                            min="0"
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="number"
-                            name="attr_gun_pen_medium"
-                            title="Pénétration"
-                            value="0"
-                          />
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </td>
-                <td class="sheet-damage-col">
-                  <table>
-                    <thead>
-                      <tr>
-                        <th><span>D</span></th>
-                        <th><span>C</span></th>
-                        <th><span>P</span></th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>
-                          <input
-                            type="number"
-                            name="attr_gun_damage_long"
-                            title="Dégâts"
-                            value="0"
-                            min="0"
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="number"
-                            name="attr_gun_shock_long"
-                            title="Choc"
-                            value="0"
-                            min="0"
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="number"
-                            name="attr_gun_pen_long"
-                            title="Pénétration"
-                            value="0"
-                          />
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </td>
-              </tr>
-              <tr>
-                <td colspan="7" class="weapon-mods">
-                  <input
-                    type="text"
-                    class="sheet-line-input"
-                    name="attr_weapon_mods"
-                    placeholder="Mods"
-                  />
-                </td>
-              </tr>
-            </tbody>
-          </table>
+        <!-- CNY -->
+        <div class="currency flex-col flex-middle">
+          <input
+            type="text"
+            class="currency-input full-width"
+            value="Yuan (CNY)"
+            disabled
+          />
+          <div class="currency-wrapper full-width flex-row flex-middle">
+            <input
+              type="number"
+              class="line-input"
+              name="attr_cny_amount"
+              value="0"
+              min="0"
+            />
+            <input
+              type="text"
+              maxlength="1"
+              value="¥"
+              disabled
+            />
+          </div>
         </div>
       </div>
-    </div>
-  </fieldset>
-  <h2>Protections</h2>
-  <fieldset class="repeating_armors">
-    <div class="sheet-armor">
-      <div class="sheet-full-width sheet-armor-details">
-        <input
-          type="text"
-          class="sheet-line-input sheet-full-width"
-          name="attr_armor_name"
-          placeholder="Nom de la protection"
-        />
-      </div>
-      <div class="sheet-full-width sheet-flex-row sheet-flex-middle">
-        <label>
-          <span>Tête</span>
-          <input
-            type="number"
-            class="sheet-line-input"
-            name="attr_armor_defense_head"
-            value="0"
-          />
-        </label>
-        <label>
-          <span>Corps</span>
-          <input
-            type="number"
-            class="sheet-line-input"
-            name="attr_armor_defense_body"
-            value="0"
-          />
-        </label>
-        <label>
-          <span>Bras gauche</span>
-          <input
-            type="number"
-            class="sheet-line-input"
-            name="attr_armor_defense_arm_left"
-            value="0"
-          />
-        </label>
-        <label>
-          <span>Bras droit</span>
-          <input
-            type="number"
-            class="sheet-line-input"
-            name="attr_armor_defense_arm_right"
-            value="0"
-          />
-        </label>
-        <label>
-          <span>Jambe gauche</span>
-          <input
-            type="number"
-            class="sheet-line-input"
-            name="attr_armor_defense_leg_left"
-            value="0"
-          />
-        </label>
-        <label>
-          <span>Jambe droite</span>
-          <input
-            type="number"
-            class="sheet-line-input"
-            name="attr_armor_defense_leg_right"
-            value="0"
-          />
-        </label>
-      </div>
-      <div class="sheet-full-width sheet-armor-mods sheet-flex-row sheet-flex-middle">
-        <input
-          type="text"
-          class="sheet-line-input sheet-full-width"
-          name="attr_armor_mods"
-          placeholder="Mods"
-        />
+      <div class="half-width currencies">
+        <!-- Repeatable currencies -->
+        <fieldset class="repeating_currencies">
+          <div class="currency flex-col flex-middle">
+            <input
+              type="text"
+              class="currency-input full-width"
+              name="attr_currency_name"
+            />
+            <div class="currency-wrapper full-width flex-row flex-middle">
+              <input
+                type="number"
+                class="line-input"
+                name="attr_currency_amount"
+                value="0"
+                min="0"
+              />
+              <input
+                type="text"
+                maxlength="1"
+                name="attr_currency_symbol"
+              />
+            </div>
+          </div>
+        </fieldset>
       </div>
     </div>
-  </fieldset>
+  </div>
+  <div class="tab inventory full-width flex-col">
+    <h2>Objets</h2>
+    <fieldset class="repeating_inventory">
+      <div class="item-container full-width flex-row">
+        <input type="text" name="attr_item_name" class="line-input full-width" placeholder="Objet" />
+        <span class="mult"></span>
+        <input type="number" class="line-input"
+      </div>
+    </fieldset>
+  </div>
+  <div class="tab armors full-width flex-col">
+    <h2>Santé</h2>
+    <div class="hp-wrapper full-width flex-row">
+      <input type="hidden" value="attr_character_sex" value="m" />
+      <div class="silhouette">
+
+        <!-- Head -->
+        <div class="part head flex-col flex-middle">
+          <h3 class="full-width">Tête</h3>
+          <div class="full-width flex-col flex-middle">
+            <input type="hidden" name="attr_head_defense_total" value="0" />
+            <div class="part-hp flex-row flex-middle full-width">
+              <input type="hidden" name="attr_head_max_hp" />
+              <input type="number" name="attr_head_hp_total" value="0" />
+              <span class="slash">/</span>
+              <input type="number" name="attr_head_hp_max_display" value="@{head_max_hp}" disabled />
+            </div>
+            <div class="part-pain flex-row flex-middle full-width">
+              <input type="hidden" name="attr_head_max_pain" />
+              <input type="number" name="attr_head_pain_total" value="0" />
+              <span class="slash">/</span>
+              <input type="number" name="attr_head_pain_max_display" value="@{head_max_pain}" disabled />
+            </div>
+          </div>
+        </div>
+
+        <!-- Body -->
+        <div class="part body flex-col flex-middle">
+          <h3 class="full-width">Torse</h3>
+          <div class="full-width flex-col flex-middle">
+            <input type="hidden" name="attr_body_defense_total" value="0" />
+            <div class="part-hp flex-row flex-middle full-width">
+              <input type="hidden" name="attr_body_max_hp" />
+              <input type="number" name="attr_body_hp_total" value="0" />
+              <span class="slash">/</span>
+              <input type="number" name="attr_body_hp_max_display" value="@{body_max_hp}" disabled />
+            </div>
+            <div class="part-pain flex-row flex-middle full-width">
+              <input type="hidden" name="attr_body_max_pain" />
+              <input type="number" name="attr_body_pain_total" value="0" />
+              <span class="slash">/</span>
+              <input type="number" name="attr_body_pain_max_display" value="@{body_max_pain}" disabled />
+            </div>
+          </div>
+        </div>
+
+        <!-- Left arm -->
+        <div class="part left-arm flex-col flex-middle">
+          <h3 class="full-width">Bras gauche</h3>
+          <div class="full-width flex-col flex-middle">
+            <input type="hidden" name="attr_left_arm_defense_total" value="0" />
+            <div class="part-hp flex-row flex-middle full-width">
+              <input type="hidden" name="attr_left_arm_max_hp" />
+              <input type="number" name="attr_left_arm_hp_total" value="0" />
+              <span class="slash">/</span>
+              <input type="number" name="attr_left_arm_hp_max_display" value="@{left_arm_max_hp}" disabled />
+            </div>
+            <div class="part-pain flex-row flex-middle full-width">
+              <input type="hidden" name="attr_left_arm_max_pain" />
+              <input type="number" name="attr_left_arm_pain_total" value="0" />
+              <span class="slash">/</span>
+              <input type="number" name="attr_left_arm_pain_max_display" value="@{left_arm_max_pain}" disabled />
+            </div>
+          </div>
+        </div>
+
+        <!-- Right arm -->
+        <div class="part right-arm flex-col flex-middle">
+          <h3 class="full-width">Bras droit</h3>
+          <div class="full-width flex-col flex-middle">
+            <input type="hidden" name="attr_right_arm_defense_total" value="0" />
+            <div class="part-hp flex-row flex-middle full-width">
+              <input type="hidden" name="attr_right_arm_max_hp" />
+              <input type="number" name="attr_right_arm_hp_total" value="0" />
+              <span class="slash">/</span>
+              <input type="number" name="attr_right_arm_hp_max_display" value="@{right_arm_max_hp}" disabled />
+            </div>
+            <div class="part-pain flex-row flex-middle full-width">
+              <input type="hidden" name="attr_right_arm_max_pain" />
+              <input type="number" name="attr_right_arm_pain_total" value="0" />
+              <span class="slash">/</span>
+              <input type="number" name="attr_right_arm_pain_max_display" value="@{right_arm_max_pain}" disabled />
+            </div>
+          </div>
+        </div>
+
+        <!-- Left leg -->
+        <div class="part left-leg flex-col flex-middle">
+          <h3 class="full-width">Jambe gauche</h3>
+          <div class="full-width flex-col flex-middle">
+            <input type="hidden" name="attr_left_leg_defense_total" value="0" />
+            <div class="part-hp flex-row flex-middle full-width">
+              <input type="hidden" name="attr_left_leg_max_hp" />
+              <input type="number" name="attr_left_leg_hp_total" value="0" />
+              <span class="slash">/</span>
+              <input type="number" name="attr_left_leg_hp_max_display" value="@{left_leg_max_hp}" disabled />
+            </div>
+            <div class="part-pain flex-row flex-middle full-width">
+              <input type="hidden" name="attr_left_leg_max_pain" />
+              <input type="number" name="attr_left_leg_pain_total" value="0" />
+              <span class="slash">/</span>
+              <input type="number" name="attr_left_leg_pain_max_display" value="@{left_leg_max_pain}" disabled />
+            </div>
+          </div>
+        </div>
+
+        <!-- Right leg -->
+        <div class="part right-leg flex-col flex-middle">
+          <h3 class="full-width">Jambe droite</h3>
+          <div class="full-width flex-col flex-middle">
+            <input type="hidden" name="attr_right_leg_defense_total" value="0" />
+            <div class="part-hp flex-row flex-middle full-width">
+              <input type="hidden" name="attr_right_leg_max_hp" />
+              <input type="number" name="attr_right_leg_hp_total" value="0" />
+              <span class="slash">/</span>
+              <input type="number" name="attr_right_leg_hp_max_display" value="@{right_leg_max_hp}" disabled />
+            </div>
+            <div class="part-pain flex-row flex-middle full-width">
+              <input type="hidden" name="attr_right_leg_max_pain" />
+              <input type="number" name="attr_right_leg_pain_total" value="0" />
+              <span class="slash">/</span>
+              <input type="number" name="attr_right_leg_pain_max_display" value="@{right_leg_max_pain}" disabled />
+            </div>
+          </div>
+        </div>
+      </div>
+      <table class="condition-bonus">
+        <tbody>
+          <tr>
+            <td class="hp"></td>
+            <td>Vitalité max</td>
+            <td>
+              <div class="flex-col flex-middle">
+                <span>Tête</span>
+                <input
+                  type="number"
+                  name="attr_head_max_health_bonus"
+                  value="0"
+                />
+              </div>
+            </td>
+            <td>
+              <div class="flex-col flex-middle">
+                <span>Torse</span>
+                <input
+                  type="number"
+                  name="attr_body_max_health_bonus"
+                  value="0"
+                />
+              </div>
+            </td>
+            <td>
+              <div class="flex-col flex-middle">
+                <span>B.Gauche</span>
+                <input
+                  type="number"
+                  name="attr_left_arm_max_health_bonus"
+                  value="0"
+                />
+              </div>
+            </td>
+            <td>
+              <div class="flex-col flex-middle">
+                <span>B.Droit</span>
+                <input
+                  type="number"
+                  name="attr_right_arm_max_health_bonus"
+                  value="0"
+                />
+              </div>
+            </td>
+            <td>
+              <div class="flex-col flex-middle">
+                <span>J.Gauche</span>
+                <input
+                  type="number"
+                  name="attr_left_leg_max_health_bonus"
+                  value="0"
+                />
+              </div>
+            </td>
+            <td>
+              <div class="flex-col flex-middle">
+                <span>J.Droite</span>
+                <input
+                  type="number"
+                  name="attr_right_leg_max_health_bonus"
+                  value="0"
+                />
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="pain"></td>
+            <td>Ténacité max</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    </table>
+    <h2>Protections</h2>
+    <fieldset class="repeating_armors">
+      <div class="armor">
+        <div class="full-width armor-details">
+          <input
+            type="text"
+            class="line-input full-width"
+            name="attr_armor_name"
+            placeholder="Nom de la protection"
+          />
+        </div>
+        <div class="full-width flex-row flex-middle">
+          <label>
+            <span>Tête</span>
+            <input
+              type="number"
+              class="line-input"
+              name="attr_armor_defense_head"
+              value="0"
+            />
+          </label>
+          <label>
+            <span>Corps</span>
+            <input
+              type="number"
+              class="line-input"
+              name="attr_armor_defense_body"
+              value="0"
+            />
+          </label>
+          <label>
+            <span>Bras gauche</span>
+            <input
+              type="number"
+              class="line-input"
+              name="attr_armor_defense_arm_left"
+              value="0"
+            />
+          </label>
+          <label>
+            <span>Bras droit</span>
+            <input
+              type="number"
+              class="line-input"
+              name="attr_armor_defense_arm_right"
+              value="0"
+            />
+          </label>
+          <label>
+            <span>Jambe gauche</span>
+            <input
+              type="number"
+              class="line-input"
+              name="attr_armor_defense_leg_left"
+              value="0"
+            />
+          </label>
+          <label>
+            <span>Jambe droite</span>
+            <input
+              type="number"
+              class="line-input"
+              name="attr_armor_defense_leg_right"
+              value="0"
+            />
+          </label>
+        </div>
+        <div class="sheet-full-width sheet-armor-mods sheet-flex-row sheet-flex-middle">
+          <input
+            type="text"
+            class="line-input full-width"
+            name="attr_armor_mods"
+            placeholder="Mods"
+          />
+        </div>
+      </div>
+    </fieldset>
+  </div>
+  <div class="tab weapons full-width flex-col">
+    <h2>Armement</h2>
+    <fieldset class="repeating_weapons">
+      <div class="weapon flex-col">
+        <div class="flex-row full-width">
+          <div class="weapon-stats full-width">
+            <div class="flex-col">
+              <div class="weapon-options-group flex-row">
+                <input
+                  type="checkbox"
+                  class="is-melee"
+                  name="attr_weapon_is_melee"
+                  value="1"
+                />
+                <p>Arme de mêlée</p>
+              </div>
+              <div class="weapon-options-group flex-row">
+                <input
+                  type="checkbox"
+                  class="is-equipped"
+                  name="attr_weapon_is_equipped"
+                  value="1"
+                />
+                <p>Equipé</p>
+              </div>
+            </div>
+            <div class="weapon-input">
+              <p>Modèle</p>
+              <select name="attr_gun_template">
+                <option value="none">Aucun</option>
+
+                <!-- Handguns -->
+                <option disabled></option>
+                <option disabled>-- ARMES DE POING --</option>
+                <option value="m4400clancy">M4400 Clancy</option>
+                <option value="m74g">M74G</option>
+                <option value="p83">P83</option>
+                <option value="vp84p">VP84-P</option>
+
+                <!-- Shotguns -->
+                <option disabled></option>
+                <option disabled>-- ARMES A DISPERSION --</option>
+                <option value="m99">M99</option>
+                <option value="type72">Type 72</option>
+                <option value="xiaofan12">Xiao-fan 12</option>
+
+                <!-- Assault Rifles -->
+                <option disabled></option>
+                <option disabled>-- FUSILS --</option>
+                <option value="altermattspr">Altermatt SPR</option>
+                <option value="celica">Celica</option>
+                <option value="rk80">RK80</option>
+                <option value="rk80ct">RK80-CT</option>
+                <option value="scout73">Scout 73</option>
+                <option value="type97">Type 97</option>
+
+                <!-- LMGs -->
+                <option disabled></option>
+                <option disabled>-- MITRAILLEUSES --</option>
+                <option value="gepardgpmg">Gepard MG82</option>
+                <option value="snapdragongpgm">SnapDragon GPGM</option>
+
+                <!-- SMGs -->
+                <option disabled></option>
+                <option disabled>-- PISTOLETS MITRAILLEURS --</option>
+                <option value="a918">A918</option>
+                <option value="brak">Brak</option>
+                <option value="mp200">MP200</option>
+                <option value="williamsm4">Williams M4</option>
+                <option value="yurei2">Yurei II</option>
+
+              </select>
+              <select name="attr_melee_template">
+                <option value="none">Aucun</option>
+                <option value="knife">Couteau</option>
+              </select>
+            </div>
+
+            <!-- Guns images radio -->
+            <input type="radio" name="attr_gun_template" value="none" />
+            <input type="radio" name="attr_gun_template" value="a918" />
+            <input type="radio" name="attr_gun_template" value="altermattspr" />
+            <input type="radio" name="attr_gun_template" value="brak" />
+            <input type="radio" name="attr_gun_template" value="celica" />
+            <input type="radio" name="attr_gun_template" value="gepardgpmg" />
+            <input type="radio" name="attr_gun_template" value="m4400clancy" />
+            <input type="radio" name="attr_gun_template" value="m74g" />
+            <input type="radio" name="attr_gun_template" value="m99" />
+            <input type="radio" name="attr_gun_template" value="mp200" />
+            <input type="radio" name="attr_gun_template" value="p83" />
+            <input type="radio" name="attr_gun_template" value="rk80" />
+            <input type="radio" name="attr_gun_template" value="rk80ct" />
+            <input type="radio" name="attr_gun_template" value="scout73" />
+            <input type="radio" name="attr_gun_template" value="snapdragongpgm" />
+            <input type="radio" name="attr_gun_template" value="type72" />
+            <input type="radio" name="attr_gun_template" value="type97" />
+            <input type="radio" name="attr_gun_template" value="vp84p" />
+            <input type="radio" name="attr_gun_template" value="williamsm4" />
+            <input type="radio" name="attr_gun_template" value="xiaofan12" />
+            <input type="radio" name="attr_gun_template" value="yurei2" />
+
+            <!-- Melee images radio -->
+            <input type="radio" name="attr_melee_template" value="none" />
+
+            <!-- Weapon image container -->
+            <div class="full-width weapon-image flex-col flex-middle">
+              <input
+                type="text"
+                class="author-credit"
+                name="attr_author_name"
+                value=""
+              />
+            </div>
+
+            <!-- Weapon stats -->
+            <input type="hidden" name="attr_weapon_is_melee" />
+            <table class="weapon-stats-table full-width">
+
+              <!-- Melee header -->
+              <thead class="melee-header">
+                <tr>
+                  <th colspan="7" class="weapon-name">
+                    <input
+                      type="text"
+                      class="line-input"
+                      name="attr_weapon_name"
+                    />
+                  </th>
+                </tr>
+                <tr>
+                  <th class="full-width" colspan="7">Informations</th>
+                </tr>
+              </thead>
+
+              <!-- Gun header -->
+              <thead class="gun-header">
+                <tr>
+                  <th rowspan="2" colspan="4" class="weapon-name">
+                    <input
+                      type="text"
+                      class="line-input"
+                      name="attr_weapon_name"
+                    />
+                  </th>
+                  <th>Tir seul</th>
+                  <th>Semi-auto</th>
+                  <th>Automatique</th>
+                </tr>
+                <tr>
+                  <th>
+                    <input
+                      type="number"
+                      class="firing-rate"
+                      name="attr_gun_firing_rate_single"
+                      value="0"
+                      min="0"
+                    />
+                  </th>
+                  <th>
+                    <input
+                      type="number"
+                      class="firing-rate"
+                      name="attr_gun_firing_rate_semi"
+                      value="0"
+                      min="0"
+                    />
+                  </th>
+                  <th>
+                    <input
+                      type="number"
+                      class="firing-rate"
+                      name="attr_gun_firing_rate_full"
+                      value="0"
+                      min="0"
+                    />
+                  </th>
+                </tr>
+                <tr>
+                  <th class="full-width" rowspan="2">Catégorie</th>
+                  <th rowspan="2">Capacité</th>
+                  <th rowspan="2">Calibre</th>
+                  <th rowspan="2">Précision</th>
+                  <th colspan="3">Portée</th>
+                </tr>
+                <tr>
+                  <th>Courte</th>
+                  <th>Moyenne</th>
+                  <th>Longue</th>
+                </tr>
+              </tbody>
+
+              <!-- Melee body -->
+              <tbody class="melee-body">
+                <td colspan="7" class="weapon-mods">
+                <input
+                  type="text"
+                  class="sheet-line-input"
+                  name="attr_weapon_mods"
+                  placeholder="Mods"
+                />
+                </td>
+              </tbody>
+
+              <!-- Gun body -->
+              <tbody class="gun-body">
+                <tr>
+                  <td rowspan="2">
+                    <div class="flex-row full-width flex-middle">
+                      <select name="attr_gun_class">
+                        <option value="pistol">Arme de poing</option>
+                        <option value="shotgun">Dispersion</option>
+                        <option value="rifle">Fusil</option>
+                        <option value="lmg">Mitrailleuse</option>
+                        <option value="smg">Pistolet mitrailleur</option>
+                      </select>
+                    </div>
+                  </td>
+                  <td rowspan="2">
+                    <input
+                      type="number"
+                      name="attr_capacity_current"
+                      value="0"
+                      min="0"
+                    />
+                    <span>/</span>
+                    <input
+                      type="number"
+                      name="attr_capacity_max"
+                      value="1"
+                      min="1"
+                    />
+                  </td>
+                  <td rowspan="2">
+                    <select name="attr_gun_caliber">
+                      <option value="22lr">.22 LR</option>
+                      <option value="9mm">9mm</option>
+                      <option value="45acp">.45 ACP</option>
+                      <option value="357mag">.357 MAG</option>
+                      <option value="44mag">.44 MAG</option>
+                      <option value="556x45">5.56x45mm</option>
+                      <option value="762x39">7.62x39mm</option>
+                      <option value="762x51">7.62x51mm</option>
+                      <option value="12g">Calibre 12</option>
+                    </select>
+                  </td>
+                  <td rowspan="2">
+                    <input
+                      type="number"
+                      name="attr_gun_accuracy"
+                      value="0"
+                    />
+                  </td>
+                  <td>
+                    <div class="flex-row flex-middle">
+                      <div class="gun-range-wrapper">
+                        <input
+                          type="number"
+                          class="gun-range"
+                          name="attr_gun_range_short"
+                          min="0"
+                        />
+                        <span>m</span>
+                      </div>
+                      <input type="hidden" class="weapon-firing-control" name="attr_gun_firing_rate_single" />
+                      <input type="hidden" class="weapon-firing-control" name="attr_gun_firing_rate_semi" />
+                      <input type="hidden" class="weapon-firing-control" name="attr_gun_firing_rate_full" />
+                      <div class="gunshot-rolls flex-col flex-middle">
+                        <div>
+                          <button
+                            type="roll"
+                            title="Tir seul"
+                            class="gunshot-button single-shot"
+                            value="&{template:gunshot} {{character_name=@{character_name}}} {{weapon_name=@{weapon_name}}} {{firing_mode=Tir seul}} {{attack_amount=[[?{Nombre de tirs|@{gun_firing_rate_single}}]]}} {{max_attack_amount=[[@{gun_firing_rate_single}]]}} {{max_attack_amount_plus_one=[[@{gun_firing_rate_single} + 1]]}} {{damage=[[@{gun_damage_short}]]}} {{penetration=[[@{gun_pen_short}]]}} {{shock=[[@{gun_shock_short}]]}}"
+                          ></button>
+                          <button
+                            disabled
+                            type="roll"
+                            title="Tir seul"
+                            class="gunshot-button single-shot"
+                          ></button>
+                        </div>
+                        <div>
+                          <button
+                            type="roll"
+                            title="Rafale semi-automatique"
+                            class="gunshot-button semi-auto"
+                            value="&{template:gunshot} {{character_name=@{character_name}}} {{weapon_name=@{weapon_name}}} {{firing_mode=Semi-auto}} {{attack_amount=[[?{Nombre de tirs|@{gun_firing_rate_semi}}]]}} {{max_attack_amount=[[@{gun_firing_rate_semi}]]}} {{max_attack_amount_plus_one=[[@{gun_firing_rate_semi} + 1]]}} {{damage=[[@{gun_damage_short}]]}} {{penetration=[[@{gun_pen_short}]]}} {{shock=[[@{gun_shock_short}]]}}"
+                          ></button>
+                          <button
+                            disabled
+                            type="roll"
+                            title="Rafale semi-automatique"
+                            class="gunshot-button semi-auto"
+                          ></button>
+                        </div>
+                        <div>
+                          <button
+                            type="roll"
+                            title="Rafale automatique"
+                            class="gunshot-button full-auto"
+                            value="&{template:gunshot} {{character_name=@{character_name}}} {{weapon_name=@{weapon_name}}} {{firing_mode=Automatique}} {{attack_amount=[[?{Nombre de tirs|@{gun_firing_rate_full}}]]}} {{max_attack_amount=[[@{gun_firing_rate_full}]]}} {{max_attack_amount_plus_one=[[@{gun_firing_rate_full} + 1]]}} {{damage=[[@{gun_damage_short}]]}} {{penetration=[[@{gun_pen_short}]]}} {{shock=[[@{gun_shock_short}]]}}"
+                          ></button>
+                          <button
+                            disabled
+                            type="roll"
+                            title="Rafale automatique"
+                            class="gunshot-button full-auto"
+                          ></button>
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="flex-row flex-middle">
+                      <div class="gun-range-wrapper">
+                        <input
+                          type="number"
+                          class="gun-range"
+                          name="attr_gun_range_medium"
+                          min="0"
+                        />
+                        <span>m</span>
+                      </div>
+                      <input type="hidden" class="weapon-firing-control" name="attr_gun_firing_rate_single" />
+                      <input type="hidden" class="weapon-firing-control" name="attr_gun_firing_rate_semi" />
+                      <input type="hidden" class="weapon-firing-control" name="attr_gun_firing_rate_full" />
+                      <div class="gunshot-rolls flex-col flex-middle">
+                        <div>
+                          <button
+                            type="roll"
+                            title="Tir seul"
+                            class="gunshot-button single-shot"
+                            value="&{template:gunshot} {{character_name=@{character_name}}} {{weapon_name=@{weapon_name}}} {{firing_mode=Tir seul}} {{attack_amount=[[?{Nombre de tirs|@{gun_firing_rate_single}}]]}} {{max_attack_amount=[[@{gun_firing_rate_single}]]}} {{max_attack_amount_plus_one=[[@{gun_firing_rate_single} + 1]]}} {{damage=[[@{gun_damage_medium}]]}} {{penetration=[[@{gun_pen_medium}]]}} {{shock=[[@{gun_shock_medium}]]}}"
+                          ></button>
+                          <button
+                            disabled
+                            type="roll"
+                            title="Tir seul"
+                            class="gunshot-button single-shot"
+                          ></button>
+                        </div>
+                        <div>
+                          <button
+                            type="roll"
+                            title="Rafale semi-automatique"
+                            class="gunshot-button semi-auto"
+                            value="&{template:gunshot} {{character_name=@{character_name}}} {{weapon_name=@{weapon_name}}} {{firing_mode=Semi-auto}} {{attack_amount=[[?{Nombre de tirs|@{gun_firing_rate_semi}}]]}} {{max_attack_amount=[[@{gun_firing_rate_semi}]]}} {{max_attack_amount_plus_one=[[@{gun_firing_rate_semi} + 1]]}} {{damage=[[@{gun_damage_medium}]]}} {{penetration=[[@{gun_pen_medium}]]}} {{shock=[[@{gun_shock_medium}]]}}"
+                          ></button>
+                          <button
+                            disabled
+                            type="roll"
+                            title="Rafale semi-automatique"
+                            class="gunshot-button semi-auto"
+                          ></button>
+                        </div>
+                        <div>
+                          <button
+                            type="roll"
+                            title="Rafale automatique"
+                            class="gunshot-button full-auto"
+                            value="&{template:gunshot} {{character_name=@{character_name}}} {{weapon_name=@{weapon_name}}} {{firing_mode=Automatique}} {{attack_amount=[[?{Nombre de tirs|@{gun_firing_rate_full}}]]}} {{max_attack_amount=[[@{gun_firing_rate_full}]]}} {{max_attack_amount_plus_one=[[@{gun_firing_rate_full} + 1]]}} {{damage=[[@{gun_damage_medium}]]}} {{penetration=[[@{gun_pen_medium}]]}} {{shock=[[@{gun_shock_medium}]]}}"
+                          ></button>
+                          <button
+                            disabled
+                            type="roll"
+                            title="Rafale automatique"
+                            class="gunshot-button full-auto"
+                          ></button>
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="flex-row flex-middle">
+                      <div class="gun-range-wrapper">
+                        <input
+                          type="number"
+                          class="gun-range"
+                          name="attr_gun_range_long"
+                          min="0"
+                        />
+                        <span>m</span>
+                      </div>
+                      <input type="hidden" class="weapon-firing-control" name="attr_gun_firing_rate_single" />
+                      <input type="hidden" class="weapon-firing-control" name="attr_gun_firing_rate_semi" />
+                      <input type="hidden" class="weapon-firing-control" name="attr_gun_firing_rate_full" />
+                      <div class="gunshot-rolls flex-col flex-middle">
+                        <div>
+                          <button
+                            type="roll"
+                            title="Tir seul"
+                            class="gunshot-button single-shot"
+                            value="&{template:gunshot} {{character_name=@{character_name}}} {{weapon_name=@{weapon_name}}} {{firing_mode=Tir seul}} {{attack_amount=[[?{Nombre de tirs|@{gun_firing_rate_single}}]]}} {{max_attack_amount=[[@{gun_firing_rate_single}]]}} {{max_attack_amount_plus_one=[[@{gun_firing_rate_single} + 1]]}} {{damage=[[@{gun_damage_long}]]}} {{penetration=[[@{gun_pen_long}]]}} {{shock=[[@{gun_shock_long}]]}}"
+                          ></button>
+                          <button
+                            disabled
+                            type="roll"
+                            title="Tir seul"
+                            class="gunshot-button single-shot"
+                          ></button>
+                        </div>
+                        <div>
+                          <button
+                            type="roll"
+                            title="Rafale semi-automatique"
+                            class="gunshot-button semi-auto"
+                            value="&{template:gunshot} {{character_name=@{character_name}}} {{weapon_name=@{weapon_name}}} {{firing_mode=Semi-auto}} {{attack_amount=[[?{Nombre de tirs|@{gun_firing_rate_semi}}]]}} {{max_attack_amount=[[@{gun_firing_rate_semi}]]}} {{max_attack_amount_plus_one=[[@{gun_firing_rate_semi} + 1]]}} {{damage=[[@{gun_damage_long}]]}} {{penetration=[[@{gun_pen_long}]]}} {{shock=[[@{gun_shock_long}]]}}"
+                          ></button>
+                          <button
+                            disabled
+                            type="roll"
+                            title="Rafale semi-automatique"
+                            class="gunshot-button semi-auto"
+                          ></button>
+                        </div>
+                        <div>
+                          <button
+                            type="roll"
+                            title="Rafale automatique"
+                            class="gunshot-button full-auto"
+                            value="&{template:gunshot} {{character_name=@{character_name}}} {{weapon_name=@{weapon_name}}} {{firing_mode=Automatique}} {{attack_amount=[[?{Nombre de tirs|@{gun_firing_rate_full}}]]}} {{max_attack_amount=[[@{gun_firing_rate_full}]]}} {{max_attack_amount_plus_one=[[@{gun_firing_rate_full} + 1]]}} {{damage=[[@{gun_damage_long}]]}} {{penetration=[[@{gun_pen_long}]]}} {{shock=[[@{gun_shock_long}]]}}"
+                          ></button>
+                          <button
+                            disabled
+                            type="roll"
+                            title="Rafale automatique"
+                            class="gunshot-button full-auto"
+                          ></button>
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="damage-col">
+                    <table>
+                      <thead>
+                        <tr>
+                          <th><span>D</span></th>
+                          <th><span>C</span></th>
+                          <th><span>P</span></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            <input
+                              type="number"
+                              name="attr_gun_damage_short"
+                              title="Dégâts"
+                              value="0"
+                              min="0"
+                            />
+                          </td>
+                          <td>
+                            <input
+                              type="number"
+                              name="attr_gun_shock_short"
+                              title="Choc"
+                              value="0"
+                              min="0"
+                            />
+                          </td>
+                          <td>
+                            <input
+                              type="number"
+                              name="attr_gun_pen_short"
+                              title="Pénétration"
+                              value="0"
+                            />
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                  <td class="damage-col">
+                    <table>
+                      <thead>
+                        <tr>
+                          <th><span>D</span></th>
+                          <th><span>C</span></th>
+                          <th><span>P</span></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            <input
+                              type="number"
+                              name="attr_gun_damage_medium"
+                              title="Dégâts"
+                              value="0"
+                              min="0"
+                            />
+                          </td>
+                          <td>
+                            <input
+                              type="number"
+                              name="attr_gun_shock_medium"
+                              title="Choc"
+                              value="0"
+                              min="0"
+                            />
+                          </td>
+                          <td>
+                            <input
+                              type="number"
+                              name="attr_gun_pen_medium"
+                              title="Pénétration"
+                              value="0"
+                            />
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                  <td class="damage-col">
+                    <table>
+                      <thead>
+                        <tr>
+                          <th><span>D</span></th>
+                          <th><span>C</span></th>
+                          <th><span>P</span></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            <input
+                              type="number"
+                              name="attr_gun_damage_long"
+                              title="Dégâts"
+                              value="0"
+                              min="0"
+                            />
+                          </td>
+                          <td>
+                            <input
+                              type="number"
+                              name="attr_gun_shock_long"
+                              title="Choc"
+                              value="0"
+                              min="0"
+                            />
+                          </td>
+                          <td>
+                            <input
+                              type="number"
+                              name="attr_gun_pen_long"
+                              title="Pénétration"
+                              value="0"
+                            />
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="7" class="weapon-mods">
+                    <input
+                      type="text"
+                      class="sheet-line-input"
+                      name="attr_weapon_mods"
+                      placeholder="Mods"
+                    />
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+  </div>
 </div>
 
 <!-- Standard Rolltemplate -->
@@ -2163,5 +2398,89 @@
         gun_pen_long: ammoStat.pen_long
       }));
     }
+  });
+
+  var bodyParts = {
+    head: {
+      baseHp: 5,
+      basePain: 5,
+      hp: function (val, con, cou) {
+        return val;
+      },
+      pain: function (val, con, cou) {
+        return val + con + cou;
+      }
+    },
+    body: {
+      baseHp: 8,
+      basePain: 8,
+      hp: function (val, con, cou) {
+        return val + con;
+      },
+      pain: function (val, con, cou) {
+        return val + con + cou;
+      }
+    },
+    left_arm: {
+      baseHp: 6,
+      basePain: 6,
+      hp: function (val, con, cou) {
+        return val + con;
+      },
+      pain: function (val, con, cou) {
+        return val + con + cou;
+      }
+    },
+    right_arm: {
+      baseHp: 6,
+      basePain: 6,
+      hp: function (val, con, cou) {
+        return val + con;
+      },
+      pain: function (val, con, cou) {
+        return val + con + cou;
+      }
+    },
+    left_leg: {
+      baseHp: 6,
+      basePain: 6,
+      hp: function (val, con, cou) {
+        return val + con;
+      },
+      pain: function (val, con, cou) {
+        return val + con + cou;
+      }
+    },
+    right_leg: {
+      baseHp: 6,
+      basePain: 6,
+      hp: function (val, con, cou) {
+        return val + con;
+      },
+      pain: function (val, con, cou) {
+        return val + con + cou;
+      }
+    }
+  }
+
+  on(Object.keys(bodyParts).reduce(function (acc, part) {
+    return acc.concat([
+      "change:" + part + "_max_health_bonus"
+    ]);
+  }, []).concat(["sheet:opened"]).join(" "), function () {
+    getAttrs(["character_con", "character_cou"], function (values) {
+      const constitution = parseInt(values.character_con || "0", 10);
+      const courage = parseInt(values.character_cou || "0", 10);
+
+      var conditionValues = Object.keys(bodyParts).reduce(function (acc, key) {
+        var part = bodyParts[key];
+        var obj = {};
+        obj[key + "_max_hp"] = part.hp(part.baseHp, constitution, courage);
+        obj[key + "_max_pain"] = part.pain(part.basePain, constitution, courage);
+        return Object.assign(acc, obj);
+      }, {});
+
+      setAttrs(conditionValues);
+    });
   });
 </script>
