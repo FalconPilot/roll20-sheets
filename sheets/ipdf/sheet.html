@@ -1,4 +1,17 @@
-<div class="ipdf-wrapper">
+<!-- Global controls -->
+<div class="global-controls">
+  <div class="control">
+    <p>Type de fiche</p>
+    <select name="attr_sheet_category">
+      <option value="character">Personnage</option>
+      <option value="vehicle">Véhicule</option>
+    </select>
+  </div>
+</div>
+<input type="hidden" name="attr_sheet_category" value="character" />
+
+<!-- CHARACTER SHEET -->
+<div class="ipdf-wrapper category character">
   <input type="hidden" name="attr_current_tab" value="agent" />
   <div class="tabs-selector">
     <label class="agent">
@@ -802,74 +815,109 @@
         </div>
       </div>
       <table class="condition-bonus">
+        <thead>
+          <tr>
+            <th colspan="2"></th>
+            <th>Tête</th>
+            <th>Torse</th>
+            <th>Bras G</th>
+            <th>Bras D</th>
+            <th>Jambe G</th>
+            <th>Jambe D</th>
+          </tr>
+        </thead>
         <tbody>
           <tr>
             <td class="hp"></td>
             <td>Vitalité max</td>
             <td>
-              <div class="flex-col flex-middle">
-                <span>Tête</span>
-                <input
-                  type="number"
-                  name="attr_head_max_health_bonus"
-                  value="0"
-                />
-              </div>
+              <input
+                type="number"
+                name="attr_head_max_health_bonus"
+                value="0"
+              />
             </td>
             <td>
-              <div class="flex-col flex-middle">
-                <span>Torse</span>
-                <input
-                  type="number"
-                  name="attr_body_max_health_bonus"
-                  value="0"
-                />
-              </div>
+              <input
+                type="number"
+                name="attr_body_max_health_bonus"
+                value="0"
+              />
             </td>
             <td>
-              <div class="flex-col flex-middle">
-                <span>B.Gauche</span>
-                <input
-                  type="number"
-                  name="attr_left_arm_max_health_bonus"
-                  value="0"
-                />
-              </div>
+              <input
+                type="number"
+                name="attr_left_arm_max_health_bonus"
+                value="0"
+              />
             </td>
             <td>
-              <div class="flex-col flex-middle">
-                <span>B.Droit</span>
-                <input
-                  type="number"
-                  name="attr_right_arm_max_health_bonus"
-                  value="0"
-                />
-              </div>
+              <input
+                type="number"
+                name="attr_right_arm_max_health_bonus"
+                value="0"
+              />
             </td>
             <td>
-              <div class="flex-col flex-middle">
-                <span>J.Gauche</span>
-                <input
-                  type="number"
-                  name="attr_left_leg_max_health_bonus"
-                  value="0"
-                />
-              </div>
+              <input
+                type="number"
+                name="attr_left_leg_max_health_bonus"
+                value="0"
+              />
             </td>
             <td>
-              <div class="flex-col flex-middle">
-                <span>J.Droite</span>
-                <input
-                  type="number"
-                  name="attr_right_leg_max_health_bonus"
-                  value="0"
-                />
-              </div>
+              <input
+                type="number"
+                name="attr_right_leg_max_health_bonus"
+                value="0"
+              />
             </td>
           </tr>
           <tr>
             <td class="pain"></td>
             <td>Ténacité max</td>
+            <td>
+              <input
+                type="number"
+                name="attr_head_max_pain_bonus"
+                value="0"
+              />
+            </td>
+            <td>
+              <input
+                type="number"
+                name="attr_body_max_pain_bonus"
+                value="0"
+              />
+            </td>
+            <td>
+              <input
+                type="number"
+                name="attr_left_arm_max_pain_bonus"
+                value="0"
+              />
+            </td>
+            <td>
+              <input
+                type="number"
+                name="attr_right_arm_max_pain_bonus"
+                value="0"
+              />
+            </td>
+            <td>
+              <input
+                type="number"
+                name="attr_left_leg_max_pain_bonus"
+                value="0"
+              />
+            </td>
+            <td>
+              <input
+                type="number"
+                name="attr_right_leg_max_pain_bonus"
+                value="0"
+              />
+            </td>
           </tr>
         </tbody>
       </table>
@@ -1528,6 +1576,10 @@
       </div>
     </fieldset>
   </div>
+</div>
+
+<!-- VEHICLE SHEET -->
+<div class="ipdf-wrapper category vehicle">
 </div>
 
 <!-- Standard Rolltemplate -->
@@ -2465,18 +2517,26 @@
 
   on(Object.keys(bodyParts).reduce(function (acc, part) {
     return acc.concat([
-      "change:" + part + "_max_health_bonus"
+      "change:" + part + "_max_health_bonus",
+      "change:" + part + "_max_pain_bonus"
     ]);
   }, []).concat(["sheet:opened"]).join(" "), function () {
-    getAttrs(["character_con", "character_cou"], function (values) {
+    getAttrs(Object.keys(bodyParts).reduce(function (acc, part) {
+      return acc.concat([
+        part + "_max_health_bonus",
+        part + "_max_pain_bonus"
+      ]);
+    }, []).concat(["character_con", "character_cou"]), function (values) {
       const constitution = parseInt(values.character_con || "0", 10);
       const courage = parseInt(values.character_cou || "0", 10);
 
       var conditionValues = Object.keys(bodyParts).reduce(function (acc, key) {
         var part = bodyParts[key];
         var obj = {};
-        obj[key + "_max_hp"] = part.hp(part.baseHp, constitution, courage);
-        obj[key + "_max_pain"] = part.pain(part.basePain, constitution, courage);
+        var baseHp = part.baseHp + parseInt(values[key + "_max_health_bonus"] || "0", 10);
+        var basePain = part.basePain + parseInt(values[key + "_max_pain_bonus"] || "0", 10);
+        obj[key + "_max_hp"] = part.hp(baseHp, constitution, courage);
+        obj[key + "_max_pain"] = part.pain(basePain, constitution, courage);
         return Object.assign(acc, obj);
       }, {});
 

@@ -27,6 +27,23 @@ input[type=number] {
 .sheet-third-width { width: 33%; }
 .sheet-quarter-width { width: 25%; }
 
+div.sheet-global-controls {
+  padding-bottom: 25px;
+}
+
+div.sheet-global-controls .sheet-control > p {
+  font-family: 'Courier';
+  font-size: 11px;
+}
+
+div.sheet-global-controls .sheet-control > select {
+  width: auto;
+  margin: 0 1px;
+  font-family: Courier;
+  font-weight: bold;
+  font-size: 12px;
+}
+
 div.sheet-ipdf-wrapper > div > div.sheet-half-width {
   padding: 0 15px;
   box-sizing: border-box;
@@ -44,6 +61,13 @@ div.sheet-ipdf-wrapper h2.sheet-no-bottom { margin-bottom: 0; }
 
 div.sheet-ipdf-wrapper .btn:not(.pictos) {
   font-family: 'Candal';
+}
+
+div.sheet-category { display: none; }
+
+input[type="hidden"][name="attr_sheet_category"][value="character"] ~ div.sheet-category.sheet-character,
+input[type="hidden"][name="attr_sheet_category"][value="vehicle"] ~ div.sheet-category.sheet-vehicle {
+  display: block;
 }
 
 div.sheet-ipdf-wrapper {
@@ -963,6 +987,43 @@ div.sheet-gunshot-rolls > div:not(:first-child) > button {
   border: none;
   font-family: 'Courier';
   text-align: right;
+}
+
+.sheet-condition-bonus td.sheet-hp:before {
+  content: "&";
+  font-family: 'Pictos';
+  font-size: 13px;
+  color: #C00;
+}
+
+.sheet-condition-bonus td.sheet-pain:before {
+  content: "Y";
+  font-family: 'Pictos';
+  font-size: 13px;
+  color: #1C1;
+}
+
+.sheet-condition-bonus th,
+.sheet-condition-bonus td {
+  text-align: center;
+  font-family: 'Candal';
+  font-size: 10px;
+}
+
+.sheet-condition-bonus th:not(:first-child),
+.sheet-condition-bonus td:not(:first-child) {
+  min-width: 55px;
+  padding: 5px 0;
+}
+
+.sheet-condition-bonus input[type=number] {
+  text-align: center;
+  width: 30px;
+  height: 30px;
+  border: 1px solid #CCC;
+  border-radius: 50%;
+  font-family: 'Courier';
+  font-weight: bold;
 }
 
 .sheet-armor {

@@ -152,25 +152,50 @@ input::-webkit-inner-spin-button {
 */
 
 input[type=checkbox].sheet-modif-toggle {
+  position: relative;
   appearance: none;
   -moz-appearance: none;
   -webkit-appearance: none;
-  width: 20px;
-  height: 20px;
-  margin: 5px;
-  flex-shrink: 0;
+  width: 100%;
+  height: 100%;
   border-radius: 50%;
   border-width: 2px;
   transition: 0.2s;
   outline: none;
+  z-index: 3;
 }
 
 input[type=checkbox].sheet-modif-toggle:checked {
   border-radius: 4px;
 }
 
+input[type=checkbox].sheet-modif-toggle:checked ~ span:before {
+  content: '3';
+}
+
 .sheet-tablet input[type=checkbox].sheet-modif-toggle {
   border-color: #FFF;
+}
+
+.sheet-modif-wrapper {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  margin: 5px;
+  flex-shrink: 0;
+}
+
+.sheet-modif-wrapper > span:before {
+  content: 'y';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  line-height: 21px;
+  font-family: 'Pictos';
+  text-align: center;
+  z-index: 1;
 }
 
 /*
@@ -302,6 +327,11 @@ input[type=number].sheet-tablet-bubble-input {
   color: #FFF;
   font-family: 'Contrail One';
   border: none;
+}
+
+.sheet-tablet .sheet-modif-wrapper > span:before,
+.sheet-tab .sheet-modif-wrapper > span:before {
+  color: #FFF;
 }
 
 /*
@@ -492,6 +522,11 @@ input[name="attr_character_gender"][value="other"] + input[name="attr_character_
   text-align: center;
   font-family: 'Trebuchet MS';
   font-weight: bold;
+}
+
+.sheet-skill .sheet-line-input:disabled {
+  background-color: #333;
+  color: #FFF;
 }
 
 .sheet-skills .sheet-trained:before,
@@ -769,4 +804,73 @@ input[name="attr_armor_is_expanded"][value="0"] ~ .sheet-armor-extra {
   color: #FFF;
   font-size: 11px;
   box-sizing: border-box;
+}
+
+/*
+**  Rolltemplates
+*/
+
+.sheet-rolltemplate-general {
+  width: 100%;
+  border: 3px solid #333;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.sheet-rolltemplate-general .sheet-rolltable {
+  width: 100%;
+}
+
+.sheet-rolltemplate-general .sheet-rolltable th,
+.sheet-rolltemplate-general .sheet-rolltable td {
+  text-align: center;
+  padding: 4px;
+  box-sizing: border-box;
+  line-height: 1em;
+}
+
+.sheet-rolltemplate-general .sheet-rolltable td {
+  width: 50%;
+}
+
+.sheet-rolltemplate-general .sheet-rolltable-title {
+  font-family: 'Contrail One';
+  font-size: 20px;
+}
+
+.sheet-rolltemplate-general .sheet-rolltable-subtitle {
+  font-family: 'Contrail One';
+  font-size: 12px;
+}
+
+.sheet-rolltemplate-general .sheet-success,
+.sheet-rolltemplate-general .sheet-failure {
+  width: 100px;
+  height: 30px;
+  margin: auto;
+  box-sizing: content-box;
+  font-family: 'Candal';
+  line-height: 30px;
+  border-radius: 17px;
+  background-color: #333;
+  border: 2px solid #333;
+}
+
+.sheet-rolltemplate-general .sheet-critical { width: 160px; }
+
+.sheet-rolltemplate-general .sheet-failure.sheet-critical { box-shadow: 0px 0px 10px #F00 inset; }
+.sheet-rolltemplate-general .sheet-success.sheet-critical { box-shadow: 0px 0px 10px #5F5 inset; }
+
+.sheet-rolltemplate-general .sheet-failure { color: #F00; }
+.sheet-rolltemplate-general .sheet-success { color: #5F5; }
+
+.sheet-rolltemplate-general .inlinerollresult {
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  display: inline-block;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  font-family: 'Candal';
 }

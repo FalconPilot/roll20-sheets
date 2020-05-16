@@ -289,1072 +289,2448 @@
       </table>
 
       <div class="full-width flex-row">
+        <div class="half-width flex-col">
 
-        <!-- Basic Skills -->
-        <table class="skills half-width">
-          <thead>
-            <tr>
-              <th colspan="8">
-                <div class="table-title">Compétences de base</div>
-              </th>
-            </tr>
-            <tr>
-              <th>Nom</th>
-              <th>1.</th>
-              <th></th>
-              <th>2.</th>
-              <th class="trained"></th>
-              <th class="expert"></th>
-              <th class="master"></th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="skill">
-              <td class="full-width">
-                <input
-                  type="text"
-                  class="full-width line-input"
-                  name="attr_skill_name"
-                  value="Acrobaties"
-                  disabled
-                />
-              </td>
-              <td>
-                <input type="hidden" name="attr_main_stat" value="@{agi_total}" />
-                <select disabled>
-                  <option selected>AGI</option>
-                </select>
-              </td>
-              <td class="bonus"></td>
-              <td>
-                <input type="hidden" name="attr_bonus_stat" value="@{phy_total}" />
-                <select disabled>
-                  <option selected>PHY</option>
-                </select>
-              </td>
-              <td>
-                <input
-                  type="checkbox"
-                  value="1"
-                  name="attr_acro_trained"
-                />
-              </td>
-              <td>
-                <input
-                  type="checkbox"
-                  value="1"
-                  name="attr_acro_expert"
-                />
-              </td>
-              <td>
-                <input
-                  type="checkbox"
-                  value="1"
-                  name="attr_acro_master"
-                />
-              </td>
-              <td>
-                <button
-                  type="roll"
-                  value="&{template:general} {{character_name=@{character_name}}} {{roll_title=@{skill_name}}} {{target=[[?{Bonus/Malus|0} + @{main_stat} - @{basic_skill_malus} + @{acro_trained} * @{basic_skill_malus} + @{acro_expert} * (floor(@{bonus_stat} / 10) * @{expert_skill_multiplier}) + @{acro_master} * (floor(@{bonus_stat} / 10) * @{master_skill_multiplier})]]}} {{roll=[[1D100cs<5cf>96]]}}"
-                ></button>
-              </td>
-            </tr>
-            <tr class="skill">
-              <td class="full-width">
-                <input
-                  type="text"
-                  class="full-width line-input"
-                  name="attr_skill_name"
-                  value="Armes à feu"
-                  disabled
-                />
-              </td>
-              <td>
-                <input type="hidden" name="attr_main_stat" value="@{acu_total}" />
-                <select disabled>
-                  <option selected>ACU</option>
-                </select>
-              </td>
-              <td class="bonus"></td>
-              <td>
-                <input type="hidden" name="attr_bonus_stat" value="@{hab_total}" />
-                <select disabled>
-                  <option selected>HAB</option>
-                </select>
-              </td>
-              <td>
-                <input
-                  type="checkbox"
-                  value="1"
-                  name="attr_guns_trained"
-                />
-              </td>
-              <td>
-                <input
-                  type="checkbox"
-                  value="1"
-                  name="attr_guns_expert"
-                />
-              </td>
-              <td>
-                <input
-                  type="checkbox"
-                  value="1"
-                  name="attr_guns_master"
-                />
-              </td>
-              <td>
-                <button
-                  type="roll"
-                  value="&{template:general} {{character_name=@{character_name}}} {{roll_title=@{skill_name}}} {{target=[[?{Bonus/Malus|0} + @{main_stat} - @{basic_skill_malus} + @{guns_trained} * @{basic_skill_malus} + @{guns_expert} * (floor(@{bonus_stat} / 10) * @{expert_skill_multiplier}) + @{guns_master} * (floor(@{bonus_stat} / 10) * @{master_skill_multiplier})]]}} {{roll=[[1D100cs<5cf>96]]}}"
-                ></button>
-              </td>
-            </tr>
-            <tr class="skill">
-              <td class="full-width">
-                <input
-                  type="text"
-                  class="full-width line-input"
-                  name="attr_skill_name"
-                  value="Armes de jet"
-                  disabled
-                />
-              </td>
-              <td>
-                <input type="hidden" name="attr_main_stat" value="@{hab_total}" />
-                <select disabled>
-                  <option selected>HAB</option>
-                </select>
-              </td>
-              <td class="bonus"></td>
-              <td>
-                <input type="hidden" name="attr_bonus_stat" value="@{acu_total}" />
-                <select disabled>
-                  <option selected>ACU</option>
-                </select>
-              </td>
-              <td>
-                <input
-                  type="checkbox"
-                  value="1"
-                  name="attr_throw_trained"
-                />
-              </td>
-              <td>
-                <input
-                  type="checkbox"
-                  value="1"
-                  name="attr_throw_expert"
-                />
-              </td>
-              <td>
-                <input
-                  type="checkbox"
-                  value="1"
-                  name="attr_throw_master"
-                />
-              </td>
-              <td>
-                <button
-                  type="roll"
-                  value="&{template:general} {{character_name=@{character_name}}} {{roll_title=@{skill_name}}} {{target=[[?{Bonus/Malus|0} + @{main_stat} - @{basic_skill_malus} + @{throw_trained} * @{basic_skill_malus} + @{throw_expert} * (floor(@{bonus_stat} / 10) * @{expert_skill_multiplier}) + @{throw_master} * (floor(@{bonus_stat} / 10) * @{master_skill_multiplier})]]}} {{roll=[[1D100cs<5cf>96]]}}"
-                ></button>
-              </td>
-            </tr>
-            <tr class="skill">
-              <td class="full-width">
-                <input
-                  type="text"
-                  class="full-width line-input"
-                  name="attr_skill_name"
-                  value="Armes de mêlée"
-                  disabled
-                />
-              </td>
-              <td>
-                <input type="hidden" name="attr_main_stat" value="@{phy_total}" />
-                <select disabled>
-                  <option selected>PHY</option>
-                </select>
-              </td>
-              <td class="bonus"></td>
-              <td>
-                <input type="hidden" name="attr_bonus_stat" value="@{hab_total}" />
-                <select disabled>
-                  <option selected>HAB</option>
-                </select>
-              </td>
-              <td>
-                <input
-                  type="checkbox"
-                  value="1"
-                  name="attr_melee_trained"
-                />
-              </td>
-              <td>
-                <input
-                  type="checkbox"
-                  value="1"
-                  name="attr_melee_expert"
-                />
-              </td>
-              <td>
-                <input
-                  type="checkbox"
-                  value="1"
-                  name="attr_melee_master"
-                />
-              </td>
-              <td>
-                <button
-                  type="roll"
-                  value="&{template:general} {{character_name=@{character_name}}} {{roll_title=@{skill_name}}} {{target=[[?{Bonus/Malus|0} + @{main_stat} - @{basic_skill_malus} + @{melee_trained} * @{basic_skill_malus} + @{melee_expert} * (floor(@{bonus_stat} / 10) * @{expert_skill_multiplier}) + @{melee_master} * (floor(@{bonus_stat} / 10) * @{master_skill_multiplier})]]}} {{roll=[[1D100cs<5cf>96]]}}"
-                ></button>
-              </td>
-            </tr>
-            <tr class="skill">
-              <td class="full-width">
-                <input
-                  type="text"
-                  class="full-width line-input"
-                  name="attr_skill_name"
-                  value="Armes de trait"
-                  disabled
-                />
-              </td>
-              <td>
-                <input type="hidden" name="attr_main_stat" value="@{hab_total}" />
-                <select disabled>
-                  <option selected>HAB</option>
-                </select>
-              </td>
-              <td class="bonus"></td>
-              <td>
-                <input type="hidden" name="attr_bonus_stat" value="@{phy_total}" />
-                <select disabled>
-                  <option selected>PHY</option>
-                </select>
-              </td>
-              <td>
-                <input
-                  type="checkbox"
-                  value="1"
-                  name="attr_ranged_trained"
-                />
-              </td>
-              <td>
-                <input
-                  type="checkbox"
-                  value="1"
-                  name="attr_ranged_expert"
-                />
-              </td>
-              <td>
-                <input
-                  type="checkbox"
-                  value="1"
-                  name="attr_ranged_master"
-                />
-              </td>
-              <td>
-                <button
-                  type="roll"
-                  value="&{template:general} {{character_name=@{character_name}}} {{roll_title=@{skill_name}}} {{target=[[?{Bonus/Malus|0} + @{main_stat} - @{basic_skill_malus} + @{ranged_trained} * @{basic_skill_malus} + @{ranged_expert} * (floor(@{bonus_stat} / 10) * @{expert_skill_multiplier}) + @{ranged_master} * (floor(@{bonus_stat} / 10) * @{master_skill_multiplier})]]}} {{roll=[[1D100cs<5cf>96]]}}"
-                ></button>
-              </td>
-            </tr>
-            <tr class="skill">
-              <td class="full-width">
-                <input
-                  type="text"
-                  class="full-width line-input"
-                  name="attr_skill_name"
-                  value="Athlétisme"
-                  disabled
-                />
-              </td>
-              <td>
-                <input type="hidden" name="attr_main_stat" value="@{phy_total}" />
-                <select disabled>
-                  <option selected>PHY</option>
-                </select>
-              </td>
-              <td class="bonus"></td>
-              <td>
-                <input type="hidden" name="attr_bonus_stat" value="@{agi_total}" />
-                <select disabled>
-                  <option selected>AGI</option>
-                </select>
-              </td>
-              <td>
-                <input
-                  type="checkbox"
-                  value="1"
-                  name="attr_athl_trained"
-                />
-              </td>
-              <td>
-                <input
-                  type="checkbox"
-                  value="1"
-                  name="attr_athl_expert"
-                />
-              </td>
-              <td>
-                <input
-                  type="checkbox"
-                  value="1"
-                  name="attr_athl_master"
-                />
-              </td>
-              <td>
-                <button
-                  type="roll"
-                  value="&{template:general} {{character_name=@{character_name}}} {{roll_title=@{skill_name}}} {{target=[[?{Bonus/Malus|0} + @{main_stat} - @{basic_skill_malus} + @{athl_trained} * @{basic_skill_malus} + @{athl_expert} * (floor(@{bonus_stat} / 10) * @{expert_skill_multiplier}) + @{athl_master} * (floor(@{bonus_stat} / 10) * @{master_skill_multiplier})]]}} {{roll=[[1D100cs<5cf>96]]}}"
-                ></button>
-              </td>
-            </tr>
-            <tr class="skill">
-              <td class="full-width">
-                <input
-                  type="text"
-                  class="full-width line-input"
-                  name="attr_skill_name"
-                  value="Baratin"
-                  disabled
-                />
-              </td>
-              <td>
-                <input type="hidden" name="attr_main_stat" value="@{cha_total}" />
-                <select disabled>
-                  <option selected>CHA</option>
-                </select>
-              </td>
-              <td class="bonus"></td>
-              <td>
-                <input type="hidden" name="attr_bonus_stat" value="@{int_total}" />
-                <select disabled>
-                  <option selected>INT</option>
-                </select>
-              </td>
-              <td>
-                <input
-                  type="checkbox"
-                  value="1"
-                  name="attr_decep_trained"
-                />
-              </td>
-              <td>
-                <input
-                  type="checkbox"
-                  value="1"
-                  name="attr_decep_expert"
-                />
-              </td>
-              <td>
-                <input
-                  type="checkbox"
-                  value="1"
-                  name="attr_decep_master"
-                />
-              </td>
-              <td>
-                <button
-                  type="roll"
-                  value="&{template:general} {{character_name=@{character_name}}} {{roll_title=@{skill_name}}} {{target=[[?{Bonus/Malus|0} + @{main_stat} - @{basic_skill_malus} + @{decep_trained} * @{basic_skill_malus} + @{decep_expert} * (floor(@{bonus_stat} / 10) * @{expert_skill_multiplier}) + @{decep_master} * (floor(@{bonus_stat} / 10) * @{master_skill_multiplier})]]}} {{roll=[[1D100cs<5cf>96]]}}"
-                ></button>
-              </td>
-            </tr>
-            <tr class="skill">
-              <td class="full-width">
-                <input
-                  type="text"
-                  class="full-width line-input"
-                  name="attr_skill_name"
-                  value="Bricolage"
-                  disabled
-                />
-              </td>
-              <td>
-                <input type="hidden" name="attr_main_stat" value="@{hab_total}" />
-                <select disabled>
-                  <option selected>HAB</option>
-                </select>
-              </td>
-              <td class="bonus"></td>
-              <td>
-                <input type="hidden" name="attr_bonus_stat" value="@{int_total}" />
-                <select disabled>
-                  <option selected>INT</option>
-                </select>
-              </td>
-              <td>
-                <input
-                  type="checkbox"
-                  value="1"
-                  name="attr_tinker_trained"
-                />
-              </td>
-              <td>
-                <input
-                  type="checkbox"
-                  value="1"
-                  name="attr_tinker_expert"
-                />
-              </td>
-              <td>
-                <input
-                  type="checkbox"
-                  value="1"
-                  name="attr_tinker_master"
-                />
-              </td>
-              <td>
-                <button
-                  type="roll"
-                  value="&{template:general} {{character_name=@{character_name}}} {{roll_title=@{skill_name}}} {{target=[[?{Bonus/Malus|0} + @{main_stat} - @{basic_skill_malus} + @{tinker_trained} * @{basic_skill_malus} + @{tinker_expert} * (floor(@{bonus_stat} / 10) * @{expert_skill_multiplier}) + @{tinker_master} * (floor(@{bonus_stat} / 10) * @{master_skill_multiplier})]]}} {{roll=[[1D100cs<5cf>96]]}}"
-                ></button>
-              </td>
-            </tr>
-            <tr class="skill">
-              <td class="full-width">
-                <input
-                  type="text"
-                  class="full-width line-input"
-                  name="attr_skill_name"
-                  value="Charme"
-                  disabled
-                />
-              </td>
-              <td>
-                <input type="hidden" name="attr_main_stat" value="@{cha_total}" />
-                <select disabled>
-                  <option selected>CHA</option>
-                </select>
-              </td>
-              <td class="bonus"></td>
-              <td>
-                <input type="hidden" name="attr_bonus_stat" value="@{emp_total}" />
-                <select disabled>
-                  <option selected>EMP</option>
-                </select>
-              </td>
-              <td>
-                <input
-                  type="checkbox"
-                  value="1"
-                  name="attr_charm_trained"
-                />
-              </td>
-              <td>
-                <input
-                  type="checkbox"
-                  value="1"
-                  name="attr_charm_expert"
-                />
-              </td>
-              <td>
-                <input
-                  type="checkbox"
-                  value="1"
-                  name="attr_charm_master"
-                />
-              </td>
-              <td>
-                <button
-                  type="roll"
-                  value="&{template:general} {{character_name=@{character_name}}} {{roll_title=@{skill_name}}} {{target=[[?{Bonus/Malus|0} + @{main_stat} - @{basic_skill_malus} + @{charm_trained} * @{basic_skill_malus} + @{charm_expert} * (floor(@{bonus_stat} / 10) * @{expert_skill_multiplier}) + @{charm_master} * (floor(@{bonus_stat} / 10) * @{master_skill_multiplier})]]}} {{roll=[[1D100cs<5cf>96]]}}"
-                ></button>
-              </td>
-            </tr>
-            <tr class="skill">
-              <td class="full-width">
-                <input
-                  type="text"
-                  class="full-width line-input"
-                  name="attr_skill_name"
-                  value="Dissimulation"
-                  disabled
-                />
-              </td>
-              <td>
-                <input type="hidden" name="attr_main_stat" value="@{agi_total}" />
-                <select disabled>
-                  <option selected>AGI</option>
-                </select>
-              </td>
-              <td class="bonus"></td>
-              <td>
-                <input type="hidden" name="attr_bonus_stat" value="@{acu_total}" />
-                <select disabled>
-                  <option selected>ACU</option>
-                </select>
-              </td>
-              <td>
-                <input
-                  type="checkbox"
-                  value="1"
-                  name="attr_stealth_trained"
-                />
-              </td>
-              <td>
-                <input
-                  type="checkbox"
-                  value="1"
-                  name="attr_stealth_expert"
-                />
-              </td>
-              <td>
-                <input
-                  type="checkbox"
-                  value="1"
-                  name="attr_stealth_master"
-                />
-              </td>
-              <td>
-                <button
-                  type="roll"
-                  value="&{template:general} {{character_name=@{character_name}}} {{roll_title=@{skill_name}}} {{target=[[?{Bonus/Malus|0} + @{main_stat} - @{basic_skill_malus} + @{stealth_trained} * @{basic_skill_malus} + @{stealth_expert} * (floor(@{bonus_stat} / 10) * @{expert_skill_multiplier}) + @{stealth_master} * (floor(@{bonus_stat} / 10) * @{master_skill_multiplier})]]}} {{roll=[[1D100cs<5cf>96]]}}"
-                ></button>
-              </td>
-            </tr>
-            <tr class="skill">
-              <td class="full-width">
-                <input
-                  type="text"
-                  class="full-width line-input"
-                  name="attr_skill_name"
-                  value="Esquive"
-                  disabled
-                />
-              </td>
-              <td>
-                <input type="hidden" name="attr_main_stat" value="@{agi_total}" />
-                <select disabled>
-                  <option selected>AGI</option>
-                </select>
-              </td>
-              <td class="bonus"></td>
-              <td>
-                <input type="hidden" name="attr_bonus_stat" value="@{acu_total}" />
-                <select disabled>
-                  <option selected>ACU</option>
-                </select>
-              </td>
-              <td>
-                <input
-                  type="checkbox"
-                  value="1"
-                  name="attr_dodge_trained"
-                />
-              </td>
-              <td>
-                <input
-                  type="checkbox"
-                  value="1"
-                  name="attr_dodge_expert"
-                />
-              </td>
-              <td>
-                <input
-                  type="checkbox"
-                  value="1"
-                  name="attr_dodge_master"
-                />
-              </td>
-              <td>
-                <button
-                  type="roll"
-                  value="&{template:general} {{character_name=@{character_name}}} {{roll_title=@{skill_name}}} {{target=[[?{Bonus/Malus|0} + @{main_stat} - @{basic_skill_malus} + @{dodge_trained} * @{basic_skill_malus} + @{dodge_expert} * (floor(@{bonus_stat} / 10) * @{expert_skill_multiplier}) + @{dodge_master} * (floor(@{bonus_stat} / 10) * @{master_skill_multiplier})]]}} {{roll=[[1D100cs<5cf>96]]}}"
-                ></button>
-              </td>
-            </tr>
-            <tr class="skill">
-              <td class="full-width">
-                <input
-                  type="text"
-                  class="full-width line-input"
-                  name="attr_skill_name"
-                  value="Intimidation"
-                  disabled
-                />
-              </td>
-              <td>
-                <input type="hidden" name="attr_main_stat" value="@{cha_total}" />
-                <select disabled>
-                  <option selected>CHA</option>
-                </select>
-              </td>
-              <td class="bonus"></td>
-              <td>
-                <input type="hidden" name="attr_bonus_stat" value="@{wil_total}" />
-                <select disabled>
-                  <option selected>VOL</option>
-                </select>
-              </td>
-              <td>
-                <input
-                  type="checkbox"
-                  value="1"
-                  name="attr_threat_trained"
-                />
-              </td>
-              <td>
-                <input
-                  type="checkbox"
-                  value="1"
-                  name="attr_threat_expert"
-                />
-              </td>
-              <td>
-                <input
-                  type="checkbox"
-                  value="1"
-                  name="attr_threat_master"
-                />
-              </td>
-              <td>
-                <button
-                  type="roll"
-                  value="&{template:general} {{character_name=@{character_name}}} {{roll_title=@{skill_name}}} {{target=[[?{Bonus/Malus|0} + @{main_stat} - @{basic_skill_malus} + @{threat_trained} * @{basic_skill_malus} + @{threat_expert} * (floor(@{bonus_stat} / 10) * @{expert_skill_multiplier}) + @{threat_master} * (floor(@{bonus_stat} / 10) * @{master_skill_multiplier})]]}} {{roll=[[1D100cs<5cf>96]]}}"
-                ></button>
-              </td>
-            </tr>
-            <tr class="skill">
-              <td class="full-width">
-                <input
-                  type="text"
-                  class="full-width line-input"
-                  name="attr_skill_name"
-                  value="Parade"
-                  disabled
-                />
-              </td>
-              <td>
-                <input type="hidden" name="attr_main_stat" value="@{phy_total}" />
-                <select disabled>
-                  <option selected>PHY</option>
-                </select>
-              </td>
-              <td class="bonus"></td>
-              <td>
-                <input type="hidden" name="attr_bonus_stat" value="@{agi_total}" />
-                <select disabled>
-                  <option selected>AGI</option>
-                </select>
-              </td>
-              <td>
-                <input
-                  type="checkbox"
-                  value="1"
-                  name="attr_parry_trained"
-                />
-              </td>
-              <td>
-                <input
-                  type="checkbox"
-                  value="1"
-                  name="attr_parry_expert"
-                />
-              </td>
-              <td>
-                <input
-                  type="checkbox"
-                  value="1"
-                  name="attr_parry_master"
-                />
-              </td>
-              <td>
-                <button
-                  type="roll"
-                  value="&{template:general} {{character_name=@{character_name}}} {{roll_title=@{skill_name}}} {{target=[[?{Bonus/Malus|0} + @{main_stat} - @{basic_skill_malus} + @{parry_trained} * @{basic_skill_malus} + @{parry_expert} * (floor(@{bonus_stat} / 10) * @{expert_skill_multiplier}) + @{parry_master} * (floor(@{bonus_stat} / 10) * @{master_skill_multiplier})]]}} {{roll=[[1D100cs<5cf>96]]}}"
-                ></button>
-              </td>
-            </tr>
-            <tr class="skill">
-              <td class="full-width">
-                <input
-                  type="text"
-                  class="full-width line-input"
-                  name="attr_skill_name"
-                  value="Perception"
-                  disabled
-                />
-              </td>
-              <td>
-                <input type="hidden" name="attr_main_stat" value="@{acu_total}" />
-                <select disabled>
-                  <option selected>ACU</option>
-                </select>
-              </td>
-              <td class="bonus"></td>
-              <td>
-                <input type="hidden" name="attr_bonus_stat" value="@{int_total}" />
-                <select disabled>
-                  <option selected>INT</option>
-                </select>
-              </td>
-              <td>
-                <input
-                  type="checkbox"
-                  value="1"
-                  name="attr_percep_trained"
-                />
-              </td>
-              <td>
-                <input
-                  type="checkbox"
-                  value="1"
-                  name="attr_percep_expert"
-                />
-              </td>
-              <td>
-                <input
-                  type="checkbox"
-                  value="1"
-                  name="attr_percep_master"
-                />
-              </td>
-              <td>
-                <button
-                  type="roll"
-                  value="&{template:general} {{character_name=@{character_name}}} {{roll_title=@{skill_name}}} {{target=[[?{Bonus/Malus|0} + @{main_stat} - @{basic_skill_malus} + @{percep_trained} * @{basic_skill_malus} + @{percep_expert} * (floor(@{bonus_stat} / 10) * @{expert_skill_multiplier}) + @{percep_master} * (floor(@{bonus_stat} / 10) * @{master_skill_multiplier})]]}} {{roll=[[1D100cs<5cf>96]]}}"
-                ></button>
-              </td>
-            </tr>
-            <tr class="skill">
-              <td class="full-width">
-                <input
-                  type="text"
-                  class="full-width line-input"
-                  name="attr_skill_name"
-                  value="Pilotage (Véhicules terrestres)"
-                  disabled
-                />
-              </td>
-              <td>
-                <input type="hidden" name="attr_main_stat" value="@{acu_total}" />
-                <select disabled>
-                  <option selected>ACU</option>
-                </select>
-              </td>
-              <td class="bonus"></td>
-              <td>
-                <input type="hidden" name="attr_bonus_stat" value="@{hab_total}" />
-                <select disabled>
-                  <option selected>HAB</option>
-                </select>
-              </td>
-              <td>
-                <input
-                  type="checkbox"
-                  value="1"
-                  name="attr_land_vhc_trained"
-                />
-              </td>
-              <td>
-                <input
-                  type="checkbox"
-                  value="1"
-                  name="attr_land_vhc_expert"
-                />
-              </td>
-              <td>
-                <input
-                  type="checkbox"
-                  value="1"
-                  name="attr_land_vhc_master"
-                />
-              </td>
-              <td>
-                <button
-                  type="roll"
-                  value="&{template:general} {{character_name=@{character_name}}} {{roll_title=@{skill_name}}} {{target=[[?{Bonus/Malus|0} + @{main_stat} - @{basic_skill_malus} + @{land_vhc_trained} * @{basic_skill_malus} + @{land_vhc_expert} * (floor(@{bonus_stat} / 10) * @{expert_skill_multiplier}) + @{land_vhc_master} * (floor(@{bonus_stat} / 10) * @{master_skill_multiplier})]]}} {{roll=[[1D100cs<5cf>96]]}}"
-                ></button>
-              </td>
-            </tr>
-            <tr class="skill">
-              <td class="full-width">
-                <input
-                  type="text"
-                  class="full-width line-input"
-                  name="attr_skill_name"
-                  value="Premiers soins"
-                  disabled
-                />
-              </td>
-              <td>
-                <input type="hidden" name="attr_main_stat" value="@{hab_total}" />
-                <select disabled>
-                  <option selected>HAB</option>
-                </select>
-              </td>
-              <td class="bonus"></td>
-              <td>
-                <input type="hidden" name="attr_bonus_stat" value="@{int_total}" />
-                <select disabled>
-                  <option selected>INT</option>
-                </select>
-              </td>
-              <td>
-                <input
-                  type="checkbox"
-                  value="1"
-                  name="attr_firstaid_trained"
-                />
-              </td>
-              <td>
-                <input
-                  type="checkbox"
-                  value="1"
-                  name="attr_firstaid_expert"
-                />
-              </td>
-              <td>
-                <input
-                  type="checkbox"
-                  value="1"
-                  name="attr_firstaid_master"
-                />
-              </td>
-              <td>
-                <button
-                  type="roll"
-                  value="&{template:general} {{character_name=@{character_name}}} {{roll_title=@{skill_name}}} {{target=[[?{Bonus/Malus|0} + @{main_stat} - @{basic_skill_malus} + @{firstaid_trained} * @{basic_skill_malus} + @{firstaid_expert} * (floor(@{bonus_stat} / 10) * @{expert_skill_multiplier}) + @{firstaid_master} * (floor(@{bonus_stat} / 10) * @{master_skill_multiplier})]]}} {{roll=[[1D100cs<5cf>96]]}}"
-                ></button>
-              </td>
-            </tr>
-            <tr class="skill">
-              <td class="full-width">
-                <input
-                  type="text"
-                  class="full-width line-input"
-                  name="attr_skill_name"
-                  value="Recherche"
-                  disabled
-                />
-              </td>
-              <td>
-                <input type="hidden" name="attr_main_stat" value="@{int_total}" />
-                <select disabled>
-                  <option selected>INT</option>
-                </select>
-              </td>
-              <td class="bonus"></td>
-              <td>
-                <input type="hidden" name="attr_bonus_stat" value="@{wil_total}" />
-                <select disabled>
-                  <option selected>VOL</option>
-                </select>
-              </td>
-              <td>
-                <input
-                  type="checkbox"
-                  value="1"
-                  name="attr_vigilance_trained"
-                />
-              </td>
-              <td>
-                <input
-                  type="checkbox"
-                  value="1"
-                  name="attr_vigilance_expert"
-                />
-              </td>
-              <td>
-                <input
-                  type="checkbox"
-                  value="1"
-                  name="attr_vigilance_master"
-                />
-              </td>
-              <td>
-                <button
-                  type="roll"
-                  value="&{template:general} {{character_name=@{character_name}}} {{roll_title=@{skill_name}}} {{target=[[?{Bonus/Malus|0} + @{main_stat} - @{basic_skill_malus} + @{vigilance_trained} * @{basic_skill_malus} + @{vigilance_expert} * (floor(@{bonus_stat} / 10) * @{expert_skill_multiplier}) + @{vigilance_master} * (floor(@{bonus_stat} / 10) * @{master_skill_multiplier})]]}} {{roll=[[1D100cs<5cf>96]]}}"
-                ></button>
-              </td>
-            </tr>
-            <tr class="skill">
-              <td class="full-width">
-                <input
-                  type="text"
-                  class="full-width line-input"
-                  name="attr_skill_name"
-                  value="Vigilance"
-                  disabled
-                />
-              </td>
-              <td>
-                <input type="hidden" name="attr_main_stat" value="@{acu_total}" />
-                <select disabled>
-                  <option selected>ACU</option>
-                </select>
-              </td>
-              <td class="bonus"></td>
-              <td>
-                <input type="hidden" name="attr_bonus_stat" value="@{int_total}" />
-                <select disabled>
-                  <option selected>INT</option>
-                </select>
-              </td>
-              <td>
-                <input
-                  type="checkbox"
-                  value="1"
-                  name="attr_vigilance_trained"
-                />
-              </td>
-              <td>
-                <input
-                  type="checkbox"
-                  value="1"
-                  name="attr_vigilance_expert"
-                />
-              </td>
-              <td>
-                <input
-                  type="checkbox"
-                  value="1"
-                  name="attr_vigilance_master"
-                />
-              </td>
-              <td>
-                <button
-                  type="roll"
-                  value="&{template:general} {{character_name=@{character_name}}} {{roll_title=@{skill_name}}} {{target=[[?{Bonus/Malus|0} + @{main_stat} - @{basic_skill_malus} + @{vigilance_trained} * @{basic_skill_malus} + @{vigilance_expert} * (floor(@{bonus_stat} / 10) * @{expert_skill_multiplier}) + @{vigilance_master} * (floor(@{bonus_stat} / 10) * @{master_skill_multiplier})]]}} {{roll=[[1D100cs<5cf>96]]}}"
-                ></button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+          <!-- Basic Skills -->
+          <table class="skills full-width">
+            <thead>
+              <tr>
+                <th colspan="8">
+                  <div class="table-title">Compétences de base</div>
+                </th>
+              </tr>
+              <tr>
+                <th>Nom</th>
+                <th>1.</th>
+                <th></th>
+                <th>2.</th>
+                <th class="trained"></th>
+                <th class="expert"></th>
+                <th class="master"></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="skill">
+                <td class="full-width">
+                  <input
+                    type="text"
+                    class="full-width line-input"
+                    name="attr_acro_name"
+                    value="Acrobaties"
+                    disabled
+                  />
+                </td>
+                <td>
+                  <input type="hidden" name="attr_character_main_stat" value="@{agi_total}" />
+                  <select disabled>
+                    <option selected>AGI</option>
+                  </select>
+                </td>
+                <td class="bonus"></td>
+                <td>
+                  <input type="hidden" name="attr_character_bonus_stat" value="@{phy_total}" />
+                  <select disabled>
+                    <option selected>PHY</option>
+                  </select>
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_acro_trained"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_acro_expert"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_acro_master"
+                  />
+                </td>
+                <td>
+                  <button
+                    type="roll"
+                    value="&{template:general} {{character_name=@{character_name}}} {{roll_title=@{acro_name}}} {{target=[[?{Bonus/Malus|0} + @{character_main_stat} - @{basic_skill_malus} + @{acro_trained} * @{basic_skill_malus} + @{acro_expert} * (floor(@{character_bonus_stat} / 10) * @{expert_skill_multiplier}) + @{acro_master} * (floor(@{character_bonus_stat} / 10) * @{master_skill_multiplier})]]}} {{roll=[[1D100cs<5cf>96]]}}"
+                  ></button>
+                </td>
+              </tr>
+              <tr class="skill">
+                <td class="full-width">
+                  <input
+                    type="text"
+                    class="full-width line-input"
+                    name="attr_guns_name"
+                    value="Armes à feu"
+                    disabled
+                  />
+                </td>
+                <td>
+                  <input type="hidden" name="attr_guns_main_stat" value="@{acu_total}" />
+                  <select disabled>
+                    <option selected>ACU</option>
+                  </select>
+                </td>
+                <td class="bonus"></td>
+                <td>
+                  <input type="hidden" name="attr_guns_bonus_stat" value="@{hab_total}" />
+                  <select disabled>
+                    <option selected>HAB</option>
+                  </select>
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_guns_trained"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_guns_expert"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_guns_master"
+                  />
+                </td>
+                <td>
+                  <button
+                    type="roll"
+                    value="&{template:general} {{character_name=@{character_name}}} {{roll_title=@{guns_name}}} {{target=[[?{Bonus/Malus|0} + @{guns_main_stat} - @{basic_skill_malus} + @{guns_trained} * @{basic_skill_malus} + @{guns_expert} * (floor(@{guns_bonus_stat} / 10) * @{expert_skill_multiplier}) + @{guns_master} * (floor(@{guns_bonus_stat} / 10) * @{master_skill_multiplier})]]}} {{roll=[[1D100cs<5cf>96]]}}"
+                  ></button>
+                </td>
+              </tr>
+              <tr class="skill">
+                <td class="full-width">
+                  <input
+                    type="text"
+                    class="full-width line-input"
+                    name="attr_throw_name"
+                    value="Armes de jet"
+                    disabled
+                  />
+                </td>
+                <td>
+                  <input type="hidden" name="attr_throw_main_stat" value="@{hab_total}" />
+                  <select disabled>
+                    <option selected>HAB</option>
+                  </select>
+                </td>
+                <td class="bonus"></td>
+                <td>
+                  <input type="hidden" name="attr_throw_bonus_stat" value="@{acu_total}" />
+                  <select disabled>
+                    <option selected>ACU</option>
+                  </select>
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_throw_trained"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_throw_expert"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_throw_master"
+                  />
+                </td>
+                <td>
+                  <button
+                    type="roll"
+                    value="&{template:general} {{character_name=@{character_name}}} {{roll_title=@{throw_name}}} {{target=[[?{Bonus/Malus|0} + @{throw_main_stat} - @{basic_skill_malus} + @{throw_trained} * @{basic_skill_malus} + @{throw_expert} * (floor(@{throw_bonus_stat} / 10) * @{expert_skill_multiplier}) + @{throw_master} * (floor(@{throw_bonus_stat} / 10) * @{master_skill_multiplier})]]}} {{roll=[[1D100cs<5cf>96]]}}"
+                  ></button>
+                </td>
+              </tr>
+              <tr class="skill">
+                <td class="full-width">
+                  <input
+                    type="text"
+                    class="full-width line-input"
+                    name="attr_melee_name"
+                    value="Armes de mêlée"
+                    disabled
+                  />
+                </td>
+                <td>
+                  <input type="hidden" name="attr_melee_main_stat" value="@{phy_total}" />
+                  <select disabled>
+                    <option selected>PHY</option>
+                  </select>
+                </td>
+                <td class="bonus"></td>
+                <td>
+                  <input type="hidden" name="attr_melee_bonus_stat" value="@{hab_total}" />
+                  <select disabled>
+                    <option selected>HAB</option>
+                  </select>
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_melee_trained"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_melee_expert"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_melee_master"
+                  />
+                </td>
+                <td>
+                  <button
+                    type="roll"
+                    value="&{template:general} {{character_name=@{character_name}}} {{roll_title=@{melee_name}}} {{target=[[?{Bonus/Malus|0} + @{melee_main_stat} - @{basic_skill_malus} + @{melee_trained} * @{basic_skill_malus} + @{melee_expert} * (floor(@{melee_bonus_stat} / 10) * @{expert_skill_multiplier}) + @{melee_master} * (floor(@{melee_bonus_stat} / 10) * @{master_skill_multiplier})]]}} {{roll=[[1D100cs<5cf>96]]}}"
+                  ></button>
+                </td>
+              </tr>
+              <tr class="skill">
+                <td class="full-width">
+                  <input
+                    type="text"
+                    class="full-width line-input"
+                    name="attr_ranged_name"
+                    value="Armes de trait"
+                    disabled
+                  />
+                </td>
+                <td>
+                  <input type="hidden" name="attr_ranged_main_stat" value="@{hab_total}" />
+                  <select disabled>
+                    <option selected>HAB</option>
+                  </select>
+                </td>
+                <td class="bonus"></td>
+                <td>
+                  <input type="hidden" name="attr_ranged_bonus_stat" value="@{phy_total}" />
+                  <select disabled>
+                    <option selected>PHY</option>
+                  </select>
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_ranged_trained"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_ranged_expert"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_ranged_master"
+                  />
+                </td>
+                <td>
+                  <button
+                    type="roll"
+                    value="&{template:general} {{character_name=@{character_name}}} {{roll_title=@{ranged_name}}} {{target=[[?{Bonus/Malus|0} + @{ranged_main_stat} - @{basic_skill_malus} + @{ranged_trained} * @{basic_skill_malus} + @{ranged_expert} * (floor(@{ranged_bonus_stat} / 10) * @{expert_skill_multiplier}) + @{ranged_master} * (floor(@{ranged_bonus_stat} / 10) * @{master_skill_multiplier})]]}} {{roll=[[1D100cs<5cf>96]]}}"
+                  ></button>
+                </td>
+              </tr>
+              <tr class="skill">
+                <td class="full-width">
+                  <input
+                    type="text"
+                    class="full-width line-input"
+                    name="attr_athl_name"
+                    value="Athlétisme"
+                    disabled
+                  />
+                </td>
+                <td>
+                  <input type="hidden" name="attr_athl_main_stat" value="@{phy_total}" />
+                  <select disabled>
+                    <option selected>PHY</option>
+                  </select>
+                </td>
+                <td class="bonus"></td>
+                <td>
+                  <input type="hidden" name="attr_athl_bonus_stat" value="@{agi_total}" />
+                  <select disabled>
+                    <option selected>AGI</option>
+                  </select>
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_athl_trained"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_athl_expert"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_athl_master"
+                  />
+                </td>
+                <td>
+                  <button
+                    type="roll"
+                    value="&{template:general} {{character_name=@{character_name}}} {{roll_title=@{athl_name}}} {{target=[[?{Bonus/Malus|0} + @{athl_main_stat} - @{basic_skill_malus} + @{athl_trained} * @{basic_skill_malus} + @{athl_expert} * (floor(@{athl_bonus_stat} / 10) * @{expert_skill_multiplier}) + @{athl_master} * (floor(@{athl_bonus_stat} / 10) * @{master_skill_multiplier})]]}} {{roll=[[1D100cs<5cf>96]]}}"
+                  ></button>
+                </td>
+              </tr>
+              <tr class="skill">
+                <td class="full-width">
+                  <input
+                    type="text"
+                    class="full-width line-input"
+                    name="attr_decep_name"
+                    value="Baratin"
+                    disabled
+                  />
+                </td>
+                <td>
+                  <input type="hidden" name="attr_decep_main_stat" value="@{cha_total}" />
+                  <select disabled>
+                    <option selected>CHA</option>
+                  </select>
+                </td>
+                <td class="bonus"></td>
+                <td>
+                  <input type="hidden" name="attr_decep_bonus_stat" value="@{int_total}" />
+                  <select disabled>
+                    <option selected>INT</option>
+                  </select>
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_decep_trained"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_decep_expert"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_decep_master"
+                  />
+                </td>
+                <td>
+                  <button
+                    type="roll"
+                    value="&{template:general} {{character_name=@{character_name}}} {{roll_title=@{decep_name}}} {{target=[[?{Bonus/Malus|0} + @{decep_main_stat} - @{basic_skill_malus} + @{decep_trained} * @{basic_skill_malus} + @{decep_expert} * (floor(@{decep_bonus_stat} / 10) * @{expert_skill_multiplier}) + @{decep_master} * (floor(@{decep_bonus_stat} / 10) * @{master_skill_multiplier})]]}} {{roll=[[1D100cs<5cf>96]]}}"
+                  ></button>
+                </td>
+              </tr>
+              <tr class="skill">
+                <td class="full-width">
+                  <input
+                    type="text"
+                    class="full-width line-input"
+                    name="attr_tinker_name"
+                    value="Bricolage"
+                    disabled
+                  />
+                </td>
+                <td>
+                  <input type="hidden" name="attr_tinker_main_stat" value="@{hab_total}" />
+                  <select disabled>
+                    <option selected>HAB</option>
+                  </select>
+                </td>
+                <td class="bonus"></td>
+                <td>
+                  <input type="hidden" name="attr_tinker_bonus_stat" value="@{int_total}" />
+                  <select disabled>
+                    <option selected>INT</option>
+                  </select>
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_tinker_trained"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_tinker_expert"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_tinker_master"
+                  />
+                </td>
+                <td>
+                  <button
+                    type="roll"
+                    value="&{template:general} {{character_name=@{character_name}}} {{roll_title=@{tinker_name}}} {{target=[[?{Bonus/Malus|0} + @{tinker_main_stat} - @{basic_skill_malus} + @{tinker_trained} * @{basic_skill_malus} + @{tinker_expert} * (floor(@{tinker_bonus_stat} / 10) * @{expert_skill_multiplier}) + @{tinker_master} * (floor(@{tinker_bonus_stat} / 10) * @{master_skill_multiplier})]]}} {{roll=[[1D100cs<5cf>96]]}}"
+                  ></button>
+                </td>
+              </tr>
+              <tr class="skill">
+                <td class="full-width">
+                  <input
+                    type="text"
+                    class="full-width line-input"
+                    name="attr_charm_name"
+                    value="Charme"
+                    disabled
+                  />
+                </td>
+                <td>
+                  <input type="hidden" name="attr_charm_main_stat" value="@{cha_total}" />
+                  <select disabled>
+                    <option selected>CHA</option>
+                  </select>
+                </td>
+                <td class="bonus"></td>
+                <td>
+                  <input type="hidden" name="attr_charm_bonus_stat" value="@{emp_total}" />
+                  <select disabled>
+                    <option selected>EMP</option>
+                  </select>
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_charm_trained"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_charm_expert"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_charm_master"
+                  />
+                </td>
+                <td>
+                  <button
+                    type="roll"
+                    value="&{template:general} {{character_name=@{character_name}}} {{roll_title=@{charm_name}}} {{target=[[?{Bonus/Malus|0} + @{charm_main_stat} - @{basic_skill_malus} + @{charm_trained} * @{basic_skill_malus} + @{charm_expert} * (floor(@{charm_bonus_stat} / 10) * @{expert_skill_multiplier}) + @{charm_master} * (floor(@{charm_bonus_stat} / 10) * @{master_skill_multiplier})]]}} {{roll=[[1D100cs<5cf>96]]}}"
+                  ></button>
+                </td>
+              </tr>
+              <tr class="skill">
+                <td class="full-width">
+                  <input
+                    type="text"
+                    class="full-width line-input"
+                    name="attr_stealth_name"
+                    value="Dissimulation"
+                    disabled
+                  />
+                </td>
+                <td>
+                  <input type="hidden" name="attr_stealth_main_stat" value="@{agi_total}" />
+                  <select disabled>
+                    <option selected>AGI</option>
+                  </select>
+                </td>
+                <td class="bonus"></td>
+                <td>
+                  <input type="hidden" name="attr_stealth_bonus_stat" value="@{acu_total}" />
+                  <select disabled>
+                    <option selected>ACU</option>
+                  </select>
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_stealth_trained"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_stealth_expert"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_stealth_master"
+                  />
+                </td>
+                <td>
+                  <button
+                    type="roll"
+                    value="&{template:general} {{character_name=@{character_name}}} {{roll_title=@{stealth_name}}} {{target=[[?{Bonus/Malus|0} + @{stealth_main_stat} - @{basic_skill_malus} + @{stealth_trained} * @{basic_skill_malus} + @{stealth_expert} * (floor(@{stealth_bonus_stat} / 10) * @{expert_skill_multiplier}) + @{stealth_master} * (floor(@{stealth_bonus_stat} / 10) * @{master_skill_multiplier})]]}} {{roll=[[1D100cs<5cf>96]]}}"
+                  ></button>
+                </td>
+              </tr>
+              <tr class="skill">
+                <td class="full-width">
+                  <input
+                    type="text"
+                    class="full-width line-input"
+                    name="attr_dodge_name"
+                    value="Esquive"
+                    disabled
+                  />
+                </td>
+                <td>
+                  <input type="hidden" name="attr_dodge_main_stat" value="@{agi_total}" />
+                  <select disabled>
+                    <option selected>AGI</option>
+                  </select>
+                </td>
+                <td class="bonus"></td>
+                <td>
+                  <input type="hidden" name="attr_dodge_bonus_stat" value="@{acu_total}" />
+                  <select disabled>
+                    <option selected>ACU</option>
+                  </select>
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_dodge_trained"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_dodge_expert"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_dodge_master"
+                  />
+                </td>
+                <td>
+                  <button
+                    type="roll"
+                    value="&{template:general} {{character_name=@{character_name}}} {{roll_title=@{dodge_name}}} {{target=[[?{Bonus/Malus|0} + @{dodge_main_stat} - @{basic_skill_malus} + @{dodge_trained} * @{basic_skill_malus} + @{dodge_expert} * (floor(@{dodge_bonus_stat} / 10) * @{expert_skill_multiplier}) + @{dodge_master} * (floor(@{dodge_bonus_stat} / 10) * @{master_skill_multiplier})]]}} {{roll=[[1D100cs<5cf>96]]}}"
+                  ></button>
+                </td>
+              </tr>
+              <tr class="skill">
+                <td class="full-width">
+                  <input
+                    type="text"
+                    class="full-width line-input"
+                    name="attr_threat_name"
+                    value="Intimidation"
+                    disabled
+                  />
+                </td>
+                <td>
+                  <input type="hidden" name="attr_threat_main_stat" value="@{cha_total}" />
+                  <select disabled>
+                    <option selected>CHA</option>
+                  </select>
+                </td>
+                <td class="bonus"></td>
+                <td>
+                  <input type="hidden" name="attr_threat_bonus_stat" value="@{wil_total}" />
+                  <select disabled>
+                    <option selected>VOL</option>
+                  </select>
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_threat_trained"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_threat_expert"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_threat_master"
+                  />
+                </td>
+                <td>
+                  <button
+                    type="roll"
+                    value="&{template:general} {{character_name=@{character_name}}} {{roll_title=@{threat_name}}} {{target=[[?{Bonus/Malus|0} + @{threat_main_stat} - @{basic_skill_malus} + @{threat_trained} * @{basic_skill_malus} + @{threat_expert} * (floor(@{threat_bonus_stat} / 10) * @{expert_skill_multiplier}) + @{threat_master} * (floor(@{threat_bonus_stat} / 10) * @{master_skill_multiplier})]]}} {{roll=[[1D100cs<5cf>96]]}}"
+                  ></button>
+                </td>
+              </tr>
+              <tr class="skill">
+                <td class="full-width">
+                  <input
+                    type="text"
+                    class="full-width line-input"
+                    name="attr_parry_name"
+                    value="Parade"
+                    disabled
+                  />
+                </td>
+                <td>
+                  <input type="hidden" name="attr_parry_main_stat" value="@{phy_total}" />
+                  <select disabled>
+                    <option selected>PHY</option>
+                  </select>
+                </td>
+                <td class="bonus"></td>
+                <td>
+                  <input type="hidden" name="attr_parry_bonus_stat" value="@{agi_total}" />
+                  <select disabled>
+                    <option selected>AGI</option>
+                  </select>
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_parry_trained"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_parry_expert"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_parry_master"
+                  />
+                </td>
+                <td>
+                  <button
+                    type="roll"
+                    value="&{template:general} {{character_name=@{character_name}}} {{roll_title=@{parry_name}}} {{target=[[?{Bonus/Malus|0} + @{parry_main_stat} - @{basic_skill_malus} + @{parry_trained} * @{basic_skill_malus} + @{parry_expert} * (floor(@{parry_bonus_stat} / 10) * @{expert_skill_multiplier}) + @{parry_master} * (floor(@{parry_bonus_stat} / 10) * @{master_skill_multiplier})]]}} {{roll=[[1D100cs<5cf>96]]}}"
+                  ></button>
+                </td>
+              </tr>
+              <tr class="skill">
+                <td class="full-width">
+                  <input
+                    type="text"
+                    class="full-width line-input"
+                    name="attr_percep_name"
+                    value="Perception"
+                    disabled
+                  />
+                </td>
+                <td>
+                  <input type="hidden" name="attr_percep_main_stat" value="@{acu_total}" />
+                  <select disabled>
+                    <option selected>ACU</option>
+                  </select>
+                </td>
+                <td class="bonus"></td>
+                <td>
+                  <input type="hidden" name="attr_percep_bonus_stat" value="@{int_total}" />
+                  <select disabled>
+                    <option selected>INT</option>
+                  </select>
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_percep_trained"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_percep_expert"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_percep_master"
+                  />
+                </td>
+                <td>
+                  <button
+                    type="roll"
+                    value="&{template:general} {{character_name=@{character_name}}} {{roll_title=@{percep_name}}} {{target=[[?{Bonus/Malus|0} + @{percep_main_stat} - @{basic_skill_malus} + @{percep_trained} * @{basic_skill_malus} + @{percep_expert} * (floor(@{percep_bonus_stat} / 10) * @{expert_skill_multiplier}) + @{percep_master} * (floor(@{percep_bonus_stat} / 10) * @{master_skill_multiplier})]]}} {{roll=[[1D100cs<5cf>96]]}}"
+                  ></button>
+                </td>
+              </tr>
+              <tr class="skill">
+                <td class="full-width">
+                  <input
+                    type="text"
+                    class="full-width line-input"
+                    name="attr_firstaid_name"
+                    value="Premiers soins"
+                    disabled
+                  />
+                </td>
+                <td>
+                  <input type="hidden" name="attr_firstaid_main_stat" value="@{hab_total}" />
+                  <select disabled>
+                    <option selected>HAB</option>
+                  </select>
+                </td>
+                <td class="bonus"></td>
+                <td>
+                  <input type="hidden" name="attr_firstaid_bonus_stat" value="@{int_total}" />
+                  <select disabled>
+                    <option selected>INT</option>
+                  </select>
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_firstaid_trained"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_firstaid_expert"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_firstaid_master"
+                  />
+                </td>
+                <td>
+                  <button
+                    type="roll"
+                    value="&{template:general} {{character_name=@{character_name}}} {{roll_title=@{firstaid_name}}} {{target=[[?{Bonus/Malus|0} + @{firstaid_main_stat} - @{basic_skill_malus} + @{firstaid_trained} * @{basic_skill_malus} + @{firstaid_expert} * (floor(@{firstaid_bonus_stat} / 10) * @{expert_skill_multiplier}) + @{firstaid_master} * (floor(@{firstaid_bonus_stat} / 10) * @{master_skill_multiplier})]]}} {{roll=[[1D100cs<5cf>96]]}}"
+                  ></button>
+                </td>
+              </tr>
+              <tr class="skill">
+                <td class="full-width">
+                  <input
+                    type="text"
+                    class="full-width line-input"
+                    name="attr_researching_name"
+                    value="Recherche"
+                    disabled
+                  />
+                </td>
+                <td>
+                  <input type="hidden" name="attr_researching_main_stat" value="@{int_total}" />
+                  <select disabled>
+                    <option selected>INT</option>
+                  </select>
+                </td>
+                <td class="bonus"></td>
+                <td>
+                  <input type="hidden" name="attr_researching_bonus_stat" value="@{wil_total}" />
+                  <select disabled>
+                    <option selected>VOL</option>
+                  </select>
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_researching_trained"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_researching_expert"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_researching_master"
+                  />
+                </td>
+                <td>
+                  <button
+                    type="roll"
+                    value="&{template:general} {{character_name=@{character_name}}} {{roll_title=@{researching_name}}} {{target=[[?{Bonus/Malus|0} + @{researching_main_stat} - @{basic_skill_malus} + @{researching_trained} * @{basic_skill_malus} + @{researching_expert} * (floor(@{researching_bonus_stat} / 10) * @{expert_skill_multiplier}) + @{researching_master} * (floor(@{researching_bonus_stat} / 10) * @{master_skill_multiplier})]]}} {{roll=[[1D100cs<5cf>96]]}}"
+                  ></button>
+                </td>
+              </tr>
+              <tr class="skill">
+                <td class="full-width">
+                  <input
+                    type="text"
+                    class="full-width line-input"
+                    name="attr_vigilance_name"
+                    value="Vigilance"
+                    disabled
+                  />
+                </td>
+                <td>
+                  <input type="hidden" name="attr_vigilance_main_stat" value="@{acu_total}" />
+                  <select disabled>
+                    <option selected>ACU</option>
+                  </select>
+                </td>
+                <td class="bonus"></td>
+                <td>
+                  <input type="hidden" name="attr_vigilance_bonus_stat" value="@{int_total}" />
+                  <select disabled>
+                    <option selected>INT</option>
+                  </select>
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_vigilance_trained"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_vigilance_expert"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_vigilance_master"
+                  />
+                </td>
+                <td>
+                  <button
+                    type="roll"
+                    value="&{template:general} {{character_name=@{character_name}}} {{roll_title=@{vigilance_name}}} {{target=[[?{Bonus/Malus|0} + @{vigilance_main_stat} - @{basic_skill_malus} + @{vigilance_trained} * @{basic_skill_malus} + @{vigilance_expert} * (floor(@{vigilance_bonus_stat} / 10) * @{expert_skill_multiplier}) + @{vigilance_master} * (floor(@{vigilance_bonus_stat} / 10) * @{master_skill_multiplier})]]}} {{roll=[[1D100cs<5cf>96]]}}"
+                  ></button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
 
-        <!-- Advanced skills -->
-        <table class="skills half-width">
-          <thead>
-            <tr>
-              <th colspan="8">
-                <div class="table-title">Compétences avancées</div>
-              </th>
-            </tr>
-            <tr>
-              <th>Nom</th>
-              <th>1.</th>
-              <th></th>
-              <th>2.</th>
-              <th class="trained"></th>
-              <th class="expert"></th>
-              <th class="master"></th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="skill">
-              <td class="full-width">
-                <input
-                  type="text"
-                  class="full-width line-input"
-                  name="attr_skill_name"
-                  value="Armes lourdes"
-                  disabled
-                />
-              </td>
-              <td>
-                <input type="hidden" name="attr_main_stat" value="@{acu_total}" />
-                <select disabled>
-                  <option selected>ACU</option>
-                </select>
-              </td>
-              <td class="bonus"></td>
-              <td>
-                <input type="hidden" name="attr_bonus_stat" value="@{hab_total}" />
-                <select disabled>
-                  <option selected>HAB</option>
-                </select>
-              </td>
-              <td>
-                <input
-                  type="checkbox"
-                  value="1"
-                  name="attr_heavy_trained"
-                />
-              </td>
-              <td>
-                <input
-                  type="checkbox"
-                  value="1"
-                  name="attr_heavy_expert"
-                />
-              </td>
-              <td>
-                <input
-                  type="checkbox"
-                  value="1"
-                  name="attr_heavy_master"
-                />
-              </td>
-              <td>
-                <button
-                  type="roll"
-                  value="&{template:general} {{character_name=@{character_name}}} {{roll_title=@{skill_name}}} {{target=[[?{Bonus/Malus|0} + @{main_stat} - @{advanced_skill_malus} + @{heavy_trained} * @{advanced_skill_malus} + @{heavy_expert} * (floor(@{bonus_stat} / 10) * @{expert_skill_multiplier}) + @{heavy_master} * (floor(@{bonus_stat} / 10) * @{master_skill_multiplier})]]}} {{roll=[[1D100cs<5cf>96]]}}"
-                ></button>
-              </td>
-            </tr>
-            <tr class="skill">
-              <td class="full-width">
-                <input
-                  type="text"
-                  class="full-width line-input"
-                  name="attr_skill_name"
-                  value="Chimie"
-                  disabled
-                />
-              </td>
-              <td>
-                <input type="hidden" name="attr_main_stat" value="@{int_total}" />
-                <select disabled>
-                  <option selected>INT</option>
-                </select>
-              </td>
-              <td class="bonus"></td>
-              <td>
-                <input type="hidden" name="attr_bonus_stat" value="@{vol_total}" />
-                <select disabled>
-                  <option selected>VOL</option>
-                </select>
-              </td>
-              <td>
-                <input
-                  type="checkbox"
-                  value="1"
-                  name="attr_chemistry_trained"
-                />
-              </td>
-              <td>
-                <input
-                  type="checkbox"
-                  value="1"
-                  name="attr_chemistry_expert"
-                />
-              </td>
-              <td>
-                <input
-                  type="checkbox"
-                  value="1"
-                  name="attr_chemistry_master"
-                />
-              </td>
-              <td>
-                <button
-                  type="roll"
-                  value="&{template:general} {{character_name=@{character_name}}} {{roll_title=@{skill_name}}} {{target=[[?{Bonus/Malus|0} + @{main_stat} - @{advanced_skill_malus} + @{chemistry_trained} * @{advanced_skill_malus} + @{chemistry_expert} * (floor(@{bonus_stat} / 10) * @{expert_skill_multiplier}) + @{chemistry_master} * (floor(@{bonus_stat} / 10) * @{master_skill_multiplier})]]}} {{roll=[[1D100cs<5cf>96]]}}"
-                ></button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+          <!-- Piloting skills -->
+          <table class="skills full-width">
+            <thead>
+              <tr>
+                <th colspan="8">
+                  <div class="table-title">Pilotage</div>
+                </th>
+              </tr>
+              <tr>
+                <th>Nom</th>
+                <th>1.</th>
+                <th></th>
+                <th>2.</th>
+                <th class="trained"></th>
+                <th class="expert"></th>
+                <th class="master"></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="skill">
+                <td class="full-width">
+                  <input
+                    type="text"
+                    class="full-width line-input"
+                    name="attr_piloting_name_1"
+                    placeholder="Type de pilotage"
+                    value=""
+                  />
+                </td>
+                <td>
+                  <input type="hidden" name="attr_piloting_main_stat" value="@{acu_total}" />
+                  <select disabled>
+                    <option selected>ACU</option>
+                  </select>
+                </td>
+                <td class="bonus"></td>
+                <td>
+                  <input type="hidden" name="attr_piloting_bonus_stat" value="@{hab_total}" />
+                  <select disabled>
+                    <option selected>HAB</option>
+                  </select>
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_piloting_1_trained"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_piloting_1_expert"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_piloting_1_master"
+                  />
+                </td>
+                <td>
+                  <button
+                    type="roll"
+                    value="&{template:general} {{character_name=@{character_name}}} {{roll_title=Pilotage (@{piloting_name_1})}} {{target=[[?{Bonus/Malus|0} + @{piloting_main_stat} - @{advanced_skill_malus} + @{piloting_1_trained} * @{advanced_skill_malus} + @{piloting_1_expert} * (floor(@{piloting_bonus_stat} / 10) * @{expert_skill_multiplier}) + @{piloting_1_master} * (floor(@{piloting_bonus_stat} / 10) * @{master_skill_multiplier})]]}} {{roll=[[1D100cs<5cf>96]]}}"
+                  ></button>
+                </td>
+              </tr>
+              <tr class="skill">
+                <td class="full-width">
+                  <input
+                    type="text"
+                    class="full-width line-input"
+                    name="attr_piloting_name_2"
+                    placeholder="Type de pilotage"
+                    value=""
+                  />
+                </td>
+                <td>
+                  <input type="hidden" name="attr_piloting_main_stat" value="@{acu_total}" />
+                  <select disabled>
+                    <option selected>ACU</option>
+                  </select>
+                </td>
+                <td class="bonus"></td>
+                <td>
+                  <input type="hidden" name="attr_piloting_bonus_stat" value="@{hab_total}" />
+                  <select disabled>
+                    <option selected>HAB</option>
+                  </select>
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_piloting_2_trained"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_piloting_2_expert"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_piloting_2_master"
+                  />
+                </td>
+                <td>
+                  <button
+                    type="roll"
+                    value="&{template:general} {{character_name=@{character_name}}} {{roll_title=Pilotage (@{piloting_name_2})}} {{target=[[?{Bonus/Malus|0} + @{piloting_main_stat} - @{advanced_skill_malus} + @{piloting_2_trained} * @{advanced_skill_malus} + @{piloting_2_expert} * (floor(@{piloting_bonus_stat} / 10) * @{expert_skill_multiplier}) + @{piloting_2_master} * (floor(@{piloting_bonus_stat} / 10) * @{master_skill_multiplier})]]}} {{roll=[[1D100cs<5cf>96]]}}"
+                  ></button>
+                </td>
+              </tr>
+              <tr class="skill">
+                <td class="full-width">
+                  <input
+                    type="text"
+                    class="full-width line-input"
+                    name="attr_piloting_name_3"
+                    placeholder="Type de pilotage"
+                    value=""
+                  />
+                </td>
+                <td>
+                  <input type="hidden" name="attr_piloting_main_stat" value="@{acu_total}" />
+                  <select disabled>
+                    <option selected>ACU</option>
+                  </select>
+                </td>
+                <td class="bonus"></td>
+                <td>
+                  <input type="hidden" name="attr_piloting_bonus_stat" value="@{hab_total}" />
+                  <select disabled>
+                    <option selected>HAB</option>
+                  </select>
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_piloting_3_trained"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_piloting_3_expert"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_piloting_3_master"
+                  />
+                </td>
+                <td>
+                  <button
+                    type="roll"
+                    value="&{template:general} {{character_name=@{character_name}}} {{roll_title=Pilotage (@{piloting_name_3})}} {{target=[[?{Bonus/Malus|0} + @{piloting_main_stat} - @{advanced_skill_malus} + @{piloting_3_trained} * @{advanced_skill_malus} + @{piloting_3_expert} * (floor(@{piloting_bonus_stat} / 10) * @{expert_skill_multiplier}) + @{piloting_3_master} * (floor(@{piloting_bonus_stat} / 10) * @{master_skill_multiplier})]]}} {{roll=[[1D100cs<5cf>96]]}}"
+                  ></button>
+                </td>
+              </tr>
+              <tr class="skill">
+                <td class="full-width">
+                  <input
+                    type="text"
+                    class="full-width line-input"
+                    name="attr_piloting_name_4"
+                    placeholder="Type de pilotage"
+                    value=""
+                  />
+                </td>
+                <td>
+                  <input type="hidden" name="attr_piloting_main_stat" value="@{acu_total}" />
+                  <select disabled>
+                    <option selected>ACU</option>
+                  </select>
+                </td>
+                <td class="bonus"></td>
+                <td>
+                  <input type="hidden" name="attr_piloting_bonus_stat" value="@{hab_total}" />
+                  <select disabled>
+                    <option selected>HAB</option>
+                  </select>
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_piloting_4_trained"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_piloting_4_expert"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_piloting_4_master"
+                  />
+                </td>
+                <td>
+                  <button
+                    type="roll"
+                    value="&{template:general} {{character_name=@{character_name}}} {{roll_title=Pilotage (@{piloting_name_4})}} {{target=[[?{Bonus/Malus|0} + @{piloting_main_stat} - @{advanced_skill_malus} + @{piloting_4_trained} * @{advanced_skill_malus} + @{piloting_4_expert} * (floor(@{piloting_bonus_stat} / 10) * @{expert_skill_multiplier}) + @{piloting_4_master} * (floor(@{piloting_bonus_stat} / 10) * @{master_skill_multiplier})]]}} {{roll=[[1D100cs<5cf>96]]}}"
+                  ></button>
+                </td>
+              </tr>
+              <tr class="skill">
+                <td class="full-width">
+                  <input
+                    type="text"
+                    class="full-width line-input"
+                    name="attr_piloting_name_5"
+                    placeholder="Type de pilotage"
+                    value=""
+                  />
+                </td>
+                <td>
+                  <input type="hidden" name="attr_piloting_main_stat" value="@{acu_total}" />
+                  <select disabled>
+                    <option selected>ACU</option>
+                  </select>
+                </td>
+                <td class="bonus"></td>
+                <td>
+                  <input type="hidden" name="attr_piloting_bonus_stat" value="@{hab_total}" />
+                  <select disabled>
+                    <option selected>HAB</option>
+                  </select>
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_piloting_5_trained"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_piloting_5_expert"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_piloting_5_master"
+                  />
+                </td>
+                <td>
+                  <button
+                    type="roll"
+                    value="&{template:general} {{character_name=@{character_name}}} {{roll_title=Pilotage (@{piloting_name_5})}} {{target=[[?{Bonus/Malus|0} + @{piloting_main_stat} - @{advanced_skill_malus} + @{piloting_5_trained} * @{advanced_skill_malus} + @{piloting_5_expert} * (floor(@{piloting_bonus_stat} / 10) * @{expert_skill_multiplier}) + @{piloting_5_master} * (floor(@{piloting_bonus_stat} / 10) * @{master_skill_multiplier})]]}} {{roll=[[1D100cs<5cf>96]]}}"
+                  ></button>
+                </td>
+              </tr>
+              <tr class="skill">
+                <td class="full-width">
+                  <input
+                    type="text"
+                    class="full-width line-input"
+                    name="attr_piloting_name_6"
+                    placeholder="Type de pilotage"
+                    value=""
+                  />
+                </td>
+                <td>
+                  <input type="hidden" name="attr_piloting_main_stat" value="@{acu_total}" />
+                  <select disabled>
+                    <option selected>ACU</option>
+                  </select>
+                </td>
+                <td class="bonus"></td>
+                <td>
+                  <input type="hidden" name="attr_piloting_bonus_stat" value="@{hab_total}" />
+                  <select disabled>
+                    <option selected>HAB</option>
+                  </select>
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_piloting_6_trained"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_piloting_6_expert"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_piloting_6_master"
+                  />
+                </td>
+                <td>
+                  <button
+                    type="roll"
+                    value="&{template:general} {{character_name=@{character_name}}} {{roll_title=Pilotage (@{piloting_name_6})}} {{target=[[?{Bonus/Malus|0} + @{piloting_main_stat} - @{advanced_skill_malus} + @{piloting_6_trained} * @{advanced_skill_malus} + @{piloting_6_expert} * (floor(@{piloting_bonus_stat} / 10) * @{expert_skill_multiplier}) + @{piloting_6_master} * (floor(@{piloting_bonus_stat} / 10) * @{master_skill_multiplier})]]}} {{roll=[[1D100cs<5cf>96]]}}"
+                  ></button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="half-width flex-col">
+
+          <!-- Advanced skills -->
+          <table class="skills full-width">
+            <thead>
+              <tr>
+                <th colspan="8">
+                  <div class="table-title">Compétences avancées</div>
+                </th>
+              </tr>
+              <tr>
+                <th>Nom</th>
+                <th>1.</th>
+                <th></th>
+                <th>2.</th>
+                <th class="trained"></th>
+                <th class="expert"></th>
+                <th class="master"></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="skill">
+                <td class="full-width">
+                  <input
+                    type="text"
+                    class="full-width line-input"
+                    name="attr_heavy_name"
+                    value="Armes lourdes"
+                    disabled
+                  />
+                </td>
+                <td>
+                  <input type="hidden" name="attr_heavy_main_stat" value="@{acu_total}" />
+                  <select disabled>
+                    <option selected>ACU</option>
+                  </select>
+                </td>
+                <td class="bonus"></td>
+                <td>
+                  <input type="hidden" name="attr_heavy_bonus_stat" value="@{hab_total}" />
+                  <select disabled>
+                    <option selected>HAB</option>
+                  </select>
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_heavy_trained"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_heavy_expert"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_heavy_master"
+                  />
+                </td>
+                <td>
+                  <button
+                    type="roll"
+                    value="&{template:general} {{character_name=@{character_name}}} {{roll_title=@{heavy_name}}} {{target=[[?{Bonus/Malus|0} + @{heavy_main_stat} - @{advanced_skill_malus} + @{heavy_trained} * @{advanced_skill_malus} + @{heavy_expert} * (floor(@{heavy_bonus_stat} / 10) * @{expert_skill_multiplier}) + @{heavy_master} * (floor(@{heavy_bonus_stat} / 10) * @{master_skill_multiplier})]]}} {{roll=[[1D100cs<5cf>96]]}}"
+                  ></button>
+                </td>
+              </tr>
+              <tr class="skill">
+                <td class="full-width">
+                  <input
+                    type="text"
+                    class="full-width line-input"
+                    name="attr_chemistry_name"
+                    value="Chimie"
+                    disabled
+                  />
+                </td>
+                <td>
+                  <input type="hidden" name="attr_chemistry_main_stat" value="@{int_total}" />
+                  <select disabled>
+                    <option selected>INT</option>
+                  </select>
+                </td>
+                <td class="bonus"></td>
+                <td>
+                  <input type="hidden" name="attr_chemistry_bonus_stat" value="@{vol_total}" />
+                  <select disabled>
+                    <option selected>VOL</option>
+                  </select>
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_chemistry_trained"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_chemistry_expert"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_chemistry_master"
+                  />
+                </td>
+                <td>
+                  <button
+                    type="roll"
+                    value="&{template:general} {{character_name=@{character_name}}} {{roll_title=@{chemistry_name}}} {{target=[[?{Bonus/Malus|0} + @{chemistry_main_stat} - @{advanced_skill_malus} + @{chemistry_trained} * @{advanced_skill_malus} + @{chemistry_expert} * (floor(@{chemistry_bonus_stat} / 10) * @{expert_skill_multiplier}) + @{chemistry_master} * (floor(@{chemistry_bonus_stat} / 10) * @{master_skill_multiplier})]]}} {{roll=[[1D100cs<5cf>96]]}}"
+                  ></button>
+                </td>
+              </tr>
+              <tr class="skill">
+                <td class="full-width">
+                  <input
+                    type="text"
+                    class="full-width line-input"
+                    name="attr_surgery_name"
+                    value="Chirurgie"
+                    disabled
+                  />
+                </td>
+                <td>
+                  <input type="hidden" name="attr_surgery_main_stat" value="@{int_total}" />
+                  <select disabled>
+                    <option selected>INT</option>
+                  </select>
+                </td>
+                <td class="bonus"></td>
+                <td>
+                  <input type="hidden" name="attr_surgery_bonus_stat" value="@{hab_total}" />
+                  <select disabled>
+                    <option selected>HAB</option>
+                  </select>
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_surgery_trained"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_surgery_expert"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_surgery_master"
+                  />
+                </td>
+                <td>
+                  <button
+                    type="roll"
+                    value="&{template:general} {{character_name=@{character_name}}} {{roll_title=@{surgery_name}}} {{target=[[?{Bonus/Malus|0} + @{surgery_main_stat} - @{advanced_skill_malus} + @{surgery_trained} * @{advanced_skill_malus} + @{surgery_expert} * (floor(@{surgery_bonus_stat} / 10) * @{expert_skill_multiplier}) + @{surgery_master} * (floor(@{surgery_bonus_stat} / 10) * @{master_skill_multiplier})]]}} {{roll=[[1D100cs<5cf>96]]}}"
+                  ></button>
+                </td>
+              </tr>
+              <tr class="skill">
+                <td class="full-width">
+                  <input
+                    type="text"
+                    class="full-width line-input"
+                    name="attr_lockpicking_name"
+                    value="Crochetage"
+                    disabled
+                  />
+                </td>
+                <td>
+                  <input type="hidden" name="attr_lockpicking_main_stat" value="@{hab_total}" />
+                  <select disabled>
+                    <option selected>HAB</option>
+                  </select>
+                </td>
+                <td class="bonus"></td>
+                <td>
+                  <input type="hidden" name="attr_lockpicking_bonus_stat" value="@{acu_total}" />
+                  <select disabled>
+                    <option selected>ACU</option>
+                  </select>
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_lockpicking_trained"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_lockpicking_expert"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_lockpicking_master"
+                  />
+                </td>
+                <td>
+                  <button
+                    type="roll"
+                    value="&{template:general} {{character_name=@{character_name}}} {{roll_title=@{lockpicking_name}}} {{target=[[?{Bonus/Malus|0} + @{lockpicking_main_stat} - @{advanced_skill_malus} + @{lockpicking_trained} * @{advanced_skill_malus} + @{lockpicking_expert} * (floor(@{lockpicking_bonus_stat} / 10) * @{expert_skill_multiplier}) + @{lockpicking_master} * (floor(@{lockpicking_bonus_stat} / 10) * @{master_skill_multiplier})]]}} {{roll=[[1D100cs<5cf>96]]}}"
+                  ></button>
+                </td>
+              </tr>
+              <tr class="skill">
+                <td class="full-width">
+                  <input
+                    type="text"
+                    class="full-width line-input"
+                    name="attr_demolition_name"
+                    value="Démolition"
+                    disabled
+                  />
+                </td>
+                <td>
+                  <input type="hidden" name="attr_demolition_main_stat" value="@{acu_total}" />
+                  <select disabled>
+                    <option selected>ACU</option>
+                  </select>
+                </td>
+                <td class="bonus"></td>
+                <td>
+                  <input type="hidden" name="attr_demolition_bonus_stat" value="@{wil_total}" />
+                  <select disabled>
+                    <option selected>VOL</option>
+                  </select>
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_demolition_trained"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_demolition_expert"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_demolition_master"
+                  />
+                </td>
+                <td>
+                  <button
+                    type="roll"
+                    value="&{template:general} {{character_name=@{character_name}}} {{roll_title=@{demolition_name}}} {{target=[[?{Bonus/Malus|0} + @{demolition_main_stat} - @{advanced_skill_malus} + @{demolition_trained} * @{advanced_skill_malus} + @{demolition_expert} * (floor(@{demolition_bonus_stat} / 10) * @{expert_skill_multiplier}) + @{demolition_master} * (floor(@{demolition_bonus_stat} / 10) * @{master_skill_multiplier})]]}} {{roll=[[1D100cs<5cf>96]]}}"
+                  ></button>
+                </td>
+              </tr>
+              <tr class="skill">
+                <td class="full-width">
+                  <input
+                    type="text"
+                    class="full-width line-input"
+                    name="attr_informatics_name"
+                    value="Informatique"
+                    disabled
+                  />
+                </td>
+                <td>
+                  <input type="hidden" name="attr_informatics_main_stat" value="@{int_total}" />
+                  <select disabled>
+                    <option selected>INT</option>
+                  </select>
+                </td>
+                <td class="bonus"></td>
+                <td>
+                  <input type="hidden" name="attr_informatics_bonus_stat" value="@{wil_total}" />
+                  <select disabled>
+                    <option selected>VOL</option>
+                  </select>
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_informatics_trained"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_informatics_expert"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_informatics_master"
+                  />
+                </td>
+                <td>
+                  <button
+                    type="roll"
+                    value="&{template:general} {{character_name=@{character_name}}} {{roll_title=@{informatics_name}}} {{target=[[?{Bonus/Malus|0} + @{informatics_main_stat} - @{advanced_skill_malus} + @{informatics_trained} * @{advanced_skill_malus} + @{informatics_expert} * (floor(@{informatics_bonus_stat} / 10) * @{expert_skill_multiplier}) + @{informatics_master} * (floor(@{informatics_bonus_stat} / 10) * @{master_skill_multiplier})]]}} {{roll=[[1D100cs<5cf>96]]}}"
+                  ></button>
+                </td>
+              </tr>
+              <tr class="skill">
+                <td class="full-width">
+                  <input
+                    type="text"
+                    class="full-width line-input"
+                    name="attr_linguistics_name"
+                    value="Linguistique"
+                    disabled
+                  />
+                </td>
+                <td>
+                  <input type="hidden" name="attr_linguistics_main_stat" value="@{int_total}" />
+                  <select disabled>
+                    <option selected>INT</option>
+                  </select>
+                </td>
+                <td class="bonus"></td>
+                <td>
+                  <input type="hidden" name="attr_linguistics_bonus_stat" value="@{int_total}" />
+                  <select disabled>
+                    <option selected>INT</option>
+                  </select>
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_linguistics_trained"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_linguistics_expert"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_linguistics_master"
+                  />
+                </td>
+                <td>
+                  <button
+                    type="roll"
+                    value="&{template:general} {{character_name=@{character_name}}} {{roll_title=@{linguistics_name}}} {{target=[[?{Bonus/Malus|0} + @{linguistics_main_stat} - @{advanced_skill_malus} + @{linguistics_trained} * @{advanced_skill_malus} + @{linguistics_expert} * (floor(@{linguistics_bonus_stat} / 10) * @{expert_skill_multiplier}) + @{linguistics_master} * (floor(@{linguistics_bonus_stat} / 10) * @{master_skill_multiplier})]]}} {{roll=[[1D100cs<5cf>96]]}}"
+                  ></button>
+                </td>
+              </tr>
+              <tr class="skill">
+                <td class="full-width">
+                  <input
+                    type="text"
+                    class="full-width line-input"
+                    name="attr_mechanics_name"
+                    value="Mécanique"
+                    disabled
+                  />
+                </td>
+                <td>
+                  <input type="hidden" name="attr_mechanics_main_stat" value="@{hab_total}" />
+                  <select disabled>
+                    <option selected>HAB</option>
+                  </select>
+                </td>
+                <td class="bonus"></td>
+                <td>
+                  <input type="hidden" name="attr_mechanics_bonus_stat" value="@{int_total}" />
+                  <select disabled>
+                    <option selected>INT</option>
+                  </select>
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_mechanics_trained"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_mechanics_expert"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_mechanics_master"
+                  />
+                </td>
+                <td>
+                  <button
+                    type="roll"
+                    value="&{template:general} {{character_name=@{character_name}}} {{roll_title=@{mechanics_name}}} {{target=[[?{Bonus/Malus|0} + @{mechanics_main_stat} - @{advanced_skill_malus} + @{mechanics_trained} * @{advanced_skill_malus} + @{mechanics_expert} * (floor(@{mechanics_bonus_stat} / 10) * @{expert_skill_multiplier}) + @{mechanics_master} * (floor(@{mechanics_bonus_stat} / 10) * @{master_skill_multiplier})]]}} {{roll=[[1D100cs<5cf>96]]}}"
+                  ></button>
+                </td>
+              </tr>
+              <tr class="skill">
+                <td class="full-width">
+                  <input
+                    type="text"
+                    class="full-width line-input"
+                    name="attr_medic_name"
+                    value="Médecine"
+                    disabled
+                  />
+                </td>
+                <td>
+                  <input type="hidden" name="attr_medic_main_stat" value="@{int_total}" />
+                  <select disabled>
+                    <option selected>INT</option>
+                  </select>
+                </td>
+                <td class="bonus"></td>
+                <td>
+                  <input type="hidden" name="attr_medic_bonus_stat" value="@{int_total}" />
+                  <select disabled>
+                    <option selected>INT</option>
+                  </select>
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_medic_trained"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_medic_expert"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_medic_master"
+                  />
+                </td>
+                <td>
+                  <button
+                    type="roll"
+                    value="&{template:general} {{character_name=@{character_name}}} {{roll_title=@{medic_name}}} {{target=[[?{Bonus/Malus|0} + @{medic_main_stat} - @{advanced_skill_malus} + @{medic_trained} * @{advanced_skill_malus} + @{medic_expert} * (floor(@{medic_bonus_stat} / 10) * @{expert_skill_multiplier}) + @{medic_master} * (floor(@{medic_bonus_stat} / 10) * @{master_skill_multiplier})]]}} {{roll=[[1D100cs<5cf>96]]}}"
+                  ></button>
+                </td>
+              </tr>
+              <tr class="skill">
+                <td class="full-width">
+                  <input
+                    type="text"
+                    class="full-width line-input"
+                    name="attr_psychology_name"
+                    value="Psychologie"
+                    disabled
+                  />
+                </td>
+                <td>
+                  <input type="hidden" name="attr_psychology_main_stat" value="@{emp_total}" />
+                  <select disabled>
+                    <option selected>EMP</option>
+                  </select>
+                </td>
+                <td class="bonus"></td>
+                <td>
+                  <input type="hidden" name="attr_psychology_bonus_stat" value="@{int_total}" />
+                  <select disabled>
+                    <option selected>INT</option>
+                  </select>
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_psychology_trained"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_psychology_expert"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_psychology_master"
+                  />
+                </td>
+                <td>
+                  <button
+                    type="roll"
+                    value="&{template:general} {{character_name=@{character_name}}} {{roll_title=@{psychology_name}}} {{target=[[?{Bonus/Malus|0} + @{psychology_main_stat} - @{advanced_skill_malus} + @{psychology_trained} * @{advanced_skill_malus} + @{psychology_expert} * (floor(@{psychology_bonus_stat} / 10) * @{expert_skill_multiplier}) + @{psychology_master} * (floor(@{psychology_bonus_stat} / 10) * @{master_skill_multiplier})]]}} {{roll=[[1D100cs<5cf>96]]}}"
+                  ></button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- Knowledge skills -->
+          <table class="skills full-width">
+            <thead>
+              <tr>
+                <th colspan="8">
+                  <div class="table-title">Connaissances</div>
+                </th>
+              </tr>
+              <tr>
+                <th>Nom</th>
+                <th>1.</th>
+                <th></th>
+                <th>2.</th>
+                <th class="trained"></th>
+                <th class="expert"></th>
+                <th class="master"></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="skill">
+                <td class="full-width">
+                  <input
+                    type="text"
+                    class="full-width line-input"
+                    name="attr_knowledge_name_1"
+                    placeholder="Type de connaissance"
+                    value=""
+                  />
+                </td>
+                <td>
+                  <input type="hidden" name="attr_knowledge_main_stat" value="@{int_total}" />
+                  <select disabled>
+                    <option selected>INT</option>
+                  </select>
+                </td>
+                <td class="bonus"></td>
+                <td>
+                  <input type="hidden" name="attr_knowledge_bonus_stat" value="@{int_total}" />
+                  <select disabled>
+                    <option selected>INT</option>
+                  </select>
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_knowledge_1_trained"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_knowledge_1_expert"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_knowledge_1_master"
+                  />
+                </td>
+                <td>
+                  <button
+                    type="roll"
+                    value="&{template:general} {{character_name=@{character_name}}} {{roll_title=Connaissance (@{knowledge_name_1})}} {{target=[[?{Bonus/Malus|0} + @{knowledge_main_stat} - @{advanced_skill_malus} + @{knowledge_1_trained} * @{advanced_skill_malus} + @{knowledge_1_expert} * (floor(@{knowledge_bonus_stat} / 10) * @{expert_skill_multiplier}) + @{knowledge_1_master} * (floor(@{knowledge_bonus_stat} / 10) * @{master_skill_multiplier})]]}} {{roll=[[1D100cs<5cf>96]]}}"
+                  ></button>
+                </td>
+              </tr>
+              <tr class="skill">
+                <td class="full-width">
+                  <input
+                    type="text"
+                    class="full-width line-input"
+                    name="attr_knowledge_name_2"
+                    placeholder="Type de connaissance"
+                    value=""
+                  />
+                </td>
+                <td>
+                  <input type="hidden" name="attr_knowledge_main_stat" value="@{int_total}" />
+                  <select disabled>
+                    <option selected>INT</option>
+                  </select>
+                </td>
+                <td class="bonus"></td>
+                <td>
+                  <input type="hidden" name="attr_knowledge_bonus_stat" value="@{int_total}" />
+                  <select disabled>
+                    <option selected>INT</option>
+                  </select>
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_knowledge_2_trained"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_knowledge_2_expert"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_knowledge_2_master"
+                  />
+                </td>
+                <td>
+                  <button
+                    type="roll"
+                    value="&{template:general} {{character_name=@{character_name}}} {{roll_title=Connaissance (@{knowledge_name_2})}} {{target=[[?{Bonus/Malus|0} + @{knowledge_main_stat} - @{advanced_skill_malus} + @{knowledge_2_trained} * @{advanced_skill_malus} + @{knowledge_2_expert} * (floor(@{knowledge_bonus_stat} / 10) * @{expert_skill_multiplier}) + @{knowledge_2_master} * (floor(@{knowledge_bonus_stat} / 10) * @{master_skill_multiplier})]]}} {{roll=[[1D100cs<5cf>96]]}}"
+                  ></button>
+                </td>
+              </tr>
+              <tr class="skill">
+                <td class="full-width">
+                  <input
+                    type="text"
+                    class="full-width line-input"
+                    name="attr_knowledge_name_3"
+                    placeholder="Type de connaissance"
+                    value=""
+                  />
+                </td>
+                <td>
+                  <input type="hidden" name="attr_knowledge_main_stat" value="@{int_total}" />
+                  <select disabled>
+                    <option selected>INT</option>
+                  </select>
+                </td>
+                <td class="bonus"></td>
+                <td>
+                  <input type="hidden" name="attr_knowledge_bonus_stat" value="@{int_total}" />
+                  <select disabled>
+                    <option selected>INT</option>
+                  </select>
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_knowledge_3_trained"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_knowledge_3_expert"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_knowledge_3_master"
+                  />
+                </td>
+                <td>
+                  <button
+                    type="roll"
+                    value="&{template:general} {{character_name=@{character_name}}} {{roll_title=Connaissance (@{knowledge_name_3})}} {{target=[[?{Bonus/Malus|0} + @{knowledge_main_stat} - @{advanced_skill_malus} + @{knowledge_3_trained} * @{advanced_skill_malus} + @{knowledge_3_expert} * (floor(@{knowledge_bonus_stat} / 10) * @{expert_skill_multiplier}) + @{knowledge_3_master} * (floor(@{knowledge_bonus_stat} / 10) * @{master_skill_multiplier})]]}} {{roll=[[1D100cs<5cf>96]]}}"
+                  ></button>
+                </td>
+              </tr>
+              <tr class="skill">
+                <td class="full-width">
+                  <input
+                    type="text"
+                    class="full-width line-input"
+                    name="attr_knowledge_name_4"
+                    placeholder="Type de connaissance"
+                    value=""
+                  />
+                </td>
+                <td>
+                  <input type="hidden" name="attr_knowledge_main_stat" value="@{int_total}" />
+                  <select disabled>
+                    <option selected>INT</option>
+                  </select>
+                </td>
+                <td class="bonus"></td>
+                <td>
+                  <input type="hidden" name="attr_knowledge_bonus_stat" value="@{int_total}" />
+                  <select disabled>
+                    <option selected>INT</option>
+                  </select>
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_knowledge_4_trained"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_knowledge_4_expert"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_knowledge_4_master"
+                  />
+                </td>
+                <td>
+                  <button
+                    type="roll"
+                    value="&{template:general} {{character_name=@{character_name}}} {{roll_title=Connaissance (@{knowledge_name_4})}} {{target=[[?{Bonus/Malus|0} + @{knowledge_main_stat} - @{advanced_skill_malus} + @{knowledge_4_trained} * @{advanced_skill_malus} + @{knowledge_4_expert} * (floor(@{knowledge_bonus_stat} / 10) * @{expert_skill_multiplier}) + @{knowledge_4_master} * (floor(@{knowledge_bonus_stat} / 10) * @{master_skill_multiplier})]]}} {{roll=[[1D100cs<5cf>96]]}}"
+                  ></button>
+                </td>
+              </tr>
+              <tr class="skill">
+                <td class="full-width">
+                  <input
+                    type="text"
+                    class="full-width line-input"
+                    name="attr_knowledge_name_5"
+                    placeholder="Type de connaissance"
+                    value=""
+                  />
+                </td>
+                <td>
+                  <input type="hidden" name="attr_knowledge_main_stat" value="@{int_total}" />
+                  <select disabled>
+                    <option selected>INT</option>
+                  </select>
+                </td>
+                <td class="bonus"></td>
+                <td>
+                  <input type="hidden" name="attr_knowledge_bonus_stat" value="@{int_total}" />
+                  <select disabled>
+                    <option selected>INT</option>
+                  </select>
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_knowledge_5_trained"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_knowledge_5_expert"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_knowledge_5_master"
+                  />
+                </td>
+                <td>
+                  <button
+                    type="roll"
+                    value="&{template:general} {{character_name=@{character_name}}} {{roll_title=Connaissance (@{knowledge_name_5})}} {{target=[[?{Bonus/Malus|0} + @{knowledge_main_stat} - @{advanced_skill_malus} + @{knowledge_5_trained} * @{advanced_skill_malus} + @{knowledge_5_expert} * (floor(@{knowledge_bonus_stat} / 10) * @{expert_skill_multiplier}) + @{knowledge_5_master} * (floor(@{knowledge_bonus_stat} / 10) * @{master_skill_multiplier})]]}} {{roll=[[1D100cs<5cf>96]]}}"
+                  ></button>
+                </td>
+              </tr>
+              <tr class="skill">
+                <td class="full-width">
+                  <input
+                    type="text"
+                    class="full-width line-input"
+                    name="attr_knowledge_name_6"
+                    placeholder="Type de connaissance"
+                    value=""
+                  />
+                </td>
+                <td>
+                  <input type="hidden" name="attr_knowledge_main_stat" value="@{int_total}" />
+                  <select disabled>
+                    <option selected>INT</option>
+                  </select>
+                </td>
+                <td class="bonus"></td>
+                <td>
+                  <input type="hidden" name="attr_knowledge_bonus_stat" value="@{int_total}" />
+                  <select disabled>
+                    <option selected>INT</option>
+                  </select>
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_knowledge_6_trained"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_knowledge_6_expert"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_knowledge_6_master"
+                  />
+                </td>
+                <td>
+                  <button
+                    type="roll"
+                    value="&{template:general} {{character_name=@{character_name}}} {{roll_title=Connaissance (@{knowledge_name_6})}} {{target=[[?{Bonus/Malus|0} + @{knowledge_main_stat} - @{advanced_skill_malus} + @{knowledge_6_trained} * @{advanced_skill_malus} + @{knowledge_6_expert} * (floor(@{knowledge_bonus_stat} / 10) * @{expert_skill_multiplier}) + @{knowledge_6_master} * (floor(@{knowledge_bonus_stat} / 10) * @{master_skill_multiplier})]]}} {{roll=[[1D100cs<5cf>96]]}}"
+                  ></button>
+                </td>
+              </tr>
+              <tr class="skill">
+                <td class="full-width">
+                  <input
+                    type="text"
+                    class="full-width line-input"
+                    name="attr_knowledge_name_7"
+                    placeholder="Type de connaissance"
+                    value=""
+                  />
+                </td>
+                <td>
+                  <input type="hidden" name="attr_knowledge_main_stat" value="@{int_total}" />
+                  <select disabled>
+                    <option selected>INT</option>
+                  </select>
+                </td>
+                <td class="bonus"></td>
+                <td>
+                  <input type="hidden" name="attr_knowledge_bonus_stat" value="@{int_total}" />
+                  <select disabled>
+                    <option selected>INT</option>
+                  </select>
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_knowledge_7_trained"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_knowledge_7_expert"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_knowledge_7_master"
+                  />
+                </td>
+                <td>
+                  <button
+                    type="roll"
+                    value="&{template:general} {{character_name=@{character_name}}} {{roll_title=Connaissance (@{knowledge_name_7})}} {{target=[[?{Bonus/Malus|0} + @{knowledge_main_stat} - @{advanced_skill_malus} + @{knowledge_7_trained} * @{advanced_skill_malus} + @{knowledge_7_expert} * (floor(@{knowledge_bonus_stat} / 10) * @{expert_skill_multiplier}) + @{knowledge_7_master} * (floor(@{knowledge_bonus_stat} / 10) * @{master_skill_multiplier})]]}} {{roll=[[1D100cs<5cf>96]]}}"
+                  ></button>
+                </td>
+              </tr>
+              <tr class="skill">
+                <td class="full-width">
+                  <input
+                    type="text"
+                    class="full-width line-input"
+                    name="attr_knowledge_name_8"
+                    placeholder="Type de connaissance"
+                    value=""
+                  />
+                </td>
+                <td>
+                  <input type="hidden" name="attr_knowledge_main_stat" value="@{int_total}" />
+                  <select disabled>
+                    <option selected>INT</option>
+                  </select>
+                </td>
+                <td class="bonus"></td>
+                <td>
+                  <input type="hidden" name="attr_knowledge_bonus_stat" value="@{int_total}" />
+                  <select disabled>
+                    <option selected>INT</option>
+                  </select>
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_knowledge_8_trained"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_knowledge_8_expert"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_knowledge_8_master"
+                  />
+                </td>
+                <td>
+                  <button
+                    type="roll"
+                    value="&{template:general} {{character_name=@{character_name}}} {{roll_title=Connaissance (@{knowledge_name_8})}} {{target=[[?{Bonus/Malus|0} + @{knowledge_main_stat} - @{advanced_skill_malus} + @{knowledge_8_trained} * @{advanced_skill_malus} + @{knowledge_8_expert} * (floor(@{knowledge_bonus_stat} / 10) * @{expert_skill_multiplier}) + @{knowledge_8_master} * (floor(@{knowledge_bonus_stat} / 10) * @{master_skill_multiplier})]]}} {{roll=[[1D100cs<5cf>96]]}}"
+                  ></button>
+                </td>
+              </tr>
+              <tr class="skill">
+                <td class="full-width">
+                  <input
+                    type="text"
+                    class="full-width line-input"
+                    name="attr_knowledge_name_9"
+                    placeholder="Type de connaissance"
+                    value=""
+                  />
+                </td>
+                <td>
+                  <input type="hidden" name="attr_knowledge_main_stat" value="@{int_total}" />
+                  <select disabled>
+                    <option selected>INT</option>
+                  </select>
+                </td>
+                <td class="bonus"></td>
+                <td>
+                  <input type="hidden" name="attr_knowledge_bonus_stat" value="@{int_total}" />
+                  <select disabled>
+                    <option selected>INT</option>
+                  </select>
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_knowledge_9_trained"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_knowledge_9_expert"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_knowledge_9_master"
+                  />
+                </td>
+                <td>
+                  <button
+                    type="roll"
+                    value="&{template:general} {{character_name=@{character_name}}} {{roll_title=Connaissance (@{knowledge_name_9})}} {{target=[[?{Bonus/Malus|0} + @{knowledge_main_stat} - @{advanced_skill_malus} + @{knowledge_9_trained} * @{advanced_skill_malus} + @{knowledge_9_expert} * (floor(@{knowledge_bonus_stat} / 10) * @{expert_skill_multiplier}) + @{knowledge_9_master} * (floor(@{knowledge_bonus_stat} / 10) * @{master_skill_multiplier})]]}} {{roll=[[1D100cs<5cf>96]]}}"
+                  ></button>
+                </td>
+              </tr>
+              <tr class="skill">
+                <td class="full-width">
+                  <input
+                    type="text"
+                    class="full-width line-input"
+                    name="attr_knowledge_name_10"
+                    placeholder="Type de connaissance"
+                    value=""
+                  />
+                </td>
+                <td>
+                  <input type="hidden" name="attr_knowledge_main_stat" value="@{int_total}" />
+                  <select disabled>
+                    <option selected>INT</option>
+                  </select>
+                </td>
+                <td class="bonus"></td>
+                <td>
+                  <input type="hidden" name="attr_knowledge_bonus_stat" value="@{int_total}" />
+                  <select disabled>
+                    <option selected>INT</option>
+                  </select>
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_knowledge_10_trained"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_knowledge_10_expert"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_knowledge_10_master"
+                  />
+                </td>
+                <td>
+                  <button
+                    type="roll"
+                    value="&{template:general} {{character_name=@{character_name}}} {{roll_title=Connaissance (@{knowledge_name_10})}} {{target=[[?{Bonus/Malus|0} + @{knowledge_main_stat} - @{advanced_skill_malus} + @{knowledge_10_trained} * @{advanced_skill_malus} + @{knowledge_10_expert} * (floor(@{knowledge_bonus_stat} / 10) * @{expert_skill_multiplier}) + @{knowledge_10_master} * (floor(@{knowledge_bonus_stat} / 10) * @{master_skill_multiplier})]]}} {{roll=[[1D100cs<5cf>96]]}}"
+                  ></button>
+                </td>
+              </tr>
+              <tr class="skill">
+                <td class="full-width">
+                  <input
+                    type="text"
+                    class="full-width line-input"
+                    name="attr_knowledge_name_11"
+                    placeholder="Type de connaissance"
+                    value=""
+                  />
+                </td>
+                <td>
+                  <input type="hidden" name="attr_knowledge_main_stat" value="@{int_total}" />
+                  <select disabled>
+                    <option selected>INT</option>
+                  </select>
+                </td>
+                <td class="bonus"></td>
+                <td>
+                  <input type="hidden" name="attr_knowledge_bonus_stat" value="@{int_total}" />
+                  <select disabled>
+                    <option selected>INT</option>
+                  </select>
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_knowledge_11_trained"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_knowledge_11_expert"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_knowledge_11_master"
+                  />
+                </td>
+                <td>
+                  <button
+                    type="roll"
+                    value="&{template:general} {{character_name=@{character_name}}} {{roll_title=Connaissance (@{knowledge_name_11})}} {{target=[[?{Bonus/Malus|0} + @{knowledge_main_stat} - @{advanced_skill_malus} + @{knowledge_11_trained} * @{advanced_skill_malus} + @{knowledge_11_expert} * (floor(@{knowledge_bonus_stat} / 11) * @{expert_skill_multiplier}) + @{knowledge_11_master} * (floor(@{knowledge_bonus_stat} / 11) * @{master_skill_multiplier})]]}} {{roll=[[1D112cs<5cf>96]]}}"
+                  ></button>
+                </td>
+              </tr>
+              <tr class="skill">
+                <td class="full-width">
+                  <input
+                    type="text"
+                    class="full-width line-input"
+                    name="attr_knowledge_name_12"
+                    placeholder="Type de connaissance"
+                    value=""
+                  />
+                </td>
+                <td>
+                  <input type="hidden" name="attr_knowledge_main_stat" value="@{int_total}" />
+                  <select disabled>
+                    <option selected>INT</option>
+                  </select>
+                </td>
+                <td class="bonus"></td>
+                <td>
+                  <input type="hidden" name="attr_knowledge_bonus_stat" value="@{int_total}" />
+                  <select disabled>
+                    <option selected>INT</option>
+                  </select>
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_knowledge_12_trained"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_knowledge_12_expert"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_knowledge_12_master"
+                  />
+                </td>
+                <td>
+                  <button
+                    type="roll"
+                    value="&{template:general} {{character_name=@{character_name}}} {{roll_title=Connaissance (@{knowledge_name_12})}} {{target=[[?{Bonus/Malus|0} + @{knowledge_main_stat} - @{advanced_skill_malus} + @{knowledge_12_trained} * @{advanced_skill_malus} + @{knowledge_12_expert} * (floor(@{knowledge_bonus_stat} / 12) * @{expert_skill_multiplier}) + @{knowledge_12_master} * (floor(@{knowledge_bonus_stat} / 12) * @{master_skill_multiplier})]]}} {{roll=[[1D120cs<5cf>96]]}}"
+                  ></button>
+                </td>
+              </tr>
+              <tr class="skill">
+                <td class="full-width">
+                  <input
+                    type="text"
+                    class="full-width line-input"
+                    name="attr_knowledge_name_13"
+                    placeholder="Type de connaissance"
+                    value=""
+                  />
+                </td>
+                <td>
+                  <input type="hidden" name="attr_knowledge_main_stat" value="@{int_total}" />
+                  <select disabled>
+                    <option selected>INT</option>
+                  </select>
+                </td>
+                <td class="bonus"></td>
+                <td>
+                  <input type="hidden" name="attr_knowledge_bonus_stat" value="@{int_total}" />
+                  <select disabled>
+                    <option selected>INT</option>
+                  </select>
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_knowledge_13_trained"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_knowledge_13_expert"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_knowledge_13_master"
+                  />
+                </td>
+                <td>
+                  <button
+                    type="roll"
+                    value="&{template:general} {{character_name=@{character_name}}} {{roll_title=Connaissance (@{knowledge_name_13})}} {{target=[[?{Bonus/Malus|0} + @{knowledge_main_stat} - @{advanced_skill_malus} + @{knowledge_13_trained} * @{advanced_skill_malus} + @{knowledge_13_expert} * (floor(@{knowledge_bonus_stat} / 13) * @{expert_skill_multiplier}) + @{knowledge_13_master} * (floor(@{knowledge_bonus_stat} / 13) * @{master_skill_multiplier})]]}} {{roll=[[1D130cs<5cf>96]]}}"
+                  ></button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>
@@ -1489,12 +2865,15 @@
                 name="attr_armor_weight"
                 placeholder="0"
               />
-              <input
-                type="checkbox"
-                name="attr_armor_is_expanded"
-                class="modif-toggle"
-                checked
-              />
+              <div class="modif-wrapper">
+                <input
+                  type="checkbox"
+                  name="attr_armor_is_expanded"
+                  class="modif-toggle"
+                  checked
+                />
+                <span></span>
+              </div>
             </div>
             <input type="hidden" name="attr_armor_is_expanded" value="on" />
             <div class="flex-row protection-locations flex-middle">
@@ -1612,20 +2991,46 @@
 
 <!-- General rolltemplate -->
 <rolltemplate class="sheet-rolltemplate-general">
-  <table class="sheet-rolltable sheet-full-width">
+  <table class="sheet-rolltable">
     <thead>
       <tr>
-        <th colspan="3">{{character_name}}</th>
+        <th colspan="2" class="sheet-rolltable-title">{{character_name}}</th>
       </tr>
       <tr>
-        <th colspan="3">{{roll_title}}</th>
+        <th colspan="2" class="sheet-rolltable-subtitle">{{roll_title}}</th>
       </tr>
       <tr>
-        <td>{{roll}}</td>
-        <td class="sheet-full-width"></td>
-        <td>{{target}}</td>
+        <th colspan="2">
+          {{#rollWasCrit() roll}}
+            <div class="sheet-success sheet-critical">Réussite critique</div>
+          {{/rollWasCrit() roll}}
+          {{#rollWasFumble() roll}}
+            <div class="sheet-failure sheet-critical">Échec critique</div>
+          {{/rollWasFumble() roll}}
+          {{#^rollWasCrit() roll}}
+            {{#^rollWasFumble() roll}}
+              {{#rollGreater() roll target}}
+                {{#^rollTotal() roll target}}
+                  <div class="sheet-failure">Échec</div>
+                {{/^rollTotal() roll target}}
+              {{/rollGreater() roll target}}
+              {{#rollLess() roll target}}
+                <div class="sheet-success">Réussite</div>
+              {{/rollLess() roll target}}
+              {{#rollTotal() roll target}}
+                <div class="sheet-success">Réussite</div>
+              {{/rollTotal() roll target}}
+            {{/^rollWasFumble() roll}}
+          {{/^rollWasCrit() roll}}
+        </th>
       </tr>
     </thead>
+    <tbody>
+      <tr>
+        <td class="sheet-rollresult">{{roll}}</td>
+        <td class="sheet-target">{{target}}</td>
+      </tr>
+    </tbody>
   </table>
 </rolltemplate>
 
