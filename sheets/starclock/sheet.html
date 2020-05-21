@@ -9,7 +9,7 @@
   <!-- Tab selector -->
   <div class="tab-selector full-width flex-row">
     <button type="action" name="act_character">Personnage</button>
-    <button type="action" name="act_arsenal">Arsenal</button>
+    <button type="action" name="act_protections">Protections</button>
     <button type="action" name="act_gear">Inventaire</button>
     <button type="action" name="act_psy">Psy</button>
   </div>
@@ -64,7 +64,7 @@
         </tbody>
       </table>
     </div>
-    <div class="tablet-content flex-col flex-middle full-width">
+    <div class="tablet-content flex-col flex-middle full-width tablet-stats">
 
       <!-- Character stats -->
       <table class="stats">
@@ -767,6 +767,57 @@
                   <button
                     type="roll"
                     value="&{template:general} {{character_name=@{character_name}}} {{roll_title=@{charm_name}}} {{target=[[?{Bonus/Malus|0} + @{charm_main_stat} - @{basic_skill_malus} + @{charm_trained} * @{basic_skill_malus} + @{charm_expert} * (floor(@{charm_bonus_stat} / 10) * @{expert_skill_multiplier}) + @{charm_master} * (floor(@{charm_bonus_stat} / 10) * @{master_skill_multiplier})]]}} {{roll=[[1D100cs<5cf>96]]}}"
+                  ></button>
+                </td>
+              </tr>
+              <tr class="skill">
+                <td class="full-width">
+                  <input
+                    type="text"
+                    class="full-width line-input"
+                    name="attr_unarmed_name"
+                    value="Corps-à-corps"
+                    disabled
+                  />
+                </td>
+                <td>
+                  <input type="hidden" name="attr_unarmed_main_stat" value="@{phy_total}" />
+                  <select disabled>
+                    <option selected>PHY</option>
+                  </select>
+                </td>
+                <td class="bonus"></td>
+                <td>
+                  <input type="hidden" name="attr_unarmed_bonus_stat" value="@{agi_total}" />
+                  <select disabled>
+                    <option selected>AGI</option>
+                  </select>
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_unarmed_trained"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_unarmed_expert"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    value="1"
+                    name="attr_unarmed_master"
+                  />
+                </td>
+                <td>
+                  <button
+                    type="roll"
+                    value="&{template:general} {{character_name=@{character_name}}} {{roll_title=@{unarmed_name}}} {{target=[[?{Bonus/Malus|0} + @{unarmed_main_stat} - @{basic_skill_malus} + @{unarmed_trained} * @{basic_skill_malus} + @{unarmed_expert} * (floor(@{unarmed_bonus_stat} / 10) * @{expert_skill_multiplier}) + @{unarmed_master} * (floor(@{unarmed_bonus_stat} / 10) * @{master_skill_multiplier})]]}} {{roll=[[1D100cs<5cf>96]]}}"
                   ></button>
                 </td>
               </tr>
@@ -2735,10 +2786,11 @@
     </div>
   </div>
 
-  <!-- Arsenal tab -->
-  <div class="tab flex-col full-width flex-middle arsenal">
+  <!-- Protections tab -->
+  <div class="tab flex-col full-width flex-middle protections">
     <div class="character-defenses flex-row full-width">
       <input type="hidden" name="attr_character_race" />
+      <input type="hidden" name="attr_character_gender" />
       <div class="character-silhouette">
 
         <!-- Head -->
@@ -2985,53 +3037,158 @@
 
   <!-- Psy tab -->
   <div class="tab flex-col full-width flex-middle psy">
-    Psy
+    <div class="psy-container flex-row full-width">
+      <input type="hidden" name="attr_current_psy" />
+
+      <!-- Telekinesie -->
+      <div class="flex-col flex-middle psy-wrapper telekinesie">
+        <div class="psy-card">
+          <h4>Télékinésie</h4>
+          <button type="action" class="psy-button" name="act_telekinesie"></button>
+          <span class="power-anot">P</span>
+          <span class="control-anot">C</span>
+          <input
+            type="number"
+            class="psy-power"
+            name="attr_telekinesie_power"
+            value="0"
+          />
+          <input
+            type="number"
+            class="psy-control"
+            name="attr_telekinesie_control"
+            value="0"
+          />
+        </div>
+        <div class="full-width tablet-content psy-content">
+          Coucou
+        </div>
+      </div>
+
+      <!-- Mentalisme -->
+      <div class="flex-col flex-middle psy-wrapper mentalisme">
+        <div class="psy-card">
+          <h4>Mentalisme</h4>
+          <button type="action" class="psy-button" name="act_mentalisme"></button>
+          <span class="power-anot">P</span>
+          <span class="control-anot">C</span>
+          <input
+            type="number"
+            class="psy-power"
+            name="attr_mentalisme_power"
+            value="0"
+          />
+          <input
+            type="number"
+            class="psy-control"
+            name="attr_mentalisme_control"
+            value="0"
+          />
+        </div>
+        <div class="full-width tablet-content psy-content">
+          Blah
+        </div>
+      </div>
+
+      <!-- Thermokinesie -->
+      <div class="flex-col flex-middle psy-wrapper thermokinesie">
+        <div class="psy-card">
+          <h4>Thermokinésie</h4>
+          <button type="action" class="psy-button" name="act_thermokinesie"></button>
+          <span class="power-anot">P</span>
+          <span class="control-anot">C</span>
+          <input
+            type="number"
+            class="psy-power"
+            name="attr_thermokinesie_power"
+            value="0"
+          />
+          <input
+            type="number"
+            class="psy-control"
+            name="attr_thermokinesie_control"
+            value="0"
+          />
+        </div>
+        <div class="full-width tablet-content psy-content">
+          Bite
+        </div>
+      </div>
+
+      <!-- Chronomancie -->
+      <div class="flex-col flex-middle psy-wrapper chronomancie">
+        <div class="psy-card">
+          <h4>Chronomancie</h4>
+          <button type="action" class="psy-button" name="act_chronomancie"></button>
+          <span class="power-anot">P</span>
+          <span class="control-anot">C</span>
+          <input
+            type="number"
+            class="psy-power"
+            name="attr_chronomancie_power"
+            value="0"
+          />
+          <input
+            type="number"
+            class="psy-control"
+            name="attr_chronomancie_control"
+            value="0"
+          />
+        </div>
+        <div class="full-width tablet-content psy-content">
+          Zboub
+        </div>
+      </div>
+
+    </div>
   </div>
 </div>
 
 <!-- General rolltemplate -->
 <rolltemplate class="sheet-rolltemplate-general">
-  <table class="sheet-rolltable">
-    <thead>
-      <tr>
-        <th colspan="2" class="sheet-rolltable-title">{{character_name}}</th>
-      </tr>
-      <tr>
-        <th colspan="2" class="sheet-rolltable-subtitle">{{roll_title}}</th>
-      </tr>
-      <tr>
-        <th colspan="2">
-          {{#rollWasCrit() roll}}
-            <div class="sheet-success sheet-critical">Réussite critique</div>
-          {{/rollWasCrit() roll}}
-          {{#rollWasFumble() roll}}
-            <div class="sheet-failure sheet-critical">Échec critique</div>
-          {{/rollWasFumble() roll}}
-          {{#^rollWasCrit() roll}}
-            {{#^rollWasFumble() roll}}
-              {{#rollGreater() roll target}}
-                {{#^rollTotal() roll target}}
-                  <div class="sheet-failure">Échec</div>
-                {{/^rollTotal() roll target}}
-              {{/rollGreater() roll target}}
-              {{#rollLess() roll target}}
-                <div class="sheet-success">Réussite</div>
-              {{/rollLess() roll target}}
-              {{#rollTotal() roll target}}
-                <div class="sheet-success">Réussite</div>
-              {{/rollTotal() roll target}}
-            {{/^rollWasFumble() roll}}
-          {{/^rollWasCrit() roll}}
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td class="sheet-rollresult">{{roll}}</td>
-        <td class="sheet-target">{{target}}</td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="sheet-rolltemplate-wrapper">
+    <table class="sheet-rolltable">
+      <thead>
+        <tr>
+          <th colspan="2" class="sheet-rolltable-title">{{character_name}}</th>
+        </tr>
+        <tr>
+          <th colspan="2" class="sheet-rolltable-subtitle">{{roll_title}}</th>
+        </tr>
+        <tr>
+          <th colspan="2">
+            {{#rollWasCrit() roll}}
+              <div class="sheet-success sheet-critical">Réussite critique</div>
+            {{/rollWasCrit() roll}}
+            {{#rollWasFumble() roll}}
+              <div class="sheet-failure sheet-critical">Échec critique</div>
+            {{/rollWasFumble() roll}}
+            {{#^rollWasCrit() roll}}
+              {{#^rollWasFumble() roll}}
+                {{#rollGreater() roll target}}
+                  {{#^rollTotal() roll target}}
+                    <div class="sheet-failure">Échec</div>
+                  {{/^rollTotal() roll target}}
+                {{/rollGreater() roll target}}
+                {{#rollLess() roll target}}
+                  <div class="sheet-success">Réussite</div>
+                {{/rollLess() roll target}}
+                {{#rollTotal() roll target}}
+                  <div class="sheet-success">Réussite</div>
+                {{/rollTotal() roll target}}
+              {{/^rollWasFumble() roll}}
+            {{/^rollWasCrit() roll}}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="sheet-rollresult">{{roll}}</td>
+          <td class="sheet-target">{{target}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </rolltemplate>
 
 <!-- Workers -->
@@ -3043,8 +3200,9 @@
 
   var calculationKeys = ["base", "bonus"];
   var statsKeys = ["phy", "agi", "acu", "hab", "cha", "emp", "int", "wil"];
-  var tabs = ["character", "arsenal", "gear", "psy"];
+  var tabs = ["character", "protections", "gear", "psy"];
   var bodyLocations = ["head", "torso", "left_arm", "right_arm", "left_leg", "right_leg"];
+  var psyDisciplines = ["telekinesie", "thermokinesie", "chronomancie", "mentalisme"];
 
   /*
   **  Helper functions
@@ -3107,9 +3265,21 @@
   }
 
   function computeTabChange (tabKey) {
+    console.log(tabKey);
     on("clicked:" + tabKey, function () {
+      console.log(tabKey);
       setAttrs({
         current_tab: tabKey
+      });
+    });
+  }
+
+  function computePsyClick (psyKey) {
+    on("clicked:" + psyKey, function () {
+      getAttrs(["current_psy"], function (values) {
+        setAttrs({
+          current_psy: psyKey === values.current_psy ? "" : psyKey
+        });
       });
     });
   }
@@ -3206,6 +3376,7 @@
   */
 
   statsKeys.forEach(computeStatChanges);
+  psyDisciplines.forEach(computePsyClick);
   tabs.forEach(computeTabChange);
 
   onEvents([

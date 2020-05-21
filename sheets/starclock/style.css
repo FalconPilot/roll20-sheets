@@ -47,6 +47,8 @@ input::-webkit-inner-spin-button {
 
 .sheet-flex-stretch { align-items: stretch; }
 
+.sheet-flex-wrap { flex-wrap: wrap; }
+
 /*
 **  Width classes
 */
@@ -216,8 +218,8 @@ input.sheet-tabs-control[value="character"] ~ .sheet-tab-selector > button[name=
   color: #FFF;
 }
 
-input.sheet-tabs-control[value="arsenal"] ~ .sheet-tab.sheet-arsenal { display: flex !important; }
-input.sheet-tabs-control[value="arsenal"] ~ .sheet-tab-selector > button[name="act_arsenal"] {
+input.sheet-tabs-control[value="protections"] ~ .sheet-tab.sheet-protections { display: flex !important; }
+input.sheet-tabs-control[value="protections"] ~ .sheet-tab-selector > button[name="act_protections"] {
   background-color: #333;
   color: #FFF;
 }
@@ -359,6 +361,10 @@ input[name="attr_character_gender"][value="other"] + input[name="attr_character_
 /*
 **  Sheet stats
 */
+
+.sheet-tablet-stats {
+  position: relative;
+}
 
 .sheet-stat {
   margin: 10px 0;
@@ -709,44 +715,73 @@ input[name="attr_overweight"][value="true"] + .sheet-capacity-header {
 }
 
 /*
-**  Human silhouette
-**  TODO - Make it different for each race
+**  Human silhouette - Default
 */
 
-input[type=hidden][name="attr_character_race"] + .sheet-character-silhouette {
-  background-image: url("https://fpilot.fr/starclock/gui/human_sil.png");
+input[type=hidden][name="attr_character_race"] ~ .sheet-character-silhouette {
+  background-image: url("https://fpilot.fr/starclock/gui/human_sil_m.png");
   width: 162px;
   height: 384px;
 }
 
-input[type=hidden][name="attr_character_race"] + .sheet-character-silhouette .sheet-character-location.sheet-head {
+input[type=hidden][name="attr_character_race"] ~ input[type=hidden][name="attr_character_gender"][value="f"] ~ .sheet-character-silhouette {
+  background-image: url("https://fpilot.fr/starclock/gui/human_sil_f.png");
+}
+
+input[type=hidden][name="attr_character_race"] ~ .sheet-character-silhouette .sheet-character-location.sheet-head {
   top: 5px;
   left: 75px;
 }
 
-input[type=hidden][name="attr_character_race"] + .sheet-character-silhouette .sheet-character-location.sheet-left-arm {
+input[type=hidden][name="attr_character_race"] ~ .sheet-character-silhouette .sheet-character-location.sheet-left-arm {
   top: 110px;
   left: 35px;
 }
 
-input[type=hidden][name="attr_character_race"] + .sheet-character-silhouette .sheet-character-location.sheet-right-arm {
+input[type=hidden][name="attr_character_race"] ~ .sheet-character-silhouette .sheet-character-location.sheet-right-arm {
   top: 110px;
   right: 45px;
 }
 
-input[type=hidden][name="attr_character_race"] + .sheet-character-silhouette .sheet-character-location.sheet-torso {
+input[type=hidden][name="attr_character_race"] ~ .sheet-character-silhouette .sheet-character-location.sheet-torso {
   top: 100px;
   left: 125px;
 }
 
-input[type=hidden][name="attr_character_race"] + .sheet-character-silhouette .sheet-character-location.sheet-left-leg {
+input[type=hidden][name="attr_character_race"] ~ .sheet-character-silhouette .sheet-character-location.sheet-left-leg {
   top: 280px;
   left: 60px;
 }
 
-input[type=hidden][name="attr_character_race"] + .sheet-character-silhouette .sheet-character-location.sheet-right-leg {
+input[type=hidden][name="attr_character_race"] ~ .sheet-character-silhouette .sheet-character-location.sheet-right-leg {
   top: 280px;
   right: 70px;
+}
+
+/*
+**  Endaari silhouette
+*/
+
+input[type=hidden][name="attr_character_race"][value="endaari"] ~ .sheet-character-silhouette {
+  background-image: url("https://fpilot.fr/starclock/gui/endaari_sil_m.png");
+}
+
+input[type=hidden][name="attr_character_race"][value="endaari"] ~ input[type=hidden][name="attr_character_gender"][value="f"] ~ .sheet-character-silhouette {
+  background-image: url("https://fpilot.fr/starclock/gui/endaari_sil_f.png");
+}
+
+/*
+**  Alkor silhouette
+*/
+
+input[type=hidden][name="attr_character_race"][value="alkor"] ~ .sheet-character-silhouette {
+  background-image: url("https://fpilot.fr/starclock/gui/alkor_sil_m.png");
+  width: 200px;
+  padding: 0 41px;
+}
+
+input[type=hidden][name="attr_character_race"][value="alkor"] ~ input[type=hidden][name="attr_character_gender"][value="f"] ~ .sheet-character-silhouette {
+  background-image: url("https://fpilot.fr/starclock/gui/alkor_sil_f.png");
 }
 
 /*
@@ -807,14 +842,179 @@ input[name="attr_armor_is_expanded"][value="0"] ~ .sheet-armor-extra {
 }
 
 /*
+**  Psy tab
+*/
+
+.sheet-psy-container {
+  position: relative;
+}
+
+.sheet-psy-wrapper {
+  position: relative;
+  width: 25%;
+  overflow: hidden;
+  opacity: 1;
+  transition: 0.2s;
+}
+
+.sheet-psy-card {
+  position: relative;
+  width: 150px;
+  height: 180px;
+  margin: 20px 0;
+  box-sizing: border-box;
+  background-position-x: center;
+  background-position-y: bottom;
+  background-repeat: no-repeat;
+  background-size: contain;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.sheet-psy-card > h4 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 30px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #FFF;
+  text-align: center;
+  line-height: 30px;
+  font-size: 20px;
+  font-family: 'Patrick Hand';
+}
+
+.sheet-psy-wrapper.sheet-telekinesie > .sheet-psy-card {
+  background-image: url("https://fpilot.fr/starclock/gui/telekinesie.png");
+  background-color: #5CF;
+}
+
+.sheet-psy-wrapper.sheet-mentalisme > .sheet-psy-card {
+  background-image: url("https://fpilot.fr/starclock/gui/mentalisme.png");
+  background-color: #97C;
+}
+
+.sheet-psy-wrapper.sheet-thermokinesie > .sheet-psy-card {
+  background-image: url("https://fpilot.fr/starclock/gui/thermokinesie.png");
+  background-color: #C55;
+}
+
+.sheet-psy-wrapper.sheet-chronomancie > .sheet-psy-card {
+  background-image: url("https://fpilot.fr/starclock/gui/chronomancie.png");
+  background-color: #FC6;
+}
+
+.sheet-psy-button,
+input[type=number].sheet-psy-power,
+input[type=number].sheet-psy-control {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  padding: 0;
+  border: 1px solid #333;
+  box-sizing: border-box;
+  border-radius: 50%;
+  background-color: #333;
+  color: #FFF;
+  text-align: center;
+  outline: none;
+  z-index: 5;
+}
+
+.sheet-psy-button {
+  right: 5px;
+  bottom: 5px;
+  transition: 0.2s;
+}
+
+input[type=number].sheet-psy-power {
+  left: 5px;
+  top: 35px;
+}
+
+input[type=number].sheet-psy-control {
+  left: 5px;
+  top: 65px;
+}
+
+input[type=number].sheet-psy-power,
+input[type=number].sheet-psy-control {
+  font-family: 'Patrick Hand';
+}
+
+.sheet-psy-button:after,
+input[type=number].sheet-psy-power,
+input[type=number].sheet-psy-control {
+  line-height: 25px;
+}
+
+.sheet-psy-button:after {
+  content: '&';
+  width: 100%;
+  font-family: 'Pictos';
+}
+
+.sheet-power-anot,
+.sheet-control-anot {
+  position: absolute;
+  left: 3px;
+  font-size: 12px;
+  color: #FFF;
+  font-family: 'Contrail One';
+  text-shadow: 0px 0px 3px #333;
+  z-index: 6;
+}
+
+.sheet-power-anot { top: 39px; }
+.sheet-control-anot { top: 68px; }
+
+.sheet-psy-content {
+  display: none;
+}
+
+input[type="hidden"][name="attr_current_psy"][value="telekinesie"] ~ .sheet-psy-wrapper,
+input[type="hidden"][name="attr_current_psy"][value="chronomancie"] ~ .sheet-psy-wrapper,
+input[type="hidden"][name="attr_current_psy"][value="thermokinesie"] ~ .sheet-psy-wrapper,
+input[type="hidden"][name="attr_current_psy"][value="mentalisme"] ~ .sheet-psy-wrapper {
+  width: 100%;
+}
+
+input[type="hidden"][name="attr_current_psy"][value="telekinesie"] ~ .sheet-psy-wrapper .sheet-psy-content,
+input[type="hidden"][name="attr_current_psy"][value="chronomancie"] ~ .sheet-psy-wrapper .sheet-psy-content,
+input[type="hidden"][name="attr_current_psy"][value="thermokinesie"] ~ .sheet-psy-wrapper .sheet-psy-content,
+input[type="hidden"][name="attr_current_psy"][value="mentalisme"] ~ .sheet-psy-wrapper .sheet-psy-content {
+  display: flex;
+}
+
+input[type="hidden"][name="attr_current_psy"][value="telekinesie"] ~ .sheet-psy-wrapper .sheet-psy-button,
+input[type="hidden"][name="attr_current_psy"][value="chronomancie"] ~ .sheet-psy-wrapper .sheet-psy-button,
+input[type="hidden"][name="attr_current_psy"][value="thermokinesie"] ~ .sheet-psy-wrapper .sheet-psy-button,
+input[type="hidden"][name="attr_current_psy"][value="mentalisme"] ~ .sheet-psy-wrapper .sheet-psy-button {
+  transform: rotate(45deg);
+}
+
+input[type="hidden"][name="attr_current_psy"][value="telekinesie"] ~ .sheet-psy-wrapper:not(.sheet-telekinesie),
+input[type="hidden"][name="attr_current_psy"][value="chronomancie"] ~ .sheet-psy-wrapper:not(.sheet-chronomancie),
+input[type="hidden"][name="attr_current_psy"][value="thermokinesie"] ~ .sheet-psy-wrapper:not(.sheet-thermokinesie),
+input[type="hidden"][name="attr_current_psy"][value="mentalisme"] ~ .sheet-psy-wrapper:not(.sheet-mentalisme) {
+  width: 0;
+  height: 0;
+  opacity: 0;
+}
+
+/*
 **  Rolltemplates
 */
 
 .sheet-rolltemplate-general {
   width: 100%;
+}
+
+.sheet-rolltemplate-wrapper {
+  background-color: #EEE;
   border: 3px solid #333;
   border-radius: 5px;
-  box-sizing: border-box;
 }
 
 .sheet-rolltemplate-general .sheet-rolltable {
