@@ -759,6 +759,18 @@ input[type=hidden][name="attr_character_race"] ~ .sheet-character-silhouette .sh
 }
 
 /*
+**  Doppleganger silhouette
+*/
+
+input[type=hidden][name="attr_character_race"][value="doppleganger"] ~ .sheet-character-silhouette {
+  background-image: url("https://fpilot.fr/starclock/gui/doppleganger_sil_m.png");
+}
+
+input[type=hidden][name="attr_character_race"][value="doppleganger"] ~ input[type=hidden][name="attr_character_gender"][value="f"] ~ .sheet-character-silhouette {
+  background-image: url("https://fpilot.fr/starclock/gui/doppleganger_sil_f.png");
+}
+
+/*
 **  Endaari silhouette
 */
 
