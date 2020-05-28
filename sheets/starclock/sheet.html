@@ -11,7 +11,9 @@
     <button type="action" name="act_character">Personnage</button>
     <button type="action" name="act_protections">Protections</button>
     <button type="action" name="act_gear">Inventaire</button>
-    <button type="action" name="act_psy">Psy</button>
+    <button type="action" name="act_psy">Psy / Karma</button>
+    <button type="action" name="act_mutations">Mutations</button>
+    <button type="action" name="act_xp">Expérience</button>
   </div>
 
   <!-- Character tab -->
@@ -3037,6 +3039,66 @@
 
   <!-- Psy tab -->
   <div class="tab flex-col full-width flex-middle psy">
+    <h2 class="tablet-title">Karma</h2>
+    <div class="karma-container flex-row flex-middle">
+      <div class="karma-unit">
+        <input
+          type="radio"
+          value="-3"
+          name="attr_current_karma"
+        />
+        <p>-3</p>
+      </div>
+      <div class="karma-unit">
+        <input
+          type="radio"
+          value="-2"
+          name="attr_current_karma"
+        />
+        <p>-2</p>
+      </div>
+      <div class="karma-unit">
+        <input
+          type="radio"
+          value="-1"
+          name="attr_current_karma"
+        />
+        <p>-1</p>
+      </div>
+      <div class="karma-unit">
+        <input
+          type="radio"
+          value="0"
+          name="attr_current_karma"
+          checked
+        />
+        <p>0</p>
+      </div>
+      <div class="karma-unit">
+        <input
+          type="radio"
+          value="1"
+          name="attr_current_karma"
+        />
+        <p>1</p>
+      </div>
+      <div class="karma-unit">
+        <input
+          type="radio"
+          value="2"
+          name="attr_current_karma"
+        />
+        <p>2</p>
+      </div>
+      <div class="karma-unit">
+        <input
+          type="radio"
+          value="3"
+          name="attr_current_karma"
+        />
+        <p>3</p>
+      </div>
+    </div>
     <div class="psy-container flex-row full-width">
       <input type="hidden" name="attr_current_psy" />
 
@@ -3136,11 +3198,195 @@
           />
         </div>
         <div class="full-width tablet-content psy-content">
-          Zboub
+        <!--
+          <fieldset class="repeating_psy_power">
+            <div class="full-width flex-col flex-middle psy-power">
+              <div class="flex-row full-width">
+                <input
+                  type="text"
+                  name="attr_power_name"
+                  class="power-name"
+                  placeholder="Nom du pouvoir"
+                />
+                <input
+                  type="number"
+                  name="attr_power_level"
+                  placeholder="Niv."
+                />
+              </div>
+              <textarea
+                class="psy-description"
+                name="attr_power_description"
+              ></textarea>
+            </div>
+          </fieldset>
+          -->
         </div>
       </div>
 
     </div>
+  </div>
+
+  <!-- Mutations tab -->
+  <div class="tab flex-col full-width flex-middle mutations">
+    <h2 class="tablet-title">Mutations</h2>
+    <fieldset class="repeating_mutations">
+      <div class="full-width mutation flex-col flex-middle">
+        <input type="hidden" name="attr_mutation_is_expanded" value="on" />
+        <div class="full-width flex-row">
+          <input
+            type="text"
+            class="full-width"
+            name="attr_mutation_name"
+            placeholder="Nom de la mutation"
+          />
+          <div class="modif-wrapper">
+            <input
+              type="checkbox"
+              name="attr_mutation_is_expanded"
+              class="modif-toggle"
+              checked
+            />
+            <span></span>
+          </div>
+        </div>
+        <textarea
+          name="attr_mutation_description"
+          placeholder="Description de la mutation"
+          rows="5"
+        ></textarea>
+      </div>
+    </fieldset>
+  </div>
+
+  <!-- XP tab -->
+  <div class="tab flex-col full-width flex-middle xp">
+    <h2 class="tablet-title">Expérience acquise</h2>
+    <table class="xp-summary full-width">
+      <thead>
+        <tr>
+          <th class="xp-subheader">Acquis</th>
+          <th class="xp-subheader">Dépensé</th>
+          <th class="xp-subheader">Restant</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <input
+              type="number"
+              name="attr_xp_earned"
+              value="0"
+              min="0"
+            />
+          </td>
+          <td>
+            <input
+              disabled
+              type="number"
+              name="attr_xp_spent_display"
+              value="@{xp_spent}"
+            />
+          </td>
+          <td>
+            <input
+              type="hidden"
+              name="attr_xp_is_overflowing"
+              value="false"
+            />
+            <input
+              disabled
+              type="number"
+              name="attr_xp_remaining"
+              value="@{xp_earned} - @{xp_spent}"
+            />
+            <div class="warning-symbol">!</div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="full-width advancements-reminder">
+      <thead>
+        <tr>
+          <th colspan="2">Coûts des avancées</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Caractéristique +1</td>
+          <td>4 EXP</td>
+        </tr>
+        <tr>
+          <td>Connaître une compétence</td>
+          <td>(Nb. de compétences déjà connues + 1) EXP</td>
+        </tr>
+        <tr>
+          <td>Devenir expert dans une compétence</td>
+          <td>5 EXP</td>
+        </tr>
+        <tr>
+          <td>Devenir maître dans une compétence</td>
+          <td>10 EXP</td>
+        </tr>
+        <tr>
+          <td>Obtenir une connaissance</td>
+          <td>(Nb. de connaissances déjà connues + 1) EXP</td>
+        </tr>
+        <tr>
+          <td>Puissance d'une forme sensorielle +1</td>
+          <td>(Puissance désirée x 2) EXP</td>
+        </tr>
+        <tr>
+          <td>Contrôle d'une forme sensorielle +1</td>
+          <td>(Contrôle désiré x 2) EXP</td>
+        </tr>
+        <tr>
+          <td>Nouvelle mutation contrôlée</td>
+          <td>(Coûts en points de mutation) EXP</td>
+        </tr>
+      </tbody>
+    </table>
+    <h2 class="tablet-title">Expérience dépensée</h2>
+    <fieldset class="repeating_advancements">
+      <div class="flex-row full-width">
+        <div class="advancement-cell third-width">
+          <input
+            type="text"
+            name="attr_adv_name_1"
+            placeholder="Avancée"
+          />
+          <input
+            type="number"
+            name="attr_adv_cost_1"
+            placeholder="Coût"
+          />
+        </div>
+        <div class="advancement-cell third-width">
+          <input
+            type="text"
+            name="attr_adv_name_2"
+            placeholder="Avancée"
+          />
+          <input
+            type="number"
+            name="attr_adv_cost_2"
+            placeholder="Coût"
+          />
+        </div>
+        <div class="advancement-cell third-width">
+          <input
+            type="text"
+            name="attr_adv_name_3"
+            placeholder="Avancée"
+          />
+          <input
+            type="number"
+            name="attr_adv_cost_3"
+            placeholder="Coût"
+          />
+        </div>
+      </div>
+    </fieldset>
   </div>
 </div>
 
@@ -3200,7 +3446,7 @@
 
   var calculationKeys = ["base", "bonus"];
   var statsKeys = ["phy", "agi", "acu", "hab", "cha", "emp", "int", "wil"];
-  var tabs = ["character", "protections", "gear", "psy"];
+  var tabs = ["character", "protections", "gear", "psy", "xp", "mutations"];
   var bodyLocations = ["head", "torso", "left_arm", "right_arm", "left_leg", "right_leg"];
   var psyDisciplines = ["telekinesie", "thermokinesie", "chronomancie", "mentalisme"];
 
@@ -3265,9 +3511,7 @@
   }
 
   function computeTabChange (tabKey) {
-    console.log(tabKey);
     on("clicked:" + tabKey, function () {
-      console.log(tabKey);
       setAttrs({
         current_tab: tabKey
       });
@@ -3411,9 +3655,8 @@
     "change:repeating_character-items:item_qty",
     "change:repeating_character-items:item_weight",
     "change:repeating_armors:armor_weight",
-    "remove:repeating_character-items:item_qty",
-    "remove:repeating_character-items:item_weight",
-    "remove:repeating_armors:armor_weight"
+    "remove:repeating_character-items",
+    "remove:repeating_armors"
   ], function () {
     getSectionIDs("repeating_character-items", function (itemIds) {
       var itemPrefix = "repeating_character-items_";
@@ -3452,12 +3695,10 @@
     });
   });
 
-  onEvents(["sheet:opened"].concat(bodyLocations.reduce(function (acc, location) {
+  onEvents(["sheet:opened", "remove:repeating_armors"].concat(bodyLocations.reduce(function (acc, location) {
     return acc.concat([
       "change:repeating_armors:" + location + "_armor",
-      "remove:repeating_armors:" + location + "_armor",
-      "change:" + location + "_protection_bonus",
-      "remove:" + location + "_protection_bonus"
+      "change:" + location + "_protection_bonus"
     ]);
   }, [])), function () {
     getSectionIDs("repeating_armors", function (ids) {
@@ -3483,6 +3724,44 @@
         }, {});
 
         setAttrs(armorValues);
+      });
+    });
+  });
+
+  onEvents([
+    "sheet:opened",
+    "change:repeating_advancements:adv_cost_1",
+    "change:repeating_advancements:adv_cost_2",
+    "change:repeating_advancements:adv_cost_3",
+    "change:xp_earned",
+    "remove:repeating_advancements"
+  ], function () {
+    getSectionIDs("repeating_advancements", function (ids) {
+      var prefix = "repeating_advancements_";
+      var fields = ids.reduce(function (acc, id) {
+        return acc.concat([
+          prefix + id + "_adv_cost_1",
+          prefix + id + "_adv_cost_2",
+          prefix + id + "_adv_cost_3"
+        ]);
+      }, []);
+
+      var extraKeys = ["xp_earned"];
+
+      getAttrs(fields.concat(extraKeys), function (values) {
+        var totalCost = Object.keys(values).reduce(function (total, key) {
+          if (extraKeys.includes(key)) {
+            return total;
+          }
+
+          var cost = values[key];
+          return total + parseInt((cost || "0"), 10);
+        }, 0);
+
+        setAttrs({
+          xp_spent: totalCost,
+          xp_is_overflowing: totalCost > values.xp_earned ? "true" : "false"
+        });
       });
     });
   });

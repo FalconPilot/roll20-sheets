@@ -212,26 +212,21 @@ input[type=checkbox].sheet-modif-toggle:checked ~ span:before {
   box-sizing: border-box;
 }
 
-input.sheet-tabs-control[value="character"] ~ .sheet-tab.sheet-character { display: flex !important; }
-input.sheet-tabs-control[value="character"] ~ .sheet-tab-selector > button[name="act_character"] {
-  background-color: #333;
-  color: #FFF;
+input.sheet-tabs-control[value="character"] ~ .sheet-tab.sheet-character,
+input.sheet-tabs-control[value="protections"] ~ .sheet-tab.sheet-protections ,
+input.sheet-tabs-control[value="gear"] ~ .sheet-tab.sheet-gear,
+input.sheet-tabs-control[value="psy"] ~ .sheet-tab.sheet-psy,
+input.sheet-tabs-control[value="mutations"] ~ .sheet-tab.sheet-mutations,
+input.sheet-tabs-control[value="xp"] ~ .sheet-tab.sheet-xp {
+  display: flex !important;
 }
 
-input.sheet-tabs-control[value="protections"] ~ .sheet-tab.sheet-protections { display: flex !important; }
-input.sheet-tabs-control[value="protections"] ~ .sheet-tab-selector > button[name="act_protections"] {
-  background-color: #333;
-  color: #FFF;
-}
-
-input.sheet-tabs-control[value="gear"] ~ .sheet-tab.sheet-gear { display: flex !important; }
-input.sheet-tabs-control[value="gear"] ~ .sheet-tab-selector > button[name="act_gear"] {
-  background-color: #333;
-  color: #FFF;
-}
-
-input.sheet-tabs-control[value="psy"] ~ .sheet-tab.sheet-psy { display: flex !important; }
-input.sheet-tabs-control[value="psy"] ~ .sheet-tab-selector > button[name="act_psy"] {
+input.sheet-tabs-control[value="character"] ~ .sheet-tab-selector > button[name="act_character"],
+input.sheet-tabs-control[value="protections"] ~ .sheet-tab-selector > button[name="act_protections"],
+input.sheet-tabs-control[value="gear"] ~ .sheet-tab-selector > button[name="act_gear"],
+input.sheet-tabs-control[value="psy"] ~ .sheet-tab-selector > button[name="act_psy"],
+input.sheet-tabs-control[value="mutations"] ~ .sheet-tab-selector > button[name="act_mutations"],
+input.sheet-tabs-control[value="xp"] ~ .sheet-tab-selector > button[name="act_xp"] {
   background-color: #333;
   color: #FFF;
 }
@@ -797,6 +792,16 @@ input[type=hidden][name="attr_character_race"][value="alkor"] ~ input[type=hidde
 }
 
 /*
+**  Drone silhouette
+*/
+
+input[type=hidden][name="attr_character_race"][value="drone"] ~ input[type=hidden][name="attr_character_gender"][value="f"] ~ .sheet-character-silhouette {
+  background-image: url("https://fpilot.fr/starclock/gui/drone_sil_f.png");
+  width: 225px;
+  padding: 0 28.5px;
+}
+
+/*
 **  Armors
 */
 
@@ -856,6 +861,72 @@ input[name="attr_armor_is_expanded"][value="0"] ~ .sheet-armor-extra {
 /*
 **  Psy tab
 */
+
+.sheet-karma-unit {
+  position: relative;
+  margin-top: 20px;
+}
+
+.sheet-karma-unit:first-child input[type=radio] {
+  border-radius: 5px 0 0 5px;
+}
+
+.sheet-karma-unit:last-child input[type=radio] {
+  border-radius: 0 5px 5px 0;
+}
+
+.sheet-karma-unit:first-child input[type=radio]:checked {
+  background-color: #F00;
+}
+
+.sheet-karma-unit:nth-child(2) input[type=radio]:checked {
+  background-color: #F90;
+}
+
+.sheet-karma-unit:nth-child(3) input[type=radio]:checked {
+  background-color: #FC0;
+}
+
+.sheet-karma-unit:nth-child(4) input[type=radio]:checked {
+  background-color: #777;
+}
+
+.sheet-karma-unit:nth-child(5) input[type=radio]:checked {
+  background-color: #269c29;
+}
+
+.sheet-karma-unit:nth-child(6) input[type=radio]:checked {
+  background-color: #28a577;
+}
+
+.sheet-karma-unit:last-child input[type=radio]:checked {
+  background-color: #25abb9;
+}
+
+.sheet-karma-unit input[type=radio] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 50px;
+  height: 30px;
+  outline: none;
+  border: none;
+  background-color: #444;
+}
+
+.sheet-karma-unit > p {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  line-height: 30px;
+  text-align: center;
+  pointer-events: none;
+  color: #FFF;
+  font-family: 'Candal';
+  text-shadow: 1px 1px 3px #444;
+  z-index: 3;
+}
 
 .sheet-psy-container {
   position: relative;
@@ -1013,6 +1084,150 @@ input[type="hidden"][name="attr_current_psy"][value="mentalisme"] ~ .sheet-psy-w
   width: 0;
   height: 0;
   opacity: 0;
+}
+
+/*
+**  Mutations tab
+*/
+
+input[name="attr_mutation_is_expanded"][value="0"] ~ textarea {
+  display: none;
+}
+
+.sheet-mutation input[type=text] {
+  color: #FFF;
+  background-color: transparent;
+  font-family: 'Contrail One';
+  font-size: 15px;
+  border: none;
+  border-bottom: 1px solid #FFF;
+  border-radius: 0;
+}
+
+.sheet-mutation textarea {
+  height: auto;
+  margin: 10px 0;
+  box-sizing: border-box;
+  border-radius: 4px;
+  font-family: 'Contrail One';
+}
+
+/*
+**  XP tab
+*/
+
+.sheet-tab.sheet-xp h2 {
+  margin: 20px 0;
+}
+
+.sheet-xp-summary th {
+  text-align: center;
+  color: #FFF;
+  font-family: 'Contrail One';
+  box-sizing: border-box;
+  padding: 4px 0;
+}
+
+.sheet-xp-summary td {
+  position: relative;
+  text-align: center;
+}
+
+.sheet-xp-summary td > input[type=number] {
+  width: 150px;
+  text-align: center;
+  background-color: #444;
+  color: #FFF;
+  border: 1px solid #444;
+  border-radius: 5px;
+  padding: 5px 15px;
+  box-sizing: border-box;
+  font-family: 'Contrail One';
+}
+
+.sheet-warning-symbol {
+  font-family: 'Pictos';
+  color: #F00;
+  position: absolute;
+  font-size: 20px;
+  top: -1.25em;
+  right: 50px;
+  display: none;
+}
+
+input[name="attr_xp_is_overflowing"][value="true"] ~ .sheet-warning-symbol {
+  display: block;
+}
+
+input[name="attr_xp_is_overflowing"][value="true"] ~ input[type=number]:disabled {
+  background-color: #900;
+  border-color: #900;
+  box-shadow: 0px 0px 10px #C00 inset;
+}
+
+.sheet-xp-summary td > input[type=number]:disabled {
+  box-shadow: 0px 0px 10px #444 inset;
+  background-color: #555;
+}
+
+.sheet-advancements-reminder th {
+  text-align: center;
+  font-family: 'Contrail One';
+  padding: 10px 0;
+  box-sizing: border-box;
+  color: #FFF;
+  font-size: 15px;
+}
+
+.sheet-advancements-reminder td {
+  color: #FFF;
+  font-size: 10px;
+  padding: 5px;
+  box-sizing: border-box;
+}
+
+.sheet-advancements-reminder td:first-child {
+  font-weight: bold;
+  white-space: nowrap;
+  text-align: right;
+  border-right: 1px solid #FFF;
+  text-decoration: underline;
+}
+
+.sheet-advancements-reminder td:last-child {
+  font-style: italic;
+  border-left: 1px solid #FFF;
+}
+
+.sheet-advancement-cell {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.sheet-advancement-cell > input[type=text] {
+  width: 240px;
+  background-color: transparent;
+  color: #FFF;
+  border: none;
+  border-bottom: 1px solid #FFF;
+  border-radius: 0;
+  font-family: 'Contrail One';
+}
+
+.sheet-advancement-cell > input[type=number] {
+  width: 40px;
+  height: 40px;
+  margin-left: 10px;
+  border-radius: 50%;
+  border: none;
+  background-color: #444;
+  color: #FFF;
+  text-align: center;
+  font-family: 'Contrail One';
 }
 
 /*
