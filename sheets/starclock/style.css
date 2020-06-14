@@ -214,6 +214,7 @@ input[type=checkbox].sheet-modif-toggle:checked ~ span:before {
 
 input.sheet-tabs-control[value="character"] ~ .sheet-tab.sheet-character,
 input.sheet-tabs-control[value="protections"] ~ .sheet-tab.sheet-protections ,
+input.sheet-tabs-control[value="arsenal"] ~ .sheet-tab.sheet-arsenal,
 input.sheet-tabs-control[value="gear"] ~ .sheet-tab.sheet-gear,
 input.sheet-tabs-control[value="psy"] ~ .sheet-tab.sheet-psy,
 input.sheet-tabs-control[value="mutations"] ~ .sheet-tab.sheet-mutations,
@@ -223,6 +224,7 @@ input.sheet-tabs-control[value="xp"] ~ .sheet-tab.sheet-xp {
 
 input.sheet-tabs-control[value="character"] ~ .sheet-tab-selector > button[name="act_character"],
 input.sheet-tabs-control[value="protections"] ~ .sheet-tab-selector > button[name="act_protections"],
+input.sheet-tabs-control[value="arsenal"] ~ .sheet-tab-selector > button[name="act_arsenal"],
 input.sheet-tabs-control[value="gear"] ~ .sheet-tab-selector > button[name="act_gear"],
 input.sheet-tabs-control[value="psy"] ~ .sheet-tab-selector > button[name="act_psy"],
 input.sheet-tabs-control[value="mutations"] ~ .sheet-tab-selector > button[name="act_mutations"],
@@ -236,6 +238,7 @@ input.sheet-tabs-control[value="xp"] ~ .sheet-tab-selector > button[name="act_xp
   border-bottom: 0;
   font-family: 'Candal';
   outline: none;
+  font-size: 12px;
 }
 
 .sheet-tab-selector > button:first-child { border-top-left-radius: 4px; }
@@ -365,6 +368,19 @@ input[name="attr_character_gender"][value="other"] + input[name="attr_character_
   margin: 10px 0;
   padding: 5px;
 }
+
+.sheet-stat > button[type=roll] {
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border-radius: 50%;
+}
+
+.sheet-stat.sheet-left > button[type=roll] { margin-right: 10px; }
+.sheet-stat.sheet-right > button[type=roll] { margin-left: 10px; }
 
 .sheet-stat input[type=number] {
   width: 100%;
@@ -626,7 +642,48 @@ input[name="attr_overweight"][value="true"] + .sheet-capacity-header {
 }
 
 /*
-**  Items
+**  Weapons tab
+*/
+
+.sheet-weapon-title,
+.sheet-weapon-weight {
+  color: #FFF;
+  font-family: 'Contrail One';
+  border-radius: 5px;
+  background-color: #444;
+  border: none;
+  box-sizing: border-box;
+}
+
+.sheet-weapon-title {
+  padding: 5px 15px;
+  font-size: 16px;
+}
+
+input[type=number].sheet-weapon-weight {
+  width: 35px;
+  height: 35px;
+  padding: 0;
+  margin-left: 5px;
+  font-size: 14px;
+  text-align: center;
+}
+
+input[type=hidden][name="attr_weapon_is_expanded"][value="0"] ~ .sheet-weapon-details {
+  display: none;
+}
+
+.sheet-weapon-meta-option {
+  width: auto;
+  margin: 5px 0;
+  font-family: 'Contrail One';
+  background-color: #444;
+  border: none;
+  color: #FFF;
+}
+
+/*
+**  Items tab
 */
 
 .sheet-item-container > input[type=text],

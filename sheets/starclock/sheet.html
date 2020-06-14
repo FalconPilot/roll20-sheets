@@ -9,7 +9,8 @@
   <!-- Tab selector -->
   <div class="tab-selector full-width flex-row">
     <button type="action" name="act_character">Personnage</button>
-    <button type="action" name="act_protections">Protections</button>
+    <button type="action" name="act_protections">Santé / Protections</button>
+    <button type="action" name="act_arsenal">Arsenal</button>
     <button type="action" name="act_gear">Inventaire</button>
     <button type="action" name="act_psy">Psy / Karma</button>
     <button type="action" name="act_mutations">Mutations</button>
@@ -76,6 +77,7 @@
             <!-- Physique -->
             <td>
               <div class="stat left flex-row flex-middle">
+                <button type="roll" value="&{template:general} {{character_name=@{character_name}}} {{roll_title=Physique}} {{target=[[?{Bonus/Malus|0} + @{phy_total}]]}} {{roll=[[1D100cs<5cf>96]]}}"></button>
                 <div class="stat-bubble flex-col flex-middle">
                   <input type="hidden" name="attr_phy_total" value="0" />
                   <input
@@ -103,12 +105,12 @@
             <td>
               <div class="stat right flex-row flex-middle">
                 <div class="stat-label flex-row">
-                    <p class="stat-name">Agilité</p>
-                    <div class="stat-plus flex-row flex-middle">
-                      <p>+</p>
-                      <input type="number" value="0" min="0" name="attr_agi_bonus" />
-                    </div>
+                  <p class="stat-name">Agilité</p>
+                  <div class="stat-plus flex-row flex-middle">
+                    <p>+</p>
+                    <input type="number" value="0" min="0" name="attr_agi_bonus" />
                   </div>
+                </div>
                 <div class="stat-bubble flex-col flex-middle">
                   <input type="hidden" name="attr_agi_total" value="0" />
                   <input
@@ -122,6 +124,7 @@
                     <input type="number" value="0" min="0" name="attr_agi_base" />
                   </div>
                 </div>
+                <button type="roll" value="&{template:general} {{character_name=@{character_name}}} {{roll_title=Agilité}} {{target=[[?{Bonus/Malus|0} + @{agi_total}]]}} {{roll=[[1D100cs<5cf>96]]}}"></button>
               </div>
             </td>
           </tr>
@@ -130,6 +133,7 @@
             <!-- Acuité -->
             <td>
               <div class="stat left flex-row flex-middle">
+                <button type="roll" value="&{template:general} {{character_name=@{character_name}}} {{roll_title=Acuité}} {{target=[[?{Bonus/Malus|0} + @{acu_total}]]}} {{roll=[[1D100cs<5cf>96]]}}"></button>
                 <div class="stat-bubble flex-col flex-middle">
                   <input type="hidden" name="attr_acu_total" value="0" />
                   <input
@@ -176,6 +180,7 @@
                     <input type="number" value="0" min="0" name="attr_hab_base" />
                   </div>
                 </div>
+                <button type="roll" value="&{template:general} {{character_name=@{character_name}}} {{roll_title=Habilité}} {{target=[[?{Bonus/Malus|0} + @{hab_total}]]}} {{roll=[[1D100cs<5cf>96]]}}"></button>
               </div>
             </td>
           </tr>
@@ -184,6 +189,7 @@
             <!-- Charisme -->
             <td>
               <div class="stat left flex-row flex-middle">
+                <button type="roll" value="&{template:general} {{character_name=@{character_name}}} {{roll_title=Charisme}} {{target=[[?{Bonus/Malus|0} + @{cha_total}]]}} {{roll=[[1D100cs<5cf>96]]}}"></button>
                 <div class="stat-bubble flex-col flex-middle">
                   <input type="hidden" name="attr_cha_total" value="0" />
                   <input
@@ -230,6 +236,7 @@
                     <input type="number" value="0" min="0" name="attr_emp_base" />
                   </div>
                 </div>
+                <button type="roll" value="&{template:general} {{character_name=@{character_name}}} {{roll_title=Empathie}} {{target=[[?{Bonus/Malus|0} + @{emp_total}]]}} {{roll=[[1D100cs<5cf>96]]}}"></button>
               </div>
             </td>
           </tr>
@@ -238,6 +245,7 @@
             <!-- Intelligence -->
             <td>
               <div class="stat left flex-row flex-middle">
+                <button type="roll" value="&{template:general} {{character_name=@{character_name}}} {{roll_title=Intelligence}} {{target=[[?{Bonus/Malus|0} + @{int_total}]]}} {{roll=[[1D100cs<5cf>96]]}}"></button>
                 <div class="stat-bubble flex-col flex-middle">
                   <input type="hidden" name="attr_int_total" value="0" />
                   <input
@@ -284,6 +292,7 @@
                     <input type="number" value="0" min="0" name="attr_wil_base" />
                   </div>
                 </div>
+                <button type="roll" value="&{template:general} {{character_name=@{character_name}}} {{roll_title=Volonté}} {{target=[[?{Bonus/Malus|0} + @{wil_total}]]}} {{roll=[[1D100cs<5cf>96]]}}"></button>
               </div>
             </td>
           </tr>
@@ -370,7 +379,7 @@
                     type="text"
                     class="full-width line-input"
                     name="attr_guns_name"
-                    value="Armes à feu"
+                    value="Armes de tir"
                     disabled
                   />
                 </td>
@@ -1198,9 +1207,9 @@
                 </td>
                 <td class="bonus"></td>
                 <td>
-                  <input type="hidden" name="attr_vigilance_bonus_stat" value="@{int_total}" />
+                  <input type="hidden" name="attr_vigilance_bonus_stat" value="@{vol_total}" />
                   <select disabled>
-                    <option selected>INT</option>
+                    <option selected>VOL</option>
                   </select>
                 </td>
                 <td>
@@ -2963,6 +2972,47 @@
     </div>
   </div>
 
+  <!-- Arsenal tab -->
+  <div class="tab flex-col full-width flex-middle arsenal">
+    <h2 class="full-width tablet-title">Armement</h2>
+    <fieldset class="repeating_weapons">
+      <div class="weapon flex-col flex-middle full-width">
+        <div class="flex-row full-width flex-middle">
+          <input
+            type="text"
+            name="attr_weapon_name"
+            class="weapon-title full-width"
+            placeholder="Nom de l'arme"
+          />
+          <input
+            type="number"
+            name="attr_weapon_weight"
+            class="weapon-weight"
+            placeholder="Poids"
+          />
+          <div class="modif-wrapper">
+            <input
+              type="checkbox"
+              name="attr_weapon_is_expanded"
+              class="modif-toggle"
+              checked
+            />
+            <span></span>
+          </div>
+        </div>
+        <input type="hidden" name="attr_weapon_is_expanded" value="on" />
+        <div class="weapon-details flex-col flex-middle full-width">
+          <div class="full-width flex-row center-v">
+            <select class="weapon-meta-option" name="attr_weapon_category">
+              <option value="distance">Distance</option>
+              <option value="contact">Contact</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+
   <!-- Gear tab -->
   <div class="tab flex-col full-width flex-middle gear">
 
@@ -3446,7 +3496,7 @@
 
   var calculationKeys = ["base", "bonus"];
   var statsKeys = ["phy", "agi", "acu", "hab", "cha", "emp", "int", "wil"];
-  var tabs = ["character", "protections", "gear", "psy", "xp", "mutations"];
+  var tabs = ["character", "protections", "arsenal", "gear", "psy", "xp", "mutations"];
   var bodyLocations = ["head", "torso", "left_arm", "right_arm", "left_leg", "right_leg"];
   var psyDisciplines = ["telekinesie", "thermokinesie", "chronomancie", "mentalisme"];
 
@@ -3536,6 +3586,10 @@
   **  StarClock data compendium
   */
 
+  var formulae = {
+    psyLevel: "floor((@{telekinesie_power} + @{thermokinesie_power} + @{mentalisme_power} + @{chronomancie_power}) / 4)"
+  };
+
   var Compendium = {
 
     /* Guns */
@@ -3550,7 +3604,19 @@
 
     /* Melee weapons */
     get meleeWeapons () {
-      return {};
+      return {
+        neokatana: {
+          name: "Neokatana",
+          damage: 12,
+          penetration: 1
+        },
+        adeptBlade: {
+          name: "Lame d'adepte",
+          damage: 5,
+          penetration: 0,
+          formula: formulae.psyLevel
+        }
+      };
     },
 
     /* Armor */
@@ -3562,7 +3628,7 @@
     get ammo () {
       return {
         regular: {
-          name: "",
+          name: "STD",
           modifiers: {
             penetration: 0,
             damage: 0
@@ -3655,8 +3721,10 @@
     "change:repeating_character-items:item_qty",
     "change:repeating_character-items:item_weight",
     "change:repeating_armors:armor_weight",
+    "change:repeating_weapons:weapon_weight",
     "remove:repeating_character-items",
-    "remove:repeating_armors"
+    "remove:repeating_armors",
+    "remove:repeating_weapons"
   ], function () {
     getSectionIDs("repeating_character-items", function (itemIds) {
       var itemPrefix = "repeating_character-items_";
@@ -3667,28 +3735,40 @@
       getSectionIDs("repeating_armors", function (equipIds) {
         var equipPrefix = "repeating_armors_";
         var equipFields = equipIds.reduce(function (acc, id) {
-        return acc.concat([equipPrefix + id + "_armor_weight"]);
-      }, []);
+          return acc.concat([equipPrefix + id + "_armor_weight"]);
+        }, []);
 
-        getAttrs(fields.concat(equipFields).concat(["total_capacity", "total_eqp_capacity"]), function (values) {
-          var totalWeight = itemIds.reduce(function (total, id) {
-            var weight = parseInt(values[itemPrefix + id + "_item_weight"] || "0", 10);
-            var qty = parseInt(values[itemPrefix + id + "_item_qty"] || "0", 10);
-            return total + (weight * qty);
-          }, 0);
+        getSectionIDs("repeating_weapons", function (weaponIds) {
+          var weaponPrefix = "repeating_weapons_";
+          var weaponFields = weaponIds.reduce(function (acc, id) {
+            return acc.concat([weaponPrefix + id + "_weapon_weight"]);
+          }, []);
 
-          var totalEquipWeight = equipIds.reduce(function (total, id) {
-            var weight = parseInt(values[equipPrefix + id + "_armor_weight"] || "0", 10);
-            return total + weight;
-          }, 0);
+          getAttrs(fields.concat(equipFields).concat(weaponFields).concat(["total_capacity", "total_eqp_capacity"]), function (values) {
+            var totalWeight = itemIds.reduce(function (total, id) {
+              var weight = parseInt(values[itemPrefix + id + "_item_weight"] || "0", 10);
+              var qty = parseInt(values[itemPrefix + id + "_item_qty"] || "0", 10);
+              return total + (weight * qty);
+            }, 0);
 
-          setAttrs({
-            total_weight: totalWeight,
-            total_eqp_weight: totalEquipWeight,
-            overweight: (
-              totalWeight > parseInt(values.total_capacity || "0", 10) ||
-              totalEquipWeight > parseInt(values.total_eqp_capacity || "0", 10)
-            ) ? "true" : "false"
+            var totalEquipWeight = equipIds.reduce(function (total, id) {
+              var weight = parseInt(values[equipPrefix + id + "_armor_weight"] || "0", 10);
+              return total + weight;
+            }, 0);
+
+            var totalWeaponWeight = weaponIds.reduce(function (total, id) {
+              var weight = parseInt(values[weaponPrefix + id + "_weapon_weight"] || "0", 10);
+              return total + weight;
+            }, 0);
+
+            setAttrs({
+              total_weight: totalWeight,
+              total_eqp_weight: (totalEquipWeight + totalWeaponWeight),
+              overweight: (
+                totalWeight > parseInt(values.total_capacity || "0", 10) ||
+                totalEquipWeight > parseInt(values.total_eqp_capacity || "0", 10)
+              ) ? "true" : "false"
+            });
           });
         });
       });
@@ -3765,5 +3845,4 @@
       });
     });
   });
-
 </script>
