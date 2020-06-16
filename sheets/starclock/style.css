@@ -771,13 +771,13 @@ input[type=hidden][name="attr_weapon_is_expanded"][value="0"] ~ .sheet-weapon-de
 */
 
 input[type=hidden][name="attr_character_race"] ~ .sheet-character-silhouette {
-  background-image: url("https://fpilot.fr/starclock/gui/human_sil_m.png");
+  background-image: url("https://raw.githubusercontent.com/FalconPilot/roll20-sheets/master/sheets/starclock/gui/human_sil_m.png");
   width: 162px;
   height: 384px;
 }
 
 input[type=hidden][name="attr_character_race"] ~ input[type=hidden][name="attr_character_gender"][value="f"] ~ .sheet-character-silhouette {
-  background-image: url("https://fpilot.fr/starclock/gui/human_sil_f.png");
+  background-image: url("https://raw.githubusercontent.com/FalconPilot/roll20-sheets/master/sheets/starclock/gui/human_sil_f.png");
 }
 
 input[type=hidden][name="attr_character_race"] ~ .sheet-character-silhouette .sheet-character-location.sheet-head {
@@ -815,11 +815,11 @@ input[type=hidden][name="attr_character_race"] ~ .sheet-character-silhouette .sh
 */
 
 input[type=hidden][name="attr_character_race"][value="doppleganger"] ~ .sheet-character-silhouette {
-  background-image: url("https://fpilot.fr/starclock/gui/doppleganger_sil_m.png");
+  background-image: url("https://raw.githubusercontent.com/FalconPilot/roll20-sheets/master/sheets/starclock/gui/doppleganger_sil_m.png");
 }
 
 input[type=hidden][name="attr_character_race"][value="doppleganger"] ~ input[type=hidden][name="attr_character_gender"][value="f"] ~ .sheet-character-silhouette {
-  background-image: url("https://fpilot.fr/starclock/gui/doppleganger_sil_f.png");
+  background-image: url("https://raw.githubusercontent.com/FalconPilot/roll20-sheets/master/sheets/starclock/gui/doppleganger_sil_f.png");
 }
 
 /*
@@ -827,11 +827,11 @@ input[type=hidden][name="attr_character_race"][value="doppleganger"] ~ input[typ
 */
 
 input[type=hidden][name="attr_character_race"][value="endaari"] ~ .sheet-character-silhouette {
-  background-image: url("https://fpilot.fr/starclock/gui/endaari_sil_m.png");
+  background-image: url("https://raw.githubusercontent.com/FalconPilot/roll20-sheets/master/sheets/starclock/gui/endaari_sil_m.png");
 }
 
 input[type=hidden][name="attr_character_race"][value="endaari"] ~ input[type=hidden][name="attr_character_gender"][value="f"] ~ .sheet-character-silhouette {
-  background-image: url("https://fpilot.fr/starclock/gui/endaari_sil_f.png");
+  background-image: url("https://raw.githubusercontent.com/FalconPilot/roll20-sheets/master/sheets/starclock/gui/endaari_sil_f.png");
 }
 
 /*
@@ -839,13 +839,13 @@ input[type=hidden][name="attr_character_race"][value="endaari"] ~ input[type=hid
 */
 
 input[type=hidden][name="attr_character_race"][value="alkor"] ~ .sheet-character-silhouette {
-  background-image: url("https://fpilot.fr/starclock/gui/alkor_sil_m.png");
+  background-image: url("https://raw.githubusercontent.com/FalconPilot/roll20-sheets/master/sheets/starclock/gui/alkor_sil_m.png");
   width: 200px;
   padding: 0 41px;
 }
 
 input[type=hidden][name="attr_character_race"][value="alkor"] ~ input[type=hidden][name="attr_character_gender"][value="f"] ~ .sheet-character-silhouette {
-  background-image: url("https://fpilot.fr/starclock/gui/alkor_sil_f.png");
+  background-image: url("https://raw.githubusercontent.com/FalconPilot/roll20-sheets/master/sheets/starclock/gui/alkor_sil_f.png");
 }
 
 /*
@@ -853,7 +853,7 @@ input[type=hidden][name="attr_character_race"][value="alkor"] ~ input[type=hidde
 */
 
 input[type=hidden][name="attr_character_race"][value="drone"] ~ input[type=hidden][name="attr_character_gender"][value="f"] ~ .sheet-character-silhouette {
-  background-image: url("https://fpilot.fr/starclock/gui/drone_sil_f.png");
+  background-image: url("https://raw.githubusercontent.com/FalconPilot/roll20-sheets/master/sheets/starclock/gui/drone_sil_f.png");
   width: 225px;
   padding: 0 28.5px;
 }
@@ -1026,22 +1026,22 @@ input[name="attr_armor_is_expanded"][value="0"] ~ .sheet-armor-extra {
 }
 
 .sheet-psy-wrapper.sheet-telekinesie > .sheet-psy-card {
-  background-image: url("https://fpilot.fr/starclock/gui/telekinesie.png");
+  background-image: url("https://raw.githubusercontent.com/FalconPilot/roll20-sheets/master/sheets/starclock/gui/telekinesie.png");
   background-color: #5CF;
 }
 
 .sheet-psy-wrapper.sheet-mentalisme > .sheet-psy-card {
-  background-image: url("https://fpilot.fr/starclock/gui/mentalisme.png");
+  background-image: url("https://raw.githubusercontent.com/FalconPilot/roll20-sheets/master/sheets/starclock/gui/mentalisme.png");
   background-color: #97C;
 }
 
 .sheet-psy-wrapper.sheet-thermokinesie > .sheet-psy-card {
-  background-image: url("https://fpilot.fr/starclock/gui/thermokinesie.png");
+  background-image: url("https://raw.githubusercontent.com/FalconPilot/roll20-sheets/master/sheets/starclock/gui/thermokinesie.png");
   background-color: #C55;
 }
 
 .sheet-psy-wrapper.sheet-chronomancie > .sheet-psy-card {
-  background-image: url("https://fpilot.fr/starclock/gui/chronomancie.png");
+  background-image: url("https://raw.githubusercontent.com/FalconPilot/roll20-sheets/master/sheets/starclock/gui/chronomancie.png");
   background-color: #FC6;
 }
 
