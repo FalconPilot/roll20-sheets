@@ -10,12 +10,14 @@
     "target": "ES3",
     "lib": ["es2019", "dom", "dom.iterable"],
     "paths": {
+      "$common/*": ["common/*"],
       "$starclock/*": ["starclock/*"]
     }
   },
   "include": [
+    "common/**/*",
     "starclock/**/*",
-    "preview.ts"
+    "*.ts"
   ],
   "exclude": [
     "node_modules"

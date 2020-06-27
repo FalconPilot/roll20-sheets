@@ -3,7 +3,8 @@ import styled, { StyledComponent } from '@emotion/styled'
 import { StarClockTheme } from '$starclock/Theme'
 
 export const AppWrapper: StyledComponent<{}, {}, {}> = styled.div`
-  background-color: ${StarClockTheme.colors.dark};
+  width: 800px;
+  margin: auto;
 `
 
 export const Tab: StyledComponent<{}, {}, {}> = styled.div`

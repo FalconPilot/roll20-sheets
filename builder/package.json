@@ -4,12 +4,16 @@
   "scripts": {
     "prebuild": "shx rm -rf build && shx mkdir build",
     "preview": "yarn run prebuild && nodemon preview.ts",
+    "build": "yarn run prebuild && ts-node -r tsconfig-paths/register build.ts",
     "starclock:preview": "yarn run preview --sheet starclock",
-    "starclock:build": "ts-node starclock/index.tsx"
+    "starclock:build": "yarn run build --sheet starclock"
   },
   "dependencies": {
+    "@babel/core": "^7.10.3",
+    "@babel/node": "^7.10.3",
     "@emotion/core": "^10.0.28",
     "@emotion/styled": "^10.0.27",
+    "@types/babel__core": "^7.1.9",
     "@types/node": "^14.0.14",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
