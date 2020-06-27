@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "@babel/core": "^7.10.3",
-    "@babel/node": "^7.10.3",
     "@emotion/core": "^10.0.28",
     "@emotion/styled": "^10.0.27",
     "@types/babel__core": "^7.1.9",
