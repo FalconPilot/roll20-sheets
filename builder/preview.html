@@ -2,10 +2,24 @@
 <html lang="en">
   <head>
     <title>{{SHEET_NAME}}</title>
+    <link rel="stylesheet" type="text/css" href="http://localhost:7777/style" />
+    <style>
+      #preview-header {
+        text-align: center;
+      }
+
+      #preview-container {
+        width: 800px;
+        height: 600px;
+        margin: auto;
+        border: 2px solid #CCC;
+        overflow: auto;
+      }
+    </style>
   </head>
   <body style="width: 100%; height: 100vh;">
-    <h1 style="text-align: center;">-- SHEET PREVIEW --</h1>
-    <div style="width: 800px; height: 600px; padding: 5px; box-sizing: border-box; overflow: auto; border: 2px solid #CCC; margin: auto;">
+    <h1 id="preview-header">-- SHEET PREVIEW --</h1>
+    <div id="preview-container">
       {{PREVIEW_CONTENT}}
     </div>
   </body>

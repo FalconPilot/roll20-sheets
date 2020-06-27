@@ -1,5 +1,8 @@
 import * as React from 'react'
+import { AppWrapper, Tab } from './styled'
 
 export const App: React.FunctionComponent<{}> = () => (
-  <div>Coucou</div>
+  <AppWrapper>
+    <Tab>Coucou</Tab>
+  </AppWrapper>
 )
