@@ -1207,7 +1207,7 @@
                 </td>
                 <td class="bonus"></td>
                 <td>
-                  <input type="hidden" name="attr_vigilance_bonus_stat" value="@{vol_total}" />
+                  <input type="hidden" name="attr_vigilance_bonus_stat" value="@{wil_total}" />
                   <select disabled>
                     <option selected>VOL</option>
                   </select>
@@ -1663,7 +1663,7 @@
                 </td>
                 <td class="bonus"></td>
                 <td>
-                  <input type="hidden" name="attr_chemistry_bonus_stat" value="@{vol_total}" />
+                  <input type="hidden" name="attr_chemistry_bonus_stat" value="@{wil_total}" />
                   <select disabled>
                     <option selected>VOL</option>
                   </select>
@@ -3006,6 +3006,12 @@
             <select class="weapon-meta-option" name="attr_weapon_category">
               <option value="distance">Distance</option>
               <option value="contact">Contact</option>
+            </select>
+            <select class="weapon-presets distance">
+              <option disabled>-- Fusils d'assaut --</option>
+              <option value="a50falcon">A-50 Falcon</option>
+            </select>
+            <select class="weapon-presets contact">
             </select>
           </div>
         </div>

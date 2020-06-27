@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "baseUrl": ".",
+    "outDir": "./build/",
+    "jsx": "react",
+    "esModuleInterop": true,
+    "noImplicitAny": true,
+    "module": "commonjs",
+    "target": "ES3",
+    "lib": ["es2019", "dom", "dom.iterable"],
+    "paths": {
+      "$starclock/*": ["starclock/*"]
+    }
+  },
+  "include": [
+    "starclock/**/*",
+    "preview.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
