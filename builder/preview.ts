@@ -40,14 +40,16 @@ while (matches = styleTagsRegex.exec(_content)) {
   classes.push(matches[1])
 }
 
-fs.writeFileSync(path.resolve(__dirname, 'build', 'style.css'), classes.join('\n'))
+const styleSheet: string = `${sheet}.css`
+
+fs.writeFileSync(path.resolve(__dirname, 'build', styleSheet), classes.join('\n'))
 
 const content: string = _content.replace(styleTagsRegex, '')
 
 http.createServer((req: http.IncomingMessage, res: http.ServerResponse): void => {
   if (req.url === '/style') {
     res.writeHead(200, { 'Content-Type': 'text/css' })
-    res.write(fs.readFileSync(path.resolve(__dirname, 'build', 'style.css'), 'utf-8'))
+    res.write(fs.readFileSync(path.resolve(__dirname, 'build', styleSheet), 'utf-8'))
     res.end()
   } else {
     res.writeHead(200, { 'Content-Type': 'text/html' })
