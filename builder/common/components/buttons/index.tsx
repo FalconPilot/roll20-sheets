@@ -1,9 +1,5 @@
 import * as React from 'react'
 
-interface ActionButtonProps {
-  name: string
-}
-
 interface Roll20ButtonProps extends React.HTMLProps<HTMLButtonElement> {
   type: string
 } 
@@ -14,6 +10,10 @@ class Roll20Button extends React.Component<Roll20ButtonProps> {
   }
 }
 
+export interface ActionButtonProps {
+  name: string
+}
+
 export const ActionButton: React.FunctionComponent<ActionButtonProps> = (props) => (
-  <Roll20Button type='action' name={props.name}>{props.children}</Roll20Button>
+  <Roll20Button type='action' name={`act_${props.name}`}>{props.children}</Roll20Button>
 )

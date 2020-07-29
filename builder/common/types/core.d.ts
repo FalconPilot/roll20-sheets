@@ -1,3 +1,8 @@
+export interface Roll20BaseElement {
+  name: string
+  displayName: string
+}
+
 export type Roll20FieldEventType
   = 'remove'
   | 'change'

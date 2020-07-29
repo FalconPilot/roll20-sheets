@@ -1,7 +1,6 @@
-export const StarClockTheme = {
+export const Theme = {
   colors: {
-    dark: '#333'
+    dark: '#333',
+    white: '#FFF'
   }
 }
-
-export type StarClockTheme = typeof StarClockTheme
