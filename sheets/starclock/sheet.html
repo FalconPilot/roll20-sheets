@@ -15,6 +15,7 @@
     <button type="action" name="act_psy">Psy / Karma</button>
     <button type="action" name="act_mutations">Mutations</button>
     <button type="action" name="act_xp">Expérience</button>
+    <button type="action" name="act_mcom">MCOM</button>
   </div>
 
   <!-- Character tab -->
@@ -79,12 +80,11 @@
               <div class="stat left flex-row flex-middle">
                 <button type="roll" value="&{template:general} {{character_name=@{character_name}}} {{roll_title=Physique}} {{target=[[?{Bonus/Malus|0} + @{phy_total}]]}} {{roll=[[1D100cs<5cf>96]]}}"></button>
                 <div class="stat-bubble flex-col flex-middle">
-                  <input type="hidden" name="attr_phy_total" value="0" />
                   <input
-                    disabled
+                    readonly
                     type="number"
-                    name="attr_phy_total_display"
-                    value="@{phy_total}"
+                    name="attr_phy_total"
+                    value="0"
                     class="stat-total"
                   />
                   <div class="stat-base">
@@ -112,12 +112,11 @@
                   </div>
                 </div>
                 <div class="stat-bubble flex-col flex-middle">
-                  <input type="hidden" name="attr_agi_total" value="0" />
                   <input
-                    disabled
+                    readonly
                     type="number"
-                    name="attr_agi_total_display"
-                    value="@{agi_total}"
+                    name="attr_agi_total"
+                    value="0"
                     class="stat-total"
                   />
                   <div class="stat-base">
@@ -135,12 +134,11 @@
               <div class="stat left flex-row flex-middle">
                 <button type="roll" value="&{template:general} {{character_name=@{character_name}}} {{roll_title=Acuité}} {{target=[[?{Bonus/Malus|0} + @{acu_total}]]}} {{roll=[[1D100cs<5cf>96]]}}"></button>
                 <div class="stat-bubble flex-col flex-middle">
-                  <input type="hidden" name="attr_acu_total" value="0" />
                   <input
-                    disabled
+                    readonly
                     type="number"
-                    name="attr_acu_total_display"
-                    value="@{acu_total}"
+                    name="attr_acu_total"
+                    value="0"
                     class="stat-total"
                   />
                   <div class="stat-base">
@@ -168,12 +166,11 @@
                   </div>
                 </div>
                 <div class="stat-bubble flex-col flex-middle">
-                  <input type="hidden" name="attr_hab_total" value="0" />
                   <input
-                    disabled
+                    readonly
                     type="number"
-                    name="attr_hab_total_display"
-                    value="@{hab_total}"
+                    name="attr_hab_total"
+                    value="0"
                     class="stat-total"
                   />
                   <div class="stat-base">
@@ -193,10 +190,10 @@
                 <div class="stat-bubble flex-col flex-middle">
                   <input type="hidden" name="attr_cha_total" value="0" />
                   <input
-                    disabled
+                    readonly
                     type="number"
-                    name="attr_cha_total_display"
-                    value="@{cha_total}"
+                    name="attr_cha_total"
+                    value="0"
                     class="stat-total"
                   />
                   <div class="stat-base">
@@ -224,12 +221,11 @@
                   <p class="stat-name">Empathie</p>
                 </div>
                 <div class="stat-bubble flex-col flex-middle">
-                  <input type="hidden" name="attr_emp_total" value="0" />
                   <input
-                    disabled
+                    readonly
                     type="number"
-                    name="attr_emp_total_display"
-                    value="@{emp_total}"
+                    name="attr_emp_total"
+                    value="0"
                     class="stat-total"
                   />
                   <div class="stat-base">
@@ -247,13 +243,12 @@
               <div class="stat left flex-row flex-middle">
                 <button type="roll" value="&{template:general} {{character_name=@{character_name}}} {{roll_title=Intelligence}} {{target=[[?{Bonus/Malus|0} + @{int_total}]]}} {{roll=[[1D100cs<5cf>96]]}}"></button>
                 <div class="stat-bubble flex-col flex-middle">
-                  <input type="hidden" name="attr_int_total" value="0" />
                   <input
-                    disabled
+                    readonly
                     type="number"
-                    name="attr_int_total_display"
-                    value="@{int_total}"
+                    name="attr_int_total"
                     class="stat-total"
+                    value="0"
                   />
                   <div class="stat-base">
                     <input type="number" value="0" min="0" name="attr_int_base" />
@@ -280,12 +275,11 @@
                   <p class="stat-name">Volonté</p>
                 </div>
                 <div class="stat-bubble flex-col flex-middle">
-                  <input type="hidden" name="attr_wil_total" value="0" />
                   <input
-                    disabled
+                    readonly
                     type="number"
-                    name="attr_wil_total_display"
-                    value="@{wil_total}"
+                    name="attr_wil_total"
+                    value="0"
                     class="stat-total"
                   />
                   <div class="stat-base">
@@ -2806,13 +2800,12 @@
 
         <!-- Head -->
         <div class="character-location head">
-          <input type="hidden" name="attr_head_protection_total" value="0" />
           <input
-            disabled
+            readonly
             type="number"
             class="protection-total"
-            name="attr_head_protection_display"
-            value="@{head_protection_total}"
+            name="attr_head_protection"
+            value="0"
           />
           <input
             type="number"
@@ -2824,13 +2817,12 @@
 
         <!-- Left arm -->
         <div class="character-location left-arm">
-          <input type="hidden" name="attr_left_arm_protection_total" value="0" />
           <input
-            disabled
+            readonly
             type="number"
             class="protection-total"
-            name="attr_left_arm_protection_display"
-            value="@{left_arm_protection_total}"
+            name="attr_left_arm_protection"
+            value="0"
           />
           <input
             type="number"
@@ -2842,13 +2834,12 @@
 
         <!-- Right arm -->
         <div class="character-location right-arm">
-          <input type="hidden" name="attr_right_arm_protection_total" value="0" />
           <input
-            disabled
+            readonly
             type="number"
             class="protection-total"
-            name="attr_right_arm_protection_display"
-            value="@{right_arm_protection_total}"
+            name="attr_right_arm_protection"
+            value="0"
           />
           <input
             type="number"
@@ -2860,13 +2851,12 @@
 
         <!-- Torso -->
         <div class="character-location torso">
-          <input type="hidden" name="attr_torso_protection_total" value="0" />
           <input
-            disabled
+            readonly
             type="number"
             class="protection-total"
-            name="attr_torso_protection_display"
-            value="@{torso_protection_total}"
+            name="attr_torso_protection"
+            value="0"
           />
           <input
             type="number"
@@ -2878,13 +2868,12 @@
 
         <!-- Left leg -->
         <div class="character-location left-leg">
-          <input type="hidden" name="attr_left_leg_protection_total" value="0" />
           <input
             disabled
             type="number"
             class="protection-total"
-            name="attr_left_leg_protection_display"
-            value="@{left_leg_protection_total}"
+            name="attr_left_leg_protection"
+            value="0"
           />
           <input
             type="number"
@@ -2896,13 +2885,12 @@
 
         <!-- Right leg -->
         <div class="character-location right-leg">
-          <input type="hidden" name="attr_right_leg_protection_total" value="0" />
           <input
             disabled
             type="number"
             class="protection-total"
-            name="attr_right_leg_protection_display"
-            value="@{right_leg_protection_total}"
+            name="attr_right_leg_protection"
+            value="0"
           />
           <input
             type="number"
@@ -2913,9 +2901,43 @@
         </div>
       </div>
       <div class="armors">
+        <h2 class="tablet-title">Santé</h2>
+        <div class="flex-row full-width">
+          <div class="health-tracker hits half-width">
+            <h3 class="tablet-subtitle">Coups</h3>
+            <div class="tablet-line flex-row flex-middle full-width">
+              <input type="number" name="attr_hits_current" value="0" />
+            </div>
+          </div>
+          <div class="health-tracker wounds half-width">
+            <h3 class="tablet-subtitle">Blessures</h3>
+            <fieldset class="repeating_wounds">
+              <div class="flex-col full-width wound tablet-line">
+                <div class="flex-row full-width">
+                  <input type="text" class="wound-name" name="attr_wound_name" placeholder="Type de blessure" />
+                  <div class="modif-wrapper">
+                    <input
+                      type="checkbox"
+                      name="attr_wound_is_expanded"
+                      class="modif-toggle"
+                      checked
+                    />
+                    <span></span>
+                  </div>
+                </div>
+                <input type="hidden" name="attr_wound_is_expanded" value="on" />
+                <textarea
+                  class="wound-description"
+                  name="attr_wound_description"
+                  placeholder="Description de la blessure"
+                ></textarea>
+              </div>
+            </fieldset>
+          </div>
+        </div>
         <h2 class="tablet-title">Protections</h2>
         <fieldset class="repeating_armors">
-          <div class="armor flex-col flex-width tablet-line">
+          <div class="armor flex-col full-width tablet-line">
             <div class="armor-details flex-row flex-middle full-width">
               <input
                 type="text"
@@ -3039,7 +3061,7 @@
       </fieldset>
       <input type="hidden" name="attr_overweight" value="false" />
       <div class="capacity-header">
-        <img src="https://fpilot.fr/starclock/gui/weight.png" />
+        <img src="https://raw.githubusercontent.com/FalconPilot/roll20-sheets/master/sheets/starclock/gui/weight.png" />
       </div>
       <input type="hidden" name="attr_total_weight" value="0" />
       <input type="hidden" name="attr_total_capacity" value="0" />
@@ -3049,17 +3071,17 @@
         <div class="weight-wrapper flex-col flex-middle">
           <h3>Inventaire</h3>
           <div class="capacity-summary flex-row flex-middle">
-            <input type="number" name="attr_total_eqp_weight_display" value="@{total_weight}" disabled />
+            <input type="number" name="attr_total_eqp_weight" value="0" readonly />
             <span>/</span>
-            <input type="number" name="attr_total_eqp_capacity_display" value="@{total_capacity}" disabled />
+            <input type="number" name="attr_total_eqp_capacity" value="0" readonly />
           </div>
         </div>
         <div class="weight-wrapper flex-col flex-middle">
           <h3>Équipement</h3>
           <div class="capacity-summary flex-row flex-middle">
-            <input type="number" name="attr_total_eqp_weight_display" value="@{total_eqp_weight}" disabled />
+            <input type="number" name="attr_total_eqp_weight" value="0" readonly />
             <span>/</span>
-            <input type="number" name="attr_total_eqp_capacity_display" value="@{total_eqp_capacity}" disabled />
+            <input type="number" name="attr_total_eqp_capacity" value="0" readonly />
           </div>
         </div>
       </div>
@@ -3081,7 +3103,7 @@
             class="item-qty line-input"
             value="0"
           />
-          <img src="https://fpilot.fr/starclock/gui/weight.png" />
+          <img src="https://raw.githubusercontent.com/FalconPilot/roll20-sheets/master/sheets/starclock/gui/weight.png" />
           <input
             type="number"
             name="attr_item_weight"
@@ -3338,10 +3360,10 @@
           </td>
           <td>
             <input
-              disabled
+              readonly
               type="number"
-              name="attr_xp_spent_display"
-              value="@{xp_spent}"
+              name="attr_xp_spent"
+              value="0"
             />
           </td>
           <td>
@@ -3444,6 +3466,653 @@
       </div>
     </fieldset>
   </div>
+
+  <!-- MCOM tab -->
+  <div class="tab flex-col full-width flex-middle mcom">
+    <h2 class="full-width tablet-title">MCOM</h2>
+    <table class="mcom-stats full-width">
+      <thead>
+        <tr>
+          <th>Physique</th>
+          <th>Agilité</th>
+          <th>Acuité</th>
+          <th>Habilité (B. Gauche)</th>
+          <th>Habilité (B. Droit)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="mcom-stat-total">
+            <input type="hidden" name="attr_mcom_phy_total" value="0" />
+            <input
+              readonly
+              type="number"
+              name="attr_mcom_phy_total"
+              value="0"
+            />
+          </td>
+          <td class="mcom-stat-total">
+            <input type="hidden" name="attr_mcom_agi_total" value="0" />
+            <input
+              readonly
+              type="number"
+              name="attr_mcom_agi_total"
+              value="0"
+            />
+          </td>
+          <td class="mcom-stat-total">
+            <input type="hidden" name="attr_mcom_acu_total" value="0" />
+            <input
+              readonly
+              type="number"
+              name="attr_mcom_acu_total"
+              value="0"
+            />
+          </td>
+          <td class="mcom-stat-total">
+            <input type="hidden" name="attr_mcom_hab_left_total" value="0" />
+            <input
+              readonly
+              type="number"
+              name="attr_mcom_hab_left_total"
+              value="0"
+            />
+          </td>
+          <td class="mcom-stat-total">
+            <input type="hidden" name="attr_mcom_hab_right_total" value="0" />
+            <input
+              readonly
+              type="number"
+              name="attr_mcom_hab_right_total"
+              value="0"
+            />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <input type="hidden" name="attr_mcom_completed" />
+    <div class="flex-row full-width">
+      <div class="mcom-wrapper"></div>
+      <div class="flex-col center-h mcom-customizer">
+        <table class="mcom-parts-selector full-width tablet-line">
+          <thead>
+            <tr>
+              <th colspan="2" class="incomplete-warning">MCOM incomplet</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Tête</td>
+              <td class="full-width">
+                <input type="hidden" name="attr_mcom_part_head" value="none" />
+                <select name="attr_mcom_part_head">
+                  <option value="none">Aucun</option>
+                  <option value="custom">Personnalisé</option>
+                  <option disabled></option>
+                  <option disabled>-- ACUMA --</option>
+                  <option value="hda1">HD-A1</option>
+                  <option value="hda2">HD-A2</option>
+                  <option disabled></option>
+                  <option disabled>-- Elan --</option>
+                  <option value="freak">FREAK</option>
+                  <option value="musso">Musso</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>Torse</td>
+              <td class="full-width">
+                <input type="hidden" name="attr_mcom_part_torso" value="none" />
+                <select name="attr_mcom_part_torso">
+                  <option value="none">Aucun</option>
+                  <option value="custom">Personnalisé</option>
+                  <option disabled></option>
+                  <option disabled>-- ACUMA --</option>
+                  <option value="ac1">AC-1 Supralight</option>
+                  <option value="ac2">AC-2 Firebrand</option>
+                  <option disabled></option>
+                  <option disabled>-- Elan --</option>
+                  <option value="xm001">XM-001</option>
+                  <option value="xm001a">XM-001.A</option>
+                  <option value="xm001b">XM-001.B</option>
+                  <option value="xm002">XM-002</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>Bras Gauche</td>
+              <td class="full-width">
+                <input type="hidden" name="attr_mcom_part_left_arm" value="none" />
+                <select name="attr_mcom_part_left_arm">
+                  <option value="none">Aucun</option>
+                  <option value="custom">Personnalisé</option>
+                  <option disabled></option>
+                  <option disabled>-- ACUMA --</option>
+                  <option value="type1">Type.1</option>
+                  <option value="type2">Type.2</option>
+                  <option disabled></option>
+                  <option disabled>-- Elan --</option>
+                  <option value="supray">Supra-Y</option>
+                  <option value="supraz">Supra-Z</option>
+                  <option value="extravaganz001">Extravagan-Z001</option>
+                  <option value="extravaganz002">Extravagan-Z002</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>Bras Droit</td>
+              <td class="full-width">
+                <input type="hidden" name="attr_mcom_part_right_arm" value="none" />
+                <select name="attr_mcom_part_right_arm">
+                  <option value="none">Aucun</option>
+                  <option value="custom">Personnalisé</option>
+                  <option disabled></option>
+                  <option disabled>-- ACUMA --</option>
+                  <option value="type1">Type.1</option>
+                  <option value="type2">Type.2</option>
+                  <option disabled></option>
+                  <option disabled>-- Elan --</option>
+                  <option value="supray">Supra-Y</option>
+                  <option value="supraz">Supra-Z</option>
+                  <option value="extravaganz001">Extravagan-Z001</option>
+                  <option value="extravaganz002">Extravagan-Z002</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>Jambe Gauche</td>
+              <td class="full-width">
+                <input type="hidden" name="attr_mcom_part_left_leg" value="none" />
+                <select name="attr_mcom_part_left_leg">
+                  <option value="none">Aucun</option>
+                  <option value="custom">Personnalisé</option>
+                  <option disabled></option>
+                  <option disabled>-- ACUMA --</option>
+                  <option value="stag95">Stag-95</option>
+                  <option value="stag120">Stag-120</option>
+                  <option disabled></option>
+                  <option disabled>-- Elan --</option>
+                  <option value="extravaganx001">Extravagan-X001</option>
+                  <option value="spa1">SPA-1</option>
+                  <option value="spa2">SPA-2</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>Jambe Droite</td>
+              <td class="full-width">
+                <input type="hidden" name="attr_mcom_part_right_leg" value="none" />
+                <select name="attr_mcom_part_right_leg">
+                  <option value="none">Aucun</option>
+                  <option value="custom">Personnalisé</option>
+                  <option disabled></option>
+                  <option disabled>-- ACUMA --</option>
+                  <option value="stag95">Stag-95</option>
+                  <option value="stag120">Stag-120</option>
+                  <option disabled></option>
+                  <option disabled>-- Elan --</option>
+                  <option value="extravaganx001">Extravagan-X001</option>
+                  <option value="spa1">SPA-1</option>
+                  <option value="spa2">SPA-2</option>
+                </select>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <h2 class="tablet-title full-width tuning-title">Tuning</h2>
+    <div class="flex-col full-width">
+      <input type="hidden" name="attr_mcom_head_is_expanded" value="0" />
+      <div class="flex-row full-width mcom-tuning-title sheet-tablet-line center-v">
+        <input type="hidden" name="attr_mcom_part_head" value="none" />
+        <input type="text" name="attr_mcom_custom_head_name" class="mcom-name" placeholder="Nom" />
+        <input
+          type="text"
+          class="mcom-name"
+          name="attr_mcom_part_head_name"
+          placeholder="Nom"
+          readonly
+        />
+        <input type="text" name="attr_mcom_custom_head_brand" class="mcom-brand" placeholder="Fabricant" />
+        <input
+          type="text"
+          class="mcom-brand"
+          name="attr_mcom_part_head_brand"
+          placeholder="Nom"
+          readonly
+        />
+        <strong>Tête</strong>
+        <div class="modif-wrapper">
+          <input
+            type="checkbox"
+            name="attr_mcom_head_is_expanded"
+            class="modif-toggle"
+          />
+          <span></span>
+        </div>
+      </div>
+      <div class="mcom-head-tuning full-width">
+        <table class="mcom-stats-tuning full-width">
+          <thead>
+            <tr>
+              <th>Physique</th>
+              <th>Agilité</th>
+              <th>Acuité</th>
+              <th>Habilité</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <input
+                  type="number"
+                  name="attr_mcom_head_custom_phy"
+                  placeholder="0"
+                />
+              </td>
+              <td>
+                <input
+                  type="number"
+                  name="attr_mcom_head_custom_agi"
+                  placeholder="0"
+                />
+              </td>
+              <td>
+                <input
+                  type="number"
+                  name="attr_mcom_head_custom_acu"
+                  placeholder="0"
+                />
+              </td>
+              <td>
+                <input
+                  type="number"
+                  name="attr_mcom_head_custom_hab"
+                  placeholder="0"
+                />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="flex-col full-width">
+      <input type="hidden" name="attr_mcom_torso_is_expanded" value="0" />
+      <div class="flex-row full-width mcom-tuning-title sheet-tablet-line center-v">
+        <input type="hidden" name="attr_mcom_part_torso" value="none" />
+        <input type="text" name="attr_mcom_custom_torso_name" class="mcom-name" placeholder="Nom" />
+        <input
+          type="text"
+          class="mcom-name"
+          name="attr_mcom_part_torso_name"
+          placeholder="Nom"
+          readonly
+        />
+        <input type="text" name="attr_mcom_custom_torso_brand" class="mcom-brand" placeholder="Fabricant" />
+        <input
+          type="text"
+          class="mcom-brand"
+          name="attr_mcom_part_torso_brand"
+          placeholder="Nom"
+          readonly
+        />
+        <strong>Torse</strong>
+        <div class="modif-wrapper">
+          <input
+            type="checkbox"
+            name="attr_mcom_torso_is_expanded"
+            class="modif-toggle"
+          />
+          <span></span>
+        </div>
+      </div>
+      <div class="mcom-torso-tuning full-width">
+        <table class="mcom-stats-tuning full-width">
+          <thead>
+            <tr>
+              <th>Physique</th>
+              <th>Agilité</th>
+              <th>Acuité</th>
+              <th>Habilité</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <input
+                  type="number"
+                  name="attr_mcom_torso_custom_phy"
+                  placeholder="0"
+                />
+              </td>
+              <td>
+                <input
+                  type="number"
+                  name="attr_mcom_torso_custom_agi"
+                  placeholder="0"
+                />
+              </td>
+              <td>
+                <input
+                  type="number"
+                  name="attr_mcom_torso_custom_acu"
+                  placeholder="0"
+                />
+              </td>
+              <td>
+                <input
+                  type="number"
+                  name="attr_mcom_torso_custom_hab"
+                  placeholder="0"
+                />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="flex-col full-width">
+      <input type="hidden" name="attr_mcom_left_arm_is_expanded" value="0" />
+      <div class="flex-row full-width mcom-tuning-title sheet-tablet-line center-v">
+        <input type="hidden" name="attr_mcom_part_left_arm" value="none" />
+        <input type="text" name="attr_mcom_custom_left_arm_name" class="mcom-name" placeholder="Nom" />
+        <input
+          type="text"
+          class="mcom-name"
+          name="attr_mcom_part_left_arm_name"
+          placeholder="Nom"
+          readonly
+        />
+        <input type="text" name="attr_mcom_custom_left_arm_brand" class="mcom-brand" placeholder="Fabricant" />
+        <input
+          type="text"
+          class="mcom-brand"
+          name="attr_mcom_part_left_arm_brand"
+          placeholder="Nom"
+          readonly
+        />
+        <strong>Bras Gauche</strong>
+        <div class="modif-wrapper">
+          <input
+            type="checkbox"
+            name="attr_mcom_left_arm_is_expanded"
+            class="modif-toggle"
+          />
+          <span></span>
+        </div>
+      </div>
+      <div class="mcom-left_arm-tuning full-width">
+        <table class="mcom-stats-tuning full-width">
+          <thead>
+            <tr>
+              <th>Physique</th>
+              <th>Agilité</th>
+              <th>Acuité</th>
+              <th>Habilité</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <input
+                  type="number"
+                  name="attr_mcom_left_arm_custom_phy"
+                  placeholder="0"
+                />
+              </td>
+              <td>
+                <input
+                  type="number"
+                  name="attr_mcom_left_arm_custom_agi"
+                  placeholder="0"
+                />
+              </td>
+              <td>
+                <input
+                  type="number"
+                  name="attr_mcom_left_arm_custom_acu"
+                  placeholder="0"
+                />
+              </td>
+              <td>
+                <input
+                  type="number"
+                  name="attr_mcom_left_arm_custom_hab"
+                  placeholder="0"
+                />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="flex-col full-width">
+      <input type="hidden" name="attr_mcom_right_arm_is_expanded" value="0" />
+      <div class="flex-row full-width mcom-tuning-title sheet-tablet-line center-v">
+        <input type="hidden" name="attr_mcom_part_right_arm" value="none" />
+        <input type="text" name="attr_mcom_custom_right_arm_name" class="mcom-name" placeholder="Nom" />
+        <input
+          type="text"
+          class="mcom-name"
+          name="attr_mcom_part_right_arm_name"
+          placeholder="Nom"
+          readonly
+        />
+        <input type="text" name="attr_mcom_custom_right_arm_brand" class="mcom-brand" placeholder="Fabricant" />
+        <input
+          type="text"
+          class="mcom-brand"
+          name="attr_mcom_part_right_arm_brand"
+          placeholder="Nom"
+          readonly
+        />
+        <strong>Bras Droit</strong>
+        <div class="modif-wrapper">
+          <input
+            type="checkbox"
+            name="attr_mcom_right_arm_is_expanded"
+            class="modif-toggle"
+          />
+          <span></span>
+        </div>
+      </div>
+      <div class="mcom-right_arm-tuning full-width">
+        <table class="mcom-stats-tuning full-width">
+          <thead>
+            <tr>
+              <th>Physique</th>
+              <th>Agilité</th>
+              <th>Acuité</th>
+              <th>Habilité</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <input
+                  type="number"
+                  name="attr_mcom_right_arm_custom_phy"
+                  placeholder="0"
+                />
+              </td>
+              <td>
+                <input
+                  type="number"
+                  name="attr_mcom_right_arm_custom_agi"
+                  placeholder="0"
+                />
+              </td>
+              <td>
+                <input
+                  type="number"
+                  name="attr_mcom_right_arm_custom_acu"
+                  placeholder="0"
+                />
+              </td>
+              <td>
+                <input
+                  type="number"
+                  name="attr_mcom_right_arm_custom_hab"
+                  placeholder="0"
+                />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="flex-col full-width">
+      <input type="hidden" name="attr_mcom_left_leg_is_expanded" value="0" />
+      <div class="flex-row full-width mcom-tuning-title sheet-tablet-line center-v">
+        <input type="hidden" name="attr_mcom_part_left_leg" value="none" />
+        <input type="text" name="attr_mcom_custom_left_leg_name" class="mcom-name" placeholder="Nom" />
+        <input
+          type="text"
+          class="mcom-name"
+          name="attr_mcom_part_left_leg_name"
+          placeholder="Nom"
+          readonly
+        />
+        <input type="text" name="attr_mcom_custom_left_leg_brand" class="mcom-brand" placeholder="Fabricant" />
+        <input
+          type="text"
+          class="mcom-brand"
+          name="attr_mcom_part_left_leg_brand"
+          placeholder="Nom"
+          readonly
+        />
+        <strong>Jambe Gauche</strong>
+        <div class="modif-wrapper">
+          <input
+            type="checkbox"
+            name="attr_mcom_left_leg_is_expanded"
+            class="modif-toggle"
+          />
+          <span></span>
+        </div>
+      </div>
+      <div class="mcom-left_leg-tuning full-width">
+        <table class="mcom-stats-tuning full-width">
+          <thead>
+            <tr>
+              <th>Physique</th>
+              <th>Agilité</th>
+              <th>Acuité</th>
+              <th>Habilité</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <input
+                  type="number"
+                  name="attr_mcom_left_leg_custom_phy"
+                  placeholder="0"
+                />
+              </td>
+              <td>
+                <input
+                  type="number"
+                  name="attr_mcom_left_leg_custom_agi"
+                  placeholder="0"
+                />
+              </td>
+              <td>
+                <input
+                  type="number"
+                  name="attr_mcom_left_leg_custom_acu"
+                  placeholder="0"
+                />
+              </td>
+              <td>
+                <input
+                  type="number"
+                  name="attr_mcom_left_leg_custom_hab"
+                  placeholder="0"
+                />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="flex-col full-width">
+      <input type="hidden" name="attr_mcom_right_leg_is_expanded" value="0" />
+      <div class="flex-row full-width mcom-tuning-title sheet-tablet-line center-v">
+        <input type="hidden" name="attr_mcom_part_right_leg" value="none" />
+        <input type="text" name="attr_mcom_custom_right_leg_name" class="mcom-name" placeholder="Nom" />
+        <input
+          type="text"
+          class="mcom-name"
+          name="attr_mcom_part_right_leg_name"
+          placeholder="Nom"
+          readonly
+        />
+        <input type="text" name="attr_mcom_custom_right_leg_brand" class="mcom-brand" placeholder="Fabricant" />
+        <input
+          type="text"
+          class="mcom-brand"
+          name="attr_mcom_part_right_leg_brand"
+          placeholder="Nom"
+          readonly
+        />
+        <strong>Jambe Droite</strong>
+        <div class="modif-wrapper">
+          <input
+            type="checkbox"
+            name="attr_mcom_right_leg_is_expanded"
+            class="modif-toggle"
+          />
+          <span></span>
+        </div>
+      </div>
+      <div class="mcom-right_leg-tuning full-width">
+        <table class="mcom-stats-tuning full-width">
+          <thead>
+            <tr>
+              <th>Physique</th>
+              <th>Agilité</th>
+              <th>Acuité</th>
+              <th>Habilité</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <input
+                  type="number"
+                  name="attr_mcom_right_leg_custom_phy"
+                  placeholder="0"
+                />
+              </td>
+              <td>
+                <input
+                  type="number"
+                  name="attr_mcom_right_leg_custom_agi"
+                  placeholder="0"
+                />
+              </td>
+              <td>
+                <input
+                  type="number"
+                  name="attr_mcom_right_leg_custom_acu"
+                  placeholder="0"
+                />
+              </td>
+              <td>
+                <input
+                  type="number"
+                  name="attr_mcom_right_leg_custom_hab"
+                  placeholder="0"
+                />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- General rolltemplate -->
@@ -3502,9 +4171,11 @@
 
   var calculationKeys = ["base", "bonus"];
   var statsKeys = ["phy", "agi", "acu", "hab", "cha", "emp", "int", "wil"];
-  var tabs = ["character", "protections", "arsenal", "gear", "psy", "xp", "mutations"];
+  var tabs = ["character", "protections", "arsenal", "gear", "psy", "xp", "mutations", "mcom"];
   var bodyLocations = ["head", "torso", "left_arm", "right_arm", "left_leg", "right_leg"];
   var psyDisciplines = ["telekinesie", "thermokinesie", "chronomancie", "mentalisme"];
+  var mcomParts = ["torso", "head", "left_arm", "right_arm", "left_leg", "right_leg"];
+  var mcomStatsKeys = ["phy", "agi", "acu", "hab"];
 
   /*
   **  Helper functions
@@ -3586,6 +4257,17 @@
 
   function onEvents (events, callback) {
     on(events.join(" "), callback)
+  }
+
+  function getCompendiumKey (key) {
+    return {
+      torso: 'torso',
+      head: 'heads',
+      left_arm: 'arms',
+      right_arm: 'arms',
+      left_leg: 'legs',
+      right_leg: 'legs'
+    }[key];
   }
 
   /*
@@ -3684,6 +4366,269 @@
           }
         }
       };
+    },
+
+    /* MCOM parts */
+    get mcom () {
+      return {
+
+        /* Torso */
+        torso: {
+          custom: {
+            name: "Custom",
+            brand: "Custom",
+            energy: 0,
+            integrity: 0,
+            armor: 0,
+            resistances: [],
+            stats: {}
+          },
+
+          /* ACUMA */
+          ac1: {
+            name: "AC-1 Supralight",
+            brand: "ACUMA",
+            energy: 100,
+            integrity: 12,
+            armor: 1,
+            resistances: [],
+            stats: { phy: 30, agi: 10 }
+          },
+          ac2: {
+            name: "AC-2 Firebrand",
+            brand: "ACUMA",
+            energy: 120,
+            integrity: 10,
+            armor: 3,
+            resistances: ["thermal"],
+            stats: { phy: 30 }
+          },
+
+          /* Elan */
+          xm001: {
+            name: "XM-001",
+            brand: "Elan",
+            energy: 150,
+            integrity: 6,
+            armor: 2,
+            resistances: ["electric"],
+            stats: { phy: 25 }
+          },
+          xm001a: {
+            name: "XM-001.A",
+            brand: "Elan",
+            energy: 160,
+            integrity: 5,
+            armor: 4,
+            resistances: ["electric"],
+            stats: { phy: 20 }
+          },
+          xm001b: {
+            name: "XM-001.B",
+            brand: "Elan",
+            energy: 140,
+            integrity: 8,
+            armor: 2,
+            resistances: ["electric"],
+            stats: { phy: 35 }
+          },
+          xm002: {
+            name: "XM-002",
+            brand: "Elan",
+            energy: 50,
+            integrity: 20,
+            armor: 5,
+            resistances: ["physical"],
+            stats: { phy: 45 }
+          }
+        },
+
+        /* Heads */
+        heads: {
+          custom: {
+            name: "Custom",
+            brand: "Custom",
+            consumption: 0,
+            integrity: 0,
+            armor: 0,
+            resistances: [],
+            stats: {}
+          },
+
+          /* ACUMA */
+          hda1: {
+            name: "HD-A1",
+            brand: "ACUMA",
+            consumption: 50,
+            integrity: 4,
+            armor: 0,
+            resistances: ["electric"],
+            stats: { acu: 50 }
+          },
+          hda2: {
+            name: "HD-A2",
+            brand: "ACUMA",
+            consumption: 40,
+            integrity: 5,
+            armor: 1,
+            resistances: ["electric"],
+            stats: { acu: 40 }
+          },
+
+          /* Elan */
+          freak: {
+            name: "FREAK",
+            brand: "Elan",
+            consumption: 10,
+            integrity: 8,
+            armor: 1,
+            resistances: [],
+            stats: { acu: 30 }
+          },
+          musso: {
+            name: "Musso",
+            brand: "Elan",
+            consumption: 30,
+            integrity: 2,
+            armor: 2,
+            resistances: [],
+            stats: { acu: 40 }
+          }
+        },
+
+        /* Arms */
+        arms: {
+          custom: {
+            name: "Custom",
+            brand: "Custom",
+            consumption: 0,
+            integrity: 0,
+            armor: 0,
+            resistances: [],
+            stats: {}
+          },
+
+          /* ACUMA */
+          type1: {
+            name: "Type.1",
+            brand: "ACUMA",
+            consumption: 10,
+            integrity: 4,
+            armor: 2,
+            resistances: [],
+            stats: { hab: 40 }
+          },
+          type2: {
+            name: "Type.2",
+            brand: "ACUMA",
+            consumption: 15,
+            integrity: 6,
+            armor: 3,
+            resistances: ["thermal"],
+            stats: { hab: 35 }
+          },
+
+          /* Elan */
+          supray: {
+            name: "Supra-Y",
+            brand: "Elan",
+            consumption: 20,
+            integrity: 2,
+            armor: 1,
+            resistances: [],
+            stats: { hab: 50 }
+          },
+          supraz: {
+            name: "Supra-Z",
+            brand: "Elan",
+            consumption: 30,
+            integrity: 3,
+            armor: 1,
+            resistances: [],
+            stats: { hab: 40, phy: 5 }
+          },
+          extravaganz001: {
+            name: "Extravagan-Z001",
+            brand: "Elan",
+            consumption: 50,
+            integrity: 5,
+            armor: 2,
+            resistances: ["physical", "electric"],
+            stats: { hab: 20, phy: 10 }
+          },
+          extravaganz002: {
+            name: "Extravagan-Z002",
+            brand: "Elan",
+            consumption: 40,
+            integrity: 8,
+            armor: 2,
+            resistances: ["physical"],
+            stats: { hab: 25, phy: 8 }
+          }
+        },
+
+        /* Legs */
+        legs: {
+          custom: {
+            name: "Custom",
+            brand: "Custom",
+            consumption: 0,
+            integrity: 0,
+            armor: 0,
+            resistances: [],
+            stats: {}
+          },
+
+          /* ACUMA */
+          stag95: {
+            name: "Stag-95",
+            brand: "ACUMA",
+            consumption: 25,
+            integrity: 10,
+            armor: 3,
+            resistances: [],
+            stats: { agi: 18, phy: 2 }
+          },
+          stag120: {
+            name: "Stag-120",
+            brand: "ACUMA",
+            consumption: 20,
+            integrity: 12,
+            armor: 2,
+            resistances: [],
+            stats: { agi: 22 }
+          },
+
+          /* Elan */
+          extravaganx001: {
+            name: "Extravagan-X001",
+            brand: "Elan",
+            consumption: 50,
+            integrity: 4,
+            armor: 6,
+            resistances: ["electric"],
+            stats: { agi: 30, phy: -3 }
+          },
+          spa1: {
+            name: "SPA1",
+            brand: "Elan",
+            consumption: 10,
+            integrity: 8,
+            armor: 2,
+            resistances: ["physical"],
+            stats: { agi: 15 }
+          },
+          spa2: {
+            name: "SPA2",
+            brand: "Elan",
+            consumption: 25,
+            integrity: 6,
+            armor: 1,
+            resistances: ["thermal"],
+            stats: { agi: 20 }
+          }
+        }
+      };
     }
   };
 
@@ -3719,6 +4664,128 @@
           total_eqp_capacity: phyMod * 2
         });
       });
+    });
+  });
+
+  function calculateTotalForKey (parts, statKey) {
+    return function (total, key) {
+      var compendiumKey = getCompendiumKey(key.replace(/mcom_part_/, ""));
+      var part = Compendium.mcom[compendiumKey][parts[key]];
+      return (
+        part
+          ? (part.stats[statKey] || 0) + total
+          : total
+      );
+    };
+  }
+
+  function calculateTotalForArms (parts, customs, statKey) {
+    var newParts = Object.keys(parts).reduce(function (acc, partKey) {
+      var obj = {};
+      if (partKey !== "mcom_part_left_arm" && partKey !== "mcom_part_right_arm") {
+        obj[partKey] = parts[partKey];
+      }
+      return Object.assign(acc, obj);
+    }, {});
+    return calculateTotalForKey(newParts, statKey);
+  }
+
+  function calculateCustom (rawCustoms, statKey) {
+    var customs = Object.keys(rawCustoms).reduce(function (acc, key) {
+      var obj = {};
+      if (key.match(/mcom_part_[left|right]_arm/)) {
+        return acc;
+      }
+      var m = new RegExp('mcom_(.*?)_custom_' + statKey);
+      if (key.match(m)) {
+        obj[key] = rawCustoms[key];
+      }
+      return Object.assign(acc, obj);
+    }, {});
+    return function (total, key) {
+      var custom = parseInt(customs[key], 10);
+      return isNaN(custom) ? total : total + custom;
+    };
+  }
+
+  onEvents([
+    "sheet:opened"
+  ].concat(mcomParts.map(function (partKey) {
+    return "change:mcom_part_" + partKey;
+  }).concat(mcomParts.reduce(function (acc, partKey) {
+    var customs = mcomStatsKeys.map(function (statKey) {
+      return "change:mcom_" + partKey + "_custom_" + statKey;
+    });
+    return acc.concat(customs);
+  }, []))), function () {
+    getAttrs(mcomParts.reduce(function (acc, partKey) {
+      return acc.concat(["mcom_part_" + partKey]).concat(mcomStatsKeys.map(function (statKey) {
+        return "mcom_" + partKey + "_custom_" + statKey;
+      }));
+    }, []), function (values) {
+      var parts = Object.keys(values).reduce(function (acc, key) {
+        var obj = {};
+        if (key.match(/mcom_part_(.*?)/)) {
+          obj[key] = values[key];
+        }
+        return Object.assign(acc, obj);
+      }, {});
+
+      var customs = Object.keys(values).reduce(function (acc, key) {
+        var obj = {};
+        if (key.match(/mcom_(.*?)_custom_(.*?)/)) {
+          obj[key] = values[key];
+        }
+        return Object.assign(acc, obj);
+      }, {});
+
+      var missingValues = mcomParts.filter(function (partKey) {
+        var val = parts["mcom_part_" + partKey];
+        return !val || val === 'none';
+      });
+
+      var basePhy = Object.keys(customs).reduce(calculateCustom(customs, "phy"), 0);
+      var baseAgi = Object.keys(customs).reduce(calculateCustom(customs, "agi"), 0);
+      var baseAcu = Object.keys(customs).reduce(calculateCustom(customs, "acu"), 0);
+      var baseHab = Object.keys(customs).reduce(calculateCustom(customs, "hab"), 0);
+      var customLeftHab = parseInt(customs.mcom_left_arm_custom_hab, 10);
+      var customRightHab = parseInt(customs.mcom_right_arm_custom_hab, 10);
+
+      var baseLeftHability = (
+        parts.mcom_part_left_arm && parts.mcom_part_left_arm !== "none"
+          ? Compendium.mcom.arms[parts.mcom_part_left_arm].stats.hab || 0
+          : 0
+      );
+
+      var baseRightHability = (
+        parts.mcom_part_left_arm && parts.mcom_part_right_arm !== "none"
+          ? Compendium.mcom.arms[parts.mcom_part_right_arm].stats.hab || 0
+          : 0
+      );
+
+      var baseLeftHab = baseHab + (isNaN(customLeftHab) ? 0 : customLeftHab) + baseLeftHability;
+      var baseRightHab = baseHab + (isNaN(customRightHab) ? 0 : customRightHab) + baseRightHability;
+
+      var prefix = "mcom_part_";
+      setAttrs(mcomParts.reduce(function (acc, partKey) {
+        if (missingValues.includes(partKey)) {
+          return acc;
+        }
+        var obj = {};
+        var key = prefix + partKey;
+        var compendiumKey = getCompendiumKey(partKey);
+        var part = Compendium.mcom[compendiumKey][parts[key]];
+        obj[key + "_name"] = "" + part.name;
+        obj[key + "_brand"] = "" + part.brand;
+        return Object.assign(acc, obj);
+      }, {
+        mcom_completed: (missingValues.length > 0 ? "false" : "true"),
+        mcom_phy_total: Object.keys(parts).reduce(calculateTotalForKey(parts, "phy"), basePhy),
+        mcom_agi_total: Object.keys(parts).reduce(calculateTotalForKey(parts, "agi"), baseAgi),
+        mcom_acu_total: Object.keys(parts).reduce(calculateTotalForKey(parts, "acu"), baseAcu),
+        mcom_hab_left_total: Object.keys(parts).reduce(calculateTotalForArms(parts, customs, "hab"), baseLeftHab),
+        mcom_hab_right_total: Object.keys(parts).reduce(calculateTotalForArms(parts, customs, "hab"), baseRightHab)
+      }));
     });
   });
 

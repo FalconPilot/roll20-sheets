@@ -1,0 +1,184 @@
+<div class="bloody-curse-wrapper">
+  <h2 class="main-title">
+    Lignée <input type="text" name="attr_character_name" />
+  </h2>
+
+  <!-- Characters -->
+  <fieldset class="repeating_characters">
+    <div class="subcharacter">
+      <input type="hidden" name="attr_subchar_display" value="on" />
+      <h3 class="character-title">
+        <input type="checkbox" name="attr_subchar_display" checked />
+        <span>Titre : </span><input type="text" name="attr_subchar_title" placeholder="En fin de scénario uniquement" />
+        <input type="text" name="attr_subchar_resume" placeholder="Aucune information" readonly />
+      </h3>
+      <div class="character-wrapper">
+        <hr />
+        <table class="infos">
+          <tbody>
+            <tr>
+              <td>Genre</td>
+              <td>
+                <input type="text" name="attr_subchar_gender" />
+              </td>
+            </tr>
+            <tr>
+              <td>Taille</td>
+              <td class="character-size">
+                <input type="number" name="attr_subchar_meters" min="0" />m<input type="number" name="attr_subchar_centimeters" min="0" max="99" />
+              </td>
+            </tr>
+            <tr>
+              <td>Prénom</td>
+              <td>
+                <input type="text" name="attr_subchar_name" />
+              </td>
+            </tr>
+            <tr>
+              <td>Ère</td>
+              <td>
+                <input type="text" name="attr_subchar_era" />
+              </td>
+            </tr>
+            <tr>
+              <td>Race</td>
+              <td>
+                <input type="text" name="attr_subchar_race" />
+              </td>
+            </tr>
+            <tr>
+              <td>Historique</td>
+              <td>
+                <input type="text" name="attr_subchar_history" />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <table class="stats">
+          <thead>
+            <tr>
+              <th>Physique</th>
+              <th>Finesse</th>
+              <th>Esprit</th>
+              <th>Sociabilité</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <select class="stat-dice" name="attr_dice_phy" value="2">
+                  <option value="2">2</option>
+                  <option value="4">4</option>
+                  <option value="6">6</option>
+                </select>
+              </td>
+              <td>
+                <select class="stat-dice" name="attr_dice_fin" value="2">
+                  <option value="2">2</option>
+                  <option value="4">4</option>
+                  <option value="6">6</option>
+                </select>
+              </td>
+              <td>
+                <select class="stat-dice" name="attr_dice_esp" value="2">
+                  <option value="2">2</option>
+                  <option value="4">4</option>
+                  <option value="6">6</option>
+                </select>
+              </td>
+              <td>
+                <select class="stat-dice" name="attr_dice_soc" value="2">
+                  <option value="2">2</option>
+                  <option value="4">4</option>
+                  <option value="6">6</option>
+                </select>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <h3>Qualités</h3>
+        <textarea class="traits" name="attr_virtues"></textarea>
+        <h3>Défauts</h3>
+        <textarea class="traits" name="attr_flaws"></textarea>
+        <h3>Traits</h3>
+        <textarea class="traits" name="attr_traits"></textarea>
+        <h3>Inventaire</h3>
+        <textarea class="inventory" name="attr_inventory" placeholder="Inventaire"></textarea>
+      </div>
+    </div>
+  </fieldset>
+</div>
+
+<!-- Rolltemplates -->
+<rolltemplate class="sheet-rolltemplate-bc-roll">
+  <div class="sheet-rolltemplate-wrapper">
+  </div>
+</rolltemplate>
+
+<!-- Workers -->
+<script type="text/worker">
+  function onEvents(events, callback) {
+    on(events.join(" "), callback);
+  }
+
+  function valueFromId (prefix, values) {
+    return function (key, id) {
+      return values[prefix + "_" + id + "_" + key];
+    }
+  }
+
+  function fullString (x) {
+    return typeof x === "string" && x.trim().length > 0;
+  }
+
+  function applyIfFullString (x, func) {
+    return (fullString(x)
+      ? func(x)
+      : x
+    );
+  }
+
+  function quote (x) {
+    return "\"" + x + "\"";
+  }
+
+  function parenthesis (x) {
+    return "(" + x + ")";
+  }
+
+  var watchedValues = ["subchar_name", "subchar_race", "subchar_era", "subchar_title"];
+
+  onEvents(["sheet:opened", "change:character_name"].concat(watchedValues.map(function (val) {
+    return "change:repeating_characters:" + val;
+  })), function () {
+    getSectionIDs("repeating_characters", function (ids) {
+      getAttrs(ids.reduce(function (acc, id) {
+        var prefix = "repeating_characters_";
+        return acc.concat(watchedValues.map(function (val) {
+          return prefix + id + "_" + val;
+        }));
+      }, ["character_name"]), function (values) {
+        var prefix = "repeating_characters";
+        var getValue = valueFromId(prefix, values);
+        var patch = ids.reduce(function (acc, id) {
+          var obj = {};
+
+          var fullName = [
+            getValue("subchar_name", id),
+            values.character_name,
+            applyIfFullString(getValue("subchar_era", id), parenthesis)
+          ].filter(fullString).join(" ");
+
+          obj[prefix + "_" + id + "_subchar_resume"] = [
+            fullName,
+            applyIfFullString(getValue("subchar_title", id), quote)
+          ].filter(fullString).join(", ");
+
+          return Object.assign(acc, obj);
+        }, {});
+
+        setAttrs(patch);
+      });
+    });
+  });
+</script>

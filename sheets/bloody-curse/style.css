@@ -1,0 +1,95 @@
+.sheet-bloody-curse-wrapper * {
+  box-sizing: border-box;
+}
+
+.sheet-bloody-curse-wrapper input[type=text],
+.sheet-bloody-curse-wrapper input[type=number] {
+  border: none;
+  border-bottom: 1px solid #CCC;
+  border-radius: 0;
+  font-style: italic;
+}
+
+.sheet-bloody-curse-wrapper {
+  width: 800px;
+  font-family: 'Trebuchet MS'
+}
+
+.sheet-subcharacter {
+  width: 100%;
+  border: 1px solid #CCC;
+  margin: 10px 0;
+  padding: 5px;
+}
+
+.sheet-character-title {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.sheet-character-title > input[type=text] {
+  width: auto;
+  flex: 1;
+}
+
+.sheet-character-title > input[type=checkbox] {
+  margin-right: 10px;
+}
+
+.sheet-character-wrapper {
+  width: 100%;
+}
+
+.sheet-character-size > input[type=number] {
+  width: 40px;
+}
+
+.sheet-character-title > input[type=text]:read-only {
+  display: none;
+}
+
+input[name="attr_subchar_display"][type="hidden"][value="0"] ~ .sheet-character-wrapper,
+input[name="attr_subchar_display"][type="hidden"][value="0"] ~ .sheet-character-title > span,
+input[name="attr_subchar_display"][type="hidden"][value="0"] ~ .sheet-character-title > input[type=text]:not(:read-only) {
+  display: none;
+}
+
+input[name="attr_subchar_display"][type="hidden"][value="0"] ~ .sheet-character-title > input[type=text]:read-only {
+  display: block;
+}
+
+table.sheet-infos,
+table.sheet-infos td:nth-child(2),
+table.sheet-infos input[type=text] {
+  width: 100%;
+}
+
+table.sheet-infos td:first-child {
+  border-bottom: 1px solid transparent;
+}
+
+table.sheet-infos td {
+  padding: 5px 10px;
+}
+
+table.sheet-stats {
+  width: 100%;
+}
+
+table.sheet-stats th,
+table.sheet-stats td {
+  width: 25%;
+  padding: 5px;
+  text-align: center;
+}
+
+select.sheet-stat-dice {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  padding-left: 9px;
+  font-family: 'Contrail One';
+  font-size: 18px;
+  border-radius: 50%;
+}

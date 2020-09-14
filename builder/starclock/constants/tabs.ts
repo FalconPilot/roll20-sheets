@@ -21,4 +21,7 @@ export const tabs: Tab[] = [{
 }, {
   name: 'xp',
   displayName: 'Expérience'
+}, {
+  name: 'mcom',
+  displayName: 'MCOM'
 }]

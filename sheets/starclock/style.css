@@ -218,7 +218,8 @@ input.sheet-tabs-control[value="arsenal"] ~ .sheet-tab.sheet-arsenal,
 input.sheet-tabs-control[value="gear"] ~ .sheet-tab.sheet-gear,
 input.sheet-tabs-control[value="psy"] ~ .sheet-tab.sheet-psy,
 input.sheet-tabs-control[value="mutations"] ~ .sheet-tab.sheet-mutations,
-input.sheet-tabs-control[value="xp"] ~ .sheet-tab.sheet-xp {
+input.sheet-tabs-control[value="xp"] ~ .sheet-tab.sheet-xp,
+input.sheet-tabs-control[value="mcom"] ~ .sheet-tab.sheet-mcom {
   display: flex !important;
 }
 
@@ -228,7 +229,8 @@ input.sheet-tabs-control[value="arsenal"] ~ .sheet-tab-selector > button[name="a
 input.sheet-tabs-control[value="gear"] ~ .sheet-tab-selector > button[name="act_gear"],
 input.sheet-tabs-control[value="psy"] ~ .sheet-tab-selector > button[name="act_psy"],
 input.sheet-tabs-control[value="mutations"] ~ .sheet-tab-selector > button[name="act_mutations"],
-input.sheet-tabs-control[value="xp"] ~ .sheet-tab-selector > button[name="act_xp"] {
+input.sheet-tabs-control[value="xp"] ~ .sheet-tab-selector > button[name="act_xp"],
+input.sheet-tabs-control[value="mcom"] ~ .sheet-tab-selector > button[name="act_mcom"] {
   background-color: #333;
   color: #FFF;
 }
@@ -266,6 +268,13 @@ input.sheet-tabs-control[value="xp"] ~ .sheet-tab-selector > button[name="act_xp
   text-align: center;
 }
 
+.sheet-tablet-subtitle {
+  color: #FFF;
+  font-family: 'Candal';
+  text-align: center;
+  margin: 8px 0;
+}
+
 .sheet-tablet .sheet-label {
   color: #FFF;
   padding-right: 20px;
@@ -281,6 +290,19 @@ input.sheet-tabs-control[value="xp"] ~ .sheet-tab-selector > button[name="act_xp
   font-family: 'Contrail One';
   border: none;
   border-radius: 5px;
+}
+
+.sheet-tablet-line textarea {
+  height: 5em;
+  margin: 0;
+  padding: 7px;
+  background-color: #444;
+  border-radius: 5px;
+  border: none;
+  font-family: 'Contrail One';
+  color: #FFF;
+  font-size: 11px;
+  box-sizing: border-box;
 }
 
 .sheet-tablet table tbody td { padding: 5px; }
@@ -320,7 +342,8 @@ input[type=number].sheet-tablet-bubble-input {
   box-sizing: border-box;
 }
 
-.sheet-tablet select {
+.sheet-tablet select,
+.sheet-tablet-line select {
   width: auto;
   margin: 0;
   background-color: #444;
@@ -902,17 +925,13 @@ input[name="attr_armor_is_expanded"][value="0"] ~ .sheet-armor-extra {
 
 .sheet-armor-details > input[type=number] { margin-left: 5px; }
 
-.sheet-armor-extra {
-  height: 5em;
-  margin: 0;
-  padding: 7px;
-  background-color: #444;
-  border-radius: 5px;
-  border: none;
-  font-family: 'Contrail One';
-  color: #FFF;
-  font-size: 11px;
-  box-sizing: border-box;
+input[name="attr_wound_is_expanded"][value="0"] ~ .sheet-wound-description {
+  display: none;
+}
+
+textarea.sheet-wound-description {
+  margin-top: 5px;
+  resize: none;
 }
 
 /*
@@ -1173,7 +1192,7 @@ input[name="attr_mutation_is_expanded"][value="0"] ~ textarea {
 **  XP tab
 */
 
-.sheet-tab.sheet-xp h2 {
+.sheet-tab h2:first-child {
   margin: 20px 0;
 }
 
@@ -1285,6 +1304,147 @@ input[name="attr_xp_is_overflowing"][value="true"] ~ input[type=number]:disabled
   color: #FFF;
   text-align: center;
   font-family: 'Contrail One';
+}
+
+input[name="attr_mcom_head_is_expanded"][value="0"] ~ .sheet-mcom-head-tuning,
+input[name="attr_mcom_torso_is_expanded"][value="0"] ~ .sheet-mcom-torso-tuning,
+input[name="attr_mcom_left_arm_is_expanded"][value="0"] ~ .sheet-mcom-left_arm-tuning,
+input[name="attr_mcom_right_arm_is_expanded"][value="0"] ~ .sheet-mcom-right_arm-tuning,
+input[name="attr_mcom_left_leg_is_expanded"][value="0"] ~ .sheet-mcom-left_leg-tuning,
+input[name="attr_mcom_right_leg_is_expanded"][value="0"] ~ .sheet-mcom-right_leg-tuning {
+  display: none;
+}
+
+.sheet-mcom-tuning-title > input[type=text],
+.sheet-mcom-tuning-title > strong {
+  margin: 0 5px;
+}
+
+.sheet-mcom-tuning-title > strong {
+  color: #FFF;
+  width: 150px;
+  text-align: left;
+}
+
+.sheet-mcom-tuning-title {
+  padding: 10px 5px;
+}
+
+.sheet-mcom-name {
+  flex: 1;
+  display: none;
+}
+
+.sheet-mcom-brand {
+  width: 200px;
+  display: none;
+}
+
+.sheet-mcom-name:read-only,
+.sheet-mcom-brand:read-only {
+  display: inline-block;
+}
+
+input[type=hidden][value="custom"] ~ .sheet-mcom-name,
+input[type=hidden][value="custom"] ~ .sheet-mcom-brand {
+  display: inline-block;
+}
+
+input[type=hidden][value="custom"] ~ .sheet-mcom-name:read-only,
+input[type=hidden][value="custom"] ~ .sheet-mcom-brand:read-only {
+  display: none;
+}
+
+.sheet-tuning-title {
+  margin: 15px 0;
+}
+
+.sheet-mcom-stats-tuning th,
+.sheet-mcom-stats-tuning td {
+  text-align: center;
+}
+
+/*
+**  MCOM Tab
+*/
+
+.sheet-mcom-wrapper {
+  width: 300px;
+}
+
+.sheet-mcom-customizer {
+  flex: 1;
+}
+
+.sheet-mcom-parts-selector td {
+  padding: 4px;
+  color: #FFF;
+  font-family: 'Candal';
+  white-space: nowrap;
+  border-bottom: 1px solid #FFF;
+}
+
+.sheet-mcom-parts-selector select {
+  width: 100%;
+}
+
+th.sheet-incomplete-warning {
+  font-family: 'Contrail One';
+  color: #F00;
+  font-size: 12px;
+  text-align: center;
+}
+
+th.sheet-incomplete-warning:before,
+th.sheet-incomplete-warning:after {
+  content: '!';
+  font-family: 'Pictos';
+  color: #F00;
+}
+
+th.sheet-incomplete-warning:before { margin-right: 15px; }
+th.sheet-incomplete-warning:after { margin-left: 15px; }
+
+input[type=hidden][name="attr_mcom_completed"][value="true"] ~ div .sheet-mcom-customizer th.sheet-incomplete-warning {
+  visibility: hidden;
+}
+
+input[type=hidden][name="attr_mcom_part_head"][value="none"] ~ select,
+input[type=hidden][name="attr_mcom_part_torso"][value="none"] ~ select,
+input[type=hidden][name="attr_mcom_part_left_arm"][value="none"] ~ select,
+input[type=hidden][name="attr_mcom_part_right_arm"][value="none"] ~ select,
+input[type=hidden][name="attr_mcom_part_left_leg"][value="none"] ~ select,
+input[type=hidden][name="attr_mcom_part_right_leg"][value="none"] ~ select {
+  background-color: #A00;
+}
+
+.sheet-mcom-stats {
+  margin: 10px 0;
+}
+
+.sheet-mcom-stats th,
+.sheet-mcom-stats td {
+  width: 20%;
+  text-align: center;
+}
+
+.sheet-mcom-stats th {
+  padding: 10px 0;
+  color: #FFF;
+  font-family: 'Contrail One';
+}
+
+.sheet-mcom-stat-total input[type=number] {
+  width: 40px;
+  height: 40px;
+  font-family: 'Contrail One';
+  background-color: #35A;
+  color: #FFF;
+  border-radius: 20px;
+  text-align: center;
+  border: 1px solid #FFF;
+  box-shadow: 0px 0px 13px #0CF inset, 0px 0px 6px #0CF;
+  font-size: 18px;
 }
 
 /*

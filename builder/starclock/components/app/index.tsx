@@ -11,7 +11,7 @@ import {
   TabContainer
 } from './styled'
 
-export const App: React.FunctionComponent<{}> = () => (
+export const App: React.FunctionComponent = () => (
   <AppWrapper>
     <TabControl />
     <TabSelector>

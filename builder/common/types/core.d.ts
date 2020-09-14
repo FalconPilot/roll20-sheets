@@ -28,3 +28,8 @@ export interface Roll20SheetOpenedEvent {
 export type Roll20Event<Scope>
   = Roll20FieldEvent<Scope>
   | Roll20SheetOpenedEvent
+
+export interface Roll20InputProps {
+  name: string
+  value: string
+}
