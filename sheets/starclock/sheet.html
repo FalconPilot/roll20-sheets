@@ -4768,11 +4768,11 @@
 
       var prefix = "mcom_part_";
       setAttrs(mcomParts.reduce(function (acc, partKey) {
+        var obj = {};
+        var key = prefix + partKey;
         if (missingValues.includes(partKey)) {
           return acc;
         }
-        var obj = {};
-        var key = prefix + partKey;
         var compendiumKey = getCompendiumKey(partKey);
         var part = Compendium.mcom[compendiumKey][parts[key]];
         obj[key + "_name"] = "" + part.name;
