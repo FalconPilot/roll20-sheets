@@ -1,4 +1,0 @@
-{
-  "exec": "ts-node -r tsconfig-paths/register",
-  "ext": "js,jsx,ts,tsx,json,html"
-}
