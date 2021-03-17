@@ -1,0 +1,11 @@
+{
+  "ego.power-tools": {
+    "commands": {
+      "buildSheet": {
+        "name": "Build sheet",
+        "script": "scripts/build.js",
+        "forFolder": true
+      }
+    }
+  }
+}
