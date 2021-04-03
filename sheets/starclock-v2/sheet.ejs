@@ -6,90 +6,19 @@
   <!-- END SELECTORS-->
 
   <div class="sc-frame fw">
+    <%- include('./parts/header.ejs') %>
 
-    <!-- SHEET HEADER -->
-    <div class="sc-header frow fw fwrap">
-      <input
-        type="text"
-        class="line-input tqw"
-        name="attr_character_name"
-        placeholder="Nom du personnage"
-      />
-      <select name="attr_race" class="line-input qw">
-        <option selected disabled>Race (?)</option>
-        <option value="human">Humain</option>
-        <option value="doppleganger">Doppleganger</option>
-        <option value="endaari">Endaari</option>
-        <option value="alkor">Alkor</option>
-        <option value="drone">Drone</option>
-        <option value="troll">Troll</option>
-        <option value="changeling">Changelin</option>
-      </select>
-      <input
-        type="number"
-        class="line-input"
-        name="attr_age"
-        placeholder="Âge"
-      />
-      <select name="attr_gender" class="line-input">
-        <option selected disabled>Genre (?)</option>
-        <option value="m">Masculin</option>
-        <option value="f">Féminin</option>
-        <option value="other">Autre</option>
-      </select>
-      <input
-        type="text"
-        class="line-input"
-        name="attr_gender_other"
-        placeholder="Genre"
-      />
-    </div>
-
-    <!-- CHARACTER TAB -->
-    <div class="sc-tab character fw frow">
-
-      <!-- COLUMN 1 -->
-      <div class="fcol hw">
-        <!-- STATS -->
-        <div class="sc-stats fw frow fwrap">
-          <% Object.entries(stats).forEach(([stat, name]) => { %>
-            <div class="sc-stat hw frow <%= stat %>">
-              <% const displayName = `${name[0].toUpperCase()}${name.slice(1)}` %>
-              <h3 class="line-input"><%= displayName %></h3>
-              <label class="sc-value">
-                <input
-                  type="number"
-                  name="attr_<%= stat %>"
-                  title="<%= displayName %>"
-                  min="1"
-                  value="1"
-                />
-              </label>
-              <% const prefix = ['a', 'e', 'i', 'o', 'u'].includes(name) ? 'd\'' : 'de ' %>
-              <label class="sc-limit">
-                <input
-                  type="number"
-                  name="attr_<%= stat %>_limit"
-                  title="Limite <%= prefix %><%= name %>"
-                  min="1"
-                  value="2"
-                />
-              </label>
-            </div>
-          <% }); %>
-        </div>
+    <div class="fw frow">
+      <div class="sc-tabs-wrapper fcol hw">
+        <select class="sc-tabs-header" name="attr_current_tab">
+          <option value="character">Personnage</option>
+          <option value="skills">Compétences</option>
+        </select>
+        <!-- TABS -->
+        <%- include('./tabs/character.ejs') %>
+        <%- include ('./tabs/skills.ejs')  %>
       </div>
-      <!-- END COLUMN 1 -->
-
-      <!-- COLUMN 2 -->
-      <!-- SKILLS -->
-      <div class="fcol hw">
-        <div class="sc-skills fw fcol">
-        </div>
-      </div>
-      <!-- END COLUMN 2 -->
     </div>
-    <!-- END CHARACTER TAB -->
   </div>
 </div>
 
@@ -97,5 +26,5 @@
 
 <!-- WORKERS -->
 <script type="text/worker">
-
+  <%- include('./scripts.js') %>
 </script>

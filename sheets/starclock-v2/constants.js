@@ -174,8 +174,8 @@ module.exports = {
     },
     shooting: {
       name: 'Tir',
-      mainSkill: 'acu',
-      offSkill: 'hab',
+      mainStat: 'acu',
+      offStat: 'hab',
       skills: {
         crossbows: 'Arbalètes',
         bows: 'Arcs',

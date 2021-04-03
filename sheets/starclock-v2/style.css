@@ -1,5 +1,6 @@
 .sc-wrapper {
   width: 800px;
+  border: 1px solid #CCC;
 }
 
 .sc-wrapper * {
@@ -39,8 +40,31 @@ button { margin: 0; }
 
 .fwrap { flex-wrap: wrap; }
 
-input[type="hidden"][name="attr_gender"]:not([value="other"]) + .sc-frame input[type="text"][name="attr_gender_other"] {
+input[type=hidden][name="attr_gender"]:not(input[value="other"]) ~ .sc-frame input.line-input[name="attr_gender_other"] {
   display: none;
+}
+
+.sc-tabs-header {
+  position: relative;
+  width: auto;
+  height: auto;
+  border: none;
+  margin: 5px;
+  padding: 5px 5px 5px 20px;;
+  flex: 1;
+  font-size: 18px;
+  font-family: 'Candal';
+  color: #FFF;
+  background-color: #333;
+}
+
+input[type=hidden][name="attr_current_tab"]:not(input[value="character"]) ~ .sc-frame .sc-tab.character,
+input[type=hidden][name="attr_current_tab"]:not(input[value="skills"]) ~ .sc-frame .sc-tab.skills {
+  display: none;
+}
+
+.sc-tabs-wrapper {
+  border-right: 1px solid #CCC;
 }
 
 .sc-wrapper .line-input {
@@ -48,9 +72,25 @@ input[type="hidden"][name="attr_gender"]:not([value="other"]) + .sc-frame input[
   padding: 2px 4px;
   border: none;
   border-bottom: 1px solid #CCC;
-  height: 2.5em;
+  height: 2.4em;
   line-height: 2em;
   border-radius: 0;
+  background-color: transparent;
+}
+
+.sc-header {
+  padding: 15px;
+  background-color: #333;
+  align-items: center;
+}
+
+.sc-header * {
+  color: #FFF;
+}
+
+.sc-header span {
+  font-family: 'Contrail One';
+  margin-right: 8px;
 }
 
 .sc-header input:last-child,
@@ -60,11 +100,13 @@ input[type="hidden"][name="attr_gender"]:not([value="other"]) + .sc-frame input[
 
 .sc-stat {
   margin: 12px 0;
+  align-items: flex-end;
 }
 
 .sc-stat h3 {
   flex: 1;
   text-align: left;
+  font-family: 'Contrail One';
 }
 
 .sc-stats > .sc-stat:nth-child(even) {
@@ -81,17 +123,20 @@ input[type="hidden"][name="attr_gender"]:not([value="other"]) + .sc-frame input[
   width: 30px;
   padding: 0;
   border: 1px solid #CCC;
-}
-
-.sc-stats > .sc-stat:nth-child(even) .sc-value,
-.sc-stats > .sc-stat:nth-child(odd) .sc-limit {
-  margin-right: 5px;
+  margin-bottom: 0;
 }
 
 .sc-stats > .sc-stat:nth-child(odd) .sc-value,
 .sc-stats > .sc-stat:nth-child(even) .sc-limit {
-  margin-left: 5px;
   border-right: none;
+}
+
+.sc-stats > .sc-stat:nth-child(even) {
+  padding-left: 5px;
+}
+
+.sc-stats > .sc-stat:nth-child(odd) {
+  padding-right: 5px;
 }
 
 .sc-limit:before {
@@ -113,4 +158,16 @@ input[type="hidden"][name="attr_gender"]:not([value="other"]) + .sc-frame input[
   padding: 0;
   border: none;
   text-align: center;
+}
+
+.sc-skill-group {
+  align-items: center;
+}
+
+.sc-skill-group > button[type=roll],
+.sc-skill-group > h3.line-input {
+  flex: 1;
+  height: 2em;
+  text-align: left;
+  background-image: none;
 }

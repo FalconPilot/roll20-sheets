@@ -1,0 +1,39 @@
+<div class="sc-tab skills fcol fw">
+  <% Object.entries(skillGroups).forEach(([gk, group]) => { %>
+    <input type="hidden" class="toggle-control" name="attr_toggle_sg_<%= gk %>" />
+    <div class="skill fw fcol">
+      <div class="frow fw">
+        <div class="sc-skill-group frow tqw">
+          <input
+            type="checkbox"
+            name="attr_grp_<%= gk %>_known"
+            value="1"
+          />
+          <input
+            type="number"
+            name="attr_grp_<%= gk %>_bonus"
+            value="0"
+            min="0"
+          />
+          <% if (!group.special) { %>
+            <button
+              type="roll"
+              class="line-input"
+              value="/r [[@{<%= group.mainStat %>} + @{grp_<%= gk %>_known} + @{grp_<%= gk %>_bonus}]]D6"
+            ><%= group.name %></button>
+          <% } else { %>
+            <h3 class="line-input">* <%= group.name %></h3>
+          <% } %>
+          <div class="toggle-input">
+            <input type="checkbox" name="attr_toggle_sg_<%= gk %>" value="on" />
+          </div>
+        </div>
+      </div>
+      <div class="skills-list <%= gk %> fcol tqw">
+        <% Object.entries(group.skills).forEach(([sk, skill]) => { %>
+
+        <% }) %>
+      </div>
+    </div>
+  <% }) %>
+</div>

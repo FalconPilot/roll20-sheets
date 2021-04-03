@@ -5,6 +5,8 @@
   "author": "FalconPilot",
   "scripts": {},
   "dependencies": {
+    "@node-minify/core": "^6.2.0",
+    "@node-minify/html-minifier": "^6.2.0",
     "ejs": "^3.1.6",
     "rimraf": "^3.0.2"
   },
