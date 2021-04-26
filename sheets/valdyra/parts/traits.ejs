@@ -1,10 +1,16 @@
 <div class="traits-list fw fcol">
   <fieldset class="repeating_traits">
-    <div class="trait fw fcol">
-      <div class="frow fw">
-        <input type="text" class="fw" name="attr_trait_name" placeholder="Nom du trait" />
+    <div class="elt-line trait fw fcol">
+      <input type="hidden" class="toggle-control" name="attr_toggle_trait" value="on" />
+      <div class="trait-heading frow fw">
+        <input type="text" name="attr_trait_name" placeholder="Nom du trait" />
+        <label class="vd-toggle">
+          <input type="checkbox" name="attr_toggle_trait" checked />
+        </label>
       </div>
-      <textarea name="attr_trait_effects" placeholder="Effets"></textarea>
+      <div class="trait-description fw">
+        <textarea class="fw" name="attr_trait_effects" placeholder="Effets"></textarea>
+      </div>
     </div>
   </fieldset>
 </div>

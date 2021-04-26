@@ -1,4 +1,12 @@
 <button
   type="roll"
-  value="&{template:vd-diceroll} {{tag=<%= tag %>}} {{character=@{character_name}}} {{result=[[1<%= dice %> + ?{Seuil actuel|0}]]}} {{dice=}}"
+  value="<%= `${constants.fn.rolltemplate('vd-diceroll', {
+    tag,
+    dice,
+    character: '@{character_name}',
+    goal: `[[12 + ${constants.fn.skillsQuery(constants.skills)}]]`,
+    result: `[[1${dice}cs0cf0 + ?{Valeur précédente|0}]]`,
+    race: '@{character_race}'
+    })}`
+  %>"
 >Lancer</button>

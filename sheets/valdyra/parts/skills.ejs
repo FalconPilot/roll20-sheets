@@ -1,8 +1,11 @@
-<div class="skills fw">
-  <% Object.entries(constants.skills).sort(constants.fn.sortByValue).forEach(([skill, name]) => { %>
-    <div class="skill-line frow">
-      <span><%= name %></span>
-      <input type="number" name="attr_skill_<%= skill %>_level" value="0" />
+<div class="skills-wrapper fw">
+  <% Object.entries(constants.skills).sort(constants.fn.sortByValueKey('name')).forEach(([key, skill]) => { %>
+    <div class="elt-line frow">
+      <div class="elt-name fcol">
+        <strong><%= skill.name %></strong>
+        <span><%= skill.description %></span>
+      </div>
+      <input type="number" name="attr_skill_<%= key %>_level" value="0" />
     </div>
   <% }) %>
 </div>
