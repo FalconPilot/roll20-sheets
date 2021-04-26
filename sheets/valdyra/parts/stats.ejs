@@ -1,0 +1,29 @@
+<div class="stats-wrapper fcol fw">
+  <% Object.entries(constants.stats).forEach(([key, stat]) => { %>
+    <div class="stat-line fw frow">
+      <div class="stat-name fcol fw">
+        <strong>
+          <%= stat.name %>
+        </strong>
+        <span>
+          <%= stat.description %>
+        </span>
+      </div>
+      <% constants.statsDice.forEach(dice => { %>
+        <% const attrKey = `${key}_${dice}` %>
+        <div class="dicebtn-wrapper fcol">
+          <input type="hidden" class="dicebtn-toggle" name="attr_<%= attrKey %>"<%- dice === 'd8' ? 'value="on"' : '' %> />
+          <label class="stat-dice dicebtn <%= dice %>">
+            <input
+              type="checkbox"
+              name="attr_<%= attrKey %>"
+              title="<%= dice.toUpperCase() %>"
+              <%- dice === 'd8' ? 'checked' : '' %>
+            />
+          </label>
+          <%- include('./rollbutton', { constants, dice, tag: stat.name }) %>
+        </div>
+      <% }) %>
+    </div>
+  <% }) %>
+</div>

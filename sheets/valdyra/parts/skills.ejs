@@ -1,0 +1,8 @@
+<div class="skills fw">
+  <% Object.entries(constants.skills).sort(constants.fn.sortByValue).forEach(([skill, name]) => { %>
+    <div class="skill-line frow">
+      <span><%= name %></span>
+      <input type="number" name="attr_skill_<%= skill %>_level" value="0" />
+    </div>
+  <% }) %>
+</div>

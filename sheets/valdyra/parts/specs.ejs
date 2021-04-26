@@ -1,0 +1,18 @@
+<div class="specs-list fcol fw">
+  <fieldset class="repeating_specs">
+    <div class="spec frow fw">
+      <input
+        type="text"
+        class="spec-name"
+        name="attr_spec-name"
+        placeholder="Nom de spécialisation"
+      />
+      <% constants.specsDice.forEach(dice => { %>
+        <input type="hidden" class="dicebtn-toggle" name="attr_spec_<%= dice %>" />
+        <label class="spec-button dicebtn <%= dice %>">
+          <input type="checkbox" name="attr_spec_<%= dice %>" />
+        </label>
+      <% })%>
+    </div>
+  </fieldset>
+</div>

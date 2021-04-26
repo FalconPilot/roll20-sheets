@@ -1,0 +1,33 @@
+<div class="vd-header fw frow">
+  <div class="tqw">
+    <input
+      type="text"
+      class="fw char-name"
+      name="attr_character_name"
+    />
+  </div>
+  <div class="qw char-infos fcol">
+    <div class="info-line frow">
+      <input type="number" name="attr_character_age" min="0" />
+      <span>ans</span>
+      <input type="number" name="attr_character_height_meters" min="0" />
+      <span>m</span>
+      <input type="number" name="attr_character_height_centimeters" min="0" max="99" />
+      <span>cm</span>
+    </div>
+    <div class="info-line">
+      <input type="text" name="attr_character_gender" placeholder="Genre" />
+    </div>
+    <div class="info-line">
+      <select name="attr_character_race">
+        <option value="???">???</option>
+        <% Object.entries(constants.races).sort(constants.fn.sortByValue).forEach(([key, race]) => { %>
+          <option value="<%= key %>"><%= race %></option>
+        <% }) %>
+      </select>
+    </div>
+    <div class="info-line">
+      <input type="text" name="attr_character_origin" placeholder="Origine" />
+    </div>
+  </div>
+</div>

@@ -1,7 +1,7 @@
 <div class="sc-tab character fcol fw">
   <!-- STATS -->
   <div class="sc-stats fw frow fwrap">
-    <% Object.entries(stats).forEach(([stat, name]) => { %>
+    <% Object.entries(constants.stats).forEach(([stat, name]) => { %>
       <div class="sc-stat hw frow <%= stat %>">
         <% const displayName = `${name[0].toUpperCase()}${name.slice(1)}` %>
         <h3 class="line-input"><%= displayName %></h3>

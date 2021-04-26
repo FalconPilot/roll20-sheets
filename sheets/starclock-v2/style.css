@@ -63,6 +63,10 @@ input[type=hidden][name="attr_current_tab"]:not(input[value="skills"]) ~ .sc-fra
   display: none;
 }
 
+input[type=hidden]:not([value="on"]).toggle-control + .togglable {
+  display: none;
+}
+
 .sc-tabs-wrapper {
   border-right: 1px solid #CCC;
 }
@@ -160,14 +164,69 @@ input[type=hidden][name="attr_current_tab"]:not(input[value="skills"]) ~ .sc-fra
   text-align: center;
 }
 
-.sc-skill-group {
+.skills-list {
+  padding: 10px 0 10px 20px;
+}
+
+.sc-skill-group,
+.sc-skill {
   align-items: center;
+  padding: 1px 8px;
+}
+
+.skl-total > input[type=number] {
+  text-align: right;
+  background-color: transparent;
+  border: none;
+  width: 1.5em !important;
+}
+
+.skl-bonus {
+  width: 1.5em !important;
+  height: 1.5em;
+  margin-left: 2px;
+  text-align: center;
+  border-radius: 50%;
+}
+
+.skl-total.sc-hidden {
+  visibility: hidden;
 }
 
 .sc-skill-group > button[type=roll],
+.sc-skill > button[type=roll],
 .sc-skill-group > h3.line-input {
   flex: 1;
   height: 2em;
   text-align: left;
   background-image: none;
+}
+
+.sc-skill-group > button[type=roll],
+.sc-skill-group > h3.line-input {
+  font-weight: bold;
+  font-size: 1.3em !important;
+}
+
+.sc-skill > button[type=roll] {
+  font-size: 1em !important;
+}
+
+.sc-skill-group > h3.line-input {
+  font-style: italic;
+}
+
+.sc-skill-group > button[type=roll]:before,
+.sc-skill > button[type=roll]:before {
+  font-family: 'dicefontd6' !important;
+  content: 'l ' !important;
+}
+
+/* .sc-skill-group > button[type=roll]:before {
+  content: 'l ' !important;
+} */
+
+.sc-skill-group > input[type=checkbox],
+.sc-skill > input[type=checkbox] {
+  margin: 0 2px;
 }

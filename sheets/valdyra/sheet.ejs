@@ -1,0 +1,26 @@
+<div class="vd-wrapper fcol">
+  <%- include('./parts/header.ejs', { constants }) %>
+  <div class="frow fw">
+    <div class="hw">
+      <%- include('./parts/reserve.ejs', { constants }) %>
+    </div>
+    <div class="tabs fcol hw">
+      <input type="hidden" name="attr_current_tab" value="stats" />
+      <div class="tabs-toggle fw frow fwrap">
+        <% Object.entries(constants.tabs).forEach(([stat, name]) => { %>
+          <label class="tab-input <%= stat %>">
+            <span><%= name %></span>
+            <input type="radio" name="attr_current_tab" value="<%= stat %>" />
+          </label>
+        <% }) %>
+      </div>
+      <% Object.keys(constants.tabs).forEach(tab => { %>
+        <div class="tab fw <%= tab %>">
+          <%- include(`./parts/${tab}.ejs`, { constants }) %>
+        </div>
+      <% }) %>
+    </div>
+  </div>
+</div>
+
+<%- include('./rolltemplates.ejs', { constants }) %>

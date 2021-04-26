@@ -1,0 +1,15 @@
+<rolltemplate class="sheet-rolltemplate-vd-diceroll">
+  <div class="dice-roll-wrapper">
+    <div class="dice-roll-header">
+      {{character}} lance : {{tag}}
+    </div>
+    <div class="dice-roll-content">
+      {{result}}
+    </div>
+    {{#rollBetween() result 12 12}}
+      <div class="dice-roll-footer">
+        Réussite critique !
+      </div>
+    {{/rollBetween() result 12 12}}
+  </div>
+</rolltemplate>

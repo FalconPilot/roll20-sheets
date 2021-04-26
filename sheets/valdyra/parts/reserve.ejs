@@ -1,0 +1,22 @@
+<div class="dice-reserve fcol">
+  <span class="reserve-title">Réserve</span>
+  <% constants.reserveDice.forEach(dice => { %>
+    <div class="dicebtn-wrapper fcol">
+      <input type="hidden" class="dicebtn-toggle" name="attr_reserve_<%= dice %>" value="on" />
+      <label class="reserve-dice dicebtn <%= dice %>">
+        <input
+          type="checkbox"
+          name="attr_reserve_<%= dice %>"
+          checked
+        />
+      </label>
+      <%- include('./rollbutton.ejs', {
+        constants,
+        tag: 'Dé Joker',
+        dice: dice === 'joker'
+          ? '?{Dé|D4|D6|D8|D10|D12}'
+          : dice
+      }) %>
+    </div>
+  <% }) %>
+</div>

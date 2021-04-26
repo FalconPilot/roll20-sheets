@@ -18,7 +18,14 @@ exports.execute = async (args) => {
 
     const constants = require(path.resolve(folderPath, 'constants.js'))
 
-    const res = await ejs.renderFile(ejsPath, constants || null)
+    if (!constants) {
+      vscode.window.showWarningMessage('No constants found')
+    }
+
+    const res = await (
+      ejs.renderFile(ejsPath, { constants } || null)
+        .then(output => output.replace(/module\.exports/, 'constants'))
+    )
 
     if (!fs.existsSync(buildDir)) {
       fs.mkdirSync(buildDir)
@@ -36,7 +43,12 @@ exports.execute = async (args) => {
     await minify({
       compressor: htmlMinifier,
       input: bundlePath,
-      output: path.resolve(buildDir, folderName, 'sheet.bundle.html')
+      output: path.resolve(buildDir, folderName, 'sheet.bundle.html'),
+      options: {
+        removeAttributeQuotes: false,
+        removeComments: true,
+        removeRedundantAttributes: false
+      }
     })
     vscode.window.showInformationMessage('Build completed !')
   } catch (err) {

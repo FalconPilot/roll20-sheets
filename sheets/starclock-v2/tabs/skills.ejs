@@ -1,25 +1,39 @@
 <div class="sc-tab skills fcol fw">
-  <% Object.entries(skillGroups).forEach(([gk, group]) => { %>
-    <input type="hidden" class="toggle-control" name="attr_toggle_sg_<%= gk %>" />
+  <% Object.entries(constants.skillGroups).forEach(([gk, group]) => { %>
+    <% const equation = `@{${group.mainStat}} + @{grp_${gk}_known} + @{grp_${gk}_bonus}` %>
     <div class="skill fw fcol">
       <div class="frow fw">
         <div class="sc-skill-group frow tqw">
+          <% if (!group.special) { %>
+            <span class="skl-total">
+              <input
+                readonly
+                type="number"
+                name="attr_dice_grp_<%= gk %>"
+                value="<%= equation %>"
+              />D
+            </span>
+          <% } else { %>
+            <span class="skl-total sc-hidden">
+              <input readonly type="number" />D
+            </span>
+          <% } %>
+          <input
+            type="number"
+            class="skl-bonus"
+            name="attr_grp_<%= gk %>_bonus"
+            value="0"
+          />
           <input
             type="checkbox"
             name="attr_grp_<%= gk %>_known"
             value="1"
           />
-          <input
-            type="number"
-            name="attr_grp_<%= gk %>_bonus"
-            value="0"
-            min="0"
-          />
           <% if (!group.special) { %>
             <button
               type="roll"
               class="line-input"
-              value="/r [[@{<%= group.mainStat %>} + @{grp_<%= gk %>_known} + @{grp_<%= gk %>_bonus}]]D6"
+              value="/r [[<%= equation %>]]D6"
             ><%= group.name %></button>
           <% } else { %>
             <h3 class="line-input">* <%= group.name %></h3>
@@ -29,9 +43,28 @@
           </div>
         </div>
       </div>
-      <div class="skills-list <%= gk %> fcol tqw">
-        <% Object.entries(group.skills).forEach(([sk, skill]) => { %>
-
+      <input type="hidden" class="toggle-control" name="attr_toggle_sg_<%= gk %>" />
+      <div class="skills-list <%= gk %> togglable fcol tqw">
+        <% Object.entries(group.skills).forEach(([_sk, skill]) => { %>
+          <% if (!group.special) { %>
+            <%- include('../parts/skill.ejs', {
+              gk,
+              group,
+              sk: _sk,
+              mainStat: group.mainStat,
+              skillName: skill
+            }) %>
+          <% } else { %>
+            <% Object.entries(skill).forEach(([sk, skillName]) => { %>
+              <%- include('../parts/skill.ejs', {
+                gk,
+                group,
+                sk,
+                mainStat: _sk,
+                skillName
+              }) %>
+            <% }) %>
+          <% } %>
         <% }) %>
       </div>
     </div>

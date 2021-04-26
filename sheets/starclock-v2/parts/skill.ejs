@@ -1,0 +1,32 @@
+<% const equation = `@{${mainStat}} + @{${group.offStat}} * @{skl_${sk}_known} + @{grp_${gk}_known} + @{grp_${gk}_bonus} + @{skl_${sk}_bonus}` %>
+<div class="sc-skill <%= sk %> fw frow">
+  <span class="skl-total">
+    <input
+      readonly
+      type="number"
+      name="attr_dice_skl_<%= sk %>"
+      value="<%= equation %>"
+    />D
+  </span>
+  <input
+    type="number"
+    class="skl-bonus"
+    name="attr_skl_<%= sk %>_bonus"
+    value="0"
+  />
+  <input
+    type="checkbox"
+    name="attr_skl_<%= sk %>_known"
+    value="1"
+  />
+  <input
+    type="checkbox"
+    name="attr_skl_<%= sk %>_mastered"
+    value="1"
+  />
+  <button
+    type="roll"
+    class="line-input"
+    value="/r [[<%= equation %>]]D6"
+  ><%= skillName %></button>
+</div>

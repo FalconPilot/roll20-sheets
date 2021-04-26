@@ -6,7 +6,7 @@
   <!-- END SELECTORS-->
 
   <div class="sc-frame fw">
-    <%- include('./parts/header.ejs') %>
+    <%- include('./parts/header.ejs', { constants }) %>
 
     <div class="fw frow">
       <div class="sc-tabs-wrapper fcol hw">
@@ -15,16 +15,19 @@
           <option value="skills">Compétences</option>
         </select>
         <!-- TABS -->
-        <%- include('./tabs/character.ejs') %>
-        <%- include ('./tabs/skills.ejs')  %>
+        <%- include('./tabs/character.ejs', { constants }) %>
+        <%- include ('./tabs/skills.ejs', { constants })  %>
       </div>
     </div>
   </div>
 </div>
 
 <!-- ROLLTEMPLATES -->
+<%- include('./rolltemplates.ejs') %>
 
 <!-- WORKERS -->
 <script type="text/worker">
+  var constants = {};
+  <%- include('./constants.js') %>
   <%- include('./scripts.js') %>
 </script>
