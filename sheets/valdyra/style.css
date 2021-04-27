@@ -96,10 +96,18 @@ button { margin: 0; }
   width: 1em !important;
 }
 
+.vd-left {
+  align-items: flex-start;
+}
+
 .vd-aside {
   flex: 1;
   align-items: center;
   justify-content: flex-start;
+}
+
+.vd-avatar {
+  width: 100%;
 }
 
 .tabs {

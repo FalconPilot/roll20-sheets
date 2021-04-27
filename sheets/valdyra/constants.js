@@ -31,12 +31,28 @@ module.exports = {
     inventory: 'Inventaire'
   },
   races: {
-    drakkeid: 'Drakkéide',
+    drakkeidRed: 'Drakkéide rouge',
+    drakkeidBlue: 'Drakkéide bleu',
+    drakkeidGreen: 'Drakkéide vert',
+    drakkeidBlack: 'Drakkéide noir',
+    drakkeidWhite: 'Drakkéide blanc',
     human: 'Humain',
     harpy: 'Harpie',
     minotaur: 'Minotaure',
-    jagar: 'Jagar',
+    jagarSmall: 'Jagar (Rertuk)',
+    jagarMedium: 'Jagar (Rort)',
+    jagarBig: 'Jagar (Qrikann)',
     maker: 'Façonneurs'
+  },
+  origins: {
+    traveler: 'Sans-attache',
+    loyalist: 'Loyaliste',
+    steyrlyr: 'Steyrlyr',
+    argaryn: 'Argaryn',
+    akdland: 'Akland',
+    ritija: 'Ritija',
+    freemen: 'Homme-libre',
+    jagar: 'Jagar'
   },
   stats: {
     phy: {

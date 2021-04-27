@@ -27,7 +27,12 @@
       </select>
     </div>
     <div class="info-line">
-      <input type="text" name="attr_character_origin" placeholder="Origine" />
+      <select name="attr_character_origin">
+        <option value="???">???</option>
+        <% Object.entries(constants.origins).sort(constants.fn.sortByValue).forEach(([key, origin]) => { %>
+          <option value="<%= key %>"><%= origin %></option>
+        <% }) %>
+      </select>
     </div>
   </div>
 </div>
