@@ -1,0 +1,8 @@
+<div class="tabs-toggle fw frow fwrap">
+  <% Object.entries(constants.tabs).forEach(([stat, name]) => { %>
+    <label class="tab-input <%= stat %>">
+      <span><%= name %></span>
+      <input type="radio" name="attr_current_tab" value="<%= stat %>" />
+    </label>
+  <% }) %>
+</div>

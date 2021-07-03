@@ -1,1 +1,21 @@
-INVENTAIRE ICI
+<div class="inventory-top frow fw">
+  <%- include('./armors.ejs', { constants }) %>
+  <%- include('./weapons.ejs', { constants }) %>
+</div>
+<h4 class="inventory-title fw">Bahut</h4>
+<fieldset class="repeating_inventory">
+  <div class="elt-line item fcol">
+    <input type="hidden" class="toggle-control" name="attr_toggle_item_description" value="on" />
+    <div class="elt-heading frow fw">
+      <input type="text" name="attr_item_name" />
+      <span class="item-times">*</span>
+      <input type="number" name="attr_item_amount" min="0" value="0" placeholder="0" />
+      <label class="vd-toggle">
+        <input type="checkbox" name="attr_toggle_item_description" checked />
+      </label>
+    </div>
+    <div class="elt-description fw">
+      <textarea class="fw" name="attr_item_effects" placeholder="Description"></textarea>
+    </div>
+  </div>
+</fieldset>

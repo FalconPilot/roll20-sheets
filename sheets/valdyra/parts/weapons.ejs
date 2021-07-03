@@ -1,0 +1,28 @@
+<div class="hw fcol">
+  <h4 class="inventory-title">Armes</h4>
+  <fieldset class="repeating_weapons">
+    <div class="elt-line weapon fcol">
+      <input type="hidden" class="toggle-control" name="attr_weapon_description_toggle" value="on" />
+      <div class="elt-heading frow fw">
+        <input class="fw" type="text" name="attr_weapon_name" placeholder="Nom de l'arme" />
+        <label class="vd-toggle">
+          <input type="checkbox" name="attr_weapon_description_toggle" checked />
+        </label>
+      </div>
+      <div class="frow elt-middle fw">
+        <input type="text" class="fw weapon-type" name="attr_weapon_type" placeholder="Type" />
+        <input
+          type="number"
+          name="attr_attack_damage"
+          class="damage-bubble"
+          placeholder="0"
+          value="0"
+          title="Dégâts"
+        />
+      </div>
+      <div class="elt-description fw">
+        <textarea class="fw" name="attr_weapon_description" placeholder="Description"></textarea>
+      </div>
+    </div>
+  </fieldset>
+</div>

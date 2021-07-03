@@ -2,9 +2,9 @@ exports.execute = async (args) => {
   const vscode = args.require('vscode')
   try {
     // IMPORTS
+    const fs = require('fs')
     const ejs = require('ejs')
     const path = require('path')
-    const fs = require('fs')
     const rimraf = require('rimraf')
     const minify = require('@node-minify/core')
     const htmlMinifier = require('@node-minify/html-minifier')
@@ -34,7 +34,7 @@ exports.execute = async (args) => {
     if (fs.existsSync(buildPath)) {
       rimraf.sync(buildPath)
     }
-    
+
     const bundlePath = path.resolve(buildDir, folderName, 'sheet.html')
 
     fs.mkdirSync(buildPath)

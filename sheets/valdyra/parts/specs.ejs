@@ -8,10 +8,13 @@
         placeholder="Nom de spécialisation"
       />
       <% constants.specsDice.forEach(dice => { %>
-        <input type="hidden" class="dicebtn-toggle" name="attr_spec_<%= dice %>" />
-        <label class="spec-button dicebtn <%= dice %>">
-          <input type="checkbox" name="attr_spec_<%= dice %>" />
-        </label>
+        <div class="dicebtn-wrapper fcol">
+          <input type="hidden" class="dicebtn-toggle" name="attr_spec_<%= dice %>" />
+          <label class="spec-button dicebtn <%= dice %>">
+            <input type="checkbox" name="attr_spec_<%= dice %>" />
+          </label>
+          <%- include('./rollbutton', { constants, dice, tag: '@{spec-name}' }) %>
+        </div>
       <% })%>
     </div>
   </fieldset>

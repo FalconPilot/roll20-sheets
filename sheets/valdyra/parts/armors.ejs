@@ -1,0 +1,25 @@
+<div class="hw fcol">
+  <h4 class="inventory-title">Protections</h4>
+  <fieldset class="repeating_armors">
+    <div class="elt-line armor fcol">
+      <input type="hidden" class="toggle-control" name="attr_armor_description_toggle" value="on" />
+      <div class="elt-heading frow fw">
+        <input class="fw" type="text" name="attr_armor_name" placeholder="Nom de l'armure" />
+        <label class="vd-toggle">
+          <input type="checkbox" name="attr_armor_description_toggle" checked />
+        </label>
+      </div>
+      <input
+        type="number"
+        name="attr_armor_protection"
+        class="armor-bubble"
+        placeholder="0"
+        value="0"
+        title="Protection"
+      />
+      <div class="elt-description fw">
+        <textarea class="fw" name="attr_armor_description" placeholder="Description"></textarea>
+      </div>
+    </div>
+  </fieldset>
+</div>

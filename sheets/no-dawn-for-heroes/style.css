@@ -1,0 +1,53 @@
+.ndfh-wrapper {
+  width: 800px;
+  border: 1px solid #CCC;
+}
+
+.ndfh * {
+  font-size: 1em;
+  font-family: Arial, sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+select,
+input,
+button { margin: 0; }
+
+/* Width classes */
+.fw { width: 100% !important; }
+.tqw { width: 75% !important; }
+.ttw { width: 66.666% !important; }
+.hw { width: 50% !important; }
+.tw { width: 33.333% !important; }
+.qw { width: 25% !important; }
+
+/* Flex classes */
+.fcol,
+.frow { display: flex !important; }
+.fcol { flex-direction: column; }
+.frow { flex-direction: row; }
+.fwrap { flex-wrap: wrap; }
+.fcol.center-v,
+.frow.center-h { align-items: center; }
+.fcol.center-h,
+.frow.center-v { justify-content: center; }
+
+/* Tabs */
+input[name="attr_active_character_tab"] ~ .tab:not(.character) {
+  display: none;
+}

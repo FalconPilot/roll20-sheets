@@ -116,6 +116,10 @@ module.exports = {
       name: 'Lucidité',
       description: 'Reconnaître un mensonge, comprendre l\'état d\'esprit de quelqu\'un...'
     },
+    magic: {
+      name: 'Magie',
+      description: 'Détecter, contrôler, comprendre, manipuler la magie...'
+    },
     melee: {
       name: 'Corps-à-corps',
       description: 'Combattre à mains nues, à la lance, à la hache, au marteau...'
