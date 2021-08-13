@@ -58,7 +58,6 @@ onEvents([events.buttonClicked('roll_skill')], info => {
       ? 'd\''
       : 'de '
   const name = `Test ${prefix}${info.htmlAttributes['data-name']}`
-  console.log(info.htmlAttributes)
   getAttrs([key, 'character_name'], values => {
     startRoll(`&{template:general} {{name=${name}}} {{character=${values.character_name}}} {{roll=[[[[${values[key]}]]D6]]}}`, data => {
       finishRoll(data.rollId, {

@@ -14,18 +14,26 @@
     name="attr_skl_<%= sk %>_bonus"
     value="0"
   />
-  <label class="skill-checkbox skill-known">
+  <label class="skill-checkbox skill-known" title="Connu">
     <input
       type="checkbox"
       name="attr_skl_<%= sk %>_known"
       value="1"
     />
+    <img
+      class="skill-checkmark known"
+      src="https://raw.githubusercontent.com/FalconPilot/roll20-sheets/master/sheets/starclock-v2/gui/known.png"
+    />
   </label>
-  <label class="skill-checkbox skill-mastered">
+  <label class="skill-checkbox skill-mastered" title="Maîtrisé">
     <input
       type="checkbox"
       name="attr_skl_<%= sk %>_mastered"
       value="1"
+    />
+    <img
+      class="skill-checkmark mastered"
+      src=""
     />
   </label>
   <button

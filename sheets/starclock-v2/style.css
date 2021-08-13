@@ -250,11 +250,39 @@ input[type=hidden]:not([value="on"]).toggle-control + .togglable {
 }
 
 .skill-checkbox {
-  width: 20px;
-  height: 20px;
+  position: relative;
+  width: 25px !important;
+  height: 25px;
+  padding: 0;
+  border: 1px solid #333;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.skill-checkbox:hover {
+  cursor: pointer;
+}
+
+.skill-checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: 0.1s;
+}
+
+.skill-checkbox > input[type=checkbox]:checked ~ .skill-checkmark {
+  filter: invert(1);
+}
+
+.skill-checkbox > input[type=checkbox]:checked ~ .skill-checkmark.known {
+  background-color: #EA6200;
 }
 
 .aside-right {
+  padding: 12px;
+  box-sizing: border-box;
   background-color: #333;
   align-items: center;
   justify-content: flex-start;
@@ -269,6 +297,7 @@ input[type=hidden][name="attr_race"] ~ .character-silhouette {
   background-position-x: center;
   background-repeat: no-repeat;
   background-size: contain;
+  align-self: flex-start;
   background-image: url("https://raw.githubusercontent.com/FalconPilot/roll20-sheets/master/sheets/starclock/gui/human_sil_m.png");
 }
 
@@ -337,7 +366,6 @@ input[type=hidden][name="attr_race"][value="endaari"] ~ input[type=hidden][name=
 input[type=hidden][name="attr_race"][value="alkor"] ~ .character-silhouette {
   background-image: url("https://raw.githubusercontent.com/FalconPilot/roll20-sheets/master/sheets/starclock/gui/alkor_sil_m.png");
   width: 200px;
-  padding: 0 41px;
 }
 
 input[type=hidden][name="attr_race"][value="alkor"] ~ input[type=hidden][name="attr_gender"][value="f"] ~ .character-silhouette {
@@ -351,21 +379,16 @@ input[type=hidden][name="attr_race"][value="alkor"] ~ input[type=hidden][name="a
 input[type=hidden][name="attr_race"][value="drone"] ~ input[type=hidden][name="attr_gender"][value="f"] ~ .character-silhouette {
   background-image: url("https://raw.githubusercontent.com/FalconPilot/roll20-sheets/master/sheets/starclock/gui/drone_sil_f.png");
   width: 225px;
-  padding: 0 28.5px;
 }
 
-/*
-**  Rolltemplates
-*/
-
-.rolltemplate-general {
+.sheet-rolltemplate-general .sheet-rolltemplate-container {
   background-color: #333;
   border-radius: 4px;
   border: 1px solid #777;
   overflow: hidden;
 }
 
-.rolltemplate-general > .rolltemplate-container > h3 {
+.sheet-rolltemplate-general .sheet-rolltemplate-container > h3 {
   text-align: center;
   font-family: 'Contrail One';
   background-color: #FFF;
@@ -374,7 +397,7 @@ input[type=hidden][name="attr_race"][value="drone"] ~ input[type=hidden][name="a
   padding: 4px 0;
 }
 
-.rolltemplate-general .rolltemplate-results {
+.sheet-rolltemplate-general .sheet-rolltemplate-results {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -383,7 +406,7 @@ input[type=hidden][name="attr_race"][value="drone"] ~ input[type=hidden][name="a
   box-sizing: border-box;
 }
 
-.rolltemplate-general .rolltemplate-results > span {
+.sheet-rolltemplate-general .sheet-rolltemplate-results > span {
   font-size: 40px;
   padding: 0;
   width: min-content;
@@ -394,7 +417,7 @@ input[type=hidden][name="attr_race"][value="drone"] ~ input[type=hidden][name="a
   color: #FFF;
 }
 
-.rolltemplate-general .rolltemplate-footer {
+.sheet-rolltemplate-general .sheet-rolltemplate-footer {
   color: #FFF;
   font-size: 15px;
   text-align: right;
