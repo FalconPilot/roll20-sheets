@@ -12,11 +12,21 @@
       <input
         type="number"
         name="attr_armor_protection"
-        class="armor-bubble"
+        class="avatar-bubble"
         placeholder="0"
         value="0"
         title="Protection"
       />
+      <% Object.entries(constants.defenses).forEach(([key, defense]) => { %>
+        <input
+          type="number"
+          name="attr_armor_<%= key %>"
+          class="avatar-bubble"
+          placeholder="0"
+          value="0"
+          title="<%= defense.name %>"
+        />
+      <% }) %>
       <div class="elt-description fw">
         <textarea class="fw" name="attr_armor_description" placeholder="Description"></textarea>
       </div>

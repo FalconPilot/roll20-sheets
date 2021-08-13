@@ -46,51 +46,33 @@ const calculateSkillDice = (mainStat, offStat, known, groupKnown) => (
   mainStat + (groupKnown ? 1 : 0) + (known ? offStat : 0)
 )
 
-Object.keys(constants.stats).forEach(stat => {
-  const groupKeys = gk => [
-    `grp_${gk}_known`,
-    `grp_${gk}_bonus`
-  ]
+const calcNumber = n => {
+  const v = parseInt(n, 10)
+  return typeof v === 'number' && !isNaN(v) ? v : 0
+}
 
-  const skillKeys = sk => [
-    `skl_${sk}_known`,
-    `skl_${sk}_bonus`
-  ]
-
-  const related = Object.entries(constants.skillGroups).reduce((acc, [gk, group]) => {
-    let keys = []
-    let skills = []
-
-    if (group.offStat === stat || group.mainStat === stat) {
-      skills = group.special ? Object.keys(Object.values(group.skills)): Object.keys(group.skills)
-      keys.push(groupKeys(gk), ...skills.map(skillKeys))
-    } else if (group.special) {
-      skills = Object.entries(group.skills).reduce((list, [skillStat, relatedSkills]) => (
-        skillStat === stat
-          ? list.concat(Object.keys(relatedSkills))
-          : list
-      ), [])
-      keys.push(...skills.map(skillKeys))
-    }
-
-    if (keys.length > 0) {
-      onEvents([
-        events.sheetOpened,
-        ...keys.reduce((acc, arr) => acc.concat(arr), []).map(events.attributeChanged)
-      ], () => {
-        console.log(skills)
+onEvents([events.buttonClicked('roll_skill')], info => {
+  const key = info.htmlAttributes.value
+  const prefix = ['a', 'e', 'i', 'o', 'u', 'y']
+    .includes(info.htmlAttributes['data-name'][0].toLowerCase())
+      ? 'd\''
+      : 'de '
+  const name = `Test ${prefix}${info.htmlAttributes['data-name']}`
+  console.log(info.htmlAttributes)
+  getAttrs([key, 'character_name'], values => {
+    startRoll(`&{template:general} {{name=${name}}} {{character=${values.character_name}}} {{roll=[[[[${values[key]}]]D6]]}}`, data => {
+      finishRoll(data.rollId, {
+        roll: data.results.roll.dice
+          .sort()
+          .reduce((acc, dice) => {
+            const x = acc.slice()
+            x[dice - 1].push(['A', 'B', 'C', 'D', 'E', 'F'][dice - 1])
+            return x
+          }, [[], [], [], [], [], []])
+          .filter(arr => arr.length > 0)
+          .map(arr => arr.join(''))
+          .join(' ')
       })
-    }
-
-    return acc.concat(...keys)
-  }, [])
-
-  onEvents([
-    events.sheetOpened,
-    events.attributeChanged(stat)
-  ], () => {
-    console.log('STAT CHANGED !')
+    })
   })
-
-  console.log(stat, related)
 })

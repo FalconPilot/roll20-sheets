@@ -3,11 +3,11 @@
     <% const equation = `@{${group.mainStat}} + @{grp_${gk}_known} + @{grp_${gk}_bonus}` %>
     <div class="skill fw fcol">
       <div class="frow fw">
-        <div class="sc-skill-group frow tqw">
+        <div class="sc-skill-group frow fw">
           <% if (!group.special) { %>
             <span class="skl-total">
               <input
-                readonly
+                disabled
                 type="number"
                 name="attr_dice_grp_<%= gk %>"
                 value="<%= equation %>"
@@ -15,7 +15,7 @@
             </span>
           <% } else { %>
             <span class="skl-total sc-hidden">
-              <input readonly type="number" />D
+              <input disabled type="number" />D
             </span>
           <% } %>
           <input
@@ -31,9 +31,11 @@
           />
           <% if (!group.special) { %>
             <button
-              type="roll"
+              type="action"
+              name="act_roll_skill"
               class="line-input"
-              value="/r [[<%= equation %>]]D6"
+              value="dice_grp_<%= gk %>"
+              data-name="<%= group.name %>"
             ><%= group.name %></button>
           <% } else { %>
             <h3 class="line-input">* <%= group.name %></h3>
@@ -41,26 +43,37 @@
           <div class="toggle-input">
             <input type="checkbox" name="attr_toggle_sg_<%= gk %>" value="on" />
           </div>
+          <% if (!group.special) { %>
+            <div class="skill-stat main-stat full">
+              <%= constants.stats[group.mainStat].toUpperCase().slice(0, 3) %>
+            </div>
+          <% } else { %>
+            <div class="skill-stat full">-</div>
+          <% } %>
         </div>
       </div>
       <input type="hidden" class="toggle-control" name="attr_toggle_sg_<%= gk %>" />
-      <div class="skills-list <%= gk %> togglable fcol tqw">
+      <div class="skills-list <%= gk %> togglable fcol fw">
         <% Object.entries(group.skills).forEach(([_sk, skill]) => { %>
           <% if (!group.special) { %>
             <%- include('../parts/skill.ejs', {
+              constants,
               gk,
               group,
               sk: _sk,
               mainStat: group.mainStat,
+              offStat: group.offStat,
               skillName: skill
             }) %>
           <% } else { %>
             <% Object.entries(skill).forEach(([sk, skillName]) => { %>
               <%- include('../parts/skill.ejs', {
+                constants,
                 gk,
                 group,
                 sk,
                 mainStat: _sk,
+                offStat: group.offStat,
                 skillName
               }) %>
             <% }) %>

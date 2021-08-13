@@ -2,9 +2,9 @@
 <div class="sc-skill <%= sk %> fw frow">
   <span class="skl-total">
     <input
-      readonly
+      disabled
       type="number"
-      name="attr_dice_skl_<%= sk %>"
+      name="attr_skl_<%= sk %>_total"
       value="<%= equation %>"
     />D
   </span>
@@ -14,19 +14,31 @@
     name="attr_skl_<%= sk %>_bonus"
     value="0"
   />
-  <input
-    type="checkbox"
-    name="attr_skl_<%= sk %>_known"
-    value="1"
-  />
-  <input
-    type="checkbox"
-    name="attr_skl_<%= sk %>_mastered"
-    value="1"
-  />
+  <label class="skill-checkbox skill-known">
+    <input
+      type="checkbox"
+      name="attr_skl_<%= sk %>_known"
+      value="1"
+    />
+  </label>
+  <label class="skill-checkbox skill-mastered">
+    <input
+      type="checkbox"
+      name="attr_skl_<%= sk %>_mastered"
+      value="1"
+    />
+  </label>
   <button
-    type="roll"
+    type="action"
+    name="act_roll_skill"
     class="line-input"
-    value="/r [[<%= equation %>]]D6"
+    data-name="<%= skillName %>"
+    value="skl_<%= sk %>_total"
   ><%= skillName %></button>
+  <div class="skill-stat main-stat">
+    <%= constants.stats[mainStat].toUpperCase().slice(0, 3) %>
+  </div>
+  <div class="skill-stat off-stat">
+    <%= constants.stats[offStat].toUpperCase().slice(0, 3) %>
+  </div>
 </div>

@@ -1,6 +1,31 @@
-<h3 class="vd-aside-title fw">Santé</h3>
-<div class="vd-health fw frow">
-  <input type="number" name="attr_health_current" value="10" />
-  <input type="number" name="attr_health_max" value="4" />
+<div class="frow">
+  <div class="fcol">
+    <h3 class="vd-aside-title fw">Santé</h3>
+    <div class="vd-health fw frow">
+      <input type="number" name="attr_health_current" value="10" />
+      <input type="number" name="attr_health_max" readonly />
+    </div>
+  </div>
+  <div class="fcol">
+    <h3 class="vd-aside-title fw">Magie</h3>
+    <div class="vd-health fw frow">
+      <input type="number" name="attr_magic_current" value="0" />
+      <input type="number" name="attr_magic_max" readonly />
+    </div>
+  </div>
+</div>
+<div class="fw frow vd-defenses">
+  <% Object.entries(constants.defenses).forEach(([key, defense]) => { %>
+    <div class="fcol">
+      <h3 class="vd-aside-title fw"><%= defense.name %></h3>
+      <input
+        readonly
+        type="number"
+        class="avatar-bubble <%= key %>"
+        name="attr_<%= key %>"
+      />
+    </div>
+  <% }) %>
 </div>
 <hr />
+

@@ -81,7 +81,7 @@ button { margin: 0; }
 .info-line > select {
   flex: 1;
   width: 100% !important;
-  background-color: transparent;
+  background-color: #333;
   border-radius: 0;
   border-top: none;
   border-left: none;
@@ -114,6 +114,7 @@ button { margin: 0; }
 }
 
 .vd-health {
+  margin: 4px;
   justify-content: center;
 }
 
@@ -133,6 +134,14 @@ button { margin: 0; }
 
 .vd-health > input[type=number]:last-child {
   border-radius: 0 25px 25px 0;
+}
+
+.vd-defenses {
+  justify-content: center;
+}
+
+.vd-defenses > div {
+  padding: 4px;
 }
 
 .vd-avatar {
@@ -155,7 +164,7 @@ button { margin: 0; }
   z-index: 1;
 }
 
-input[type=number].armor-bubble,
+input[type=number].avatar-bubble,
 input[type=number].damage-bubble {
   width: 40px !important;
   height: 40px !important;
@@ -164,7 +173,7 @@ input[type=number].damage-bubble {
   flex-shrink: 0 !important;
 }
 
-input[type=number].armor-bubble {
+input[type=number].avatar-bubble {
   border-radius: 20px !important;
   border: 4px double #777 !important;
 }
@@ -259,7 +268,8 @@ input[type=hidden][name="attr_current_tab"][value="stats"] ~ .tab:not(.stats),
 input[type=hidden][name="attr_current_tab"][value="skills"] ~ .tab:not(.skills),
 input[type=hidden][name="attr_current_tab"][value="specs"] ~ .tab:not(.specs),
 input[type=hidden][name="attr_current_tab"][value="traits"] ~ .tab:not(.traits),
-input[type=hidden][name="attr_current_tab"][value="inventory"] ~ .tab:not(.inventory) {
+input[type=hidden][name="attr_current_tab"][value="inventory"] ~ .tab:not(.inventory),
+  input[type=hidden][name="attr_current_tab"][value="magic"] ~ .tab:not(.magic) {
   display: none;
 }
 
@@ -267,7 +277,8 @@ input[type=hidden][name="attr_current_tab"][value="stats"] + .tabs-toggle > .tab
 input[type=hidden][name="attr_current_tab"][value="skills"] + .tabs-toggle > .tab-input.skills,
 input[type=hidden][name="attr_current_tab"][value="specs"] + .tabs-toggle > .tab-input.specs,
 input[type=hidden][name="attr_current_tab"][value="traits"] + .tabs-toggle > .tab-input.traits,
-input[type=hidden][name="attr_current_tab"][value="inventory"] + .tabs-toggle > .tab-input.inventory {
+input[type=hidden][name="attr_current_tab"][value="inventory"] + .tabs-toggle > .tab-input.inventory,
+input[type=hidden][name="attr_current_tab"][value="magic"] + .tabs-toggle > .tab-input.magic {
   color: #FFF;
   background-color: #F50;
   border-color: #F50;
@@ -560,7 +571,7 @@ input[type=hidden]:not([value="on"]).dicebtn-toggle ~ button[type="roll"]:hover 
   font-size: 14px;
 }
 
-.elt-line .armor-bubble,
+.elt-line .avatar-bubble,
 .elt-line .damage-bubble {
   margin: 5px;
 }

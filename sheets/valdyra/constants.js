@@ -23,12 +23,36 @@ const rolltemplate = (templateName, formulas) => [
 ].join(' ')
 
 module.exports = {
+  fn: {
+    sortByValue,
+    sortByValueKey,
+    rolltemplate,
+    skillsQuery
+  },
   tabs: {
     stats: 'Caractéristiques',
     skills: 'Compétences',
     specs: 'Spécialités',
     traits: 'Traits',
+    magic: 'Magie',
     inventory: 'Inventaire'
+  },
+  defenses: {
+    parry: {
+      stat: 'adr',
+      skill: 'melee',
+      name: 'Parade'
+    },
+    dodge: {
+      stat: 'agi',
+      skill: 'voltige',
+      name: 'Esquive'
+    },
+    willpower: {
+      stat: 'con',
+      skill: 'insight',
+      name: 'Volonté'
+    }
   },
   races: {
     drakkeidRed: 'Drakkéide rouge',
@@ -149,10 +173,14 @@ module.exports = {
       description: 'Sauter, faire une roulade, faire des sauts périlleux, esquiver...'
     }
   },
-  fn: {
-    sortByValue,
-    sortByValueKey,
-    rolltemplate,
-    skillsQuery
+  weapons: {
+    swords: {
+      name: 'Epée',
+      plural: 'Epées',
+      items: [{
+        name: 'Épée commune',
+        type: 'medium'
+      }]
+    }
   }
 }
