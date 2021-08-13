@@ -280,6 +280,10 @@ input[type=hidden]:not([value="on"]).toggle-control + .togglable {
   background-color: #EA6200;
 }
 
+.skill-checkmark.mastered {
+
+}
+
 .aside-right {
   padding: 12px;
   box-sizing: border-box;
