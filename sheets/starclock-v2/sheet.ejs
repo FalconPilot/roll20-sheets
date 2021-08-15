@@ -8,11 +8,11 @@
   <div class="sc-frame fw">
     <%- include('./parts/header.ejs', { constants }) %>
 
-    <div class="fw frow">
+    <div class="fw frow sc-body">
       <div class="sc-tabs-wrapper fcol hw">
         <select class="sc-tabs-header" name="attr_current_tab">
-          <option value="character">Personnage</option>
-          <option value="skills">Compétences</option>
+          <option value="character">> Personnage</option>
+          <option value="skills">> Compétences</option>
         </select>
         <!-- TABS -->
         <%- include('./tabs/character.ejs', { constants }) %>

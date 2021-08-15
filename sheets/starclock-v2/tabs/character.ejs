@@ -5,26 +5,28 @@
       <div class="sc-stat hw frow <%= stat %>">
         <% const displayName = `${name[0].toUpperCase()}${name.slice(1)}` %>
         <h3 class="line-input"><%= displayName %></h3>
-        <label class="sc-value">
-          <input
-            type="number"
-            name="attr_<%= stat %>"
-            title="<%= displayName %>"
-            min="1"
-            value="1"
-          />
-        </label>
-        <% const prefix = ['a', 'e', 'i', 'o', 'u'].includes(name) ? 'd\'' : 'de ' %>
-        <label class="sc-limit">
-          <input
-            type="number"
-            name="attr_<%= stat %>_limit"
-            title="Limite <%= prefix %><%= name %>"
-            min="1"
-            value="2"
-          />
-        </label>
+        <div class="frow">
+          <label class="sc-value">
+            <input
+              type="number"
+              name="attr_<%= stat %>"
+              title="<%= displayName %>"
+              min="1"
+              value="1"
+            />
+          </label>
+          <% const prefix = name[0].toLowerCase().includes(['a', 'e', 'i', 'o', 'u']) ? 'd\'' : 'de ' %>
+          <label class="sc-limit">
+            <input
+              type="number"
+              name="attr_<%= stat %>_limit"
+              title="Limite <%= prefix %><%= name %>"
+              min="1"
+              value="2"
+            />
+          </label>
+        </div>
       </div>
-    <% }); %>
+    <% }) %>
   </div>
 </div>

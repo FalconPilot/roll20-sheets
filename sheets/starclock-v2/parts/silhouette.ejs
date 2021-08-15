@@ -1,3 +1,32 @@
 <input type="hidden" name="attr_race" />
 <input type="hidden" name="attr_gender" />
 <div class="character-silhouette fw"></div>
+<div class="character-wounds">
+  <h2>Blessures</h2>
+  <% const woundsAmount = ['none', 'one', 'two', 'three'] %>
+  <% ['Incapacitante', 'Légère', 'Modérée', 'Grave'].forEach((woundType, line) => { %>
+    <% const woundKey = woundType.slice(0, 3).toLowerCase().replace(/[éè]/g, 'e') %>
+    <div class="frow wounds-<%= woundKey %>">
+      <input type="hidden" name="attr_wound_<%= woundKey %>" value="0" />
+      <h3><%= woundType.slice(0, 2).toUpperCase() %></h3>
+      <% woundsAmount.forEach((woundAmount, idx) => { %>
+        <label class="wound-<%= woundAmount %>" title="<%= idx %> <%= woundType %><%= idx > 1 ? 's' : '' %>">
+          <input
+            <%= idx === 0 ? 'checked' : '' %>
+            type="radio"
+            name="attr_wound_<%= woundKey %>"
+            value="<%= idx %>"
+          />
+          <div class="wound-bullet <%= woundKey %>">
+            <span><%= idx %></span>
+          </div>
+        </label>
+      <% }) %>
+      <% if (line === 0) { %>
+        <h4 class="wound-annotation">K.O</h4>
+      <% } else if (line === 3) { %>
+        <h4 class="wound-annotation">:(</h4>
+      <% } %>
+    </div>
+  <% }) %>
+</div>
