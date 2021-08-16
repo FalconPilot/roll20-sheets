@@ -1,9 +1,25 @@
 .sc-wrapper {
+  position: relative;
   width: 800px;
   height: 500px;
-  border: 1px solid #CCC;
-  background-color: #151515;
-  border-radius: 20px;
+  padding: 39px 28px 44px 28px;
+  box-sizing: border-box;
+  z-index: 1;
+}
+
+.sc-wrapper:after {
+  content: ' ';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  background-image: url("https://raw.githubusercontent.com/FalconPilot/roll20-sheets/master/sheets/starclock-v2/gui/tablet-backdrop.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: 2;
 }
 
 .sc-wrapper * {
@@ -12,6 +28,12 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+.sc-frame {
+  height: 100%;
+  overflow: hidden;
+  background-color: #151515;
 }
 
 /* Chrome, Safari, Edge, Opera */
@@ -74,7 +96,7 @@ input[type=hidden]:not([value="on"]).toggle-control + .togglable {
 }
 
 .sc-body {
-  height: 500px;
+  height: 100%;
   color: #FFF;
 }
 
@@ -84,7 +106,6 @@ input[type=hidden]:not([value="on"]).toggle-control + .togglable {
   margin-top: 10px;
   border: 10px solid transparent;
   border-radius: 18px;
-  background-color: #151515;
   padding: 4px;
   overflow: auto;
   z-index: 1;
