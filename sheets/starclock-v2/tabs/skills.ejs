@@ -1,12 +1,13 @@
 <div class="sc-tab skills fcol fw">
   <% Object.entries(constants.skillGroups).forEach(([gk, group]) => { %>
-    <div class="skill fcol">
+    <div class="skill fcol fw">
       <div class="frow fw">
         <div class="sc-skill-group frow fw">
           <% const equation = !group.special ? `@{${group.mainStat}} + @{grp_${gk}_known} + @{grp_${gk}_bonus}` : `@{grp_${gk}_known} + @{grp_${gk}_bonus}` %>
-          <div class="toggle-input">
+          <label class="toggle-input">
             <input type="checkbox" name="attr_toggle_sg_<%= gk %>" value="on" />
-          </div>
+            <div class="toggle-button"></div>
+          </label>
           <span class="skl-total">
             <input
               disabled
@@ -21,10 +22,7 @@
               name="attr_grp_<%= gk %>_known"
               value="1"
             />
-            <img
-              class="skill-checkmark known"
-              src="https://raw.githubusercontent.com/FalconPilot/roll20-sheets/master/sheets/starclock-v2/gui/known.png"
-            />
+            <div class="skill-checkmark known"></div>
           </label>
           <% if (!group.special) { %>
             <button

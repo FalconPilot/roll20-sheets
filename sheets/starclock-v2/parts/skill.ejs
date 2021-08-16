@@ -1,5 +1,6 @@
 <% const equation = `@{${mainStat}} + @{${group.offStat}} * @{skl_${sk}_known} + @{grp_${gk}_known} + @{grp_${gk}_bonus} + @{skl_${sk}_bonus}` %>
 <div class="sc-skill <%= sk %> fw frow">
+  <div class="skill-prefix">|_</div>
   <span class="skl-total">
     <input
       disabled
@@ -14,10 +15,7 @@
       name="attr_skl_<%= sk %>_known"
       value="1"
     />
-    <img
-      class="skill-checkmark known"
-      src="https://raw.githubusercontent.com/FalconPilot/roll20-sheets/master/sheets/starclock-v2/gui/known.png"
-    />
+    <div class="skill-checkmark known"></div>
   </label>
   <input type="hidden" name="attr_skl_<%= sk %>_mastered" />
   <label class="skill-checkbox skill-mastered" title="Maîtrisé">
@@ -26,10 +24,7 @@
       name="attr_skl_<%= sk %>_mastered"
       value="1"
     />
-    <img
-      class="skill-checkmark mastered"
-      src="https://raw.githubusercontent.com/FalconPilot/roll20-sheets/master/sheets/starclock-v2/gui/mastered.png"
-    />
+    <div class="skill-checkmark mastered"></div>
   </label>
   <button
     type="action"
