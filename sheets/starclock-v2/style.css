@@ -1,6 +1,9 @@
 .sc-wrapper {
   width: 800px;
+  height: 500px;
   border: 1px solid #CCC;
+  background-color: #151515;
+  border-radius: 20px;
 }
 
 .sc-wrapper * {
@@ -72,14 +75,14 @@ input[type=hidden]:not([value="on"]).toggle-control + .togglable {
 
 .sc-body {
   height: 500px;
-  background-color: #333;
   color: #FFF;
 }
 
 .sc-tab {
   position: relative;
+  flex: 1;
   margin-top: 10px;
-  border: 10px solid #333;
+  border: 10px solid transparent;
   border-radius: 18px;
   background-color: #151515;
   padding: 4px;
@@ -98,30 +101,27 @@ input[type=hidden]:not([value="on"]).toggle-control + .togglable {
   border-bottom: 1px solid #CCC;
 }
 
-.sc-header {
-  height: 100px;
-  padding: 15px;
-  background-color: #333;
+.sc-infos {
   align-items: center;
 }
 
-.sc-header * {
+.sc-infos * {
   color: #FFF;
 }
 
-.sc-header span {
+.sc-infos span {
   font-family: 'Contrail One';
   margin-right: 8px;
 }
 
-.sc-header input:last-child,
-.sc-header select:last-child {
+.sc-infos input:last-child,
+.sc-infos select:last-child {
   flex: 1;
 }
 
-.sc-header select.line-input {
+.sc-infos select.line-input {
   width: auto;
-  background-color: #333;
+  background-color: #151515;
   border-radius: 0;
 }
 
@@ -187,7 +187,7 @@ input[type=hidden]:not([value="on"]).toggle-control + .togglable {
 }
 
 .skills-list {
-  padding: 10px 0 10px 30px;
+  padding: 10px 0;
   border-top: none;
 }
 
@@ -212,19 +212,6 @@ input[type=hidden]:not([value="on"]).toggle-control + .togglable {
 .sc-skill {
   position: relative;
   padding: 1px 8px 4px 8px;
-}
-
-.sc-skill:before {
-  content: 'Niv.';
-  position: absolute;
-  left: -13px;
-  top: 0;
-  bottom: 0;
-  line-height: 40px;
-  color: #EA00D9;
-  text-shadow: 0 0 5px #EA00D9;
-  font-family: 'Contrail One';
-  font-size: 14px;
 }
 
 .sc-skill-group .toggle-input {
@@ -379,7 +366,7 @@ input[type=hidden]:not([value="on"]).toggle-control + .togglable {
   width: 25px !important;
   height: 25px;
   padding: 0;
-  border: 1px solid #333;
+  border: 1px solid transparent;
   border-radius: 4px;
   overflow: hidden;
 }
@@ -407,18 +394,16 @@ input[type=hidden]:not([value="on"]).toggle-control + .togglable {
   transition: 0.1s;
 }
 
-.skill-checkmark.known {
-  filter: invert(1);
-}
-
 .skill-checkbox > input[type=checkbox]:checked ~ .skill-checkmark.known {
-  background-color: #2dff3c;
+  background-color: #d200c3;
+  filter: none;
 }
 
 .skill-checkbox > input[type=checkbox]:checked ~ .skill-checkmark.mastered {
   background-color: #981212;
 }
 
+.skill-checkbox > input[type=checkbox]:not(:checked) ~ .skill-checkmark.known,
 .skill-checkbox > input[type=checkbox]:not(:checked) ~ .skill-checkmark.mastered {
   filter: contrast(0) brightness(2);
 }
@@ -426,7 +411,6 @@ input[type=hidden]:not([value="on"]).toggle-control + .togglable {
 .aside-right {
   position: relative;
   box-sizing: border-box;
-  background-color: #333;
   align-items: center;
   justify-content: flex-start;
 }
