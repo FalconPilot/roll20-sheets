@@ -444,8 +444,14 @@ input[type=hidden]:not([value="on"]).toggle-control + .togglable {
 
 .skill-checkbox:before {
   content: ' ';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background-size: contain;
   background-repeat: no-repeat;
+  filter: contrast(0) brightness(2);
 }
 
 .skill-checkbox.skill-known:before {
@@ -476,16 +482,14 @@ input[type=hidden]:not([value="on"]).toggle-control + .togglable {
 
 .skill-checkbox > input[type=checkbox]:checked ~ .skill-checkmark.known {
   background-color: #d200c3;
+}
+
+.skill-checkbox > input[type=checkbox]:checked ~ .skill-checkmark:before {
   filter: none;
 }
 
 .skill-checkbox > input[type=checkbox]:checked ~ .skill-checkmark.mastered {
   background-color: #981212;
-}
-
-.skill-checkbox > input[type=checkbox]:not(:checked) ~ .skill-checkmark.known,
-.skill-checkbox > input[type=checkbox]:not(:checked) ~ .skill-checkmark.mastered {
-  filter: contrast(0) brightness(2);
 }
 
 .aside-right {
