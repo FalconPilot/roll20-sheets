@@ -2,9 +2,69 @@
   position: relative;
   width: 800px;
   height: 500px;
-  padding: 34px 25px 39px 25px;
+  padding: 26px 20px 40px 20px;
   box-sizing: border-box;
   z-index: 1;
+}
+
+@keyframes daicomIntro {
+  0% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+    pointer-events: all;
+  }
+  100% {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+@keyframes daicomLogo {
+  0% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.sc-daicom {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 3;
+  background-color: #333;
+  animation: daicomIntro linear 2s;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.sc-daicom:before {
+  content: ' ';
+  width: 385px;
+  height: 177px;
+  background-image: url("https://raw.githubusercontent.com/FalconPilot/roll20-sheets/master/sheets/starclock-v2/gui/daicom-white.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  pointer-events: none;
+  z-index: 4;
 }
 
 .sc-wrapper:after {
@@ -19,7 +79,7 @@
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  z-index: 2;
+  z-index: 10;
 }
 
 .sc-wrapper * {
@@ -194,6 +254,8 @@ input[type=hidden]:not([value="on"]).toggle-control + .togglable {
   flex: 1;
   text-align: left;
   font-family: 'Contrail One';
+  color: #0ABDC6;
+  text-shadow: 0px 0px 5px #0ABDC6;
 }
 
 .sc-stats > .sc-stat:nth-child(even) {
@@ -209,16 +271,22 @@ input[type=hidden]:not([value="on"]).toggle-control + .togglable {
   height: 30px;
   width: 30px;
   padding: 0;
-  border: 1px solid #CCC;
   margin-bottom: 0;
+  background-color: #03383B;
+  border: 1px solid #0abdc6;
+  text-shadow: 0px 0px 3px #0abdc6;
+  box-shadow: 0px 0px 5px #0abdc6, 0px 0px 5px #0abdc6 inset;
 }
 
-.sc-stats > .sc-stat:nth-child(even) {
-  padding-left: 5px;
+.sc-stat label:nth-child(even) {
+  border-radius: 0 4px 4px 0;
 }
 
 .sc-stats > .sc-stat:nth-child(odd) {
   padding-right: 5px;
+}
+.sc-stat label:nth-child(odd) {
+  border-radius: 4px 0 0 4px;
 }
 
 .sc-stat label.sc-limit {
@@ -235,15 +303,18 @@ input[type=hidden]:not([value="on"]).toggle-control + .togglable {
   font-family: 'Pictos';
   transform: rotate(90deg);
   pointer-events: none;
-  opacity: 0.3;
+  color: #0abdc6;
+  opacity: 0.5;
 }
 
 .sc-stat label > input[type="number"] {
   width: 100% !important;
   height: 100%;
   padding: 0;
-  border: none;
   text-align: center;
+  background-color: transparent;
+  color: #0abdc6;
+  border: none;
 }
 
 .skills-list {
@@ -314,7 +385,6 @@ input[type=hidden]:not([value="on"]).toggle-control + .togglable {
   width: 100%;
   border-top: 2px solid rgb(49 206 38);
   border-right: 2px solid rgb(49 206 38);
-  border-radius: 2px;
   transition: 0.1s ease-in-out;
   filter: drop-shadow(0px 0px 2px rgb(49 206 38));
 }
@@ -483,7 +553,7 @@ input[type=hidden].mastered-control[value="1"] ~ button[type=action].line-input 
 
 .sc-skill > .skill-checkbox.skill-known {
   border-right: none;
-  border-radius: 2px 0 0 2px;
+  border-radius: 0 0 2px;
   margin-right: 0;
 }
 
@@ -736,7 +806,7 @@ input[type=hidden].mastered-control[value="1"] ~ button[type=action].line-input 
   background-size: contain;
   align-self: flex-start;
   pointer-events: none;
-  filter: brightness(0.6) sepia(1) saturate(2.4) hue-rotate(60deg) drop-shadow(0px 0px 2px rgb(49 206 38));
+  filter: brightness(0.55) sepia(1) saturate(2.4) hue-rotate(60deg) drop-shadow(0px 0px 2px rgb(49 206 38));
   background-image: url("https://raw.githubusercontent.com/FalconPilot/roll20-sheets/master/sheets/starclock/gui/human_sil_m.png");
   z-index: 1;
 }
