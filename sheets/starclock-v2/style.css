@@ -71,21 +71,40 @@ input[type=hidden][name="attr_gender"]:not(input[value="other"]) ~ .sc-frame inp
   display: none;
 }
 
+.sc-tabs-heading {
+  align-items: center;
+}
+
+.sc-tabs-heading > h3 {
+  margin-right: 8px;
+  font-size: 18px;
+  font-family: 'Contrail One';
+  color: #EA00D9;
+  text-shadow: 0px 0px 5px #EA00D9;
+}
+
+.sc-tabs-heading > h3 > span {
+  color: rgb(49 206 38);
+  text-shadow: 0px 0px 5px rgb(49 206 38);
+  margin-left: 4px;
+  letter-spacing: -3px;
+}
+
 .sc-tabs-header {
   position: relative;
   width: auto;
   height: auto;
   border: none;
-  margin: 10px 10px 0 10px;
+  flex: 1;
   border-radius: 8px;
   padding: 5px 5px 5px 20px;
   font-size: 18px;
   font-family: 'Contrail One';
   background-color: #151515;
-  color: #0abdc6;
-  border: 1px solid #0abdc6;
-  text-shadow: 0px 0px 5px #0abdc6;
-  box-shadow: 0px 0px 5px #0abdc6, 0px 0px 5px #0abdc6 inset;
+  color: rgb(49 206 38);
+  border: 1px solid rgb(49 206 38);
+  text-shadow: 0px 0px 5px rgb(49 206 38);
+  box-shadow: 0px 0px 5px rgb(49 206 38), 0px 0px 5px rgb(49 206 38) inset;
 }
 
 input[type=hidden][name="attr_current_tab"]:not(input[value="character"]) ~ .sc-frame .sc-tab.character,
@@ -127,11 +146,16 @@ input[type=hidden]:not([value="on"]).toggle-control + .togglable {
 }
 
 .sc-infos {
-  align-items: center;
+  width: 100px;
+  align-items: stretch;
 }
 
 .sc-infos * {
   color: #FFF;
+}
+
+.sc-infos > .frow > input {
+  flex: 1;
 }
 
 .sc-infos span {
@@ -144,10 +168,21 @@ input[type=hidden]:not([value="on"]).toggle-control + .togglable {
   flex: 1;
 }
 
+.sc-infos > * {
+  width: 100%;
+}
+
+.sc-infos .line-input {
+  font-size: 12px;
+}
+
 .sc-infos select.line-input {
   width: auto;
   background-color: #151515;
   border-radius: 0;
+  padding-left: 0;
+  padding-right: 0;
+  font-size: 11px;
 }
 
 .sc-stat {
@@ -214,6 +249,15 @@ input[type=hidden]:not([value="on"]).toggle-control + .togglable {
 .skills-list {
   padding: 10px 0;
   border-top: none;
+}
+
+.sklist-spacer {
+  width: 80%;
+  height: 2px;
+  margin: 10px auto 0 auto;
+  background-color: rgb(49 206 38);
+  box-shadow: 0px 0px 5px rgb(49 206 38);
+  border-radius: 2px;
 }
 
 .skill {
@@ -286,17 +330,21 @@ input[type=hidden]:not([value="on"]).toggle-control + .togglable {
 
 .skl-total > input[type=number] {
   width: 1em !important;
-  text-align: center;
   background-color: transparent;
   border: none;
-  color: #0ABDC6;
-  text-shadow: 0 0 5px #0ABDC6;
+  text-align: left;
   font-size: 16px;
 }
 
-.skl-total,
-.skl-total > input[type=number] {
+.skl-total > input[type=number],
+.skl-total > span {
+  color: #0ABDC6;
+  text-shadow: 0 0 5px #0ABDC6;
   font-family: 'Contrail One';
+}
+
+.skl-total > span {
+  font-size: 12px;
 }
 
 .skill-bonus {
@@ -380,8 +428,18 @@ input[type=hidden]:not([value="on"]).toggle-control + .togglable {
   font-family: 'Contrail One';
   box-shadow: 0 0 4px #03383B;
   color: #0ABDC6;
-  text-shadow: 0 0 5px #0ABDC6;
+  text-shadow: 0 0 5px #0abdc699;
+  border: 1px solid transparent;
   font-weight: normal;
+  transition: 0.1s;
+}
+
+input[type=hidden].mastered-control[value="1"] ~ button[type=action].line-input {
+  background-color: rgb(82 73 9);
+  color: rgb(255 227 25);
+  text-shadow: 0px 0px 5px rgb(255 227 25);
+  box-shadow: 0px 0px 5px rgb(255 227 25), 0px 0px 5px rgb(255 227 25) inset;
+  border-color: rgb(255 227 25);
 }
 
 .sc-skill-group > h3.line-input {
@@ -423,6 +481,18 @@ input[type=hidden]:not([value="on"]).toggle-control + .togglable {
   margin: 0 2px;
 }
 
+.sc-skill > .skill-checkbox.skill-known {
+  border-right: none;
+  border-radius: 2px 0 0 2px;
+  margin-right: 0;
+}
+
+.sc-skill > .skill-checkbox.skill-mastered {
+  border-left: none;
+  border-radius: 0 2px 2px 0;
+  margin-left: 0;
+}
+
 .skill-checkbox > input[type=checkbox] {
   display: none;
 }
@@ -431,15 +501,22 @@ input[type=hidden]:not([value="on"]).toggle-control + .togglable {
   position: relative;
   width: 25px !important;
   height: 25px;
-  padding: 0;
+  padding: 0 !important;
   border: 1px solid transparent;
   border-radius: 4px;
-  overflow: hidden;
+  background-color: #151515;
+  z-index: 2;
 }
 
 .skill-checkbox.skill-known {
   border-color: #D200C3;
-  box-shadow: 0px 0px 5px #D200C3, 0px 0px 5px #D200C3 inset;
+  box-shadow: 0px 0px 5px #D200C3;
+}
+
+.skill-checkmark {
+  width: 100%;
+  height: 100%;
+  transition: 0.1s;
 }
 
 .skill-checkbox:before {
@@ -449,21 +526,41 @@ input[type=hidden]:not([value="on"]).toggle-control + .togglable {
   left: 0;
   right: 0;
   bottom: 0;
-  background-size: contain;
-  background-repeat: no-repeat;
-  filter: contrast(0) brightness(2);
+  z-index: 1;
 }
 
 .skill-checkbox.skill-known:before {
+  box-shadow: 0px 0px 5px #D200C3 inset;
+}
+
+.skill-checkbox.skill-mastered:before {
+  box-shadow: 0px 0px 5px #BB1F1F;
+}
+
+.skill-checkmark:after {
+  content: ' ';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: contain;
+  background-repeat: no-repeat;
+  filter: contrast(0) brightness(2);
+  transition: 0.1s;
+  z-index: 3;
+}
+
+.skill-checkmark.known:after {
   background-image: url("https://raw.githubusercontent.com/FalconPilot/roll20-sheets/master/sheets/starclock-v2/gui/known.png");
 }
 
 .skill-checkbox.skill-mastered {
   border-color: #BB1F1F;
-  box-shadow: 0px 0px 5px #BB1F1F, 0px 0px 5px #BB1F1F inset;
+  box-shadow: 0px 0px 5px #BB1F1F inset;
 }
 
-.skill-checkbox.skill-mastered:before {
+.skill-checkmark.mastered:after {
   background-image: url("https://raw.githubusercontent.com/FalconPilot/roll20-sheets/master/sheets/starclock-v2/gui/mastered.png");
 }
 
@@ -471,38 +568,21 @@ input[type=hidden]:not([value="on"]).toggle-control + .togglable {
   cursor: pointer;
 }
 
-.skill-checkmark {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  transition: 0.1s;
-}
-
 .skill-checkbox > input[type=checkbox]:checked ~ .skill-checkmark.known {
   background-color: #d200c3;
-}
-
-.skill-checkbox > input[type=checkbox]:checked ~ .skill-checkmark:before {
-  filter: none;
 }
 
 .skill-checkbox > input[type=checkbox]:checked ~ .skill-checkmark.mastered {
   background-color: #981212;
 }
 
-.aside-right {
-  position: relative;
-  box-sizing: border-box;
-  align-items: center;
-  justify-content: flex-start;
+.skill-checkbox > input[type=checkbox]:checked ~ .skill-checkmark:after {
+  filter: none;
 }
 
 .character-wounds {
-  position: absolute;
-  top: 0;
-  left: 0;
+  flex-shrink: 0;
+  flex-grow: 0;
 }
 
 .character-wounds > div {
@@ -575,6 +655,7 @@ input[type=hidden]:not([value="on"]).toggle-control + .togglable {
   height: 20px;
   border-radius: 50%;
   border: 1px solid #FFF;
+  background-color: rgba(0, 0, 0, 0.5);
   transition: 0.1s;
 }
 
@@ -631,17 +712,36 @@ input[type=hidden]:not([value="on"]).toggle-control + .togglable {
 **  Human silhouette - Default
 */
 
-input[type=hidden][name="attr_race"] ~ .character-silhouette {
-  height: 400px;
-  margin: auto;
-  background-position-x: center;
+.silhouette-wrapper {
+  position: relative;
+  height: 100%;
+  padding-left: 4px;
+  box-sizing: border-box;
+  z-index: 2;
+}
+
+.silhouette-wrapper > * {
+  z-index: 2;
+}
+
+.character-silhouette {
+  position: absolute;
+  top: 35px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-position-x: right;
+  background-position-y: center;
   background-repeat: no-repeat;
   background-size: contain;
   align-self: flex-start;
+  pointer-events: none;
+  filter: brightness(0.6) sepia(1) saturate(2.4) hue-rotate(60deg) drop-shadow(0px 0px 2px rgb(49 206 38));
   background-image: url("https://raw.githubusercontent.com/FalconPilot/roll20-sheets/master/sheets/starclock/gui/human_sil_m.png");
+  z-index: 1;
 }
 
-input[type=hidden][name="attr_race"] ~ input[type=hidden][name="attr_gender"][value="f"] ~ .character-silhouette {
+input[type=hidden][name="attr_gender"][value="f"] ~ .character-silhouette {
   background-image: url("https://raw.githubusercontent.com/FalconPilot/roll20-sheets/master/sheets/starclock/gui/human_sil_f.png");
 }
 
@@ -705,7 +805,6 @@ input[type=hidden][name="attr_race"][value="endaari"] ~ input[type=hidden][name=
 
 input[type=hidden][name="attr_race"][value="alkor"] ~ .character-silhouette {
   background-image: url("https://raw.githubusercontent.com/FalconPilot/roll20-sheets/master/sheets/starclock/gui/alkor_sil_m.png");
-  width: 200px;
 }
 
 input[type=hidden][name="attr_race"][value="alkor"] ~ input[type=hidden][name="attr_gender"][value="f"] ~ .character-silhouette {
@@ -718,7 +817,6 @@ input[type=hidden][name="attr_race"][value="alkor"] ~ input[type=hidden][name="a
 
 input[type=hidden][name="attr_race"][value="drone"] ~ input[type=hidden][name="attr_gender"][value="f"] ~ .character-silhouette {
   background-image: url("https://raw.githubusercontent.com/FalconPilot/roll20-sheets/master/sheets/starclock/gui/drone_sil_f.png");
-  width: 225px;
 }
 
 .sheet-rolltemplate-general .sheet-rolltemplate-container {

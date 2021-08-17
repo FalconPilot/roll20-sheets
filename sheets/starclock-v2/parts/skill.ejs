@@ -1,7 +1,9 @@
 <% const equation = `@{${mainStat}} + @{${group.offStat}} * @{skl_${sk}_known} + @{grp_${gk}_known} + @{grp_${gk}_bonus} + @{skl_${sk}_bonus}` %>
 <div class="sc-skill <%= sk %> fw frow">
+  <input type="hidden" class="mastered-control" name="attr_skl_<%= sk %>_mastered" />
   <div class="skill-prefix">|_</div>
   <span class="skl-total">
+    <span>x</span>
     <input
       disabled
       type="number"
@@ -17,7 +19,6 @@
     />
     <div class="skill-checkmark known"></div>
   </label>
-  <input type="hidden" name="attr_skl_<%= sk %>_mastered" />
   <label class="skill-checkbox skill-mastered" title="Maîtrisé">
     <input
       type="checkbox"
