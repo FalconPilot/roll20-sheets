@@ -984,10 +984,23 @@ input[name="attr_archetype"]:not(input[value="custom"]) ~ .weapon select.nonedit
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+  filter: contrast(0.5) brightness(1.75) drop-shadow(0px 0px 0px #EA00D9) drop-shadow(0px 0px 5px #EA00D9) drop-shadow(0px 0px 1px #EA00D9);
 }
 
 input[name="attr_wcaliber"][type="hidden"][value="antimaterial"] ~ .weapon .caliber-img {
-  background-image: url("https://raw.githubusercontent.com/FalconPilot/roll20-sheets/master/sheets/starclock-v2/gui/caliber-127mm");
+  background-image: url("https://raw.githubusercontent.com/FalconPilot/roll20-sheets/master/sheets/starclock-v2/gui/caliber-127mm.png");
+}
+
+input[name="attr_wcaliber"][type="hidden"][value="pistol_light"] ~ .weapon .caliber-img {
+  background-image: url("https://raw.githubusercontent.com/FalconPilot/roll20-sheets/master/sheets/starclock-v2/gui/caliber-9mm.png");
+}
+
+input[name="attr_wcaliber"][type="hidden"][value="pistol_heavy"] ~ .weapon .caliber-img {
+  background-image: url("https://raw.githubusercontent.com/FalconPilot/roll20-sheets/master/sheets/starclock-v2/gui/caliber-10mm.png");
+}
+
+input[name="attr_wcaliber"][type="hidden"][value="rifle_light"] ~ .weapon .caliber-img {
+  background-image: url("https://raw.githubusercontent.com/FalconPilot/roll20-sheets/master/sheets/starclock-v2/gui/caliber-550mm.png");
 }
 
 .weapon .subtopic {
