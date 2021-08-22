@@ -185,5 +185,35 @@ module.exports = {
         artillery: 'Artillerie'
       }
     }
+  },
+  calibers: {
+    pistol_light: {
+      name: 'Pistolet léger (9mm)',
+      woundsType: 'leg',
+      woundsAmount: 1,
+      penetration: 1
+    },
+    rifle_light: {
+      name: 'Fusil léger (5x50mm)',
+      woundsType: 'mod',
+      wounds: 1,
+      penetration: 2
+    },
+    antimaterial: {
+      name: 'Antimatériel (12.7mm)',
+      woundsType: 'gra',
+      wounds: 3,
+      penetration: 5
+    }
+  },
+  weapons: {
+    rifle: {
+      r30: {
+        name: 'Fusil R30',
+        description: 'Fusil d\'assaut standard de DaiCom, le R30 est encore utilisé aujourd\'hui en raison de sa simplicité de fabrication.',
+        caliber: 'rifle_light',
+        hits: 3
+      }
+    }
   }
 }

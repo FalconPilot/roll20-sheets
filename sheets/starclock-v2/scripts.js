@@ -2,6 +2,7 @@
 const events = {
   sheetOpened: 'sheet:opened',
   buttonClicked: (btn) => `clicked:${btn}`,
+  repeatingGroupButtonClicked: (group, btn) => `clicked:repeating_${group}:${btn}`,
   attributeChanged: (attr) => `change:${attr}`,
   repeatingGroupAttributeChanged: (group, attr = null) => `change:repeating_${group}${attr ? `:${attr}` : ''}`,
   removeRepeatingGroup: (group) => `remove:repeating_${group}`
@@ -51,7 +52,7 @@ const calcNumber = n => {
   return typeof v === 'number' && !isNaN(v) ? v : 0
 }
 
-onEvents([events.buttonClicked('roll_skill')], info => {
+onEvents([events.buttonClicked('roll-skill')], info => {
   const key = info.htmlAttributes.value
   const prefix = ['a', 'e', 'i', 'o', 'u', 'y']
     .includes(info.htmlAttributes['data-name'][0].toLowerCase())
@@ -73,5 +74,96 @@ onEvents([events.buttonClicked('roll_skill')], info => {
           .join(' ')
       })
     })
+  })
+})
+
+const getSkillForWtype = wtype => {
+  switch (wtype) {
+    case 'rifle': return 'longguns'
+    case 'pistol': return 'handguns'
+    default: return null
+  }
+}
+
+onEvents([events.buttonClicked('repeating_weapons:test')], infos => {
+  console.log(infos)
+  getAttrs([
+    'character_name',
+    'repeating_weapons_wname',
+    'repeating_weapons_wtype',
+    'repeating_weapons_whits',
+    'repeating_weapons_wwounds',
+    'repeating_weapons_wwounds_type'
+  ], values => {
+    const skill = getSkillForWtype(values.repeating_weapons_wtype)
+    if (!skill) {
+      console.error(`Could not find skill for "${values.repeating_weapons_wtype}"`)
+      return
+    }
+    getAttrs([`${skill}_total`], v2 => {
+      const name = `Attaque : ${values.repeating_weapons_wname}`
+      const woundsType = {
+        inc: 'incapacitante',
+        leg: 'légère',
+        mod: 'modérée',
+        gra: 'grave'
+      }[values.repeating_weapons_wwounds_type] || 'inconnues'
+
+      const hitsSuffix = parseInt(values.repeating_weapons_whits, 10) > 1 ? 's' : ''
+      const woundsSuffix = parseInt(values.repeating_weapons_wwounds, 10) > 1 ? 's' : ''
+      const hits = `${values.repeating_weapons_whits} coup${hitsSuffix}`
+      const wounds = `${values.repeating_weapons_wwounds} blessure${woundsSuffix} ${woundsType}${woundsSuffix}`
+
+      startRoll(`&{template:attack} {{name=${name}}} {{character=${values.character_name}}} {{roll=[[[[${v2[`${skill}_total`] || 1}]]D6]]}} {{hits=${hits}}} {{wounds=${wounds}}}`, data => {
+        finishRoll(data.rollId, {
+          roll: data.results.roll.dice
+            .sort()
+            .reduce((acc, dice) => {
+              const x = acc.slice()
+              x[dice - 1].push(['A', 'B', 'C', 'D', 'E', 'F'][dice - 1])
+              return x
+            }, [[], [], [], [], [], []])
+            .filter(arr => arr.length > 0)
+            .map(arr => arr.join(''))
+            .join(' ')
+        })
+      })
+    })
+  })
+})
+
+onEvents([
+  events.repeatingGroupAttributeChanged('weapons', 'archetype')
+], infos => {
+  if (infos.newValue === 'custom') {
+    return
+  }
+
+  const wgroup = Object.entries(constants.weapons)
+    .find(([_wk, weapons]) => weapons[infos.newValue])
+
+  if (!wgroup) {
+    return
+  }
+
+  const [groupKey, weapon] = [wgroup[0], wgroup[1][infos.newValue]]
+  const sectionId = infos.sourceAttribute.split('_')[2]
+  const prefix = `repeating_weapons_${sectionId}`
+
+  const caliber = constants.calibers[weapon.caliber]
+
+  if (!caliber) {
+    console.error(`Caliber "${weapon.caliber}" not found in constants !`)
+    return
+  }
+
+  setAttrs({
+    [`${prefix}_wname`]: weapon.name,
+    [`${prefix}_whits`]: weapon.hits,
+    [`${prefix}_wwounds`]: caliber.wounds + (weapon.wounds || 0),
+    [`${prefix}_wpenetration`]: caliber.penetration + (weapon.penetration || 0),
+    [`${prefix}_wwounds_type`]: caliber.woundsType,
+    [`${prefix}_wcaliber`]: weapon.caliber,
+    [`${prefix}_wtype`]: groupKey
   })
 })

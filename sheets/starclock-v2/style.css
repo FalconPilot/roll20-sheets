@@ -19,16 +19,61 @@
   }
 }
 
+@keyframes daicomLockWrapper {
+  0% {
+    border-color: #FFF;
+    box-shadow: 0px 0px 5px #FFF, 0px 0px 5px #FFF inset;
+  }
+  45% {
+    border-color: #FFF;
+    box-shadow: 0px 0px 5px #FFF, 0px 0px 5px #FFF inset;
+  }
+  55% {
+    border-color: rgb(49 206 38);
+    box-shadow: 0px 0px 5px rgb(49 206 38), 0px 0px 5px rgb(49 206 38) inset;
+  }
+  100% {
+    border-color: rgb(49 206 38);
+    box-shadow: 0px 0px 5px rgb(49 206 38), 0px 0px 5px rgb(49 206 38) inset;
+  }
+}
+
+@keyframes daicomLock {
+  0% {
+    opacity: 0;
+    filter: none;
+  }
+  10% {
+    opacity: 1;
+  }
+  30% {
+    transform: translateX(0);
+  }
+  45% {
+    filter: none;
+  }
+  50% {
+    transform: translateX(120px);
+  }
+  55% {
+    filter: brightness(0.7) sepia(1) hue-rotate(60deg) saturate(2) drop-shadow(0px 0px 2px rgb(49 206 38));
+  }
+  100% {
+    transform: translateX(120px);
+    filter: brightness(0.7) sepia(1) hue-rotate(60deg) saturate(2) drop-shadow(0px 0px 2px rgb(49 206 38));
+  }
+}
+
 @keyframes daicomLogo {
   0% {
     opacity: 0;
   }
   10% {
-    transform: translateX(-20px);
+    transform: translateY(20px);
     opacity: 0;
   }
   20% {
-    transform: translateX(0);
+    transform: translateY(0);
     opacity: 1;
   }
   70% {
@@ -48,11 +93,11 @@
   0% {
     opacity: 0;
   }
-  20% {
+  10% {
     width: 200px;
     opacity: 0;
   }
-  30% {
+  20% {
     width: 180px;
     opacity: 1;
   }
@@ -69,6 +114,18 @@
   }
 }
 
+@keyframes pulseOpacity {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 .sc-daicom {
   position: absolute;
   top: 25px;
@@ -82,7 +139,7 @@
   flex-direction: column;
   pointer-events: none;
   z-index: 3;
-  background-color: #222;
+  background-color: rgba(0, 0, 0, 0.75);
   animation: daicomIntro linear 2s;
 }
 
@@ -121,6 +178,28 @@
   bottom: 100px;
   border: 1px solid #FFF;
   border-radius: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  animation: daicomLockWrapper ease-in-out 2s;
+  z-index: 5;
+}
+
+.sc-daicom-lock:after {
+  content: ' ';
+  height: 35px;
+  width: 35px;
+  margin-left: 5px;
+  border: 1px solid #FFF;
+  border-radius: 50%;
+  box-sizing: border-box;
+  overflow: hidden;
+  background-image: url("https://raw.githubusercontent.com/FalconPilot/roll20-sheets/master/sheets/starclock-v2/gui/lock.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  filter: brightness(0.7) sepia(1) hue-rotate(60deg) saturate(2) drop-shadow(0px 0px 2px rgb(49 206 38));
+  animation: daicomLock ease-in-out 2s;
 }
 
 .sc-wrapper:after {
@@ -151,7 +230,7 @@
   overflow: hidden;
   background-color: #151515;
   box-shadow: 0px 0px 32px #0abdc6 inset;
-  padding: 18px;
+  padding: 18px 2px 20px 18px;
 }
 
 /* Chrome, Safari, Edge, Opera */
@@ -195,8 +274,7 @@ input[type=hidden][name="attr_gender"]:not(input[value="other"]) ~ .sc-frame inp
   margin-right: 8px;
   font-size: 18px;
   font-family: 'Contrail One';
-  color: #EA00D9;
-  text-shadow: 0px 0px 5px #EA00D9;
+  color: #FFF;
 }
 
 .sc-tabs-heading > h3 > span {
@@ -212,23 +290,26 @@ input[type=hidden][name="attr_gender"]:not(input[value="other"]) ~ .sc-frame inp
   height: auto;
   border: none;
   flex: 1;
-  border-radius: 8px;
+  border-radius: 8px 8px 0 0;
   padding: 5px 5px 5px 20px;
   font-size: 18px;
   font-family: 'Contrail One';
   background-color: #151515;
-  color: rgb(49 206 38);
-  border: 1px solid rgb(49 206 38);
-  text-shadow: 0px 0px 5px rgb(49 206 38);
-  box-shadow: 0px 0px 5px rgb(49 206 38), 0px 0px 5px rgb(49 206 38) inset;
+  color: #FFF;
+  border: 1px solid #EA00D9;
+  border-bottom: none;
+  text-shadow: 0px 0px 5px #EA00D9;
+  background-color: #EA00D9;
+  box-shadow: 0px 0px 5px #EA00D9;
 }
 
 input[type=hidden][name="attr_current_tab"]:not(input[value="character"]) ~ .sc-frame .sc-tab.character,
-input[type=hidden][name="attr_current_tab"]:not(input[value="skills"]) ~ .sc-frame .sc-tab.skills {
+input[type=hidden][name="attr_current_tab"]:not(input[value="skills"]) ~ .sc-frame .sc-tab.skills,
+input[type=hidden][name="attr_current_tab"]:not(input[value="weapons"]) ~ .sc-frame .sc-tab.weapons {
   display: none;
 }
 
-input[type=hidden]:not([value="on"]).toggle-control + .togglable {
+input[type=hidden]:not([value="on"]).toggle-control ~ .togglable {
   display: none;
 }
 
@@ -240,14 +321,52 @@ input[type=hidden]:not([value="on"]).toggle-control + .togglable {
 .sc-tab {
   position: relative;
   flex: 1;
-  margin-top: 10px;
-  border-radius: 18px;
+  border-radius: 18px 0 18px 18px;
   padding: 4px;
   box-sizing: border-box;
   border: 1px solid #EA00D9;
   box-shadow: 0px 0px 5px #EA00D9, 0px 0px 5px #EA00D9 inset;
   overflow: auto;
   z-index: 1;
+}
+
+.sc-tab button.repcontrol_add,
+.sc-tab button.repcontrol_edit {
+  position: relative;
+  width: 60px;
+  margin: 4px;
+  padding: 4px 8px;
+  border: 1px solid #EA00D9;
+  box-shadow: 0px 0px 5px #EA00D9;
+  background: #EA00D9;
+  text-shadow: none;
+  color: transparent;
+}
+
+.sc-tab button.repcontrol_add:before,
+.sc-tab button.repcontrol_edit:before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  text-align: center;
+  color: #FFF;
+  font-family: 'Contrail One';
+  line-height: 26px;
+  font-size: 15px;
+}
+
+.sc-tab button.repcontrol_add:before {
+  content: 'Ajouter';
+}
+
+.sc-tab button.repcontrol_edit:before {
+  content: 'Modifier';
+}
+
+.sc-tab .repcontainer.editmode ~ .repcontrol button.repcontrol_edit:before {
+  content: 'Retour';
 }
 
 .sc-wrapper .line-input {
@@ -259,6 +378,7 @@ input[type=hidden]:not([value="on"]).toggle-control + .togglable {
   border-radius: 0;
   background-color: transparent;
   border-bottom: 1px solid #CCC;
+  color: #FFF;
 }
 
 .sc-infos {
@@ -353,14 +473,14 @@ input[type=hidden]:not([value="on"]).toggle-control + .togglable {
   content: '8';
   position: absolute;
   top: -1px;
-  right: 0;
+  right: 3px;
   z-index: 1;
-  font-size: 13px;
+  font-size: 11px;
   font-family: 'Pictos';
   transform: rotate(90deg);
   pointer-events: none;
-  color: #0abdc6;
-  opacity: 0.5;
+  color: #ea00d9;
+  text-shadow: 0px 0px 5px #ea00d9;
 }
 
 .sc-stat label > input[type="number"] {
@@ -405,7 +525,7 @@ input[type=hidden]:not([value="on"]).toggle-control + .togglable {
 
 .sc-skill {
   position: relative;
-  padding: 1px 8px 4px 8px;
+  padding: 1px 6px 4px 8px;
 }
 
 .sc-skill-group .toggle-input {
@@ -426,6 +546,8 @@ input[type=hidden]:not([value="on"]).toggle-control + .togglable {
   border: 1px solid rgb(49 206 38);
   box-shadow: 0px 0px 3px rgb(49 206 38), 0px 0px 3px rgb(49 206 38) inset;
   border-radius: 3px;
+  flex-grow: 0;
+  flex-shrink: 0;
 }
 
 .toggle-input > input[type=checkbox]:checked ~ .toggle-button {
@@ -706,12 +828,187 @@ input[type=hidden].mastered-control[value="1"] ~ button[type=action].line-input 
   filter: none;
 }
 
-.character-wounds {
+.weapon input.line-input {
+  color: #FFF;
+}
+
+.weapon select {
+  width: auto !important;
+}
+
+.sc-wname {
+  align-items: center;
+  padding: 4px;
+  box-sizing: border-box;
+}
+
+.sc-wname > .toggle-input {
+  margin: 0;
+  margin-right: 4px;
+}
+
+.sc-wname > input[type=text] {
+  flex: 1;
+}
+
+.wdamage {
+  position: relative;
+  margin-top: 20px;
+}
+
+.wdamage:before,
+.wdamage:after {
+  top: -20px;
+  font-family: 'Contrail One';
+  font-size: 10px;
+}
+
+.wdamage:before,
+.wdamage:after,
+.wdamage > span:before,
+.wdamage > span:after {
+  position: absolute;
+  color: #EA00D9;
+  text-shadow: 0px 0px 5px #EA00D9;
+  pointer-events: none;
+}
+
+.wdamage:before {
+  content: 'Coups';
+  left: 0;
+}
+
+.wdamage:after {
+  content: 'Blessures';
+  left: 31px;
+}
+
+.wdamage > span:before,
+.wdamage > span:after {
+  position: absolute;
+  content: 'v';
+  top: -9px;
+}
+
+.wdamage > span:before {
+  left: 7px;
+}
+
+.wdamage > span:after {
+  left: 43px;
+}
+
+.wdamage > input[type=number],
+.wdamage > span {
+  width: 18px !important;
+  text-align: center;
+  background-color: transparent;
+  font-family: 'Contrail One';
+  border: none;
+  border-bottom: 1px solid #FFF;
+  color: #FFF;
+  border-radius: 0;
+}
+
+.wdamage > span {
+  color: #EA00D9;
+  text-shadow: 0px 0px 5px #EA00D9;
+  padding-top: 5px;
+}
+
+.wdamage > select {
+  background-color: #151515;
+  border-radius: 4px;
+  transition: 0.1s;
+  flex: 1;
+  margin-left: 8px;
+}
+
+.wdamage > input[name="attr_wwounds_type"][type="hidden"][value="inc"] ~ select[name="attr_wwounds_type"] {
+  color: #0ABDC6;
+  text-shadow: 0px 0px 5px #0ABDC6;
+  border: 1px solid #0ABDC6;
+  box-shadow: 0px 0px 5px #0ABDC6, 0px 0px 5px #0ABDC6 inset;
+}
+
+.wdamage > input[name="attr_wwounds_type"][type="hidden"][value="leg"] ~ select[name="attr_wwounds_type"] {
+  color: rgb(49 206 38);
+  text-shadow: 0px 0px 5px rgb(49 206 38);
+  border: 1px solid rgb(49 206 38);
+  box-shadow: 0px 0px 5px rgb(49 206 38), 0px 0px 5px rgb(49 206 38) inset;
+}
+
+.wdamage > input[name="attr_wwounds_type"][type="hidden"][value="mod"] ~ select[name="attr_wwounds_type"] {
+  color: rgb(255 227 25);
+  text-shadow: 0px 0px 5px rgb(255 227 25);
+  border: 1px solid rgb(255 227 25);
+  box-shadow: 0px 0px 5px rgb(255 227 25), 0px 0px 5px rgb(255 227 25) inset;
+}
+
+.wdamage > input[name="attr_wwounds_type"][type="hidden"][value="gra"] ~ select[name="attr_wwounds_type"] {
+  color: #BB1F1F;
+  text-shadow: 0px 0px 5px #BB1F1F;
+  border: 1px solid #BB1F1F;
+  box-shadow: 0px 0px 5px #BB1F1F, 0px 0px 5px #BB1F1F inset;
+}
+
+input[name="attr_archetype"][value="custom"] ~ .weapon .noneditable,
+input[name="attr_archetype"]:not(input[value="custom"]) ~ .weapon .editable {
+  display: none;
+}
+
+input[name="attr_archetype"]:not(input[value="custom"]) ~ .weapon select.noneditable {
+  pointer-events: none;
+}
+
+.weapon-archetype {
+  align-items: center;
+}
+
+.weapon-archetype > select[name="attr_wtype"] {
+  flex: 1;
+}
+
+.wcaliber > select {
+  flex: 1;
+}
+
+.wcaliber {
+  align-items: center;
+  margin-top: 4px;
+}
+
+.caliber-img {
+  width: 150px;
+  height: 30px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+input[name="attr_wcaliber"][type="hidden"][value="antimaterial"] ~ .weapon .caliber-img {
+  background-image: url("https://raw.githubusercontent.com/FalconPilot/roll20-sheets/master/sheets/starclock-v2/gui/caliber-127mm");
+}
+
+.weapon .subtopic {
+  color: #FFF;
+  font-family: 'Contrail One';
+  margin-right: 8px;
+}
+
+.weapon .subtopic > span {
+  color: rgb(49 206 38);
+  text-shadow: 0px 0px 5px rgb(49 206 38);
+  margin-left: 4px;
+  letter-spacing: -3px;
+}
+
+.wounds-wrapper {
   flex-shrink: 0;
   flex-grow: 0;
 }
 
-.character-wounds > div {
+.wounds-wrapper > div {
   position: relative;
 }
 
@@ -728,13 +1025,13 @@ input[type=hidden].mastered-control[value="1"] ~ button[type=action].line-input 
   font-weight: normal;
 }
 
-.character-wounds input[type=hidden][value="3"] ~ .wound-annotation {
+.wounds-wrapper input[type=hidden][value="3"] ~ .wound-annotation {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.character-wounds > h2 {
+.wounds-wrapper > h2 {
   width: 100px;
   height: 22px;
   line-height: 22px;
@@ -746,8 +1043,8 @@ input[type=hidden].mastered-control[value="1"] ~ button[type=action].line-input 
   font-weight: bold;
 }
 
-.character-wounds label,
-.character-wounds h3 {
+.wounds-wrapper label,
+.wounds-wrapper h3 {
   width: 24px;
   height: 24px;
   display: flex;
@@ -760,18 +1057,18 @@ input[type=hidden].mastered-control[value="1"] ~ button[type=action].line-input 
   color: #FFF;
 }
 
-.character-wounds h3 {
+.wounds-wrapper h3 {
   font-size: 10px;
   font-variant: small-caps;
   font-family: 'Candal';
   font-weight: normal;
 }
 
-.character-wounds label:hover {
+.wounds-wrapper label:hover {
   cursor: pointer;
 }
 
-.character-wounds input[type=radio] {
+.wounds-wrapper input[type=radio] {
   display: none;
 }
 
@@ -798,39 +1095,39 @@ input[type=hidden].mastered-control[value="1"] ~ button[type=action].line-input 
   text-shadow: 0px 0px 3px #333;
 }
 
-.character-wounds input[type=radio] ~ .wound-bullet.inc {
+.wounds-wrapper input[type=radio] ~ .wound-bullet.inc {
   border-color: #0ABDC6;
   box-shadow: 0px 0px 5px #0ABDC6, 0px 0px 5px #0ABDC6 inset;
 }
 
-.character-wounds input[type=radio] ~ .wound-bullet.leg {
+.wounds-wrapper input[type=radio] ~ .wound-bullet.leg {
   border-color: rgb(49 206 38);
   box-shadow: 0px 0px 5px rgb(49 206 38), 0px 0px 5px rgb(49 206 38) inset;
 }
 
-.character-wounds input[type=radio] ~ .wound-bullet.mod {
+.wounds-wrapper input[type=radio] ~ .wound-bullet.mod {
   border-color: rgb(255 227 25);
   box-shadow: 0px 0px 5px rgb(255 227 25), 0px 0px 5px rgb(255 227 25) inset;
 }
 
-.character-wounds input[type=radio] ~ .wound-bullet.gra {
+.wounds-wrapper input[type=radio] ~ .wound-bullet.gra {
   border-color: #BB1F1F;
   box-shadow: 0px 0px 5px #BB1F1F, 0px 0px 5px #BB1F1F inset;
 }
 
-.character-wounds input[type=radio]:checked ~ .wound-bullet.inc {
+.wounds-wrapper input[type=radio]:checked ~ .wound-bullet.inc {
   background-color: #0ABDC6;
 }
 
-.character-wounds input[type=radio]:checked ~ .wound-bullet.leg {
+.wounds-wrapper input[type=radio]:checked ~ .wound-bullet.leg {
   background-color: rgb(49 206 38);
 }
 
-.character-wounds input[type=radio]:checked ~ .wound-bullet.mod {
+.wounds-wrapper input[type=radio]:checked ~ .wound-bullet.mod {
   background-color: rgb(255 227 25);
 }
 
-.character-wounds input[type=radio]:checked ~ .wound-bullet.gra {
+.wounds-wrapper input[type=radio]:checked ~ .wound-bullet.gra {
   background-color: #BB1F1F;
 }
 
@@ -865,41 +1162,12 @@ input[type=hidden].mastered-control[value="1"] ~ button[type=action].line-input 
   filter: brightness(0.55) sepia(1) saturate(2.4) hue-rotate(60deg) drop-shadow(0px 0px 2px rgb(49 206 38));
   background-image: url("https://raw.githubusercontent.com/FalconPilot/roll20-sheets/master/sheets/starclock/gui/human_sil_m.png");
   z-index: 1;
+  animation: pulseOpacity ease-in-out 3.5s infinite;
 }
 
 input[type=hidden][name="attr_gender"][value="f"] ~ .character-silhouette {
   background-image: url("https://raw.githubusercontent.com/FalconPilot/roll20-sheets/master/sheets/starclock/gui/human_sil_f.png");
 }
-
-/* input[type=hidden][name="attr_race"] ~ .character-silhouette .character-location.head {
-  top: 5px;
-  left: 75px;
-}
-
-input[type=hidden][name="attr_race"] ~ .character-silhouette .character-location.left-arm {
-  top: 110px;
-  left: 35px;
-}
-
-input[type=hidden][name="attr_race"] ~ .character-silhouette .character-location.right-arm {
-  top: 110px;
-  right: 45px;
-}
-
-input[type=hidden][name="attr_race"] ~ .character-silhouette .character-location.torso {
-  top: 100px;
-  left: 125px;
-}
-
-input[type=hidden][name="attr_race"] ~ .character-silhouette .character-location.left-leg {
-  top: 280px;
-  left: 60px;
-}
-
-input[type=hidden][name="attr_race"] ~ .character-silhouette .character-location.right-leg {
-  top: 280px;
-  right: 70px;
-} */
 
 /*
 **  Doppleganger silhouette
@@ -945,14 +1213,16 @@ input[type=hidden][name="attr_race"][value="drone"] ~ input[type=hidden][name="a
   background-image: url("https://raw.githubusercontent.com/FalconPilot/roll20-sheets/master/sheets/starclock/gui/drone_sil_f.png");
 }
 
-.sheet-rolltemplate-general .sheet-rolltemplate-container {
+.sheet-rolltemplate-general .sheet-rolltemplate-container,
+.sheet-rolltemplate-attack .sheet-rolltemplate-container {
   background-color: #333;
   border-radius: 4px;
   border: 1px solid #777;
   overflow: hidden;
 }
 
-.sheet-rolltemplate-general .sheet-rolltemplate-container > h3 {
+.sheet-rolltemplate-general .sheet-rolltemplate-container > h3,
+.sheet-rolltemplate-attack .sheet-rolltemplate-container > h3 {
   text-align: center;
   font-family: 'Contrail One';
   background-color: #FFF;
@@ -961,7 +1231,8 @@ input[type=hidden][name="attr_race"][value="drone"] ~ input[type=hidden][name="a
   padding: 4px 0;
 }
 
-.sheet-rolltemplate-general .sheet-rolltemplate-results {
+.sheet-rolltemplate-general .sheet-rolltemplate-results,
+.sheet-rolltemplate-attack .sheet-rolltemplate-results {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -970,7 +1241,8 @@ input[type=hidden][name="attr_race"][value="drone"] ~ input[type=hidden][name="a
   box-sizing: border-box;
 }
 
-.sheet-rolltemplate-general .sheet-rolltemplate-results > span {
+.sheet-rolltemplate-general .sheet-rolltemplate-results > span,
+.sheet-rolltemplate-attack .sheet-rolltemplate-results > span {
   font-size: 40px;
   padding: 0;
   width: min-content;
@@ -981,7 +1253,8 @@ input[type=hidden][name="attr_race"][value="drone"] ~ input[type=hidden][name="a
   color: #FFF;
 }
 
-.sheet-rolltemplate-general .sheet-rolltemplate-footer {
+.sheet-rolltemplate-general .sheet-rolltemplate-footer,
+.sheet-rolltemplate-attack .sheet-rolltemplate-footer {
   color: #FFF;
   font-size: 15px;
   text-align: right;

@@ -1,0 +1,113 @@
+<div class="sc-tab weapons fcol fw">
+  <fieldset class="repeating_weapons">
+    <input type="hidden" name="attr_archetype" />
+    <input type="hidden" name="attr_wcaliber" />
+    <div class="weapon fcol fw">
+      <h3 class="sc-wname fw frow">
+        <label class="toggle-input">
+          <input type="checkbox" name="attr_toggle_weapon" value="on" />
+          <div class="toggle-button"></div>
+        </label>
+        <input
+          type="text"
+          name="attr_wname"
+          class="line-input editable"
+          placeholder="Nom de l'arme"
+        />
+        <input
+          readonly
+          type="text"
+          name="attr_wname"
+          class="line-input noneditable"
+          placeholder="Nom de l'arme"
+        />
+        <button type="action" name="act_test">F</button>
+      </h3>
+      <input type="hidden" class="toggle-control" name="attr_toggle_weapon" />
+      <div class="sc-wimg fw"></div>
+      <div class="fw fcol togglable weapon-details">
+        <div class="frow fw weapon-archetype">
+          <h4 class="subtopic">Archétype<span>|></span></h4>
+          <select name="attr_archetype" class="line-input">
+            <option value="custom" selected>Personnalisé</option>
+            <option disabled>-- FUSILS --</option>
+            <% Object.entries(constants.weapons.rifle).forEach(([wkey, weapon]) => { %>
+              <option value="<%= wkey %>"><%= weapon.name %></option>
+            <% }) %>
+          </select>
+          <select name="attr_wtype" class="line-input editable">
+            <option value="melee">Mêlée</option>
+            <option value="pistol">Arme de poing</option>
+            <option value="rifle">Fusil</option>
+          </select>
+          <select name="attr_wtype" class="line-input noneditable" tabindex="-1">
+            <option value="melee">Mêlée</option>
+            <option value="pistol">Arme de poing</option>
+            <option value="rifle">Fusil</option>
+          </select>
+        </div>
+        <div class="wdamage frow">
+          <input
+            type="number"
+            class="editable"
+            name="attr_whits"
+            value="1"
+            min="1"
+          />
+          <input
+            readonly
+            type="number"
+            class="noneditable"
+            name="attr_whits"
+            value="1"
+            min="1"
+          />
+          <span>x</span>
+          <input
+            type="number"
+            name="attr_wwounds"
+            class="editable"
+            value="1"
+            min="1"
+            max="3"
+          />
+          <input
+            readonly
+            type="number"
+            name="attr_wwounds"
+            class="noneditable"
+            value="1"
+            min="1"
+            max="3"
+          />
+          <input type="hidden" name="attr_wwounds_type" />
+          <select name="attr_wwounds_type" class="editable">
+            <option selected value="inc">Incapacitantes</option>
+            <option value="leg">Légères</option>
+            <option value="mod">Modérées</option>
+            <option value="gra">Graves</option>
+          </select>
+          <select name="attr_wwounds_type" class="noneditable" tabindex="-1">
+            <option value="inc">Incapacitantes</option>
+            <option value="leg">Légères</option>
+            <option value="mod">Modérées</option>
+            <option value="gra">Graves</option>
+          </select>
+        </div>
+        <div class="wcaliber frow fw">
+          <select name="attr_wcaliber" class="line-input editable">
+            <% Object.entries(constants.calibers).forEach(([ckey, caliber]) => { %>
+              <option value="<%= ckey %>"><%= caliber.name %></option>
+            <% }) %>
+          </select>
+          <select name="attr_wcaliber" class="line-input noneditable" tabindex="-1">
+            <% Object.entries(constants.calibers).forEach(([ckey, caliber]) => { %>
+              <option value="<%= ckey %>"><%= caliber.name %></option>
+            <% }) %>
+          </select>
+          <div class="caliber-img"></div>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+</div>

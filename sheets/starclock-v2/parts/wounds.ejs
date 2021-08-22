@@ -1,6 +1,4 @@
-<div class="character-wounds">
-  <h2>Blessures</h2>
-  <% const woundsAmount = ['none', 'one', 'two', 'three'] %>
+<% const woundsAmount = ['none', 'one', 'two', 'three'] %>
   <% ['Incapacitante', 'Légère', 'Modérée', 'Grave'].forEach((woundType, line) => { %>
     <% const woundKey = woundType.slice(0, 3).toLowerCase().replace(/[éè]/g, 'e') %>
     <div class="frow wounds-<%= woundKey %>">
@@ -25,4 +23,3 @@
       <% } %>
     </div>
   <% }) %>
-</div>

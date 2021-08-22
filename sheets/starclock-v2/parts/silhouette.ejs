@@ -12,6 +12,9 @@
   </div>
   <div class="frow fw">
     <%- include('./infos.ejs', { constants }) %>
-    <%- include('./wounds.ejs', { constants }) %>
+    <div class="wounds-wrapper charwounds">
+      <h2>Blessures</h2>
+      <%- include('./wounds.ejs', { constants }) %>
+    </div>
   </div>
 </div>

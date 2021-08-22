@@ -9,8 +9,6 @@
   </div>
 
   <div class="sc-frame fw">
-    <!-- <%- include('./parts/header.ejs', { constants }) %> -->
-
     <div class="fw frow sc-body">
       <div class="sc-tabs-wrapper fcol hw">
         <div class="sc-tabs-heading frow fw">
@@ -18,11 +16,13 @@
           <select class="sc-tabs-header" name="attr_current_tab">
             <option value="character">Caractéristiques</option>
             <option value="skills">Compétences</option>
+            <option value="weapons">Arsenal</option>
           </select>
         </div>
         <!-- TABS -->
         <%- include('./tabs/character.ejs', { constants }) %>
-        <%- include ('./tabs/skills.ejs', { constants })  %>
+        <%- include ('./tabs/skills.ejs', { constants }) %>
+        <%- include ('./tabs/weapons.ejs', { constants }) %>
       </div>
       <div class="fcol hw aside-right">
         <%- include('./parts/silhouette.ejs', { constants }) %>
