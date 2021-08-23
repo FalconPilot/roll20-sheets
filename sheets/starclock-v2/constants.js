@@ -240,14 +240,14 @@ module.exports = {
         image: 'daix',
         description: 'Fusil d\'assaut standard de DaiCom, le DAI-X est encore utilisé aujourd\'hui en raison de sa simplicité de fabrication.',
         caliber: 'rifle_light',
-        hits: 3
+        hits: 4
       },
       acp9: {
         name: 'ACP-9',
         image: 'acp9',
         description: 'L\'ACP-9 est un pistolet-mitrailleur léger, facile d\'utilisation et doté d\'une cadence de tir très rapide. Il est un favori des agents de sécurité de la Confédération.',
         caliber: 'pistol_light',
-        hits: 5
+        hits: 6
       },
       scorpion: {
         name: 'M8 Scorpion',
@@ -255,9 +255,23 @@ module.exports = {
         description: 'Développé à l\'origine pour transpercer le blindage de véhicules de reconnaissance, le M8 Scorpion tire des obus de 12.7mm d\'une puissance de feu incomparable et démesurée.',
         caliber: 'antimaterial',
         hits: 1
+      },
+      kampfer: {
+        name: 'Kämpfer GRU-12',
+        image: 'kampfer',
+        description: 'Ce fusil de calibre 12 lourd et rustique a fait ses preuves parmi les forces de l\'ordre confédérées. Sa conception date de la création de la Confédération, ce qui la rend extrêmement commune au sein des armureries.',
+        caliber: 'shell',
+        hits: 1
       }
     },
     pistol: {
+      dmpc: {
+        name: 'DMP-Compact',
+        image: 'dmpc',
+        description: 'Peu onéreux et léger, le DMP-Compact est une arme de choix pour toute personne au budget raisonnable cherchant un moyen de se protéger.',
+        caliber: 'pistol_light',
+        hits: 3
+      },
       m30: {
         name: 'Revolver M-30',
         image: 'm30',

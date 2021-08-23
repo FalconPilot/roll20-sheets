@@ -1038,6 +1038,14 @@ input[type="hidden"][name="attr_wimage"][value="acp9"] ~ .weapon .weapon-image {
   background-image: url("https://raw.githubusercontent.com/FalconPilot/roll20-sheets/master/sheets/starclock-v2/gui/acp9.png");
 }
 
+input[type="hidden"][name="attr_wimage"][value="dmpc"] ~ .weapon .weapon-image {
+  background-image: url("https://raw.githubusercontent.com/FalconPilot/roll20-sheets/master/sheets/starclock-v2/gui/dmpc.png");
+}
+
+input[type="hidden"][name="attr_wimage"][value="kampfer"] ~ .weapon .weapon-image {
+  background-image: url("https://raw.githubusercontent.com/FalconPilot/roll20-sheets/master/sheets/starclock-v2/gui/kampfer.png");
+}
+
 .wdamage > input[type=number],
 .wdamage > span,
 .sc-wname > input[type=number],
