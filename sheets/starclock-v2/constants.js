@@ -256,6 +256,13 @@ module.exports = {
         caliber: 'rifle_light',
         hits: 3
       },
+      acp9: {
+        name: 'ACP-9',
+        image: 'acp9',
+        description: 'L\'ACP-9 est un pistolet-mitrailleur léger, facile d\'utilisation et doté d\'une cadence de tir très rapide. Il est un favori des agents de sécurité de la Confédération.',
+        caliber: 'pistol_light',
+        hits: 5
+      },
       scorpion: {
         name: 'M8 Scorpion',
         image: 'scorpion',
@@ -271,12 +278,6 @@ module.exports = {
         description: 'Ce revolver de conception robuste est utilisé par beaucoup de compagnies de sécurité en raison de son très faible coût de production. On le retrouve sans grande surprise aussi énormément entre les mains de gangsters...',
         caliber: 'pistol_heavy',
         hits: 1
-      },
-      acp9: {
-        name: 'ACP-9',
-        description: 'L\'ACP-9 est un pistolet-mitrailleur léger, facile d\'utilisation et doté d\'une cadence de tir très rapide. Il est un favori des agents de sécurité de la Confédération.',
-        caliber: 'pistol_light',
-        hits: 5
       }
     },
     onehanded: {

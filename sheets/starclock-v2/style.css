@@ -1033,6 +1033,10 @@ input[type="hidden"][name="attr_wimage"][value="m30"] ~ .weapon .weapon-image {
   background-image: url("https://raw.githubusercontent.com/FalconPilot/roll20-sheets/master/sheets/starclock-v2/gui/m30.png");
 }
 
+input[type="hidden"][name="attr_wimage"][value="acp9"] ~ .weapon .weapon-image {
+  background-image: url("https://raw.githubusercontent.com/FalconPilot/roll20-sheets/master/sheets/starclock-v2/gui/acp9.png");
+}
+
 .wdamage > input[type=number],
 .wdamage > span,
 .sc-wname > input[type=number],
