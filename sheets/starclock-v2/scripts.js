@@ -115,8 +115,6 @@ onEvents([events.buttonClicked('repeating_weapons:attackroll')], () => {
     }
     const skillKey = `skl_${skill}_total`
     getAttrs([skillKey], v2 => {
-      console.log(skillKey)
-      console.log(v2)
       const name = `Attaque : ${values.repeating_weapons_wname}`
       const woundsType = {
         inc: 'incapacitante',
@@ -209,5 +207,8 @@ onEvents([
 })
 
 onEvents([events.buttonClicked('repeating_weapons:resetwimg')], infos => {
-  console.log(infos)
+  const sectionId = infos.sourceAttribute.split('_')[2]
+  setAttrs({
+    [`repeating_weapons_${sectionId}_wimage`]: 'none'
+  })
 })

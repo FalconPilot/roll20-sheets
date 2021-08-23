@@ -206,14 +206,14 @@ module.exports = {
       diameter: '5x50mm',
       woundsType: 'mod',
       wounds: 1,
-      penetration: 1
+      penetration: 2
     },
     rifle_heavy: {
       name: 'Fusil lourd',
       diameter: '7x60mm',
       woundsType: 'mod',
       wounds: 2,
-      penetration: 0
+      penetration: 1
     },
     antimaterial: {
       name: 'Antimatériel',
@@ -269,6 +269,11 @@ module.exports = {
         description: 'Ce fusil icônique conçu pour sortir en l\'an 2100 est vite devenu un incontournable pour beaucoup de tireurs. Précis, robuste et venant avec une lunette moyenne-distance intégrée, il n\'y a que sa fiabilité que certains remettent parfois en doute...',
         caliber: 'rifle_heavy',
         hits: 2
+      },
+      mayaf1: {
+        name: 'Maya F1',
+        image: 'mayaf1',
+        description: 'Ce fusil issu de croisements technologiques entre la Confédération et une coopérative d\'ingénieurs Endaaris possède des performances incroyables... au prix d\'une fiabilité tout aussi légendaire que ses performances.'
       }
     },
     pistol: {

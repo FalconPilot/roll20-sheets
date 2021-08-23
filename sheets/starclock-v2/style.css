@@ -1078,8 +1078,12 @@ input[type="hidden"][name="attr_wimage"][value="kampfer"] ~ .weapon .weapon-imag
   background-image: url("https://raw.githubusercontent.com/FalconPilot/roll20-sheets/master/sheets/starclock-v2/gui/kampfer.png");
 }
 
-input[type="hidden"][name="attr_wimage"][value="celica2000"] ~ .weapon .weapon-image {
-  background-image: url("https://raw.githubusercontent.com/FalconPilot/roll20-sheets/master/sheets/starclock-v2/gui/celica2000.png");
+input[type="hidden"][name="attr_wimage"][value="celica2100"] ~ .weapon .weapon-image {
+  background-image: url("https://raw.githubusercontent.com/FalconPilot/roll20-sheets/master/sheets/starclock-v2/gui/celica2100.png");
+}
+
+input[type="hidden"][name="attr_wimage"][value="mayaf1"] ~ .weapon .weapon-image {
+  background-image: url("https://raw.githubusercontent.com/FalconPilot/roll20-sheets/master/sheets/starclock-v2/gui/mayaf1.png");
 }
 
 .wdamage > input[type=number],
