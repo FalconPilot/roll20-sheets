@@ -272,6 +272,13 @@ module.exports = {
         caliber: 'pistol_light',
         hits: 3
       },
+      dmp10: {
+        name: 'DMP-10 Magnum',
+        image: 'dmp10',
+        description: 'Cette variante du DMP-Compact chambrée en 10mm Magnum est l\'une des plus iconiques des films d\'action. Imposant, puissant et létal, il n\'est pas à mettre entre toutes les mains.',
+        caliber: 'pistol_heavy',
+        hits: 2
+      },
       m30: {
         name: 'Revolver M-30',
         image: 'm30',

@@ -1042,6 +1042,10 @@ input[type="hidden"][name="attr_wimage"][value="dmpc"] ~ .weapon .weapon-image {
   background-image: url("https://raw.githubusercontent.com/FalconPilot/roll20-sheets/master/sheets/starclock-v2/gui/dmpc.png");
 }
 
+input[type="hidden"][name="attr_wimage"][value="dmp10"] ~ .weapon .weapon-image {
+  background-image: url("https://raw.githubusercontent.com/FalconPilot/roll20-sheets/master/sheets/starclock-v2/gui/dmp10.png");
+}
+
 input[type="hidden"][name="attr_wimage"][value="kampfer"] ~ .weapon .weapon-image {
   background-image: url("https://raw.githubusercontent.com/FalconPilot/roll20-sheets/master/sheets/starclock-v2/gui/kampfer.png");
 }
