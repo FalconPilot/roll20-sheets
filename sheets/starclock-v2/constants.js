@@ -279,6 +279,7 @@ module.exports = {
     onehanded: {
       tonfa: {
         name: 'Matraque téléscopique',
+        image: 'baton',
         description: 'Une matraque de sécurité tout ce qu\'il y a de plus dissuasive. Lestée et maniable.',
         woundsType: 'inc',
         wounds: 1,

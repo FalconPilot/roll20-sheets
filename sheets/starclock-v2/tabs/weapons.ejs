@@ -70,12 +70,18 @@
             <% }) %>
           </select>
           <select name="attr_wtype" class="line-input editable">
-            <option value="melee">Mêlée</option>
+            <option disabled value="none">-- CORPS-À-CORPS --</option>
+            <option value="onehanded">À une main</option>
+            <option value="twohanded">À deux mains</option>
+            <option value="melee">Arme de mêlée</option>
+            <option value="shield">Bouclier</option>
+            <option disabled value="none">-- ARMES DE TIR --</option>
             <option value="pistol">Arme de poing</option>
             <option value="rifle">Fusil</option>
           </select>
           <select name="attr_wtype" class="line-input noneditable" tabindex="-1">
-            <option value="melee">Mêlée</option>
+            <option value="onehanded">À une main</option>
+            <option value="twohanded">À deux mains</option>
             <option value="pistol">Arme de poing</option>
             <option value="rifle">Fusil</option>
           </select>

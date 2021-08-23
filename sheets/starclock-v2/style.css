@@ -1016,6 +1016,10 @@ input[type="hidden"][name="attr_wimage"][value="knife"] ~ .weapon .weapon-image 
   background-image: url("https://raw.githubusercontent.com/FalconPilot/roll20-sheets/master/sheets/starclock-v2/gui/knife.png");
 }
 
+input[type="hidden"][name="attr_wimage"][value="baton"] ~ .weapon .weapon-image {
+  background-image: url("https://raw.githubusercontent.com/FalconPilot/roll20-sheets/master/sheets/starclock-v2/gui/baton.png");
+}
+
 .wdamage > input[type=number],
 .wdamage > span,
 .sc-wname > input[type=number],
