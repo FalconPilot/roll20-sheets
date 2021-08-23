@@ -331,20 +331,24 @@ input[type=hidden]:not([value="on"]).toggle-control ~ .togglable {
 }
 
 .sc-tab button.repcontrol_add,
-.sc-tab button.repcontrol_edit {
+.sc-tab button.repcontrol_edit,
+.sc-tab button.repcontrol_del,
+.sc-tab a.repcontrol_move {
   position: relative;
   width: 60px;
   margin: 4px;
   padding: 4px 8px;
-  border: 1px solid #EA00D9;
+  border: none;
   box-shadow: 0px 0px 5px #EA00D9;
   background: #EA00D9;
   text-shadow: none;
   color: transparent;
+  z-index: 3;
 }
 
 .sc-tab button.repcontrol_add:before,
-.sc-tab button.repcontrol_edit:before {
+.sc-tab button.repcontrol_edit:before,
+.sc-tab button.repcontrol_del:before {
   position: absolute;
   top: 0;
   left: 0;
@@ -357,12 +361,44 @@ input[type=hidden]:not([value="on"]).toggle-control ~ .togglable {
   font-size: 15px;
 }
 
+.sc-tab .repcontainer > .repitem:first-child > .itemcontrol {
+  border-radius: 14px 0 0 0;
+}
+
+.sc-tab .repcontainer > .repitem:last-child > .itemcontrol {
+  border-radius: 0 0 14px 14px;
+}
+
 .sc-tab button.repcontrol_add:before {
   content: 'Ajouter';
 }
 
 .sc-tab button.repcontrol_edit:before {
   content: 'Modifier';
+}
+
+.sc-tab button.repcontrol_del,
+.sc-tab a.repcontrol_move {
+  width: 25px;
+  height: 25px;
+  padding: 0;
+}
+
+.sc-tab button.repcontrol_del {
+  background: #BB1F1F;
+  box-shadow: 0px 0px 5px #BB1F1F;
+}
+
+.sc-tab button.repcontrol_del:before {
+  content: '*';
+  font-family: 'Pictos';
+}
+
+.sc-tab a.repcontrol_move {
+  background: #EA00D9;
+  box-shadow: 0px 0px 5px #EA00D9;
+  color: #FFF;
+  font-size: 24px;
 }
 
 .sc-tab .repcontainer.editmode ~ .repcontrol button.repcontrol_edit:before {
@@ -970,6 +1006,14 @@ input[type="hidden"][name="attr_wimage"][value="none"] ~ .weapon .weapon-image {
   width: 350px;
   height: 120px;
   margin: 4px auto;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  filter: contrast(0.5) sepia(1) hue-rotate(250deg) brightness(1.5) contrast(1.5) saturate(3) drop-shadow(0px 0px 3px #EA00D9);
+}
+
+input[type="hidden"][name="attr_wimage"][value="knife"] ~ .weapon .weapon-image {
+  background-image: url("https://raw.githubusercontent.com/FalconPilot/roll20-sheets/master/sheets/starclock-v2/gui/knife.png");
 }
 
 .wdamage > input[type=number],
@@ -1091,7 +1135,7 @@ input[name="attr_archetype"]:not(input[value="custom"]) ~ .weapon select.nonedit
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  filter: contrast(0.5) brightness(1.75) drop-shadow(0px 0px 0px #EA00D9) drop-shadow(0px 0px 5px #EA00D9) drop-shadow(0px 0px 1px #EA00D9);
+  filter: contrast(0.5) sepia(1) hue-rotate(250deg) brightness(1.5) contrast(1.5) saturate(3) drop-shadow(0px 0px 3px #EA00D9);
 }
 
 input[name="attr_wcaliber"][type="hidden"][value="antimaterial"] ~ .weapon .caliber-img {

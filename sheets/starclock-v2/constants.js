@@ -287,6 +287,7 @@ module.exports = {
       },
       knife: {
         name: 'Couteau',
+        image: 'knife',
         description: 'Une des armes les plus anciennes que la civilisation n\'ait jamais conçue. Il en existe des petits, des moyens, des grands...',
         woundsType: 'leg',
         wounds: 1,

@@ -161,7 +161,8 @@ onEvents([
     [`${prefix}_wname`]: weapon.name,
     [`${prefix}_whits`]: weapon.hits,
     [`${prefix}_wtype`]: groupKey,
-    [`${prefix}_wdescription`]: weapon.description
+    [`${prefix}_wdescription`]: weapon.description,
+    [`${prefix}_wimage`]: weapon.image || 'none'
   }
 
   if (['onehanded', 'twohanded', 'shield', 'melee'].includes(groupKey)) {
