@@ -8,6 +8,11 @@ const events = {
   removeRepeatingGroup: (group) => `remove:repeating_${group}`
 }
 
+// Rolltemplates
+const rolltemplate = (template, records) => [
+  `&{template:${template}}`
+].concat(Object.entries(records).map(([key, value]) => `{{${key}=${value}}}`)).join(' ')
+
 const parseNumberValue = (raw) => {
   const value = parseInt(raw, 10)
   return isNaN(value) ? 0 : value
@@ -61,7 +66,11 @@ onEvents([events.buttonClicked('roll-skill')], info => {
   const name = `Test ${prefix}${info.htmlAttributes['data-name']}`
   getAttrs([key, 'character_name'], values => {
     console.log(values)
-    startRoll(`&{template:general} {{name=${name}}} {{character=${values.character_name}}} {{roll=[[[[{${values[key] || 1} + ?{Bonus/Malus|0},1}kh1]]D6]]}}`, data => {
+    startRoll(rolltemplate('general', {
+      name,
+      character: values.character_name,
+      roll: `[[[[{${values[key] || 1} + ?{Bonus/Malus|0},1}kh1]]D6]]`
+    }), data => {
       finishRoll(data.rollId, {
         roll: data.results.roll.dice
           .sort()
@@ -119,9 +128,17 @@ onEvents([events.buttonClicked('repeating_weapons:attackroll')], () => {
       const hitsSuffix = parseInt(values.repeating_weapons_whits, 10) > 1 ? 's' : ''
       const woundsSuffix = parseInt(values.repeating_weapons_wwounds, 10) > 1 ? 's' : ''
       const hits = `${values.repeating_weapons_whits} coup${hitsSuffix}`
-      const wounds = `${values.repeating_weapons_wwounds} blessure${woundsSuffix} ${woundsType}${woundsSuffix}`
+      const wounds = `blessure${woundsSuffix} ${woundsType}${woundsSuffix}`
 
-      startRoll(`&{template:attack} {{name=${name}}} {{character=${values.character_name}}} {{roll=[[[[{${v2[skillKey] || 1} + ?{Bonus/Malus|0},1}kh1]]D6]]}} {{hits=${hits}}} {{wounds=${wounds}}}`, data => {
+      startRoll(rolltemplate('attack', {
+        name,
+        character: values.character_name,
+        roll: `[[[[{${v2[skillKey] || 1} + ?{Bonus/Malus|0},1}kh1]]D6]]`,
+        hits,
+        wounds,
+        woundsAmount: values.repeating_weapons_wwounds,
+        woundKey: values.repeating_weapons_wwounds_type
+      }), data => {
         finishRoll(data.rollId, {
           roll: data.results.roll.dice
             .sort()

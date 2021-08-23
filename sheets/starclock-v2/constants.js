@@ -262,6 +262,13 @@ module.exports = {
         description: 'Ce fusil de calibre 12 lourd et rustique a fait ses preuves parmi les forces de l\'ordre confédérées. Sa conception date de la création de la Confédération, ce qui la rend extrêmement commune au sein des armureries.',
         caliber: 'shell',
         hits: 1
+      },
+      celica2100: {
+        name: 'Celica 2100',
+        image: 'celica2100',
+        description: 'Ce fusil icônique conçu pour sortir en l\'an 2100 est vite devenu un incontournable pour beaucoup de tireurs. Précis, robuste et venant avec une lunette moyenne-distance intégrée, il n\'y a que sa fiabilité que certains remettent parfois en doute...',
+        caliber: 'rifle_heavy',
+        hits: 2
       }
     },
     pistol: {

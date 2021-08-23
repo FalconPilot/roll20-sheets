@@ -1000,18 +1000,42 @@ span.penetration {
   font-family: 'Pictos Custom' !important;
 }
 
-input[type="hidden"][name="attr_wimage"][value="none"] ~ .weapon .weapon-image {
+input[type="hidden"][name="attr_wimage"][value="none"] ~ .weapon .weapon-image-wrapper {
   display: none;
 }
 
-.weapon-image {
+input[type="hidden"][name="attr_archetype"][value="custom"] ~ .weapon .weapon-image {
+  margin-top: -20px;
+}
+
+.weapon-image-wrapper {
   width: 350px;
   height: 120px;
   margin: 4px auto;
+}
+
+.weapon-image-wrapper > button[type="action"] {
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  font-family: 'Pictos';
+  background-color: transparent;
+  border: 1px solid #BB1F1F;
+  border-radius: 2px;
+  color: #BB1F1F;
+  text-shadow: 0px 0px 5px #BB1F1F;
+  box-shadow: 0px 0px 5px #BB1F1F, 0px 0px 5px #BB1F1F inset;
+}
+
+.weapon-image {
+  position: relative;
+  width: 100%;
+  height: 100%;
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
   filter: contrast(0.5) sepia(1) hue-rotate(250deg) brightness(1.5) contrast(1.5) saturate(3) drop-shadow(0px 0px 3px #EA00D9);
+  z-index: -1;
 }
 
 input[type="hidden"][name="attr_wimage"][value="knife"] ~ .weapon .weapon-image {
@@ -1052,6 +1076,10 @@ input[type="hidden"][name="attr_wimage"][value="dmp10"] ~ .weapon .weapon-image 
 
 input[type="hidden"][name="attr_wimage"][value="kampfer"] ~ .weapon .weapon-image {
   background-image: url("https://raw.githubusercontent.com/FalconPilot/roll20-sheets/master/sheets/starclock-v2/gui/kampfer.png");
+}
+
+input[type="hidden"][name="attr_wimage"][value="celica2000"] ~ .weapon .weapon-image {
+  background-image: url("https://raw.githubusercontent.com/FalconPilot/roll20-sheets/master/sheets/starclock-v2/gui/celica2000.png");
 }
 
 .wdamage > input[type=number],
@@ -1520,8 +1548,29 @@ input[type=hidden][name="attr_race"][value="drone"] ~ input[type=hidden][name="a
 .sheet-rolltemplate-attack .sheet-rolltemplate-hits {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
   justify-content: center;
   color: #FFF;
   font-family: 'Contrail One';
+  padding: 0 20%;
+}
+
+.sheet-rolltemplate-attack .sheet-rolltemplate-container.sheet-inc .sheet-rolltemplate-hits > div > span {
+  color: #0ABDC6;
+  text-shadow: 0px 0px 5px #0ABDC6;
+}
+
+.sheet-rolltemplate-attack .sheet-rolltemplate-container.sheet-leg .sheet-rolltemplate-hits > div > span {
+  color: rgb(49 206 38);
+  text-shadow: 0px 0px 5px rgb(49 206 38);
+}
+
+.sheet-rolltemplate-attack .sheet-rolltemplate-container.sheet-mod .sheet-rolltemplate-hits > div > span {
+  color: rgb(255 227 25);
+  text-shadow: 0px 0px 5px rgb(255 227 25);
+}
+
+.sheet-rolltemplate-attack .sheet-rolltemplate-container.sheet-gra .sheet-rolltemplate-hits > div > span {
+  color: #BB1F1F;
+  text-shadow: 0px 0px 5px #BB1F1F;
 }
