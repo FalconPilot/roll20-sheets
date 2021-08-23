@@ -1022,6 +1022,10 @@ input[type="hidden"][name="attr_wimage"][value="baton"] ~ .weapon .weapon-image 
   background-image: url("https://raw.githubusercontent.com/FalconPilot/roll20-sheets/master/sheets/starclock-v2/gui/baton.png");
 }
 
+input[type="hidden"][name="attr_wimage"][value="adeptgauntlet"] ~ .weapon .weapon-image {
+  background-image: url("https://raw.githubusercontent.com/FalconPilot/roll20-sheets/master/sheets/starclock-v2/gui/adeptgauntlet.png");
+}
+
 input[type="hidden"][name="attr_wimage"][value="daix"] ~ .weapon .weapon-image {
   background-image: url("https://raw.githubusercontent.com/FalconPilot/roll20-sheets/master/sheets/starclock-v2/gui/daix.png");
 }

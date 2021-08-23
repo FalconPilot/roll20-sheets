@@ -311,6 +311,7 @@ module.exports = {
     melee: {
       adeptgauntlet: {
         name: 'Gantelet d\'adepte',
+        image: 'adeptgauntlet',
         description: 'Un gantelet Alkor fait pour ceux ayant le rang d\'Adepte au sein d\'un temple. Une lame en Cristalite se trouve en son sein.',
         woundsType: 'leg',
         wouds: 1,
