@@ -1177,7 +1177,7 @@ input[name="attr_wcaliber"][type="hidden"][value="rifle_light"] ~ .weapon .calib
 }
 
 input[name="attr_wcaliber"][type="hidden"][value="shell"] ~ .weapon .caliber-img {
-  background-image: url("https://raw.githubusercontent.com/FalconPilot/roll20-sheets/master/sheets/starclock-v2/gui/shell.png");
+  background-image: url("https://raw.githubusercontent.com/FalconPilot/roll20-sheets/master/sheets/starclock-v2/gui/caliber-shell.png");
 }
 
 input[name="attr_wcaliber"][type="hidden"][value="pistol_light"] ~ .weapon .wcaliber:after {
@@ -1195,7 +1195,7 @@ input[name="attr_wcaliber"][type="hidden"][value="pistol_heavy"] ~ .weapon .wcal
 input[name="attr_wcaliber"][type="hidden"][value="rifle_light"] ~ .weapon .wcaliber:after {
   content: '5x50mm';
   top: 11px;
-  right: 5px;
+  right: 93px;
 }
 
 input[name="attr_wcaliber"][type="hidden"][value="antimaterial"] ~ .weapon .wcaliber:after {

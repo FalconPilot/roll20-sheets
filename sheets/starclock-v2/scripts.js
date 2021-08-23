@@ -90,7 +90,7 @@ const getSkillForWtype = wtype => {
   }
 }
 
-onEvents([events.buttonClicked('repeating_weapons:test')], infos => {
+onEvents([events.buttonClicked('repeating_weapons:attackroll')], () => {
   getAttrs([
     'character_name',
     'repeating_weapons_wname',
@@ -189,4 +189,8 @@ onEvents([
     [`${prefix}_wwounds_type`]: weapon.woundsType || caliber.woundsType,
     [`${prefix}_wcaliber`]: weapon.caliber
   })
+})
+
+onEvents([events.buttonClicked('repeating_weapons:resetwimg')], infos => {
+  console.log(infos)
 })

@@ -48,7 +48,7 @@
           value="0"
           min="0"
         />
-        <button type="action" name="act_test" title="Attaquer">F</button>
+        <button type="action" name="act_attackroll" title="Attaquer">F</button>
       </h3>
       <input type="hidden" class="toggle-control" name="attr_toggle_weapon" />
       <div class="fw fcol togglable weapon-details">
@@ -94,7 +94,9 @@
             <option value="rifle">Fusil</option>
           </select>
         </div>
-        <div class="weapon-image"></div>
+        <div class="weapon-image">
+          <button type="action" name="act_resetwimg" class="noneditable">*</button>
+        </div>
         <div class="wdamage frow">
           <input
             type="number"
