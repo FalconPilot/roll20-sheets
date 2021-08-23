@@ -251,13 +251,14 @@ module.exports = {
     rifle: {
       daix: {
         name: 'Dai-X',
+        image: 'daix',
         description: 'Fusil d\'assaut standard de DaiCom, le DAI-X est encore utilisé aujourd\'hui en raison de sa simplicité de fabrication.',
         caliber: 'rifle_light',
         hits: 3
       },
-      scorcher: {
-        name: 'M8 Scorcher',
-        description: 'Développé à l\'origine pour transpercer le blindage de véhicules de reconnaissance, le M1 Scorcher tire des obus de 20mm capables de démolir l\'épaule de son tireur.',
+      scorpion: {
+        name: 'M8 Scorpion',
+        description: 'Développé à l\'origine pour transpercer le blindage de véhicules de reconnaissance, le M8 Scorpion tire des obus de 12.7mm d\'une puissance de feu incomparable et démesurée.',
         caliber: 'antimaterial',
         hits: 1
       }

@@ -985,6 +985,7 @@ input[type=hidden].mastered-control[value="1"] ~ button[type=action].line-input 
 
 .wdamage > span.penetration:before {
   content: 'v';
+  font-family: 'Contrail One';
   top: -9px;
   left: 79px;
 }
@@ -1018,6 +1019,10 @@ input[type="hidden"][name="attr_wimage"][value="knife"] ~ .weapon .weapon-image 
 
 input[type="hidden"][name="attr_wimage"][value="baton"] ~ .weapon .weapon-image {
   background-image: url("https://raw.githubusercontent.com/FalconPilot/roll20-sheets/master/sheets/starclock-v2/gui/baton.png");
+}
+
+input[type="hidden"][name="attr_wimage"][value="daix"] ~ .weapon .weapon-image {
+  background-image: url("https://raw.githubusercontent.com/FalconPilot/roll20-sheets/master/sheets/starclock-v2/gui/daix.png");
 }
 
 .wdamage > input[type=number],
