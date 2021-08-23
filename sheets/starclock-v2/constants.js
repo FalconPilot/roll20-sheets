@@ -258,6 +258,7 @@ module.exports = {
       },
       scorpion: {
         name: 'M8 Scorpion',
+        image: 'scorpion',
         description: 'Développé à l\'origine pour transpercer le blindage de véhicules de reconnaissance, le M8 Scorpion tire des obus de 12.7mm d\'une puissance de feu incomparable et démesurée.',
         caliber: 'antimaterial',
         hits: 1
@@ -266,6 +267,7 @@ module.exports = {
     pistol: {
       m30: {
         name: 'Revolver M-30',
+        image: 'm30',
         description: 'Ce revolver de conception robuste est utilisé par beaucoup de compagnies de sécurité en raison de son très faible coût de production. On le retrouve sans grande surprise aussi énormément entre les mains de gangsters...',
         caliber: 'pistol_heavy',
         hits: 1
