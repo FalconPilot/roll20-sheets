@@ -277,7 +277,8 @@ module.exports = {
         image: 'dmp10',
         description: 'Cette variante du DMP-Compact chambrée en 10mm Magnum est l\'une des plus iconiques des films d\'action. Imposant, puissant et létal, il n\'est pas à mettre entre toutes les mains.',
         caliber: 'pistol_heavy',
-        hits: 2
+        hits: 2,
+        penetration: 1
       },
       m30: {
         name: 'Revolver M-30',

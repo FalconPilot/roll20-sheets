@@ -1,2 +1,17 @@
 <div class="sc-tab inventory fcol fw">
+  <fieldset class="repeating_inventory">
+    <div class="inventory-item fw">
+      <h3 class="item-title frow fw">
+        <label class="toggle-input">
+          <input type="checkbox" name="attr_toggle_idetails" value="on" />
+          <div class="toggle-button"></div>
+        </label>
+        <input type="text" class="line-input" name="attr_iname" />
+      </h3>
+      <input type="hidden" class="toggle-control" name="attr_toggle_idetails" />
+      <div class="togglable idetails fcol fw">
+        <textarea name="attr_idesc"></textarea>
+      </div>
+    </div>
+  </fieldset>
 </div>
