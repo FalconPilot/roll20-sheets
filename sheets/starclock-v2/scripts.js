@@ -60,7 +60,8 @@ onEvents([events.buttonClicked('roll-skill')], info => {
       : 'de '
   const name = `Test ${prefix}${info.htmlAttributes['data-name']}`
   getAttrs([key, 'character_name'], values => {
-    startRoll(`&{template:general} {{name=${name}}} {{character=${values.character_name}}} {{roll=[[[[${values[key]}]]D6]]}}`, data => {
+    console.log(values)
+    startRoll(`&{template:general} {{name=${name}}} {{character=${values.character_name}}} {{roll=[[[[{${values[key] || 1} + ?{Bonus/Malus|0},1}kh1]]D6]]}}`, data => {
       finishRoll(data.rollId, {
         roll: data.results.roll.dice
           .sort()
@@ -81,12 +82,15 @@ const getSkillForWtype = wtype => {
   switch (wtype) {
     case 'rifle': return 'longguns'
     case 'pistol': return 'handguns'
+    case 'onehanded': return 'onehanded'
+    case 'twohanded': return 'twohanded'
+    case 'shield': return 'shields'
+    case 'melee': return 'melee'
     default: return null
   }
 }
 
 onEvents([events.buttonClicked('repeating_weapons:test')], infos => {
-  console.log(infos)
   getAttrs([
     'character_name',
     'repeating_weapons_wname',
@@ -100,7 +104,10 @@ onEvents([events.buttonClicked('repeating_weapons:test')], infos => {
       console.error(`Could not find skill for "${values.repeating_weapons_wtype}"`)
       return
     }
-    getAttrs([`${skill}_total`], v2 => {
+    const skillKey = `skl_${skill}_total`
+    getAttrs([skillKey], v2 => {
+      console.log(skillKey)
+      console.log(v2)
       const name = `Attaque : ${values.repeating_weapons_wname}`
       const woundsType = {
         inc: 'incapacitante',
@@ -114,7 +121,7 @@ onEvents([events.buttonClicked('repeating_weapons:test')], infos => {
       const hits = `${values.repeating_weapons_whits} coup${hitsSuffix}`
       const wounds = `${values.repeating_weapons_wwounds} blessure${woundsSuffix} ${woundsType}${woundsSuffix}`
 
-      startRoll(`&{template:attack} {{name=${name}}} {{character=${values.character_name}}} {{roll=[[[[${v2[`${skill}_total`] || 1}]]D6]]}} {{hits=${hits}}} {{wounds=${wounds}}}`, data => {
+      startRoll(`&{template:attack} {{name=${name}}} {{character=${values.character_name}}} {{roll=[[[[{${v2[skillKey] || 1} + ?{Bonus/Malus|0},1}kh1]]D6]]}} {{hits=${hits}}} {{wounds=${wounds}}}`, data => {
         finishRoll(data.rollId, {
           roll: data.results.roll.dice
             .sort()
@@ -150,20 +157,35 @@ onEvents([
   const sectionId = infos.sourceAttribute.split('_')[2]
   const prefix = `repeating_weapons_${sectionId}`
 
+  const standardParams = {
+    [`${prefix}_wname`]: weapon.name,
+    [`${prefix}_whits`]: weapon.hits,
+    [`${prefix}_wtype`]: groupKey,
+    [`${prefix}_wdescription`]: weapon.description
+  }
+
+  if (['onehanded', 'twohanded', 'shield', 'melee'].includes(groupKey)) {
+    setAttrs({
+      ...standardParams,
+      [`${prefix}_wwounds`]: weapon.wounds,
+      [`${prefix}_wpenetration`]: weapon.penetration,
+      [`${prefix}_wwounds_type`]: weapon.woundsType
+    })
+    return
+  }
+
   const caliber = constants.calibers[weapon.caliber]
 
-  if (!caliber) {
+  if (weapon.caliber && !caliber) {
     console.error(`Caliber "${weapon.caliber}" not found in constants !`)
     return
   }
 
   setAttrs({
-    [`${prefix}_wname`]: weapon.name,
-    [`${prefix}_whits`]: weapon.hits,
-    [`${prefix}_wwounds`]: caliber.wounds + (weapon.wounds || 0),
-    [`${prefix}_wpenetration`]: caliber.penetration + (weapon.penetration || 0),
-    [`${prefix}_wwounds_type`]: caliber.woundsType,
-    [`${prefix}_wcaliber`]: weapon.caliber,
-    [`${prefix}_wtype`]: groupKey
+    ...standardParams,
+    [`${prefix}_wwounds`]: weapon.wounds || caliber.wounds || 0,
+    [`${prefix}_wpenetration`]: weapon.penetration || caliber.penetration || 0,
+    [`${prefix}_wwounds_type`]: weapon.woundsType || caliber.woundsType,
+    [`${prefix}_wcaliber`]: weapon.caliber
   })
 })

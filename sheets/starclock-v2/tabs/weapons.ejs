@@ -1,7 +1,10 @@
 <div class="sc-tab weapons fcol fw">
   <fieldset class="repeating_weapons">
-    <input type="hidden" name="attr_archetype" />
+    <input type="hidden" name="attr_archetype" value="custom" />
     <input type="hidden" name="attr_wcaliber" />
+    <input type="hidden" name="attr_wtype" value="melee" />
+    <input type="hidden" name="attr_wwounds_type" value="inc" />
+    <input type="hidden" name="attr_wimage" value="none" />
     <div class="weapon fcol fw">
       <h3 class="sc-wname fw frow">
         <label class="toggle-input">
@@ -21,17 +24,40 @@
           class="line-input noneditable"
           placeholder="Nom de l'arme"
         />
-        <button type="action" name="act_test">F</button>
+        <input
+          readonly
+          type="number"
+          name="attr_whits"
+          value="1"
+          min="1"
+        />
+        <span>x</span>
+        <input
+          readonly
+          type="number"
+          name="attr_wwounds"
+          value="1"
+          min="1"
+          max="3"
+        />
+        <button type="action" name="act_test" title="Attaquer">F</button>
       </h3>
       <input type="hidden" class="toggle-control" name="attr_toggle_weapon" />
-      <div class="sc-wimg fw"></div>
       <div class="fw fcol togglable weapon-details">
         <div class="frow fw weapon-archetype">
           <h4 class="subtopic">Archétype<span>|></span></h4>
           <select name="attr_archetype" class="line-input">
             <option value="custom" selected>Personnalisé</option>
+            <option disabled>-- UNE MAIN --</option>
+            <% Object.entries(constants.weapons.onehanded).sort(([_k1, w1], [_k2, w2]) => w1.name > w2.name ? 1 : -1).forEach(([wkey, weapon]) => { %>
+              <option value="<%= wkey %>"><%= weapon.name %></option>
+            <% }) %>
+            <option disabled>-- PISTOLETS --</option>
+            <% Object.entries(constants.weapons.pistol).sort(([_k1, w1], [_k2, w2]) => w1.name > w2.name ? 1 : -1).forEach(([wkey, weapon]) => { %>
+              <option value="<%= wkey %>"><%= weapon.name %></option>
+            <% }) %>
             <option disabled>-- FUSILS --</option>
-            <% Object.entries(constants.weapons.rifle).forEach(([wkey, weapon]) => { %>
+            <% Object.entries(constants.weapons.rifle).sort(([_k1, w1], [_k2, w2]) => w1.name > w2.name ? 1 : -1).forEach(([wkey, weapon]) => { %>
               <option value="<%= wkey %>"><%= weapon.name %></option>
             <% }) %>
           </select>
@@ -46,6 +72,7 @@
             <option value="rifle">Fusil</option>
           </select>
         </div>
+        <div class="weapon-image"></div>
         <div class="wdamage frow">
           <input
             type="number"
@@ -80,7 +107,22 @@
             min="1"
             max="3"
           />
-          <input type="hidden" name="attr_wwounds_type" />
+          <span class="penetration">t</span>
+          <input
+            type="number"
+            name="attr_wpenetration"
+            class="editable"
+            value="0"
+            min="0"
+          />
+          <input
+            readonly
+            type="number"
+            name="attr_wpenetration"
+            class="noneditable"
+            value="0"
+            min="0"
+          />
           <select name="attr_wwounds_type" class="editable">
             <option selected value="inc">Incapacitantes</option>
             <option value="leg">Légères</option>
@@ -95,6 +137,7 @@
           </select>
         </div>
         <div class="wcaliber frow fw">
+          <h4 class="subtopic">Calibre<span>|></span></h4>
           <select name="attr_wcaliber" class="line-input editable">
             <% Object.entries(constants.calibers).forEach(([ckey, caliber]) => { %>
               <option value="<%= ckey %>"><%= caliber.name %></option>
@@ -107,6 +150,11 @@
           </select>
           <div class="caliber-img"></div>
         </div>
+        <div class="wdescription">
+          <textarea readonly name="attr_wdescription" class="noneditable"></textarea>
+          <textarea name="attr_wdescription" class="editable"></textarea>
+        </div>
+        <div class="list-spacer"></div>
       </div>
     </div>
   </fieldset>

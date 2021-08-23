@@ -188,31 +188,110 @@ module.exports = {
   },
   calibers: {
     pistol_light: {
-      name: 'Pistolet léger (9mm)',
+      name: 'Pistolet léger',
+      diameter: '9mm',
       woundsType: 'leg',
-      woundsAmount: 1,
+      wounds: 1,
       penetration: 1
     },
-    rifle_light: {
-      name: 'Fusil léger (5x50mm)',
+    pistol_heavy: {
+      name: 'Pistolet lourd',
+      diameter: '10mm',
       woundsType: 'mod',
       wounds: 1,
-      penetration: 2
+      penetration: 0
+    },
+    rifle_light: {
+      name: 'Fusil léger',
+      diameter: '5x50mm',
+      woundsType: 'mod',
+      wounds: 1,
+      penetration: 1
+    },
+    rifle_heavy: {
+      name: 'Fusil lourd',
+      diameter: '7x60mm',
+      woundsType: 'mod',
+      wounds: 2,
+      penetration: 0
     },
     antimaterial: {
-      name: 'Antimatériel (12.7mm)',
+      name: 'Antimatériel',
+      diameter: '12.7mm',
+      woundsType: 'gra',
+      wounds: 3,
+      penetration: 3
+    },
+    shell: {
+      name: 'Cartouches',
+      diameter: '12G',
+      woundsType: 'leg',
+      wounds: 3,
+      penetration: 0
+    },
+    grenade: {
+      name: 'Grenade',
+      diameter: '30mm',
+      woundsType: 'gra',
+      wounds: 3,
+      penetration: 1
+    },
+    rocket: {
+      name: 'Missile',
+      diameter: 'R1-HVEP',
       woundsType: 'gra',
       wounds: 3,
       penetration: 5
+    },
+    special: {
+      name: 'Spécifique'
     }
   },
   weapons: {
     rifle: {
-      r30: {
-        name: 'Fusil R30',
-        description: 'Fusil d\'assaut standard de DaiCom, le R30 est encore utilisé aujourd\'hui en raison de sa simplicité de fabrication.',
+      daix: {
+        name: 'Dai-X',
+        description: 'Fusil d\'assaut standard de DaiCom, le DAI-X est encore utilisé aujourd\'hui en raison de sa simplicité de fabrication.',
         caliber: 'rifle_light',
         hits: 3
+      },
+      scorcher: {
+        name: 'M8 Scorcher',
+        description: 'Développé à l\'origine pour transpercer le blindage de véhicules de reconnaissance, le M1 Scorcher tire des obus de 20mm capables de démolir l\'épaule de son tireur.',
+        caliber: 'antimaterial',
+        hits: 1
+      }
+    },
+    pistol: {
+      m30: {
+        name: 'Revolver M-30',
+        description: 'Ce revolver de conception robuste est utilisé par beaucoup de compagnies de sécurité en raison de son très faible coût de production. On le retrouve sans grande surprise aussi énormément entre les mains de gangsters...',
+        caliber: 'pistol_heavy',
+        hits: 1
+      },
+      acp9: {
+        name: 'ACP-9',
+        description: 'L\'ACP-9 est un pistolet-mitrailleur léger, facile d\'utilisation et doté d\'une cadence de tir très rapide. Il est un favori des agents de sécurité de la Confédération.',
+        caliber: 'pistol_light',
+        hits: 5
+      }
+    },
+    onehanded: {
+      tonfa: {
+        name: 'Matraque téléscopique',
+        description: 'Une matraque de sécurité tout ce qu\'il y a de plus dissuasive. Lestée et maniable.',
+        woundsType: 'inc',
+        wounds: 1,
+        hits: 2,
+        penetration: 0
+      },
+      knife: {
+        name: 'Couteau',
+        description: 'Une des armes les plus anciennes que la civilisation n\'ait jamais conçue. Il en existe des petits, des moyens, des grands...',
+        woundsType: 'leg',
+        wounds: 1,
+        hits: 3,
+        penetration: 1
       }
     }
   }

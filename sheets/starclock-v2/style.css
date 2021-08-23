@@ -377,7 +377,7 @@ input[type=hidden]:not([value="on"]).toggle-control ~ .togglable {
   line-height: 2em;
   border-radius: 0;
   background-color: transparent;
-  border-bottom: 1px solid #CCC;
+  border-bottom: 1px solid #FFF;
   color: #FFF;
 }
 
@@ -430,8 +430,6 @@ input[type=hidden]:not([value="on"]).toggle-control ~ .togglable {
   flex: 1;
   text-align: left;
   font-family: 'Contrail One';
-  color: #0ABDC6;
-  text-shadow: 0px 0px 5px #0ABDC6;
 }
 
 .sc-stats > .sc-stat:nth-child(even) {
@@ -498,7 +496,7 @@ input[type=hidden]:not([value="on"]).toggle-control ~ .togglable {
   border-top: none;
 }
 
-.sklist-spacer {
+.list-spacer {
   width: 80%;
   height: 2px;
   margin: 10px auto 0 auto;
@@ -836,19 +834,70 @@ input[type=hidden].mastered-control[value="1"] ~ button[type=action].line-input 
   width: auto !important;
 }
 
-.sc-wname {
-  align-items: center;
-  padding: 4px;
-  box-sizing: border-box;
+.weapon-details {
+  padding: 4px 8px;
 }
 
-.sc-wname > .toggle-input {
+.wdescription {
+  position: relative;
+  width: 90%;
+  height: 75px;
+  margin: 8px auto 0 auto;
+}
+
+.wdescription:before,
+.wdescription:after {
+  content: '"';
+  position: absolute;
+  top: -10px;
+  color: #EA00D9;
+  text-shadow: 0px 0px 5px #EA00D9;
+  font-size: 24px;
+}
+
+.wdescription:before {
+  left: -15px;
+}
+
+.wdescription:after {
+  right: -15px;
+}
+
+.wdescription > textarea {
+  height: 100%;
+  resize: none;
+  background-color: transparent;
+  border: none;
+  font-style: italic;
+  color: #FFF;
+  text-align: justify;
+}
+
+.sc-wname {
+  align-items: stretch;
+  padding: 4px 8px;
+  box-sizing: border-box;
+  margin: 4px 0;
+}
+
+.sc-wname > button[type="action"] {
+  margin-left: 8px;
+  font-family: 'dicefontd6';
+  font-size: 32px;
+  background-color: transparent;
+  border: none;
+  font-weight: bold;
+}
+
+.sc-wname .toggle-input {
   margin: 0;
   margin-right: 4px;
+  align-self: center;
 }
 
 .sc-wname > input[type=text] {
   flex: 1;
+  margin-bottom: 0 !important;
 }
 
 .wdamage {
@@ -857,7 +906,8 @@ input[type=hidden].mastered-control[value="1"] ~ button[type=action].line-input 
 }
 
 .wdamage:before,
-.wdamage:after {
+.wdamage:after,
+.wdamage > span.penetration:after {
   top: -20px;
   font-family: 'Contrail One';
   font-size: 10px;
@@ -883,23 +933,49 @@ input[type=hidden].mastered-control[value="1"] ~ button[type=action].line-input 
   left: 31px;
 }
 
-.wdamage > span:before,
-.wdamage > span:after {
-  position: absolute;
+.wdamage > span:not(.penetration):before,
+.wdamage > span:not(.penetration):after {
   content: 'v';
   top: -9px;
 }
 
-.wdamage > span:before {
+.wdamage > span:not(.penetration):before {
   left: 7px;
 }
 
-.wdamage > span:after {
+.wdamage > span:not(.penetration):after {
   left: 43px;
 }
 
+.wdamage > span.penetration:before {
+  content: 'v';
+  top: -9px;
+  left: 79px;
+}
+
+.wdamage > span.penetration:after {
+  content: 'Perforation';
+  left: 74px;
+}
+
+span.penetration {
+  font-family: 'Pictos Custom' !important;
+}
+
+input[type="hidden"][name="attr_wimage"][value="none"] ~ .weapon .weapon-image {
+  display: none;
+}
+
+.weapon-image {
+  width: 350px;
+  height: 120px;
+  margin: 4px auto;
+}
+
 .wdamage > input[type=number],
-.wdamage > span {
+.wdamage > span,
+.sc-wname > input[type=number],
+.sc-wname > span {
   width: 18px !important;
   text-align: center;
   background-color: transparent;
@@ -910,7 +986,8 @@ input[type=hidden].mastered-control[value="1"] ~ button[type=action].line-input 
   border-radius: 0;
 }
 
-.wdamage > span {
+.wdamage > span,
+.sc-wname > span {
   color: #EA00D9;
   text-shadow: 0px 0px 5px #EA00D9;
   padding-top: 5px;
@@ -924,28 +1001,48 @@ input[type=hidden].mastered-control[value="1"] ~ button[type=action].line-input 
   margin-left: 8px;
 }
 
-.wdamage > input[name="attr_wwounds_type"][type="hidden"][value="inc"] ~ select[name="attr_wwounds_type"] {
+input[name="attr_wwounds_type"][type="hidden"][value="inc"] ~ .weapon .sc-wname button[type="action"] {
+  color: #0ABDC6;
+  text-shadow: 0px 0px 2px #0ABDC6;
+}
+
+input[name="attr_wwounds_type"][type="hidden"][value="leg"] ~ .weapon .sc-wname button[type="action"] {
+  color: rgb(49 206 38);
+  text-shadow: 0px 0px 2px rgb(49 206 38);
+}
+
+input[name="attr_wwounds_type"][type="hidden"][value="mod"] ~ .weapon .sc-wname button[type="action"] {
+  color: rgb(255 227 25);
+  text-shadow: 0px 0px 2px rgb(255 227 25);
+}
+
+input[name="attr_wwounds_type"][type="hidden"][value="gra"] ~ .weapon .sc-wname button[type="action"] {
+  color: #BB1F1F;
+  text-shadow: 0px 0px 2px #BB1F1F;
+}
+
+input[name="attr_wwounds_type"][type="hidden"][value="inc"] ~ .weapon .wdamage select[name="attr_wwounds_type"] {
   color: #0ABDC6;
   text-shadow: 0px 0px 5px #0ABDC6;
   border: 1px solid #0ABDC6;
   box-shadow: 0px 0px 5px #0ABDC6, 0px 0px 5px #0ABDC6 inset;
 }
 
-.wdamage > input[name="attr_wwounds_type"][type="hidden"][value="leg"] ~ select[name="attr_wwounds_type"] {
+input[name="attr_wwounds_type"][type="hidden"][value="leg"] ~ .weapon .wdamage select[name="attr_wwounds_type"] {
   color: rgb(49 206 38);
   text-shadow: 0px 0px 5px rgb(49 206 38);
   border: 1px solid rgb(49 206 38);
   box-shadow: 0px 0px 5px rgb(49 206 38), 0px 0px 5px rgb(49 206 38) inset;
 }
 
-.wdamage > input[name="attr_wwounds_type"][type="hidden"][value="mod"] ~ select[name="attr_wwounds_type"] {
+input[name="attr_wwounds_type"][type="hidden"][value="mod"] ~ .weapon .wdamage select[name="attr_wwounds_type"] {
   color: rgb(255 227 25);
   text-shadow: 0px 0px 5px rgb(255 227 25);
   border: 1px solid rgb(255 227 25);
   box-shadow: 0px 0px 5px rgb(255 227 25), 0px 0px 5px rgb(255 227 25) inset;
 }
 
-.wdamage > input[name="attr_wwounds_type"][type="hidden"][value="gra"] ~ select[name="attr_wwounds_type"] {
+input[name="attr_wwounds_type"][type="hidden"][value="gra"] ~ .weapon .wdamage select[name="attr_wwounds_type"] {
   color: #BB1F1F;
   text-shadow: 0px 0px 5px #BB1F1F;
   border: 1px solid #BB1F1F;
@@ -974,13 +1071,23 @@ input[name="attr_archetype"]:not(input[value="custom"]) ~ .weapon select.nonedit
 }
 
 .wcaliber {
+  position: relative;
   align-items: center;
   margin-top: 4px;
+}
+
+.wcaliber:after {
+  position: absolute;
+  font-size: 11px;
+  color: #EA00D9;
+  text-shadow: 0px 0px 5px #EA00D9;
+  font-family: 'Contrail One';
 }
 
 .caliber-img {
   width: 150px;
   height: 30px;
+  margin-left: 8px;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -1001,6 +1108,37 @@ input[name="attr_wcaliber"][type="hidden"][value="pistol_heavy"] ~ .weapon .cali
 
 input[name="attr_wcaliber"][type="hidden"][value="rifle_light"] ~ .weapon .caliber-img {
   background-image: url("https://raw.githubusercontent.com/FalconPilot/roll20-sheets/master/sheets/starclock-v2/gui/caliber-550mm.png");
+}
+
+input[name="attr_wcaliber"][type="hidden"][value="pistol_light"] ~ .weapon .wcaliber:after {
+  content: '9x19mm Parabellum';
+  top: 11px;
+  right: 0px;
+}
+
+input[name="attr_wcaliber"][type="hidden"][value="pistol_heavy"] ~ .weapon .wcaliber:after {
+  content: '10mm Magnum';
+  top: 11px;
+  right: 8px;
+}
+
+input[name="attr_wcaliber"][type="hidden"][value="rifle_light"] ~ .weapon .wcaliber:after {
+  content: '5x50mm';
+  top: 11px;
+  right: 5px;
+}
+
+input[name="attr_wcaliber"][type="hidden"][value="antimaterial"] ~ .weapon .wcaliber:after {
+  content: '12.7mm';
+  top: 11px;
+  right: 90px;
+}
+
+input[type="hidden"][name="attr_wtype"][value="onehanded"] ~ .weapon .wcaliber,
+input[type="hidden"][name="attr_wtype"][value="twohanded"] ~ .weapon .wcaliber,
+input[type="hidden"][name="attr_wtype"][value="shield"] ~ .weapon .wcaliber,
+input[type="hidden"][name="attr_wtype"][value="melee"] ~ .weapon .wcaliber {
+  display: none;
 }
 
 .weapon .subtopic {
@@ -1275,4 +1413,13 @@ input[type=hidden][name="attr_race"][value="drone"] ~ input[type=hidden][name="a
   font-family: 'Patrick Hand';
   box-sizing: border-box;
   font-style: italic;
+}
+
+.sheet-rolltemplate-attack .sheet-rolltemplate-hits {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #FFF;
+  font-family: 'Contrail One';
 }

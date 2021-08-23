@@ -13,7 +13,7 @@
             <input
               disabled
               type="number"
-              name="attr_dice_grp_<%= gk %>"
+              name="attr_skl_<%= gk %>_total"
               value="<%= equation %>"
             />
           </span>
@@ -30,7 +30,7 @@
               type="action"
               name="act_roll-skill"
               class="line-input"
-              value="dice_grp_<%= gk %>"
+              value="skl_<%= gk %>_total"
               data-name="<%= group.name %>"
             ><%= group.name %></button>
           <% } else { %>
@@ -82,7 +82,7 @@
             <% }) %>
           <% } %>
         <% }) %>
-        <div class="sklist-spacer"></div>
+        <div class="list-spacer"></div>
       </div>
     </div>
   <% }) %>
