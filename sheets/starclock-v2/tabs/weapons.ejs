@@ -60,6 +60,10 @@
             <% Object.entries(constants.weapons.onehanded).sort(([_k1, w1], [_k2, w2]) => w1.name > w2.name ? 1 : -1).forEach(([wkey, weapon]) => { %>
               <option value="<%= wkey %>"><%= weapon.name %></option>
             <% }) %>
+            <option disabled>-- MÊLÉE --</option>
+            <% Object.entries(constants.weapons.melee).sort(([_k1, w1], [_k2, w2]) => w1.name > w2.name ? 1 : -1).forEach(([wkey, weapon]) => { %>
+              <option value="<%= wkey %>"><%= weapon.name %></option>
+            <% }) %>
             <option disabled>-- PISTOLETS --</option>
             <% Object.entries(constants.weapons.pistol).sort(([_k1, w1], [_k2, w2]) => w1.name > w2.name ? 1 : -1).forEach(([wkey, weapon]) => { %>
               <option value="<%= wkey %>"><%= weapon.name %></option>
@@ -80,8 +84,12 @@
             <option value="rifle">Fusil</option>
           </select>
           <select name="attr_wtype" class="line-input noneditable" tabindex="-1">
+            <option disabled value="none">-- CORPS-À-CORPS --</option>
             <option value="onehanded">À une main</option>
             <option value="twohanded">À deux mains</option>
+            <option value="melee">Arme de mêlée</option>
+            <option value="shield">Bouclier</option>
+            <option disabled value="none">-- ARMES DE TIR --</option>
             <option value="pistol">Arme de poing</option>
             <option value="rifle">Fusil</option>
           </select>

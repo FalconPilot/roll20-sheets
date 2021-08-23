@@ -305,7 +305,8 @@ input[type=hidden][name="attr_gender"]:not(input[value="other"]) ~ .sc-frame inp
 
 input[type=hidden][name="attr_current_tab"]:not(input[value="character"]) ~ .sc-frame .sc-tab.character,
 input[type=hidden][name="attr_current_tab"]:not(input[value="skills"]) ~ .sc-frame .sc-tab.skills,
-input[type=hidden][name="attr_current_tab"]:not(input[value="weapons"]) ~ .sc-frame .sc-tab.weapons {
+input[type=hidden][name="attr_current_tab"]:not(input[value="weapons"]) ~ .sc-frame .sc-tab.weapons,
+input[type=hidden][name="attr_current_tab"]:not(input[value="inventory"]) ~ .sc-frame .sc-tab.inventory {
   display: none;
 }
 
@@ -938,7 +939,7 @@ input[type=hidden].mastered-control[value="1"] ~ button[type=action].line-input 
 
 .wdamage {
   position: relative;
-  margin-top: 20px;
+  margin-top: 25px;
 }
 
 .wdamage:before,
@@ -1175,6 +1176,10 @@ input[name="attr_wcaliber"][type="hidden"][value="rifle_light"] ~ .weapon .calib
   background-image: url("https://raw.githubusercontent.com/FalconPilot/roll20-sheets/master/sheets/starclock-v2/gui/caliber-550mm.png");
 }
 
+input[name="attr_wcaliber"][type="hidden"][value="shell"] ~ .weapon .caliber-img {
+  background-image: url("https://raw.githubusercontent.com/FalconPilot/roll20-sheets/master/sheets/starclock-v2/gui/shell.png");
+}
+
 input[name="attr_wcaliber"][type="hidden"][value="pistol_light"] ~ .weapon .wcaliber:after {
   content: '9x19mm Parabellum';
   top: 11px;
@@ -1195,6 +1200,12 @@ input[name="attr_wcaliber"][type="hidden"][value="rifle_light"] ~ .weapon .wcali
 
 input[name="attr_wcaliber"][type="hidden"][value="antimaterial"] ~ .weapon .wcaliber:after {
   content: '12.7mm';
+  top: 11px;
+  right: 90px;
+}
+
+input[name="attr_wcaliber"][type="hidden"][value="shell"] ~ .weapon .wcaliber:after {
+  content: 'Calibre 12';
   top: 11px;
   right: 90px;
 }

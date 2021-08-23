@@ -17,12 +17,14 @@
             <option value="character">Caractéristiques</option>
             <option value="skills">Compétences</option>
             <option value="weapons">Arsenal</option>
+            <option value="inventory">Inventaire</option>
           </select>
         </div>
         <!-- TABS -->
         <%- include('./tabs/character.ejs', { constants }) %>
         <%- include ('./tabs/skills.ejs', { constants }) %>
         <%- include ('./tabs/weapons.ejs', { constants }) %>
+        <%- include ('./tabs/inventory.ejs', { constants }) %>
       </div>
       <div class="fcol hw aside-right">
         <%- include('./parts/silhouette.ejs', { constants }) %>

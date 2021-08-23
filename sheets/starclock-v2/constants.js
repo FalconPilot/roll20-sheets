@@ -197,8 +197,8 @@ module.exports = {
     pistol_heavy: {
       name: 'Pistolet lourd',
       diameter: '10mm',
-      woundsType: 'mod',
-      wounds: 1,
+      woundsType: 'leg',
+      wounds: 2,
       penetration: 0
     },
     rifle_light: {
@@ -228,20 +228,6 @@ module.exports = {
       woundsType: 'leg',
       wounds: 3,
       penetration: 0
-    },
-    grenade: {
-      name: 'Grenade',
-      diameter: '30mm',
-      woundsType: 'gra',
-      wounds: 3,
-      penetration: 1
-    },
-    rocket: {
-      name: 'Missile',
-      diameter: 'R1-HVEP',
-      woundsType: 'gra',
-      wounds: 3,
-      penetration: 5
     },
     special: {
       name: 'Spécifique'
@@ -298,6 +284,16 @@ module.exports = {
         wounds: 1,
         hits: 3,
         penetration: 1
+      }
+    },
+    melee: {
+      adeptgauntlet: {
+        name: 'Gantelet d\'adepte',
+        description: 'Un gantelet Alkor fait pour ceux ayant le rang d\'Adepte au sein d\'un temple. Une lame en Cristalite se trouve en son sein.',
+        woundsType: 'leg',
+        wouds: 1,
+        hits: 3,
+        penetration: 3
       }
     }
   }
