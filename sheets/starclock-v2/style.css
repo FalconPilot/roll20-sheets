@@ -294,11 +294,7 @@ input[type=hidden][name="attr_gender"]:not(input[value="other"]) ~ .sc-frame inp
   padding: 5px 5px 5px 20px;
   font-size: 18px;
   font-family: 'Contrail One';
-  background-color: #151515;
   color: #FFF;
-  border: 1px solid #EA00D9;
-  border-bottom: none;
-  text-shadow: 0px 0px 5px #EA00D9;
   background-color: #EA00D9;
   box-shadow: 0px 0px 5px #EA00D9;
 }
@@ -306,7 +302,10 @@ input[type=hidden][name="attr_gender"]:not(input[value="other"]) ~ .sc-frame inp
 input[type=hidden][name="attr_current_tab"]:not(input[value="character"]) ~ .sc-frame .sc-tab.character,
 input[type=hidden][name="attr_current_tab"]:not(input[value="skills"]) ~ .sc-frame .sc-tab.skills,
 input[type=hidden][name="attr_current_tab"]:not(input[value="weapons"]) ~ .sc-frame .sc-tab.weapons,
-input[type=hidden][name="attr_current_tab"]:not(input[value="inventory"]) ~ .sc-frame .sc-tab.inventory {
+input[type=hidden][name="attr_current_tab"]:not(input[value="inventory"]) ~ .sc-frame .sc-tab.inventory,
+input[type=hidden][name="attr_current_tab"]:not(input[value="traits"]) ~ .sc-frame .sc-tab.traits,
+input[type=hidden][name="attr_current_tab"]:not(input[value="knowledge"]) ~ .sc-frame .sc-tab.knowledge,
+input[type=hidden][name="attr_current_tab"]:not(input[value="notes"]) ~ .sc-frame .sc-tab.notes {
   display: none;
 }
 
@@ -370,6 +369,10 @@ input[type=hidden]:not([value="on"]).toggle-control ~ .togglable {
   border-radius: 0 0 14px 14px;
 }
 
+.sc-tab .repcontainer > .repitem:first-child:last-child > .itemcontrol {
+  border-radius: 14px 0 14px 14px;
+}
+
 .sc-tab button.repcontrol_add:before {
   content: 'Ajouter';
 }
@@ -418,8 +421,24 @@ input[type=hidden]:not([value="on"]).toggle-control ~ .togglable {
   color: #FFF;
 }
 
+.charname.sc-wname {
+  padding-left: 0;
+}
+
+.charname.sc-wname > input[type="number"] {
+  width: 50px !important;
+}
+
+.charname.sc-wname > button[type="action"] {
+  height: 30px;
+  line-height: 30px;
+  padding: 0;
+  margin-right: 4px;
+  color: #EA00D9;
+  text-shadow: 0px 0px 2px #EA00D9;
+}
+
 .sc-infos {
-  width: 100px;
   align-items: stretch;
 }
 
@@ -449,6 +468,18 @@ input[type=hidden]:not([value="on"]).toggle-control ~ .togglable {
   font-size: 12px;
 }
 
+.sc-infos > .frow {
+  align-items: flex-end;
+}
+
+.sc-infos > .frow select {
+  flex: 1;
+}
+
+.sc-infos input[type="number"] {
+  width: 20px !important;
+}
+
 .sc-infos select.line-input {
   width: auto;
   background-color: #151515;
@@ -456,6 +487,21 @@ input[type=hidden]:not([value="on"]).toggle-control ~ .togglable {
   padding-left: 0;
   padding-right: 0;
   font-size: 11px;
+}
+
+.starcredits.starcredits {
+  align-items: stretch;
+}
+
+.starcredits > input[type="number"] {
+  text-align: right;
+}
+
+.starcredits > span {
+  padding-top: 4px !important;
+  margin-right: 0;
+  color: rgb(255 227 25) !important;
+  text-shadow: 0px 0px 5px rgb(255 227 25);
 }
 
 .sc-stat {
@@ -937,6 +983,10 @@ input[type=hidden].mastered-control[value="1"] ~ button[type=action].line-input 
   margin-bottom: 0 !important;
 }
 
+.sc-wname > select.line-input {
+  margin-bottom: 0 !important;
+}
+
 .wdamage {
   position: relative;
   margin-top: 25px;
@@ -1104,7 +1154,14 @@ input[type="hidden"][name="attr_wimage"][value="mayaf1"] ~ .weapon .weapon-image
 .sc-wname > span {
   color: #EA00D9;
   text-shadow: 0px 0px 5px #EA00D9;
+}
+
+.wdamage > span {
   padding-top: 5px;
+}
+
+.sc-wname > span {
+  padding-top: 3px;
 }
 
 .wdamage > select {
@@ -1288,7 +1345,152 @@ input[type="hidden"][name="attr_wtype"][value="melee"] ~ .weapon .wcaliber {
   letter-spacing: -3px;
 }
 
+.idetails {
+  padding: 4px 8px;
+  box-sizing: border-box;
+}
+
+.sc-wname > select {
+  width: auto;
+}
+
+.sc-wname > select[name="attr_mutation_grade"] {
+  width: auto;
+  height: auto;
+  border: none;
+  border-radius: 4px 0 0 4px;
+  padding: 5px;
+  font-family: 'Contrail One';
+  color: #FFF;
+  background-color: #EA00D9;
+  box-shadow: 0px 0px 5px #EA00D9;
+}
+
+.sc-wname > textarea[name="attr_mutation_tags"] {
+  flex: 1;
+  height: 3em;
+  line-height: 1.3em;
+  resize: none;
+  margin: 0;
+  border: 1px solid #EA00D9;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0px 0px 5px #EA00D9, 0px 0px 5px #EA00D9 inset;
+  font-style: italic;
+}
+
+.sc-tab.notes {
+  align-items: stretch;
+  justify-content: space-between;
+}
+
+.sc-tab.notes {
+  overflow: hidden;
+}
+
+.sc-tab > .repcontainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+  overflow: auto;
+}
+
+.sc-file,
+.sc-tab.notes .itemcontrol {
+  width: 80px !important;
+  height: 120px !important;
+}
+
+.file-icon {
+  flex: 1;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.file-icon > input[type="checkbox"] {
+  display: none;
+}
+
+.file-icon:hover {
+  cursor: pointer;
+}
+
+.sc-tab.notes .itemcontrol {
+  padding: 2px;
+  box-sizing: content-box;
+  margin: 0 0 -2px -2px;
+  border-radius: 4px;
+}
+
+.sc-tab.notes > .repcontainer > .repitem.repitem {
+  position: static;
+  margin: 4px 5px;
+}
+
+.sc-tab.notes > .repcontrol {
+  margin: 0 -4px -4px -4px;
+  background-color: #EA00D9;
+  box-shadow: 0px 0px 5px #EA00D9;
+  z-index: 1;
+}
+
+.sc-file {
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+input[type="hidden"][name="attr_notes_displayed"]:not(input[value="on"]) ~ .note .notes-content {
+  display: none;
+}
+
+.notes-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #151515;
+  z-index: 5;
+}
+
+.notes-content > h3 {
+  align-items: center;
+}
+
+.notes-content > h3 > label {
+  width: 20px;
+  height: 20px;
+  margin: 0 0 0 4px;
+  padding: 0;
+  flex-grow: 0;
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+}
+
+.notes-content > h3 > input[type="text"] {
+  flex: 1;
+}
+
+.notes-content > textarea {
+  flex: 1;
+  resize: none;
+  border-radius: 0;
+  padding: 4px 8px;
+  border: none;
+  background-color: #151515;
+  color: #FFF;
+}
+
+input[type="hidden"][name="attr_ttype"]:not(input[value="mutation"]) ~ .trait .mutationpart {
+  display: none;
+}
+
 .wounds-wrapper {
+  margin: 4px auto;
   flex-shrink: 0;
   flex-grow: 0;
 }
@@ -1321,7 +1523,6 @@ input[type="hidden"][name="attr_wtype"][value="melee"] ~ .weapon .wcaliber {
   height: 22px;
   line-height: 22px;
   font-size: 16px;
-  margin: 0 auto;
   color: #FFF;
   text-align: center;
   font-family: 'Contrail One';
@@ -1432,13 +1633,14 @@ input[type="hidden"][name="attr_wtype"][value="melee"] ~ .weapon .wcaliber {
   z-index: 2;
 }
 
+.silhouette-under {
+  flex: 1;
+}
+
 .character-silhouette {
-  position: absolute;
-  top: 35px;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-position-x: right;
+  flex: 1;
+  height: 100%;
+  background-position-x: center;
   background-position-y: center;
   background-repeat: no-repeat;
   background-size: contain;
@@ -1450,7 +1652,7 @@ input[type="hidden"][name="attr_wtype"][value="melee"] ~ .weapon .wcaliber {
   animation: pulseOpacity ease-in-out 3.5s infinite;
 }
 
-input[type=hidden][name="attr_gender"][value="f"] ~ .character-silhouette {
+input[type=hidden][name="attr_gender"][value="f"] ~ .silhouette-under .character-silhouette {
   background-image: url("https://raw.githubusercontent.com/FalconPilot/roll20-sheets/master/sheets/starclock/gui/human_sil_f.png");
 }
 
@@ -1458,11 +1660,11 @@ input[type=hidden][name="attr_gender"][value="f"] ~ .character-silhouette {
 **  Doppleganger silhouette
 */
 
-input[type=hidden][name="attr_race"][value="doppleganger"] ~ .character-silhouette {
+input[type=hidden][name="attr_race"][value="doppleganger"] ~ .silhouette-under .character-silhouette {
   background-image: url("https://raw.githubusercontent.com/FalconPilot/roll20-sheets/master/sheets/starclock/gui/doppleganger_sil_m.png");
 }
 
-input[type=hidden][name="attr_race"][value="doppleganger"] ~ input[type=hidden][name="attr_gender"][value="f"] ~ .character-silhouette {
+input[type=hidden][name="attr_race"][value="doppleganger"] ~ input[type=hidden][name="attr_gender"][value="f"] ~ .silhouette-under .character-silhouette {
   background-image: url("https://raw.githubusercontent.com/FalconPilot/roll20-sheets/master/sheets/starclock/gui/doppleganger_sil_f.png");
 }
 
@@ -1470,11 +1672,11 @@ input[type=hidden][name="attr_race"][value="doppleganger"] ~ input[type=hidden][
 **  Endaari silhouette
 */
 
-input[type=hidden][name="attr_race"][value="endaari"] ~ .character-silhouette {
+input[type=hidden][name="attr_race"][value="endaari"] ~ .silhouette-under .character-silhouette {
   background-image: url("https://raw.githubusercontent.com/FalconPilot/roll20-sheets/master/sheets/starclock/gui/endaari_sil_m.png");
 }
 
-input[type=hidden][name="attr_race"][value="endaari"] ~ input[type=hidden][name="attr_gender"][value="f"] ~ .character-silhouette {
+input[type=hidden][name="attr_race"][value="endaari"] ~ input[type=hidden][name="attr_gender"][value="f"] ~ .silhouette-under .character-silhouette {
   background-image: url("https://raw.githubusercontent.com/FalconPilot/roll20-sheets/master/sheets/starclock/gui/endaari_sil_f.png");
 }
 
@@ -1482,11 +1684,11 @@ input[type=hidden][name="attr_race"][value="endaari"] ~ input[type=hidden][name=
 **  Alkor silhouette
 */
 
-input[type=hidden][name="attr_race"][value="alkor"] ~ .character-silhouette {
+input[type=hidden][name="attr_race"][value="alkor"] ~ .silhouette-under .character-silhouette {
   background-image: url("https://raw.githubusercontent.com/FalconPilot/roll20-sheets/master/sheets/starclock/gui/alkor_sil_m.png");
 }
 
-input[type=hidden][name="attr_race"][value="alkor"] ~ input[type=hidden][name="attr_gender"][value="f"] ~ .character-silhouette {
+input[type=hidden][name="attr_race"][value="alkor"] ~ input[type=hidden][name="attr_gender"][value="f"] ~ .silhouette-under .character-silhouette {
   background-image: url("https://raw.githubusercontent.com/FalconPilot/roll20-sheets/master/sheets/starclock/gui/alkor_sil_f.png");
 }
 
@@ -1494,7 +1696,7 @@ input[type=hidden][name="attr_race"][value="alkor"] ~ input[type=hidden][name="a
 **  Drone silhouette
 */
 
-input[type=hidden][name="attr_race"][value="drone"] ~ input[type=hidden][name="attr_gender"][value="f"] ~ .character-silhouette {
+input[type=hidden][name="attr_race"][value="drone"] ~ input[type=hidden][name="attr_gender"][value="f"] ~ .silhouette-under .character-silhouette {
   background-image: url("https://raw.githubusercontent.com/FalconPilot/roll20-sheets/master/sheets/starclock/gui/drone_sil_f.png");
 }
 

@@ -34,6 +34,11 @@
     data-name="<%= skillName %>"
     value="skl_<%= sk %>_total"
   ><%= skillName %></button>
+  <% if (group.special) { %>
+    <div class="skill-stat main-stat">
+      <%= constants.stats[mainStat].toUpperCase().slice(0, 3) %>
+    </div>
+  <% } %>
   <div class="fcol skill-bonus">
     <div class="frow fw skill-plus">
       <input
@@ -44,10 +49,4 @@
       />
     </div>
   </div>
-  <!-- <div class="skill-stat main-stat">
-    <%= constants.stats[mainStat].toUpperCase().slice(0, 3) %>
-  </div>
-  <div class="skill-stat off-stat">
-    <%= constants.stats[offStat].toUpperCase().slice(0, 3) %>
-  </div> -->
 </div>

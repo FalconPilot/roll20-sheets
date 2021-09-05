@@ -1,20 +1,31 @@
 <div class="silhouette-wrapper fcol fw">
   <input type="hidden" name="attr_race" />
   <input type="hidden" name="attr_gender" />
-  <div class="character-silhouette"></div>
-  <div class="sc-infos fw">
+  <h3 class="charname sc-wname frow fw">
     <input
       type="text"
       class="line-input fw"
       name="attr_character_name"
       placeholder="Nom du personnage"
     />
-  </div>
-  <div class="frow fw">
-    <%- include('./infos.ejs', { constants }) %>
-    <div class="wounds-wrapper charwounds">
-      <h2>Blessures</h2>
-      <%- include('./wounds.ejs', { constants }) %>
+    <span>XP</span>
+    <input readonly type="number" name="attr_xp_left" value="0" />
+    <span>/</span>
+    <input type="number" name="attr_xp_total" value="0" min="0" />
+    <button
+      type="action"
+      name="act_roll-general"
+      class="line-input"
+    >F</button>
+  </h3>
+  <div class="silhouette-under frow fw">
+    <div class="sc-infos-left fcol tw">
+      <%- include('./infos.ejs', { constants }) %>
+      <div class="wounds-wrapper charwounds">
+        <h2>Blessures</h2>
+        <%- include('./wounds.ejs', { constants }) %>
+      </div>
     </div>
+    <div class="character-silhouette"></div>
   </div>
 </div>

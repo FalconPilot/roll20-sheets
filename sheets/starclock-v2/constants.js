@@ -219,7 +219,7 @@ module.exports = {
       name: 'Antimatériel',
       diameter: '12.7mm',
       woundsType: 'gra',
-      wounds: 3,
+      wounds: 5,
       penetration: 3
     },
     shell: {
@@ -273,7 +273,9 @@ module.exports = {
       mayaf1: {
         name: 'Maya F1',
         image: 'mayaf1',
-        description: 'Ce fusil issu de croisements technologiques entre la Confédération et une coopérative d\'ingénieurs Endaaris possède des performances incroyables... au prix d\'une fiabilité tout aussi légendaire que ses performances.'
+        description: 'Ce fusil issu de croisements technologiques entre la Confédération et une coopérative d\'ingénieurs Endaaris possède des performances incroyables... au prix d\'une fiabilité désastreuse.',
+        caliber: 'rifle_light',
+        hits: 6
       }
     },
     pistol: {

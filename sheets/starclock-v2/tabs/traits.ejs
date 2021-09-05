@@ -1,0 +1,58 @@
+<div class="sc-tab traits fcol fw">
+  <fieldset class="repeating_traits">
+    <input type="hidden" name="attr_ttype" value="innate" />
+    <div class="trait fw">
+      <h3 class="sc-wname frow fw">
+        <label class="toggle-input">
+          <input type="checkbox" name="attr_toggle_tdetails" value="on" />
+          <div class="toggle-button"></div>
+        </label>
+        <input
+          type="text"
+          name="attr_tname"
+          class="line-input"
+          placeholder="Nom"
+        />
+        <select name="attr_ttype" class="line-input">
+          <option selected value="innate">Inné</option>
+          <option value="learned">Acquis</option>
+          <option value="mutation">Mutation</option>
+        </select>
+        <span>XP</span>
+        <input
+          type="number"
+          name="attr_txp"
+          value="0"
+          min="0"
+        />
+        <span>x</span>
+        <input
+          type="number"
+          name="attr_times_taken"
+          value="1"
+          min="1"
+        />
+      </h3>
+      <h3 class="sc-wname frow fw mutationpart">
+        <select name="attr_mutation_grade">
+          <option selected value="a">Grade A</option>
+          <option value="b">Grade B</option>
+          <option value="c">Grade C</option>
+        </select>
+        <textarea
+          type="text"
+          name="attr_mutation_tags"
+          class="line-input"
+          placeholder="Étiquettes"
+        ></textarea>
+      </h3>
+      <input type="hidden" class="toggle-control" name="attr_toggle_tdetails" />
+      <div class="togglable tdetails fcol fw">
+        <div class="wdescription">
+          <textarea name="attr_tdescription" placeholder="Description"></textarea>
+        </div>
+        <div class="list-spacer"></div>
+      </div>
+    </div>
+  </fieldset>
+</div>

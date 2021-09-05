@@ -33,9 +33,15 @@
               value="skl_<%= gk %>_total"
               data-name="<%= group.name %>"
             ><%= group.name %></button>
+            <div class="skill-stat main-stat">
+              <%= constants.stats[group.mainStat].toUpperCase().slice(0, 3) %>
+            </div>
           <% } else { %>
             <h3 class="line-input">* <%= group.name %></h3>
           <% } %>
+          <div class="skill-stat off-stat">
+            <%= constants.stats[group.offStat].toUpperCase().slice(0, 3) %>
+          </div>
           <div class="fcol skill-bonus">
             <div class="frow fw skill-plus">
               <input
@@ -46,13 +52,6 @@
               />
             </div>
           </div>
-          <% if (!group.special) { %>
-            <!-- <div class="skill-stat main-stat full">
-              <%= constants.stats[group.mainStat].toUpperCase().slice(0, 3) %>
-            </div> -->
-          <% } else { %>
-            <!-- <div class="skill-stat full">-</div> -->
-          <% } %>
         </div>
       </div>
       <input type="hidden" class="toggle-control" name="attr_toggle_sg_<%= gk %>" />

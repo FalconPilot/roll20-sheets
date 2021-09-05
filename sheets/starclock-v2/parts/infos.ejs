@@ -1,27 +1,22 @@
-<div class="sc-infos fcol character-infos">
+<div class="sc-infos fcol character-infos fw">
   <select name="attr_race" class="line-input fw">
     <option selected disabled>Race (?)</option>
     <option value="human">Humain</option>
     <option value="doppleganger">Doppleganger</option>
     <option value="endaari">Endaari</option>
     <option value="alkor">Alkor</option>
+    <option disabled>-- MUTANTS --</option>
     <option value="drone">Drone</option>
     <option value="troll">Troll</option>
     <option value="changeling">Changelin</option>
   </select>
-  <select name="attr_gender" class="line-input fw">
-    <option selected disabled>Genre (?)</option>
-    <option value="m">Masculin</option>
-    <option value="f">Féminin</option>
-    <option value="other">Autre</option>
-  </select>
-  <input
-    type="text"
-    class="line-input fw"
-    name="attr_gender_other"
-    placeholder="Genre"
-  />
   <div class="frow fw">
+    <select name="attr_gender" class="line-input fw">
+      <option selected disabled>Genre (?)</option>
+      <option value="m">Masculin</option>
+      <option value="f">Féminin</option>
+      <option value="other">Autre</option>
+    </select>
     <input
       type="number"
       class="line-input"
@@ -29,5 +24,22 @@
       placeholder="Âge"
     />
     <span class="line-input">ans</span>
+  </div>
+  <input
+    type="text"
+    class="line-input fw"
+    name="attr_gender_other"
+    placeholder="Genre"
+  />
+  <div class="starcredits frow fw">
+    <input
+      type="number"
+      class="line-input"
+      name="attr_starcredits"
+      min="0"
+      value="0"
+      title="StarCredits"
+    />
+    <span class="line-input">SC</span>
   </div>
 </div>

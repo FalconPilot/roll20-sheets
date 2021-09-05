@@ -1,16 +1,31 @@
 <div class="sc-tab inventory fcol fw">
   <fieldset class="repeating_inventory">
     <div class="inventory-item fw">
-      <h3 class="item-title frow fw">
+      <h3 class="sc-wname frow fw">
         <label class="toggle-input">
           <input type="checkbox" name="attr_toggle_idetails" value="on" />
           <div class="toggle-button"></div>
         </label>
-        <input type="text" class="line-input" name="attr_iname" />
+        <input
+          type="text"
+          class="line-input"
+          name="attr_iname"
+          placeholder="Objet"
+        />
+        <span>x</span>
+        <input
+          type="number"
+          name="attr_iquantity"
+          min="0"
+          value="0"
+        />
       </h3>
       <input type="hidden" class="toggle-control" name="attr_toggle_idetails" />
       <div class="togglable idetails fcol fw">
-        <textarea name="attr_idesc"></textarea>
+        <div class="wdescription">
+          <textarea name="attr_idescription" placeholder="Description"></textarea>
+        </div>
+        <div class="list-spacer"></div>
       </div>
     </div>
   </fieldset>

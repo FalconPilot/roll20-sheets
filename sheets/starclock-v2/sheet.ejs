@@ -1,8 +1,17 @@
+<% const tabs = {
+  character: 'Caractéristiques',
+  skills: 'Compétences',
+  traits: 'Traits',
+  knowledge: 'Connaissances',
+  weapons: 'Arsenal',
+  inventory: 'Inventaire',
+  notes: 'Notes'
+}; %>
 <div class="sc-wrapper">
   <!-- BEGIN SELECTORS -->
   <input type="hidden" name="attr_gender" />
   <input type="hidden" name="attr_race" />
-  <input type="hidden" name="attr_current_tab" value="character" />
+  <input type="hidden" name="attr_current_tab" value="<%= Object.keys(tabs)[0] %>" />
   <!-- END SELECTORS-->
   <div class="sc-daicom">
     <div class="sc-daicom-lock"></div>
@@ -14,17 +23,15 @@
         <div class="sc-tabs-heading frow fw">
           <h3>Onglet <span>|></span></h3>
           <select class="sc-tabs-header" name="attr_current_tab">
-            <option value="character">Caractéristiques</option>
-            <option value="skills">Compétences</option>
-            <option value="weapons">Arsenal</option>
-            <option value="inventory">Inventaire</option>
+          <% Object.entries(tabs).sort(([tk1, tn1], [tk2, tn2]) => tn1 > tn2 ? 1 : -1).forEach(([tabKey, tabName]) => { %>
+            <option value="<%= tabKey %>" <%= tabKey === Object.keys(tabs)[0] ? 'selected' : '' %>><%= tabName %></option>
+          <% }) %>
           </select>
         </div>
         <!-- TABS -->
-        <%- include('./tabs/character.ejs', { constants }) %>
-        <%- include ('./tabs/skills.ejs', { constants }) %>
-        <%- include ('./tabs/weapons.ejs', { constants }) %>
-        <%- include ('./tabs/inventory.ejs', { constants }) %>
+        <% Object.keys(tabs).forEach(tabKey => { %>
+          <%- include(`./tabs/${tabKey}.ejs`, { constants }) %>
+        <% }) %>
       </div>
       <div class="fcol hw aside-right">
         <%- include('./parts/silhouette.ejs', { constants }) %>
