@@ -1407,6 +1407,11 @@ input[type="hidden"][name="attr_wtype"][value="melee"] ~ .weapon .wcaliber {
   flex: 1;
   padding: 0 !important;
   margin: 0 !important;
+  background-image: url("https://raw.githubusercontent.com/FalconPilot/roll20-sheets/master/sheets/starclock-v2/gui/file.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: contrast(0.5) sepia(1) hue-rotate(250deg) brightness(1.5) contrast(1.5) saturate(3) drop-shadow(0px 0px 3px #EA00D9);
 }
 
 .file-icon > input[type="checkbox"] {
