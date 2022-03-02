@@ -1,0 +1,16 @@
+<input type="hidden" name="attr_current_tab" />
+<div class="dh-wrapper">
+  <div class="tabs frow">
+    <% Object.entries(constants.tabs).forEach(([tab, displayName], idx) => { %>
+      <%- include('./components/headerInput.ejs', {
+        name: 'current_tab',
+        displayName,
+        value: tab,
+        defaultChecked: idx === 0
+      }) %>
+    <% }) %>
+  </div>
+  <% Object.keys(constants.tabs).forEach(tab => { %>
+    <%- include('./components/tab.ejs', { constants, tab }) %>
+  <% }) %>
+</div>

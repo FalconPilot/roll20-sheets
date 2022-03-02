@@ -1,0 +1,9 @@
+<label class="header-input frow centerv centerh <%= value %>">
+  <input
+    type="radio"
+    name="attr_<%= name %>"
+    value="<%= value %>"
+    <%= defaultChecked ? 'checked' : '' %>
+  />
+  <span><%= displayName %></span>
+</label>

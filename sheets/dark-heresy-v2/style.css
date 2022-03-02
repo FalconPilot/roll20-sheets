@@ -1,0 +1,60 @@
+.dh-wrapper {
+  width: 800px;
+}
+
+.dh-wrapper label {
+  margin: 0;
+  padding: 0;
+}
+
+.ftab {
+  display: none !important;
+}
+
+.dh-wrapper .frow, .fcol { display: flex; }
+.dh-wrapper .frow { flex-direction: row; }
+.dh-wrapper .fcol { flex-direction: column; }
+.dh-wrapper .fcol.centerv, .frow.centerh { justify-content: center; }
+.dh-wrapper .fcol.centerh, .frow.centerv { align-items: center; }
+.dh-wrapper .fcol.lefth, .frow.topv { align-items: flex-start; }
+.dh-wrapper .fcol.righth, .frow.bottomv { align-items: flex-end; }
+.dh-wrapper .fcol.topv, .frow.lefth { justify-content: flex-start; }
+.dh-wrapper .fcol.bottomv, .frow.righth { justify-content: flex-end; }
+
+.fw { width: 100%; }
+
+input[type="hidden"][name="attr_current_tab"][value="character"] ~ .dh-wrapper .ftab.character {
+  display: flex !important;
+}
+
+input[type="hidden"][name="attr_current_tab"][value="character"] ~ .dh-wrapper .header-input.character,
+input[type="hidden"][name="attr_current_tab"][value="advancements"] ~ .dh-wrapper .header-input.advancements,
+input[type="hidden"][name="attr_current_tab"][value="gear"] ~ .dh-wrapper .header-input.gear,
+input[type="hidden"][name="attr_current_tab"][value="npcs"] ~ .dh-wrapper .header-input.npcs,
+input[type="hidden"][name="attr_current_tab"][value="psy"] ~ .dh-wrapper .header-input.psy,
+input[type="hidden"][name="attr_current_tab"][value="ship"] ~ .dh-wrapper .header-input.ship,
+input[type="hidden"][name="attr_current_tab"][value="vehicles"] ~ .dh-wrapper .header-input.vehicles {
+  background-color: #8d141e;
+  border-color: #8d141e;
+  color: #FFF;
+}
+
+.dh-wrapper .header-input {
+  width: 150px;
+  padding: 4px;
+  box-sizing: border-box;
+  border: 1px solid #333;
+  border-bottom: none;
+}
+
+.header-input > input {
+  display: none;
+}
+
+.header-input:hover {
+  cursor: pointer;
+}
+
+.header-input > span {
+  font-size: 13px;
+}

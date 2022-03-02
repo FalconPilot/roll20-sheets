@@ -50,6 +50,11 @@ exports.execute = async (args) => {
         removeRedundantAttributes: false
       }
     })
+
+    await fs.copyFileSync(
+      path.resolve(folderPath, 'style.css'),
+      path.resolve(buildDir, folderName, 'style.css')
+    )
     vscode.window.showInformationMessage('Build completed !')
   } catch (err) {
     vscode.window.showErrorMessage(err.message)
