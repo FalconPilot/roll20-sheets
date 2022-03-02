@@ -1,0 +1,14 @@
+<% Object.entries(fields).map(([key, field]) => { %>
+  <%- include(`./${field.type}Input.ejs`, {
+    constants,
+    name: key,
+    title: field.title,
+    defaultValue: field.defaultValue || null,
+    placeholder: field.placeholder || null,
+    classes: ['pg'].concat(field.classes || ['fw']),
+    ...(field.type !== 'number' ? {} : {
+      min: typeof field.min === 'number' ? field.min : null,
+      max:typeof field.max === 'number' ? field.max : null
+    })
+  }) %>
+<% }) %>

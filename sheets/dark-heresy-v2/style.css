@@ -1,5 +1,10 @@
 .dh-wrapper {
   width: 800px;
+  font-family: 'Garamond';
+}
+
+.dh-wrapper * {
+  box-sizing: border-box;
 }
 
 .dh-wrapper label {
@@ -9,6 +14,7 @@
 
 .ftab {
   display: none !important;
+  border: 1px solid #333;
 }
 
 .dh-wrapper .frow, .fcol { display: flex; }
@@ -21,9 +27,27 @@
 .dh-wrapper .fcol.topv, .frow.lefth { justify-content: flex-start; }
 .dh-wrapper .fcol.bottomv, .frow.righth { justify-content: flex-end; }
 
-.fw { width: 100%; }
+.dh-wrapper .fw { width: 100%; }
+.dh-wrapper .hw { width: 50%; }
+.dh-wrapper .tw { width: 33%; }
+.dh-wrapper .qw { width: 25%; }
 
-input[type="hidden"][name="attr_current_tab"][value="character"] ~ .dh-wrapper .ftab.character {
+.dh-wrapper .pg { padding: 4px; }
+
+.dh-wrapper .noshrink { flex-shrink: 0; }
+.dh-wrapper .fshrink { flex-shrink: 1; }
+.dh-wrapper .nogrow { flex-grow: 0; }
+.dh-wrapper .fgrow { flex-grow: 1; }
+
+.dh-wrapper .fwrap { flex-wrap: wrap; }
+
+input[type="hidden"][name="attr_current_tab"][value="character"] ~ .dh-wrapper .ftab.character,
+input[type="hidden"][name="attr_current_tab"][value="advancements"] ~ .dh-wrapper .ftab.advancements,
+input[type="hidden"][name="attr_current_tab"][value="gear"] ~ .dh-wrapper .ftab.gear,
+input[type="hidden"][name="attr_current_tab"][value="npcs"] ~ .dh-wrapper .ftab.npcs,
+input[type="hidden"][name="attr_current_tab"][value="psy"] ~ .dh-wrapper .ftab.psy,
+input[type="hidden"][name="attr_current_tab"][value="ship"] ~ .dh-wrapper .ftab.ship,
+input[type="hidden"][name="attr_current_tab"][value="vehicles"] ~ .dh-wrapper .ftab.vehicles {
   display: flex !important;
 }
 
@@ -42,9 +66,12 @@ input[type="hidden"][name="attr_current_tab"][value="vehicles"] ~ .dh-wrapper .h
 .dh-wrapper .header-input {
   width: 150px;
   padding: 4px;
-  box-sizing: border-box;
   border: 1px solid #333;
   border-bottom: none;
+}
+
+.dh-wrapper .header-input:not(:first-child) {
+  border-left: none;
 }
 
 .header-input > input {
@@ -57,4 +84,16 @@ input[type="hidden"][name="attr_current_tab"][value="vehicles"] ~ .dh-wrapper .h
 
 .header-input > span {
   font-size: 13px;
+}
+
+.text-input {
+  border-bottom: 1px solid #777;
+}
+
+.text-input > input {
+  width: auto;
+  margin-left: 4px;
+  border: none;
+  border-radius: 0;
+  background-color: rgba(255, 255, 255, 0.3);
 }

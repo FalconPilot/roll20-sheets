@@ -1,0 +1,13 @@
+<% const classList = classes.length === 0 ? '' : ` ${classes.join(' ')}`; %>
+<div class="text-input frow centerv<%= classList %>">
+  <span><%= title %></span>
+  <input
+    type="number"
+    name="attr_<%= name %>"
+    class="fgrow noshrink"
+    <%= placeholder ? `placeholder="${placeholder}"` : '' %>
+    <%= defaultValue ? `value="${defaultValue}"` : '' %>
+    <%= min ? `min="${min}"` : '' %>
+    <%= max ? `value="${max}"` : '' %>
+  />
+</div>

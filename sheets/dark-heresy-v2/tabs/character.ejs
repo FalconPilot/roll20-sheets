@@ -1,3 +1,45 @@
-<div class="">
-  
+<% const leftFields = {
+  character_name: {
+    type: 'text',
+    title: 'Name'
+  },
+  homeworld: {
+    type: 'text',
+    title: 'Homeworld'
+  },
+  background: {
+    type: 'text',
+    title: 'Background'
+  },
+  role: {
+    type: 'text',
+    title: 'Role'
+  }
+}; %>
+<% const rightFields = {
+  gender: {
+    type: 'text',
+    title: 'Gender',
+    classes: ['tw']
+  },
+  eyes: {
+    type: 'text',
+    title: 'Eyes',
+    classes: ['tw']
+  },
+  age: {
+    type: 'number',
+    title: 'Age',
+    classes: ['tw']
+  }
+} %>
+<div class="frow fw topv">
+  <div class="tw frow fwrap">
+    <%- include('../components/characterInputs.ejs', { constants, fields: leftFields }) %>
+  </div>
+  <div class="tw fcol centerv centerh">
+  </div>
+  <div class="tw frow fwrap">
+    <%- include('../components/characterInputs.ejs', { constants, fields: rightFields }) %>
+  </div>
 </div>
