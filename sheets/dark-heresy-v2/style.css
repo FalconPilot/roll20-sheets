@@ -33,6 +33,12 @@
 .dh-wrapper .qw { width: 25%; }
 
 .dh-wrapper .pg { padding: 4px; }
+.dh-wrapper .pgv { padding: 4px 0; }
+.dh-wrapper .pgh { padding: 0 4px; }
+.dh-wrapper .pgt { padding: 4px 0 0 0; }
+.dh-wrapper .pgb { padding: 0 0 4px 0; }
+.dh-wrapper .pgl { padding: 0 0 0 4px; }
+.dh-wrapper .pgr { padding: 0 4px 0 0; }
 
 .dh-wrapper .noshrink { flex-shrink: 0; }
 .dh-wrapper .fshrink { flex-shrink: 1; }
@@ -96,4 +102,11 @@ input[type="hidden"][name="attr_current_tab"][value="vehicles"] ~ .dh-wrapper .h
   border: none;
   border-radius: 0;
   background-color: rgba(255, 255, 255, 0.3);
+}
+
+.inquisitionlogo {
+  background-image: url('https://github.com/FalconPilot/roll20-sheets/blob/master/sheets/dark-heresy-v2/gui/inquisition.png?raw=true');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
 }
