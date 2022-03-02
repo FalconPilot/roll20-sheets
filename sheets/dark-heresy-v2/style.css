@@ -15,6 +15,7 @@
 .ftab {
   display: none !important;
   border: 1px solid #333;
+  background-image: url('https://github.com/FalconPilot/roll20-sheets/blob/master/sheets/dark-heresy-v2/gui/parchment.jpg?raw=true');
 }
 
 .dh-wrapper .frow, .fcol { display: flex; }
@@ -74,6 +75,7 @@ input[type="hidden"][name="attr_current_tab"][value="vehicles"] ~ .dh-wrapper .h
   padding: 4px;
   border: 1px solid #333;
   border-bottom: none;
+  background-repeat: repeat;
 }
 
 .dh-wrapper .header-input:not(:first-child) {
