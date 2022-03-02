@@ -11,7 +11,7 @@ exports.execute = async (args) => {
 
     // CODE
     const folderPath = args.folder.fsPath
-    const folderName = folderPath.split('/').slice(-1)[0]
+    const folderName = folderPath.split(path.sep).slice(-1)[0]
     const buildDir = path.resolve(__dirname, '..', '..', 'dist')
     const buildPath = path.resolve(buildDir, folderName)
     const ejsPath = path.resolve(folderPath, 'sheet.ejs')

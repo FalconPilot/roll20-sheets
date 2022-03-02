@@ -1,14 +1,20 @@
 <div class="sc-infos fcol character-infos fw">
   <select name="attr_race" class="line-input fw">
     <option selected disabled>Race (?)</option>
-    <option value="human">Humain</option>
+    <% Object.entries(races.regular).forEach(([raceKey, raceName]) => %>
+      <option value="<%= raceKey %>"><%= raceName %></option>
+    <% ) %>
+    <option disabled>-- MUTANTS --</option>
+    <% Object.entries(races.mutants).forEach(([raceKey, raceName]) => %>
+      <option value="<%= raceKey %>"><%= raceName %></option>
+    <% ) %>
+    <!-- <option value="human">Humain</option>
     <option value="doppleganger">Doppleganger</option>
     <option value="endaari">Endaari</option>
     <option value="alkor">Alkor</option>
-    <option disabled>-- MUTANTS --</option>
     <option value="drone">Drone</option>
     <option value="troll">Troll</option>
-    <option value="changeling">Changelin</option>
+    <option value="changeling">Changelin</option> -->
   </select>
   <div class="frow fw">
     <select name="attr_gender" class="line-input fw">

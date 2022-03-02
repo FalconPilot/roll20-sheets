@@ -9,6 +9,19 @@ module.exports = {
     int: 'intelligence',
     wil: 'volonté'
   },
+  races: {
+    regular: {
+      human: 'Humain',
+      doppleganger: 'Doppleganger',
+      alkor: 'Alkor',
+      endaari: 'Endaari'
+    },
+    mutants: {
+      drone: 'Drone',
+      troll: 'Troll',
+      changeling: 'Changelin'
+    }
+  },
   skillGroups: {
     acrobatics: {
       name: 'Acrobaties',
