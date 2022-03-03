@@ -1,0 +1,24 @@
+<div class="stat frow fw pgv <%= key %>">
+  <button type="roll" value="" class="fgrow bordeaux">
+    <%= stat.name %>
+    <br />
+    (<%= stat.diminutive %>)
+  </button>
+  <input
+    type="number"
+    class="stat-input initial parchment-input"
+    name="attr_<%= key %>_initial"
+    min="0"
+    max="99"
+    value="30"
+  />
+  <input
+    readonly
+    type="number"
+    class="stat-input total parchment-input"
+    name="attr_<%= key %>_total"
+    min="0"
+    max="99"
+    value="30"
+  />
+</div>

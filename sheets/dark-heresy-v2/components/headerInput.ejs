@@ -1,9 +1,11 @@
-<label class="header-input frow centerv centerh <%= value %>">
-  <input
-    type="radio"
-    name="attr_<%= name %>"
-    value="<%= value %>"
-    <%= defaultChecked ? 'checked' : '' %>
-  />
-  <span><%= displayName %></span>
-</label>
+<div class="header-input-wrapper nogrow fshrink fcol bottomv">
+  <label class="header-input frow centerv centerh fgrow fshrink bordeaux pg <%= value %>">
+    <input
+      type="radio"
+      name="attr_<%= name %>"
+      value="<%= value %>"
+      <%= defaultChecked ? 'checked' : '' %>
+    />
+    <span><%= displayName %></span>
+  </label>
+</div>

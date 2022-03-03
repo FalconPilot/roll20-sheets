@@ -1,0 +1,10 @@
+<% const classList = classes.length === 0 ? '' : ` ${classes.join(' ')}`; %>
+<label class="text-input frow pg centerv<%= classList %>">
+  <input
+    type="checkbox"
+    name="attr_<%= name %>"
+    class="nogrow fshrink fw parchment-input"
+    <%= defaultChecked ? 'checked' : '' %>
+  />
+  <span class="noshrink fgrow"><%= title %></span>
+</label>

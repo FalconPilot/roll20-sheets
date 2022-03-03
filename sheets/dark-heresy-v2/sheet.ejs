@@ -1,6 +1,6 @@
 <input type="hidden" name="attr_current_tab" />
 <div class="dh-wrapper">
-  <div class="tabs frow">
+  <div class="tabs frow bottomv">
     <% Object.entries(constants.tabs).forEach(([tab, displayName], idx) => { %>
       <%- include('./components/headerInput.ejs', {
         name: 'current_tab',
@@ -14,3 +14,14 @@
     <%- include('./components/tab.ejs', { constants, tab }) %>
   <% }) %>
 </div>
+
+<!-- ROLLTEMPLATES -->
+<%- include('./rolltemplates.ejs') %>
+
+<!-- WORKERS -->
+<script type="text/worker">
+  var constants = {};
+  <%- include('./constants.js') %>
+  <%- include('./scripts.js') %>
+</script>
+

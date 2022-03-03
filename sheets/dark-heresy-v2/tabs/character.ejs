@@ -15,22 +15,46 @@
     type: 'text',
     title: 'Role'
   }
-}; %>
+} %>
 <% const rightFields = {
   gender: {
     type: 'text',
     title: 'Gender',
-    classes: ['tw']
-  },
-  eyes: {
-    type: 'text',
-    title: 'Eyes',
-    classes: ['tw']
+    classes: ['tqw']
   },
   age: {
     type: 'number',
     title: 'Age',
-    classes: ['tw']
+    classes: ['qw'],
+    min: 0
+  },
+  complexion: {
+    type: 'text',
+    title: 'Complexion'
+  },
+  build: {
+    type: 'text',
+    title: 'Build'
+  },
+  eyes: {
+    type: 'text',
+    title: 'Eyes',
+    classes: ['hw']
+  },
+  hair: {
+    type: 'text',
+    title: 'Hair',
+    classes: ['hw']
+  }
+} %>
+<% const bottomFields = {
+  superstitions: {
+    type: 'text',
+    title: 'Superstitions'
+  },
+  quirks: {
+    type: 'text',
+    title: 'Quirks'
   }
 } %>
 <div class="frow fw pgv">
@@ -41,4 +65,15 @@
   <div class="tw frow fwrap topv">
     <%- include('../components/characterInputs.ejs', { constants, fields: rightFields }) %>
   </div>
+</div>
+<hr class="separator-main" />
+<div class="fw frow fwrap topv">
+  <%- include('../components/characterInputs', { constants, fields: bottomFields }) %>
+</div>
+<div class="ttw frow fwrap">
+  <% Object.entries(constants.stats).forEach(([key, stat]) => { %>
+    <div class="hw">
+      <%- include('../components/statBlock.ejs', { constants, key, stat }) %>
+    </div>
+  <% }) %>
 </div>

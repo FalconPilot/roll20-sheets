@@ -1,0 +1,13 @@
+<div class="frow fw">
+  <div class="hw frow fwrap">
+    <% Object.entries(constants.aptitudes).forEach(([key, title]) => { %>
+      <%- include('../components/checkboxInput.ejs', {
+        constants,
+        name: `apt_${key}_known`,
+        title,
+        defaultChecked: key === 'gen',
+        classes: ['hw']
+      }) %>
+    <% }) %>
+  </div>
+</div>

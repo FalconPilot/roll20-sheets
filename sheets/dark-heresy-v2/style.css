@@ -1,10 +1,23 @@
 .dh-wrapper {
   width: 800px;
   font-family: 'Garamond';
+  /* box-shadow: 8px 8px 20px #333; */
 }
 
 .dh-wrapper * {
   box-sizing: border-box;
+}
+
+/* Chrome, Safari, Edge, Opera */
+.dh-wrapper input::-webkit-outer-spin-button,
+.dh-wrapper input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+.dh-wrapper input[type=number] {
+  -moz-appearance: textfield;
 }
 
 .dh-wrapper label {
@@ -13,9 +26,34 @@
 }
 
 .ftab {
+  position: relative;
   display: none !important;
-  border: 1px solid #333;
   background-image: url('https://github.com/FalconPilot/roll20-sheets/blob/master/sheets/dark-heresy-v2/gui/parchment.jpg?raw=true');
+  border-radius: 2px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.3) inset;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.ftab:after {
+  content: ' ';
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.1;
+  z-index: 1;
+  filter: sepia(1);
+  background-image: url('https://github.com/FalconPilot/roll20-sheets/blob/master/sheets/dark-heresy-v2/gui/aquila.png?raw=true');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
+.ftab-inner {
+  z-index: 2;
 }
 
 .dh-wrapper .frow, .fcol { display: flex; }
@@ -29,17 +67,19 @@
 .dh-wrapper .fcol.bottomv, .frow.righth { justify-content: flex-end; }
 
 .dh-wrapper .fw { width: 100%; }
+.dh-wrapper .tqw { width: 75%; }
+.dh-wrapper .ttw { width: 66%; }
 .dh-wrapper .hw { width: 50%; }
 .dh-wrapper .tw { width: 33%; }
 .dh-wrapper .qw { width: 25%; }
 
-.dh-wrapper .pg { padding: 4px; }
-.dh-wrapper .pgv { padding: 4px 0; }
-.dh-wrapper .pgh { padding: 0 4px; }
-.dh-wrapper .pgt { padding: 4px 0 0 0; }
-.dh-wrapper .pgb { padding: 0 0 4px 0; }
-.dh-wrapper .pgl { padding: 0 0 0 4px; }
-.dh-wrapper .pgr { padding: 0 4px 0 0; }
+.dh-wrapper .pg { padding: 8px; }
+.dh-wrapper .pgv { padding: 8px 0; }
+.dh-wrapper .pgh { padding: 0 8px; }
+.dh-wrapper .pgt { padding: 8px 0 0 0; }
+.dh-wrapper .pgb { padding: 0 0 8px 0; }
+.dh-wrapper .pgl { padding: 0 0 0 8px; }
+.dh-wrapper .pgr { padding: 0 8px 0 0; }
 
 .dh-wrapper .noshrink { flex-shrink: 0; }
 .dh-wrapper .fshrink { flex-shrink: 1; }
@@ -65,21 +105,27 @@ input[type="hidden"][name="attr_current_tab"][value="npcs"] ~ .dh-wrapper .heade
 input[type="hidden"][name="attr_current_tab"][value="psy"] ~ .dh-wrapper .header-input.psy,
 input[type="hidden"][name="attr_current_tab"][value="ship"] ~ .dh-wrapper .header-input.ship,
 input[type="hidden"][name="attr_current_tab"][value="vehicles"] ~ .dh-wrapper .header-input.vehicles {
+  margin-top: 0;
+  padding-bottom: 20px;
+}
+
+.dh-wrapper .bordeaux {
   background-color: #8d141e;
-  border-color: #8d141e;
   color: #FFF;
 }
 
-.dh-wrapper .header-input {
-  width: 150px;
-  padding: 4px;
-  border: 1px solid #333;
-  border-bottom: none;
-  background-repeat: repeat;
+.dh-wrapper .header-input-wrapper {
+  height: 50px;
+  margin-left: 8px;
 }
 
-.dh-wrapper .header-input:not(:first-child) {
-  border-left: none;
+.dh-wrapper .header-input {
+  margin-top: 20px;
+  transition: 0.1s;
+  border-bottom: none;
+  background-repeat: repeat;
+  border-radius: 4px 4px 0 0;
+  font-variant: small-caps;
 }
 
 .header-input > input {
@@ -91,19 +137,43 @@ input[type="hidden"][name="attr_current_tab"][value="vehicles"] ~ .dh-wrapper .h
 }
 
 .header-input > span {
-  font-size: 13px;
+  font-size: 15px;
+  font-weight: normal;
 }
 
 .text-input {
   border-bottom: 1px solid #777;
 }
 
-.text-input > input {
-  width: auto;
+label.text-input:hover {
+  cursor: pointer;
+}
+
+.text-input > span {
+  font-weight: bold;
+}
+
+.text-input > span:last-child {
   margin-left: 4px;
+}
+
+.dh-wrapper input.parchment-input {
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 4px;
   border: none;
-  border-radius: 0;
-  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.dh-wrapper input.parchment-input:disabled,
+.dh-wrapper input.parchment-input:read-only {
+  background-color: #8d141e77;
+  color: #FFF;
+  font-weight: bold;
+}
+
+.dh-wrapper .text-input > input[type="text"],
+.dh-wrapper .text-input > input[type="number"] {
+  width: 100%;
+  margin-left: 4px;
 }
 
 .inquisitionlogo {
@@ -111,4 +181,34 @@ input[type="hidden"][name="attr_current_tab"][value="vehicles"] ~ .dh-wrapper .h
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
+}
+
+.dh-wrapper .stat button[type="roll"] {
+  background-image: none;
+  border: none;
+  text-shadow: none;
+  font-variant: small-caps;
+}
+
+.dh-wrapper .stat button[type="roll"]:before {
+  content: '';
+}
+
+.dh-wrapper input[type="number"].stat-input {
+  text-align: center;
+  width: 50px;
+  height: 50px;
+  font-size: 20px;
+  margin: 0;
+}
+
+.dh-wrapper input[type="number"].stat-input.initial {
+  margin-left: 4px;
+  border-radius: 4px 0 0 4px;
+}
+
+.dh-wrapper input[type="number"].stat-input.total {
+  margin-right: 4px;
+  border-radius: 0 4px 4px 0;
+  border-left: 1px solid rgba(0, 0, 0, 0.7);
 }

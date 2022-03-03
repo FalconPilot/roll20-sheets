@@ -1,3 +1,5 @@
-<div class="ftab fcol fw <%= tab %>">
-  <%- include(`../tabs/${tab}.ejs`, { constants }) %>
+<div class="ftab fw <%= tab %>">
+  <div class="fw fcol ftab-inner">
+    <%- include(`../tabs/${tab}.ejs`, { constants }) %>
+  </div>
 </div>
