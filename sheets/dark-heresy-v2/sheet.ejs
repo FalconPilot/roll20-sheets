@@ -2,7 +2,7 @@
 <div class="dh-wrapper">
   <div class="tabs frow bottomv">
     <% Object.entries(constants.tabs).forEach(([tab, displayName], idx) => { %>
-      <%- include('./components/headerInput.ejs', {
+      <%- include('./components/tabButton.ejs', {
         name: 'current_tab',
         displayName,
         value: tab,
@@ -10,13 +10,16 @@
       }) %>
     <% }) %>
   </div>
-  <% Object.keys(constants.tabs).forEach(tab => { %>
-    <%- include('./components/tab.ejs', { constants, tab }) %>
-  <% }) %>
+  <div class="dh-inner fw">
+    <%- include('./components/header.ejs', { constants }) %>
+    <% Object.keys(constants.tabs).forEach(tab => { %>
+      <%- include('./components/tab.ejs', { constants, tab }) %>
+    <% }) %>
+  </div>
 </div>
 
 <!-- ROLLTEMPLATES -->
-<%- include('./rolltemplates.ejs') %>
+<%- include('./rolltemplates.ejs', { constants }) %>
 
 <!-- WORKERS -->
 <script type="text/worker">

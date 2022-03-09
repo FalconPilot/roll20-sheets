@@ -1,0 +1,20 @@
+<%- include('../numberInput.ejs', {
+  constants,
+  name: 'exp_gained',
+  title: 'EXP earned',
+  options: {
+    defaultValue: 0,
+    min: 0,
+    classes: ['hw', 'pg']
+  }
+}) %>
+<%- include('../numberInput.ejs', {
+  constants,
+  name: 'exp_spent',
+  title: 'EXP spent',
+  options: {
+    defaultValue: 0,
+    readOnly: true,
+    classes: ['hw', 'pg']
+  }
+}) %>

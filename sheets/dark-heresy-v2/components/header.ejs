@@ -1,0 +1,30 @@
+<div class="dh-header fcol fw">
+  <%- include('./textInput.ejs', {
+    constants,
+    name: 'character_name',
+    title: 'Agent name',
+    options: {
+      classes: ['fw', 'pg']
+    }
+  }) %>
+  <div class="frow fw bottomv">
+    <%- include('./bar.ejs', {
+      constants,
+      name: 'wounds',
+      title: 'Wounds',
+      options: {
+        classes: ['qw', 'pg']
+      }
+    }) %>
+    <%- include('./numberInput.ejs', {
+      constants,
+      name: 'exp_left',
+      title: 'EXP left',
+      options: {
+        defaultValue: 0,
+        readOnly: true,
+        classes: ['qw', 'pg']
+      }
+    }) %>
+  </div>
+</div>

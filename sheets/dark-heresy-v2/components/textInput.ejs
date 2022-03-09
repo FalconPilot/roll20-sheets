@@ -1,11 +1,12 @@
-<% const classList = classes.length === 0 ? '' : ` ${classes.join(' ')}`; %>
+<% const classList = options.classes && options.classes.length > 0 ? ` ${options.classes.join(' ')}` : '' %>
 <div class="text-input frow centerv<%= classList %>">
   <span class="noshrink"><%= title %></span>
   <input
     type="text"
     name="attr_<%= name %>"
     class="fgrow fshrink fw parchment-input"
-    <%= placeholder ? `placeholder="${placeholder}"` : '' %>
-    <%= defaultValue ? `value="${defaultValue}"` : '' %>
+    <%- options.placeholder ? `placeholder="${placeholder}"` : '' %>
+    <%- options.defaultValue ? `value="${defaultValue}"` : '' %>
+    <%- options.readOnly ? 'readonly' : '' %>
   />
 </div>

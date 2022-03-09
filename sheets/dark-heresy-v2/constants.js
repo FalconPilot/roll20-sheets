@@ -11,43 +11,53 @@ module.exports = {
   stats: {
     ws: {
       name: 'Weapon Skill',
-      diminutive: 'WS'
+      diminutive: 'WS',
+      aptitudes: ['ws', 'off']
     },
     bs: {
       name: 'Ballistic Skill',
-      diminutive: 'BS'
+      diminutive: 'BS',
+      aptitudes: ['bs', 'fin']
     },
     str: {
       name: 'Strength',
-      diminutive: 'S'
+      diminutive: 'S',
+      aptitudes: ['str', 'off']
     },
     tou: {
       name: 'Toughness',
-      diminutive: 'T'
+      diminutive: 'T',
+      aptitudes: ['tou', 'def']
     },
     agi: {
       name: 'Agility',
-      diminutive: 'Ag'
+      diminutive: 'Ag',
+      aptitudes: ['agi', 'fin']
     },
     int: {
       name: 'Intelligence',
-      diminutive: 'Int'
+      diminutive: 'Int',
+      aptitudes: ['int', 'kno']
     },
     per: {
       name: 'Perception',
-      diminutive: 'Per'
+      diminutive: 'Per',
+      aptitudes: ['per', 'fld']
     },
     wp: {
       name: 'Willpower',
-      diminutive: 'WP'
+      diminutive: 'WP',
+      aptitudes: ['wp', 'psy']
     },
     fel: {
       name: 'Fellowship',
-      diminutive: 'Fel'
+      diminutive: 'Fel',
+      aptitudes: ['fel', 'soc']
     },
     inf: {
       name: 'Influence',
-      diminutive: 'Inf'
+      diminutive: 'Inf',
+      aptitudes: ['inf', 'soc']
     }
   },
   aptitudes: {
@@ -71,5 +81,25 @@ module.exports = {
     soc: 'Social',
     lead: 'Leadership',
     fld: 'Fieldcraft'
+  },
+  xpMatrix: {
+    stats: {
+      '+5': [100, 250, 500],
+      '+10': [250, 500, 750],
+      '+15': [500, 750, 1000],
+      '+20': [750, 1000, 1500],
+      '+25': [1250, 1500, 2500]
+    },
+    skills: {
+      known: [100, 200, 300],
+      trained: [200, 400, 600],
+      experienced: [300, 600, 900],
+      veteran: [400, 800, 1200]
+    },
+    talents: {
+      t1: [200, 300, 600],
+      t2: [300, 450, 900],
+      t3: [400, 600, 1200]
+    }
   }
 }

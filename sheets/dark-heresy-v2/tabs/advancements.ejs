@@ -1,13 +1,19 @@
-<div class="frow fw">
-  <div class="hw frow fwrap">
+<div class="frow fw topv">
+  <div class="tw frow fwrap">
+    <h2 class="section-title fw">Aptitudes</h2>
     <% Object.entries(constants.aptitudes).forEach(([key, title]) => { %>
       <%- include('../components/checkboxInput.ejs', {
         constants,
         name: `apt_${key}_known`,
         title,
-        defaultChecked: key === 'gen',
-        classes: ['hw']
+        options: {
+          defaultChecked: key === 'gen',
+          classes: ['hw']
+        }
       }) %>
     <% }) %>
+  </div>
+  <div class="tw frow exp-section">
+    <%- include('../components/advancements/expInputs.ejs', { constants }) %>
   </div>
 </div>

@@ -25,11 +25,23 @@
   padding: 0;
 }
 
+.dh-header {
+  color: #FFF;
+  background-color: #333;
+  border: 3px solid #8d141e;
+  border-radius: 4px 4px 0 0;
+}
+
+.dh-wrapper .dh-header input[type=number]:read-only {
+  background-color: #CCC;
+  color: #333;
+}
+
 .ftab {
   position: relative;
   display: none !important;
   background-image: url('https://github.com/FalconPilot/roll20-sheets/blob/master/sheets/dark-heresy-v2/gui/parchment.jpg?raw=true');
-  border-radius: 2px;
+  border-radius: 0 0 4px 4px;
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.3) inset;
   margin-bottom: 20px;
   overflow: hidden;
@@ -46,13 +58,15 @@
   opacity: 0.1;
   z-index: 1;
   filter: sepia(1);
-  background-image: url('https://github.com/FalconPilot/roll20-sheets/blob/master/sheets/dark-heresy-v2/gui/aquila.png?raw=true');
+  background-image: url('https://github.com/FalconPilot/roll20-sheets/blob/master/sheets/dark-heresy-v2/gui/inquisition.png?raw=true');
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
 }
 
 .ftab-inner {
+  height: 500px;
+  overflow: auto;
   z-index: 2;
 }
 
@@ -72,6 +86,7 @@
 .dh-wrapper .hw { width: 50%; }
 .dh-wrapper .tw { width: 33%; }
 .dh-wrapper .qw { width: 25%; }
+.dh-wrapper .thw { width: 10%; }
 
 .dh-wrapper .pg { padding: 8px; }
 .dh-wrapper .pgv { padding: 8px 0; }
@@ -107,6 +122,7 @@ input[type="hidden"][name="attr_current_tab"][value="ship"] ~ .dh-wrapper .heade
 input[type="hidden"][name="attr_current_tab"][value="vehicles"] ~ .dh-wrapper .header-input.vehicles {
   margin-top: 0;
   padding-bottom: 20px;
+  box-shadow: none;
 }
 
 .dh-wrapper .bordeaux {
@@ -126,6 +142,12 @@ input[type="hidden"][name="attr_current_tab"][value="vehicles"] ~ .dh-wrapper .h
   background-repeat: repeat;
   border-radius: 4px 4px 0 0;
   font-variant: small-caps;
+  box-shadow: 0px -2px 5px -2px #333 inset;
+}
+
+.dh-wrapper .section-title {
+  text-align: center;
+  font-variant: small-caps;
 }
 
 .header-input > input {
@@ -141,20 +163,126 @@ input[type="hidden"][name="attr_current_tab"][value="vehicles"] ~ .dh-wrapper .h
   font-weight: normal;
 }
 
-.text-input {
-  border-bottom: 1px solid #777;
-}
-
 label.text-input:hover {
   cursor: pointer;
 }
 
 .text-input > span {
   font-weight: bold;
+  white-space: nowrap;
 }
 
 .text-input > span:last-child {
   margin-left: 4px;
+}
+
+.checkbox-input {
+  background-color: #8d141e33;
+  transition: 0.1s;
+}
+
+input[type=hidden][value="on"] + .checkbox-input {
+  background-color: #8d141e;
+  color: #FFF;
+}
+
+.dh-wrapper .bar-wrapper > span {
+  text-align: center;
+  font-variant: small-caps;
+}
+
+.dh-wrapper .bar-wrapper input[type=number] {
+  width: 35px;
+  height: 20px;
+  background-color: transparent;
+  border: none;
+  border-radius: 5px;
+  color: #FFF;
+  text-shadow: 0px 0px 1px #333;
+  text-align: center;
+}
+
+.bar-inner {
+  position: relative;
+  border: 1px solid #FFF;
+  border-radius: 4px;
+  height: 30px;
+  background-color: #333;
+  overflow: hidden;
+}
+
+.bar-inner:before {
+  content: ' ';
+  position: absolute;
+  transition: 0.1s;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+input[type="hidden"].bar-percentage[value="0"] + .bar-wrapper .bar-inner:before {
+  width: 0%;
+  background-color: #8d141e;
+}
+
+input[type="hidden"].bar-percentage[value="1"] + .bar-wrapper .bar-inner:before {
+  width: 10%;
+  background-color: #8d141e;
+}
+
+input[type="hidden"].bar-percentage[value="2"] + .bar-wrapper .bar-inner:before {
+  width: 20%;
+  background-color: #8d141e;
+}
+
+input[type="hidden"].bar-percentage[value="3"] + .bar-wrapper .bar-inner:before {
+  width: 30%;
+  background-color: #bd7932;
+}
+
+input[type="hidden"].bar-percentage[value="4"] + .bar-wrapper .bar-inner:before {
+  width: 40%;
+  background-color: #bd7932;
+}
+
+input[type="hidden"].bar-percentage[value="5"] + .bar-wrapper .bar-inner:before {
+  width: 50%;
+  background-color: #bd7932;
+}
+
+input[type="hidden"].bar-percentage[value="6"] + .bar-wrapper .bar-inner:before {
+  width: 60%;
+  background-color: #0b7e11;
+}
+
+input[type="hidden"].bar-percentage[value="7"] + .bar-wrapper .bar-inner:before {
+  width: 70%;
+  background-color: #0b7e11;
+}
+
+input[type="hidden"].bar-percentage[value="8"] + .bar-wrapper .bar-inner:before {
+  width: 80%;
+  background-color: #0b7e11;
+}
+
+input[type="hidden"].bar-percentage[value="9"] + .bar-wrapper .bar-inner:before {
+  width: 90%;
+  background-color: #0b7e11;
+}
+
+input.bar-percentage[type="hidden"][value="10"] + .bar-wrapper .bar-inner:before {
+  width: 100%;
+  background-color: #0b7e11;
+}
+
+.dh-wrapper .bar-wrapper .bar-inner > span {
+  color: #FFF;
+  text-shadow: 0px 0px 1px #333;
+}
+
+.bar-inner > * {
+  z-index: 2;
 }
 
 .dh-wrapper input.parchment-input {
@@ -165,7 +293,7 @@ label.text-input:hover {
 
 .dh-wrapper input.parchment-input:disabled,
 .dh-wrapper input.parchment-input:read-only {
-  background-color: #8d141e77;
+  background-color: #333;
   color: #FFF;
   font-weight: bold;
 }
@@ -177,10 +305,12 @@ label.text-input:hover {
 }
 
 .inquisitionlogo {
-  background-image: url('https://github.com/FalconPilot/roll20-sheets/blob/master/sheets/dark-heresy-v2/gui/inquisition.png?raw=true');
+  align-self: stretch;
+  background-image: url('https://github.com/FalconPilot/roll20-sheets/blob/master/sheets/dark-heresy-v2/gui/aquila.png?raw=true');
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
+  filter: drop-shadow(2px 2px 4px #333);
 }
 
 .dh-wrapper .stat button[type="roll"] {
@@ -210,5 +340,4 @@ label.text-input:hover {
 .dh-wrapper input[type="number"].stat-input.total {
   margin-right: 4px;
   border-radius: 0 4px 4px 0;
-  border-left: 1px solid rgba(0, 0, 0, 0.7);
 }

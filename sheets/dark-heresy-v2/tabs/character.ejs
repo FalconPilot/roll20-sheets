@@ -1,8 +1,4 @@
 <% const leftFields = {
-  character_name: {
-    type: 'text',
-    title: 'Name'
-  },
   homeworld: {
     type: 'text',
     title: 'Homeworld'
@@ -20,12 +16,12 @@
   gender: {
     type: 'text',
     title: 'Gender',
-    classes: ['tqw']
+    classes: ['ttw']
   },
   age: {
     type: 'number',
     title: 'Age',
-    classes: ['qw'],
+    classes: ['tw'],
     min: 0
   },
   complexion: {
@@ -57,23 +53,23 @@
     title: 'Quirks'
   }
 } %>
-<div class="frow fw pgv">
+<div class="frow fw pgv topv">
   <div class="tw frow fwrap topv">
-    <%- include('../components/characterInputs.ejs', { constants, fields: leftFields }) %>
+    <%- include('../components/character/characterInputs.ejs', { constants, fields: leftFields }) %>
   </div>
   <div class="tw inquisitionlogo"></div>
   <div class="tw frow fwrap topv">
-    <%- include('../components/characterInputs.ejs', { constants, fields: rightFields }) %>
+    <%- include('../components/character/characterInputs.ejs', { constants, fields: rightFields }) %>
   </div>
 </div>
 <hr class="separator-main" />
 <div class="fw frow fwrap topv">
-  <%- include('../components/characterInputs', { constants, fields: bottomFields }) %>
+  <%- include('../components/character/characterInputs.ejs', { constants, fields: bottomFields }) %>
 </div>
 <div class="ttw frow fwrap">
   <% Object.entries(constants.stats).forEach(([key, stat]) => { %>
     <div class="hw">
-      <%- include('../components/statBlock.ejs', { constants, key, stat }) %>
+      <%- include('../components/character/statBlock.ejs', { constants, key, stat }) %>
     </div>
   <% }) %>
 </div>
