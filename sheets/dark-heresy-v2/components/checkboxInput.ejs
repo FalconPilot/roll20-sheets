@@ -1,11 +1,13 @@
 <% const classList = options.classes && options.classes.length > 0 ? ` ${options.classes.join(' ')}` : '' %>
-<input type="hidden" name="attr_<%= name %>" value="<%= options.defaultChecked ? 'on' : '0' %>" />
-<label class="text-input checkbox-input frow pg centerv<%= classList %>">
+<input type="hidden" class="check-control" name="attr_<%= name %>" value="<%= options.defaultChecked ? 'on' : '0' %>" />
+<label class="text-input checkbox-input frow centerv<%= classList %>">
   <input
     type="checkbox"
     name="attr_<%= name %>"
     class="nogrow fshrink parchment-input"
     <%= options.defaultChecked ? 'checked' : '' %>
   />
-  <span class="noshrink fgrow"><%= title %></span>
+  <div class="checkbox-backdrop pg fw">
+    <span class="fw"><%= title %></span>
+  </div>
 </label>

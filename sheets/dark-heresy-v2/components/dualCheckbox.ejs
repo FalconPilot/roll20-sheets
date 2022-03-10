@@ -1,0 +1,27 @@
+<% const classList = options.classes && options.classes.length > 0 ? ` ${options.classes.join(' ')}` : '' %>
+<div class="text-input fcol centerv centerh dualcheck<%= classList %>">
+  <label class="fcol noshrink checkbox-input fw centerv centerh">
+    <input
+      type="checkbox"
+      name="attr<%- prefix ? `_${prefix}` : '' %>_<%= leftKey %>"
+      class="nogrow fshrink parchment-input"
+      title="<%= leftTitle %>"
+      <%= options.leftDefaultChecked ? 'checked' : '' %>
+    />
+    <div class="checkbox-backdrop fcol centerv centerh">
+      <span class="fw"><%= leftTitle %></span>
+    </div>
+  </label>
+  <label class="fcol noshrink checkbox-input fw centerv centerh">
+    <input
+      type="checkbox"
+      name="attr<%- prefix ? `_${prefix}` : '' %>_<%= rightKey %>"
+      class="nogrow fshrink parchment-input"
+      title="<%= rightTitle %>"
+      <%= options.rightDefaultChecked ? 'checked' : '' %>
+    />
+    <div class="checkbox-backdrop fcol centerv centerh">
+      <span class="fw"><%= rightTitle %></span>
+    </div>
+  </label>
+</div>

@@ -1,0 +1,15 @@
+<div class="fcol hw skills">
+  <h2 class="section-title fw">Common Skills</h2>
+  <% Object.entries(constants.skills).forEach(([key, skill]) => { %>
+    <%- include('./skill.ejs', { constants, key, skill, grouped: false }) %>
+  <% }) %>
+</div>
+<div class="fcol hw skillgroups">
+  <h2 class="section-title fw">Specialist Skills</h2>
+  <% Object.entries(constants.specialistSkills).forEach(([key, group]) => { %>
+    <h3 class="section-title fw ud"><%= group.name %></h3>
+    <fieldset class="repeating_ads<%= key %>">
+      <%- include('./skill.ejs', { constants, key, skill: group, grouped: true }) %>
+    </fieldset>
+  <% }) %>
+</div>

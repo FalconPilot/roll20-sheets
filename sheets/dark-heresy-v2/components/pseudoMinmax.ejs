@@ -1,0 +1,16 @@
+<% const classList = options.classes && options.classes.length > 0 ? ` ${options.classes.join(' ')}` : '' %>
+<div class="minmax-wrapper fcol <%= name %><%= classList %>">
+  <span class="fw"><%= title %></span>
+  <div class="minmax-inner fw frow centerh centerv">
+    <input
+      type="number"
+      name="attr_<%= name %>"
+      class="fgrow fshrink fw parchment-input"
+      <%- options.placeholder ? `placeholder="${options.placeholder}"` : '' %>
+      <%- options.defaultValue ? `value="${options.defaultValue}"` : '' %>
+      <%- options.min ? `min="${options.min}"` : '' %>
+      <%- options.max ? `max="${options.max}"` : '' %>
+      <%- options.readOnly ? 'readonly' : '' %>
+    />
+  </div>
+</div>

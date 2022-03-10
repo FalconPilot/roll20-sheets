@@ -1,6 +1,8 @@
 <% const classList = options.classes && options.classes.length > 0 ? ` ${options.classes.join(' ')}` : '' %>
 <div class="text-input frow centerv<%= classList %>">
-  <span><%= title %></span>
+  <% if (!!title) { %>
+    <span><%= title %></span>
+  <% } %>
   <input
     type="number"
     name="attr_<%= name %>"

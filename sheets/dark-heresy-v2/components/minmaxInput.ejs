@@ -1,0 +1,22 @@
+<% const classList = options.classes && options.classes.length > 0 ? ` ${options.classes.join(' ')}` : '' %>
+<div class="minmax-wrapper fcol <%= name %><%= classList %>">
+  <span class="fw"><%= title %></span>
+  <div class="minmax-inner fw frow centerh centerv">
+    <input
+      type="number"
+      name="attr_<%= name %>_current"
+      min="0"
+      placeholder="0"
+      <%- options.initialCurrent ? `value="${options.initialCurrent}"` : '' %>
+      <%- options.minReadOnly ? 'readonly' : '' %>
+    />
+    <input
+      type="number"
+      name="attr_<%= name %>_max"
+      min="0"
+      placeholder="Max"
+      <%- options.initialMax ? `value="${options.initialMax}"` : '' %>
+      <%- options.maxReadOnly ? 'readonly' : '' %>
+    />
+  </div>
+</div>

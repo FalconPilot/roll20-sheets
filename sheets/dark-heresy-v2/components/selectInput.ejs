@@ -1,0 +1,16 @@
+<% const classList = options.classes && options.classes.length > 0 ? ` ${options.classes.join(' ')}` : '' %>
+<div class="text-input frow centerv<%= classList %>">
+  <%if (!!title) { %>
+    <span class="noshrink"><%= title %></span>
+  <% } %>
+  <select class="fgrow fshrink fw parchemnt-input" name="attr_<%= name %>">
+    <% values.map(option => { %>
+      <option
+        value="<%= option.value %>"
+        <%= option.disabled ? 'disabled' : '' %>
+      >
+        <%= option.title %>
+    </option>
+    <% }) %>
+  </select>
+</div>

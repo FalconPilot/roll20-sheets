@@ -4,21 +4,28 @@
     <br />
     (<%= stat.diminutive %>)
   </button>
-  <input
-    type="number"
-    class="stat-input initial parchment-input"
-    name="attr_<%= key %>_initial"
-    min="0"
-    max="99"
-    value="30"
-  />
-  <input
-    readonly
-    type="number"
-    class="stat-input total parchment-input"
-    name="attr_<%= key %>_total"
-    min="0"
-    max="99"
-    value="30"
-  />
+  <div class="frow stat-values nogrow">
+    <input
+      type="number"
+      class="stat-input initial parchment-input"
+      name="attr_<%= key %>_initial"
+      min="0"
+      max="99"
+      value="30"
+    />
+    <input
+      readonly
+      type="number"
+      class="stat-input total parchment-input"
+      name="attr_<%= key %>_total"
+      value="30"
+    />
+    <input
+      readonly
+      type="number"
+      class="stat-bonus"
+      name="attr_<%= key %>_bonus"
+      value="3"
+    />
+  </div>
 </div>

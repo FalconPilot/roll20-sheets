@@ -1,5 +1,10 @@
-<input type="hidden" name="attr_current_tab" />
+<input type="hidden" name="attr_current_tab" value="character" />
 <div class="dh-wrapper">
+  <div class="dh-avatar frow centerv centerh">
+    <div class="dh-avatar-inner">
+      <img name="attr_character_avatar" />
+    </div>
+  </div>
   <div class="tabs frow bottomv">
     <% Object.entries(constants.tabs).forEach(([tab, displayName], idx) => { %>
       <%- include('./components/tabButton.ejs', {

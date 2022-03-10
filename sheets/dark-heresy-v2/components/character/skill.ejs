@@ -1,0 +1,36 @@
+<% const skillStatus = {
+  known: '2',
+  trained: '+10',
+  experienced: '+20',
+  veteran: '+30'
+} %>
+<div class="frow fw skill pg">
+  <% if (!grouped) { %>
+    <button type="roll" class="bordeaux pg fgrow">
+      <%= skill.name %>
+    </button>
+  <% } else { %>
+    <button type="roll" class="bordeaux pg compact fcol centerv centerh">0</button>
+    <%- include('../textInput.ejs', {
+      constants,
+      name: 'name',
+      title: null,
+      options: {
+        classes: ['pgv']
+      }
+    }) %>
+  <% } %>
+  <% Object.entries(skillStatus).forEach(([status, label], idx) => { %>
+    <%- include('../dualCheckbox.ejs', {
+      constants,
+      prefix: grouped ? null : key,
+      leftKey: status,
+      rightKey: `${status}_free`,
+      leftTitle: label,
+      rightTitle: 'Free',
+      options: {
+        classes: ['skillbox', 'nogrow', 'noshrink', 'pgl'].concat(idx === 0 ? ['first'] : [])
+      }
+    }) %>
+  <% }) %>
+</div>

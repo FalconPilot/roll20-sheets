@@ -1,19 +1,96 @@
-<div class="frow fw topv">
-  <div class="tw frow fwrap">
-    <h2 class="section-title fw">Aptitudes</h2>
-    <% Object.entries(constants.aptitudes).forEach(([key, title]) => { %>
-      <%- include('../components/checkboxInput.ejs', {
+<div class="fcol fw">
+  <div class="frow fw">
+    <div class="tw frow fwrap">
+      <h2 class="section-title fw">Aptitudes</h2>
+      <% Object.entries(constants.aptitudes).forEach(([key, title]) => { %>
+        <%- include('../components/checkboxInput.ejs', {
+          constants,
+          name: `apt_${key}_known`,
+          title,
+          options: {
+            defaultChecked: key === 'gen',
+            classes: ['hw']
+          }
+        }) %>
+      <% }) %>
+    </div>
+    <div class="fcol ttw">
+      <h2 class="section-title fw">Experience</h2>
+      <div class="fw frow exp-section">
+        <%- include('../components/numberInput.ejs', {
+          constants,
+          name: 'exp_gained',
+          title: 'Experience earned',
+          options: {
+            defaultValue: 0,
+            min: 0,
+            classes: ['hw', 'pg']
+          }
+        }) %>
+        <%- include('../components/numberInput.ejs', {
+          constants,
+          name: 'exp_spent',
+          title: 'Total spent',
+          options: {
+            defaultValue: 0,
+            readOnly: true,
+            classes: ['hw', 'pg']
+          }
+        }) %>
+      </div>
+      <h2 class="section-title fw">Characteristics</h2>
+      <div class="frow fw fwrap fgrow">
+        <% Object.entries(constants.stats).forEach(([key, stat]) => { %>
+          <div class="frow hw">
+            <%- include('../components/numberInput.ejs', {
+              constants,
+              name: `${key}_advances`,
+              title: stat.name,
+              options: {
+                min: '0',
+                max: '25',
+                defaultValue: '0',
+                placeholder: '0',
+                classes: ['ttw', 'pg']
+              }
+            }) %>
+            <%- include('../components/numberInput.ejs', {
+              constants,
+              name: `${key}_bonus_plus`,
+              title: 'Bonus',
+              options: {
+                min: '0',
+                defaultValue: '0',
+                placeholder: '0',
+                classes: ['tw', 'pg']
+              }
+            }) %>
+          </div>
+        <% }) %>
+      </div>
+    </div>
+  </div>
+  <h2 class="section-title">Custom Advancements</h2>
+  <fieldset class="repeating_miscadv">
+    <div class="frow centerv custom-advance">
+      <%- include('../components/textInput.ejs', {
         constants,
-        name: `apt_${key}_known`,
-        title,
+        name: 'label',
+        title: null,
         options: {
-          defaultChecked: key === 'gen',
-          classes: ['hw']
+          placeholder: 'Custom advance',
+          classes: ['fgrow', 'fshrink', 'pg']
         }
       }) %>
-    <% }) %>
-  </div>
-  <div class="tw frow exp-section">
-    <%- include('../components/advancements/expInputs.ejs', { constants }) %>
-  </div>
+      <%- include('../components/numberInput.ejs', {
+        constants,
+        name: 'cost',
+        title: 'Cost',
+        options: {
+          placeholder: '0',
+          classes: ['nogrow', 'noshrink', 'tw', 'pg']
+        }
+      }) %>
+    </div>
+  </fieldset>
 </div>

@@ -1,11 +1,52 @@
 .dh-wrapper {
+  position: relative;
   width: 800px;
+  margin-top: 45px;
   font-family: 'Garamond';
-  /* box-shadow: 8px 8px 20px #333; */
 }
 
 .dh-wrapper * {
   box-sizing: border-box;
+}
+
+.dh-avatar {
+  position: absolute;
+  top: -65px;
+  right: -17px;
+  height: 250px;
+  width: 202px;
+  transform: rotate(6deg);
+  z-index: 10;
+}
+
+.dh-avatar:after {
+  content: ' ';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('https://github.com/FalconPilot/roll20-sheets/blob/master/sheets/dark-heresy-v2/gui/photo-frame.png?raw=true');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  z-index: 2;
+}
+
+.dh-avatar-inner {
+  height: 180px;
+  width: 180px;
+  margin-bottom: 30px;
+  background-color: #111;
+}
+
+.dh-avatar > img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.dh-inner {
+  background-image: url('https://github.com/FalconPilot/roll20-sheets/blob/master/sheets/dark-heresy-v2/gui/parchment.jpg?raw=true');
 }
 
 /* Chrome, Safari, Edge, Opera */
@@ -26,21 +67,30 @@
 }
 
 .dh-header {
-  color: #FFF;
+  position: relative;
   background-color: #333;
+  color: #FFF;
   border: 3px solid #8d141e;
+  box-shadow: 0px 0px 5px #8d141e inset;
   border-radius: 4px 4px 0 0;
+  z-index: 2;
 }
 
-.dh-wrapper .dh-header input[type=number]:read-only {
-  background-color: #CCC;
-  color: #333;
+.dh-header span {
+  font-variant: small-caps;
+}
+
+.dh-wrapper .dh-header input:read-only:read-only {
+  background-color: transparent;
+  color: #FFF;
+  border-bottom: 2px solid #8d141e;
+  border-radius: 0;
+  text-align: right;
 }
 
 .ftab {
   position: relative;
   display: none !important;
-  background-image: url('https://github.com/FalconPilot/roll20-sheets/blob/master/sheets/dark-heresy-v2/gui/parchment.jpg?raw=true');
   border-radius: 0 0 4px 4px;
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.3) inset;
   margin-bottom: 20px;
@@ -58,9 +108,9 @@
   opacity: 0.1;
   z-index: 1;
   filter: sepia(1);
-  background-image: url('https://github.com/FalconPilot/roll20-sheets/blob/master/sheets/dark-heresy-v2/gui/inquisition.png?raw=true');
+  background-image: url('https://github.com/FalconPilot/roll20-sheets/blob/master/sheets/dark-heresy-v2/gui/inquisition-backdrop.png?raw=true');
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
   background-position: center;
 }
 
@@ -88,7 +138,7 @@
 .dh-wrapper .qw { width: 25%; }
 .dh-wrapper .thw { width: 10%; }
 
-.dh-wrapper .pg { padding: 8px; }
+.dh-wrapper .pg, .repcontrol { padding: 8px; }
 .dh-wrapper .pgv { padding: 8px 0; }
 .dh-wrapper .pgh { padding: 0 8px; }
 .dh-wrapper .pgt { padding: 8px 0 0 0; }
@@ -106,20 +156,22 @@
 input[type="hidden"][name="attr_current_tab"][value="character"] ~ .dh-wrapper .ftab.character,
 input[type="hidden"][name="attr_current_tab"][value="advancements"] ~ .dh-wrapper .ftab.advancements,
 input[type="hidden"][name="attr_current_tab"][value="gear"] ~ .dh-wrapper .ftab.gear,
-input[type="hidden"][name="attr_current_tab"][value="npcs"] ~ .dh-wrapper .ftab.npcs,
+input[type="hidden"][name="attr_current_tab"][value="perks"] ~ .dh-wrapper .ftab.perks,
 input[type="hidden"][name="attr_current_tab"][value="psy"] ~ .dh-wrapper .ftab.psy,
 input[type="hidden"][name="attr_current_tab"][value="ship"] ~ .dh-wrapper .ftab.ship,
-input[type="hidden"][name="attr_current_tab"][value="vehicles"] ~ .dh-wrapper .ftab.vehicles {
+input[type="hidden"][name="attr_current_tab"][value="vehicles"] ~ .dh-wrapper .ftab.vehicles,
+input[type="hidden"][name="attr_current_tab"][value="options"] ~ .dh-wrapper .ftab.options {
   display: flex !important;
 }
 
-input[type="hidden"][name="attr_current_tab"][value="character"] ~ .dh-wrapper .header-input.character,
-input[type="hidden"][name="attr_current_tab"][value="advancements"] ~ .dh-wrapper .header-input.advancements,
-input[type="hidden"][name="attr_current_tab"][value="gear"] ~ .dh-wrapper .header-input.gear,
-input[type="hidden"][name="attr_current_tab"][value="npcs"] ~ .dh-wrapper .header-input.npcs,
-input[type="hidden"][name="attr_current_tab"][value="psy"] ~ .dh-wrapper .header-input.psy,
-input[type="hidden"][name="attr_current_tab"][value="ship"] ~ .dh-wrapper .header-input.ship,
-input[type="hidden"][name="attr_current_tab"][value="vehicles"] ~ .dh-wrapper .header-input.vehicles {
+input[type="hidden"][name="attr_current_tab"][value="character"] ~ .dh-wrapper .tab-button.character,
+input[type="hidden"][name="attr_current_tab"][value="advancements"] ~ .dh-wrapper .tab-button.advancements,
+input[type="hidden"][name="attr_current_tab"][value="gear"] ~ .dh-wrapper .tab-button.gear,
+input[type="hidden"][name="attr_current_tab"][value="perks"] ~ .dh-wrapper .tab-button.perks,
+input[type="hidden"][name="attr_current_tab"][value="psy"] ~ .dh-wrapper .tab-button.psy,
+input[type="hidden"][name="attr_current_tab"][value="ship"] ~ .dh-wrapper .tab-button.ship,
+input[type="hidden"][name="attr_current_tab"][value="vehicles"] ~ .dh-wrapper .tab-button.vehicles,
+input[type="hidden"][name="attr_current_tab"][value="options"] ~ .dh-wrapper .tab-button.options {
   margin-top: 0;
   padding-bottom: 20px;
   box-shadow: none;
@@ -130,12 +182,12 @@ input[type="hidden"][name="attr_current_tab"][value="vehicles"] ~ .dh-wrapper .h
   color: #FFF;
 }
 
-.dh-wrapper .header-input-wrapper {
+.dh-wrapper .tab-button-wrapper {
   height: 50px;
   margin-left: 8px;
 }
 
-.dh-wrapper .header-input {
+.dh-wrapper .tab-button {
   margin-top: 20px;
   transition: 0.1s;
   border-bottom: none;
@@ -145,26 +197,32 @@ input[type="hidden"][name="attr_current_tab"][value="vehicles"] ~ .dh-wrapper .h
   box-shadow: 0px -2px 5px -2px #333 inset;
 }
 
+.dh-wrapper .tab-button.options {
+  font-family: 'Pictos';
+  font-variant: normal;
+}
+
 .dh-wrapper .section-title {
   text-align: center;
   font-variant: small-caps;
 }
 
-.header-input > input {
+.dh-wrapper .section-title.ud {
+  border-bottom: 2px solid #8d141e;
+}
+
+.tab-button > input {
   display: none;
 }
 
-.header-input:hover {
+.tab-button:hover,
+.dh-wrapper label:hover {
   cursor: pointer;
 }
 
-.header-input > span {
+.tab-button > span {
   font-size: 15px;
   font-weight: normal;
-}
-
-label.text-input:hover {
-  cursor: pointer;
 }
 
 .text-input > span {
@@ -177,23 +235,36 @@ label.text-input:hover {
 }
 
 .checkbox-input {
+  position: relative;
+}
+
+.checkbox-input input[type="checkbox"] {
+  display: none;
+}
+
+.checkbox-backdrop {
   background-color: #8d141e33;
   transition: 0.1s;
 }
 
-input[type=hidden][value="on"] + .checkbox-input {
+.checkbox-backdrop > span {
+  text-align: center;
+  display: block;
+}
+
+input[type=checkbox]:checked + .checkbox-backdrop {
   background-color: #8d141e;
   color: #FFF;
 }
 
-.dh-wrapper .bar-wrapper > span {
+.bar-wrapper > span,
+.minmax-wrapper > span {
   text-align: center;
   font-variant: small-caps;
 }
 
-.dh-wrapper .bar-wrapper input[type=number] {
-  width: 35px;
-  height: 20px;
+.dh-wrapper .bar-wrapper input[type=number],
+.dh-wrapper .minmax-wrapper input[type=number] {
   background-color: transparent;
   border: none;
   border-radius: 5px;
@@ -202,7 +273,40 @@ input[type=hidden][value="on"] + .checkbox-input {
   text-align: center;
 }
 
-.bar-inner {
+.dh-wrapper .bar-wrapper input[type=number]:not(:read-only) {
+  width: 35px;
+  height: 20px;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.dh-wrapper .bar-wrapper input[type=number]:first-child {
+  margin-right: 5px;
+}
+
+.dh-wrapper .bar-wrapper input[type=number]:last-child {
+  margin-left: 5px;
+}
+
+.dh-wrapper .minmax-wrapper input[type=number] {
+  height: 100%;
+  width: 50%;
+}
+
+.dh-wrapper .minmax-wrapper input[type=number]:first-child:not(:last-child) {
+  border-right: 1px solid #FFF;
+  border-radius: 5px 0 0 5px;
+}
+
+.dh-wrapper .minmax-wrapper input[type=number]:last-child {
+  border-radius: 0 5px 5px 0;
+}
+
+.dh-wrapper .minmax-wrapper input[type=number]:first-child:last-child {
+  border-radius: 5px;
+}
+
+.bar-inner,
+.minmax-inner {
   position: relative;
   border: 1px solid #FFF;
   border-radius: 4px;
@@ -313,14 +417,18 @@ input.bar-percentage[type="hidden"][value="10"] + .bar-wrapper .bar-inner:before
   filter: drop-shadow(2px 2px 4px #333);
 }
 
-.dh-wrapper .stat button[type="roll"] {
+.dh-wrapper button[type="roll"] {
   background-image: none;
   border: none;
   text-shadow: none;
   font-variant: small-caps;
 }
 
-.dh-wrapper .stat button[type="roll"]:before {
+.dh-wrapper button[type="roll"].compact {
+  font-family: 'dicefontd10';
+}
+
+.dh-wrapper.dh-wrapper button[type="roll"]:before {
   content: '';
 }
 
@@ -340,4 +448,92 @@ input.bar-percentage[type="hidden"][value="10"] + .bar-wrapper .bar-inner:before
 .dh-wrapper input[type="number"].stat-input.total {
   margin-right: 4px;
   border-radius: 0 4px 4px 0;
+}
+
+.stat-values {
+  position: relative;
+}
+
+.dh-wrapper input[type=number].stat-bonus.stat-bonus {
+  position: absolute;
+  top: 0;
+  right: 4px;
+  width: 16px;
+  height: 16px;
+  padding: 0;
+  text-align: center;
+  border: 2px solid #8d141e;
+  background-color: #333;
+  color: #FFF;
+}
+
+.dh-wrapper .skill.skill button[type="roll"] {
+  font-size: 14px;
+}
+
+.dh-wrapper .skill.skill button[type="roll"].compact {
+  height: 24px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.repcontrol.repcontrol > .btn {
+  position: relative;
+  background-color: #8d141e;
+  color: transparent;
+  background-image: none;
+  text-shadow: none;
+  overflow: hidden;
+  border: none;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+}
+
+.repcontrol.repcontrol > .btn:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  text-align: center;
+  color: #FFF;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn.btn.repcontrol_edit:after {
+  content: 'y';
+  font-family: 'Pictos';
+}
+
+.btn.btn.repcontrol_add:after {
+  content: '&';
+  font-family: 'Pictos';
+}
+
+.skillbox {
+  width: 45px;
+}
+
+.skillbox span {
+  display: block;
+  text-align: center;
+  font-size: 12px;
+}
+
+.skillbox.first .checkbox-input:first-of-type .checkbox-backdrop > span {
+  font-family: 'Pictos';
+}
+
+.skillbox .checkbox-input:first-of-type .checkbox-backdrop {
+  border-radius: 4px 4px 0 0;
+}
+
+.skillbox .checkbox-input:last-of-type  .checkbox-backdrop{
+  border-radius: 0 0 4px 4px;
+  font-style: italic;
 }

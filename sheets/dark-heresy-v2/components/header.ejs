@@ -1,30 +1,76 @@
-<div class="dh-header fcol fw">
-  <%- include('./textInput.ejs', {
-    constants,
-    name: 'character_name',
-    title: 'Agent name',
-    options: {
-      classes: ['fw', 'pg']
-    }
-  }) %>
-  <div class="frow fw bottomv">
-    <%- include('./bar.ejs', {
+<div class="dh-header fcol fw lefth">
+  <div class="frow tqw">
+    <%- include('./textInput.ejs', {
       constants,
-      name: 'wounds',
-      title: 'Wounds',
+      name: 'character_name',
+      title: 'Agent name',
       options: {
-        classes: ['qw', 'pg']
+        classes: ['ttw', 'pg']
       }
     }) %>
     <%- include('./numberInput.ejs', {
       constants,
       name: 'exp_left',
-      title: 'EXP left',
+      title: 'Experience left',
       options: {
         defaultValue: 0,
         readOnly: true,
-        classes: ['qw', 'pg']
+        classes: ['tw', 'pg']
       }
     }) %>
+  </div>
+  <div class="frow tqw bottomv">
+    <div class="frow hw">
+      <%- include('./bar.ejs', {
+        constants,
+        name: 'wounds',
+        title: 'Wounds',
+        options: {
+          classes: ['ttw', 'pg']
+        }
+      }) %>
+      <%- include('./pseudoMinmax.ejs', {
+        constants,
+        name: 'critwounds',
+        title: 'Critical',
+        options: {
+          defaultValue: '0',
+          min: '0',
+          classes: ['tw', 'pg']
+        }
+      }) %>
+    </div>
+    <div class="frow hw">
+      <%- include('./minmaxInput.ejs', {
+        constants,
+        name: 'fate',
+        title: 'Fate',
+        options: {
+          classes: ['tw', 'pg']
+        }
+      }) %>
+      <%- include('./pseudoMinmax.ejs', {
+        constants,
+        name: 'insanity',
+        title: 'Insanity',
+        options: {
+          defaultValue: '0',
+          min: '0',
+          max: '100',
+          classes: ['tw', 'pg']
+        }
+      }) %>
+      <%- include('./pseudoMinmax.ejs', {
+        constants,
+        name: 'corruption',
+        title: 'Corruption',
+        options: {
+          defaultValue: '0',
+          min: '0',
+          max: '100',
+          classes: ['tw', 'pg']
+        }
+      }) %>
+    </div>
   </div>
 </div>

@@ -1,12 +1,11 @@
 module.exports = {
   tabs: {
     character: 'Character',
+    perks: 'Perks',
     advancements: 'Advancements',
     gear: 'Gear',
-    vehicles: 'Vehicles',
-    ship: 'Ship',
-    psy: 'Psykana',
-    npcs: 'NPCs',
+    psy: 'Psychic',
+    options: 'y'
   },
   stats: {
     ws: {
@@ -81,6 +80,150 @@ module.exports = {
     soc: 'Social',
     lead: 'Leadership',
     fld: 'Fieldcraft'
+  },
+  skills: {
+    acrobatics: {
+      name: 'Acrobatics',
+      stats: ['agi', 'str'],
+      aptitudes: ['agi', 'gen']
+    },
+    athletics: {
+      name: 'Athletics',
+      stats: ['str', 'tou'],
+      aptitudes: ['str', 'gen']
+    },
+    awareness: {
+      name: 'Awareness',
+      stats: ['per', 'fel', 'int'],
+      aptitudes: ['per', 'fld']
+    },
+    charm: {
+      name: 'Charm',
+      stats: ['fel', 'inf'],
+      aptitudes: ['fel', 'soc']
+    },
+    command: {
+      name: 'Command',
+      stats: ['fel', 'int', 'str', 'wp'],
+      aptitudes: ['fel', 'lead']
+    },
+    commerce: {
+      name: 'Commerce',
+      stats: ['int', 'fel'],
+      aptitudes: ['int', 'kno']
+    },
+    deceive: {
+      name: 'Deceive',
+      stats: ['fel', 'int'],
+      aptitudes: ['fel', 'soc']
+    },
+    dodge: {
+      name: 'Dodge',
+      stats: ['agi'],
+      aptitudes: ['agi', 'def']
+    },
+    inquiry: {
+      name: 'Inquiry',
+      stats: ['fel', 'int', 'per'],
+      aptitudes: ['fel', 'soc']
+    },
+    interrogation: {
+      name: 'Interrogation',
+      stats: ['wp', 'fel'],
+      aptitudes: ['wp', 'soc']
+    },
+    intimidate: {
+      name: 'Intimidate',
+      stats: ['str', 'wp'],
+      aptitudes: ['str', 'soc']
+    },
+    logic: {
+      name: 'Logic',
+      stats: ['int'],
+      aptitudes: ['int', 'kno']
+    },
+    medicae: {
+      name: 'Medicae',
+      stats: ['int', 'ag', 'per'],
+      aptitudes: ['int', 'fld']
+    },
+    parry: {
+      name: 'Parry',
+      stats: ['ws'],
+      aptitudes: ['ws', 'def']
+    },
+    psyniscience: {
+      name: 'Psyniscience',
+      stats: ['per'],
+      aptitudes: ['per', 'psy']
+    },
+    scrutiny: {
+      name: 'Scrutiny',
+      stats: ['per', 'fel'],
+      aptitudes: ['per', 'gen']
+    },
+    security: {
+      name: 'Security',
+      stats: ['int', 'agi'],
+      aptitudes: ['int', 'tech']
+    },
+    sleight: {
+      name: 'Sleight of Hand',
+      stats: ['agi'],
+      aptitudes: ['agi', 'kno']
+    },
+    stealth: {
+      name: 'Stealth',
+      stats: ['agi'],
+      aptitudes: ['agi', 'fld']
+    },
+    survival: {
+      name: 'Survival',
+      stats: ['per', 'agi', 'int'],
+      aptitudes: ['per', 'fld']
+    },
+    techuse: {
+      name: 'Tech-Use',
+      stats: ['int', 'ag'],
+      aptitudes: ['int', 'tech']
+    }
+  },
+  specialistSkills: {
+    commonlore: {
+      name: 'Common Lore',
+      stats: ['int', 'fel'],
+      aptitudes: ['int', 'kno']
+    },
+    forbiddenlore: {
+      name: 'Forbidden Lore',
+      stats: ['int', 'fel'],
+      aptitudes: ['int', 'kno']
+    },
+    linguistics: {
+      name: 'Linguistics',
+      stats: ['int', 'fel'],
+      aptitudes: ['int', 'gen']
+    },
+    navigate: {
+      name: 'Navigate',
+      stats: ['int', 'per'],
+      aptitudes: ['int', 'fld']
+    },
+    operate: {
+      name: 'Operate',
+      stats: ['agi', 'int'],
+      aptitudes: ['agi', 'fld']
+    },
+    scholasticlore: {
+      name: 'Scholastic Lore',
+      stats: ['int', 'fel'],
+      aptitudes: ['int', 'kno']
+    },
+    trade: {
+      name: 'Trade',
+      stats: ['int', 'agi'],
+      aptitudes: ['int', 'gen']
+    }
   },
   xpMatrix: {
     stats: {

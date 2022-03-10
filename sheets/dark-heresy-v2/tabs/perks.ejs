@@ -1,0 +1,67 @@
+<div class="fcol fw">
+  <div class="frow fw">
+    <%- include('../components/character/skills.ejs', { constants }) %>
+  </div>
+  <h2 class="section-title fw">Traits</h2>
+  <fieldset class="repeating_traits">
+    <div class="fcol fw">
+      <div class="frow fw">
+        <div class="frow tqw">
+          <% const aptValues = Object.entries(constants.aptitudes).map(([key, title]) => ({
+            name: key,
+            title
+          })); %>
+          <%- include('../components/textInput.ejs', {
+            constants,
+            name: 'name',
+            title: 'Trait',
+            options: {
+              classes: ['pg', 'tqw']
+            }
+          }) %>
+          <%- include('../components/selectInput.ejs', {
+            constants,
+            name: 'apt1',
+            title: null,
+            values: aptValues,
+            options: {
+              classes: ['pg', 'qw']
+            }
+          }) %>
+          <%- include('../components/selectInput.ejs', {
+            constants,
+            name: 'apt2',
+            title: null,
+            values: aptValues,
+            options: {
+              classes: ['pg', 'qw']
+            }
+          }) %>
+        </div>
+        <div class="frow qw">
+          <%- include('../components/selectInput.ejs', {
+            constants,
+            name: 'tier',
+            title: null,
+            values: Object.keys(constants.xpMatrix.talents).map((key, idx) => ({
+              value: key,
+              title: `Tier ${idx + 1}`
+            })),
+            options: {
+              classes: ['pg', 'hw']
+            }
+          }) %>
+          <%- include('../components/checkboxInput.ejs', {
+            constants,
+            name: 'free',
+            title: 'Free',
+            options: {
+              classes: ['pg', 'hw']
+            }
+          }) %>
+        </div>
+      </div>
+      <!-- TEXTAREA HERE -->
+    </div>
+  </fieldset>
+</div>
