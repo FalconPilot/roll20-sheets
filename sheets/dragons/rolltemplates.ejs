@@ -1,0 +1,27 @@
+<rolltemplate class="sheet-rolltemplate-dg-diceroll">
+  <div class="sheet-dice-roll-wrapper">
+    <div class="sheet-dice-roll-header">
+      {{character}} lance : {{tag}}<br/>
+      <span class="sheet-dg-dice sheet-{{dice}}"></span>
+    </div>
+    {{#rollGreater() result goal}}
+      <span class="sheet-result-control sheet-failure"></span>
+    {{/rollGreater() result goal}}
+    {{#rollTotal() result 12}}
+      <span class="sheet-result-control sheet-critical"></span>
+    {{/rollTotal() result 12}}
+    <div class="sheet-dice-roll-content">
+      {{result}}<span class="sheet-separator"></span>{{goal}}
+    </div>
+    {{#rollGreater() result goal}}
+      <div class="sheet-dice-roll-footer sheet-dice-roll-failure">
+        Échec !
+      </div>
+    {{/rollGreater() result goal}}
+    {{#rollTotal() result 12}}
+      <div class="sheet-dice-roll-footer sheet-dice-roll-critical">
+        Réussite critique !
+      </div>
+    {{/rollTotal() result 12}}
+  </div>
+</rolltemplate>

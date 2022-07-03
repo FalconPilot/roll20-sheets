@@ -1,0 +1,26 @@
+<fieldset class="repeating_armor">
+  <div class="armor frow fw centerv">
+    <%- include('../textInput.ejs', {
+      constants,
+      name: 'name',
+      title: null,
+      options: {
+        placeholder: 'Armor name...',
+        classes: ['pg', 'tw']
+      }
+    }) %>
+    <div class="frow ttw centerv armor-locations">
+      <% Object.entries(constants.gear.armor.locations).forEach(([key, loc]) => { %>
+        <%- include('../numberInput.ejs', {
+          constants,
+          name: key,
+          title: key.toUpperCase(),
+          options: {
+            title: loc,
+            classes: ['fcol', 'centerh']
+          }
+        }) %>
+      <% }) %>
+    </div>
+  </div>
+</fieldset>

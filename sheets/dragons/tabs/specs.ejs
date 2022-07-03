@@ -1,0 +1,21 @@
+<div class="specs-list fcol fw pgh">
+  <fieldset class="repeating_specs">
+    <div class="spec frow fw elt-line">
+      <input
+        type="text"
+        class="spec-name"
+        name="attr_spec-name"
+        placeholder="Nom de spécialisation"
+      />
+      <% constants.specsDice.forEach(dice => { %>
+        <div class="dicebtn-wrapper fcol">
+          <input type="hidden" class="dicebtn-toggle" name="attr_spec_<%= dice %>" />
+          <label class="spec-button dicebtn <%= dice %>">
+            <input type="checkbox" name="attr_spec_<%= dice %>" />
+          </label>
+          <%- include('../components/rollbutton.ejs', { constants, dice, tag: '@{spec-name}' }) %>
+        </div>
+      <% })%>
+    </div>
+  </fieldset>
+</div>

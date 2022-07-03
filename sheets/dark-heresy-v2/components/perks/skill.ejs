@@ -4,13 +4,24 @@
   experienced: '+20',
   veteran: '+30'
 } %>
+
+<% const bonuses = Object.keys(skillStatus).reduce((acc, status) => ({
+  ...acc,
+  [status]: [grouped ? null : key, status].filter(x => x).join('_')
+}), {}) %>
+
+<% const equation = `/em Test (${grouped ? '@{name}' : skill.name}): [[1D100]], Target: [[@{${skill.stats[0]}_total} - 20 + (20 * @{${bonuses.known}}) + (10 * @{${bonuses.trained}}) + (10 * @{${bonuses.experienced}}) + (10 * @{${bonuses.veteran}})]]` %>
 <div class="frow fw skill pg">
   <% if (!grouped) { %>
-    <button type="roll" class="bordeaux pg fgrow">
+    <button type="roll" class="bordeaux pg fgrow" value="<%- equation %>">
       <%= skill.name %>
     </button>
   <% } else { %>
-    <button type="roll" class="bordeaux pg compact fcol centerv centerh">0</button>
+    <button
+      type="roll"
+      class="bordeaux pg compact fcol centerv centerh"
+      value="<%- equation %>"
+    >0</button>
     <%- include('../textInput.ejs', {
       constants,
       name: 'name',

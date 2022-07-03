@@ -1,0 +1,28 @@
+<div class="fcol fw">
+  <% Object.entries(constants.stats).forEach(([key, stat]) => { %>
+    <div class="elt-line frow">
+      <div class="elt-name fcol">
+        <strong>
+          <%= stat.name %>
+        </strong>
+        <span>
+          <%= stat.description %>
+        </span>
+      </div>
+      <% constants.statsDice.forEach(dice => { %>
+        <% const attrKey = `${key}_${dice}` %>
+        <div class="dicebtn-wrapper fcol">
+          <input type="hidden" class="dicebtn-toggle" name="attr_<%= attrKey %>" />
+          <label class="stat-dice dicebtn <%= dice %>">
+            <input
+              type="checkbox"
+              name="attr_<%= attrKey %>"
+              title="<%= dice.toUpperCase() %>"
+            />
+          </label>
+          <%- include('../components/rollbutton.ejs', { constants, dice, tag: stat.name }) %>
+        </div>
+      <% }) %>
+    </div>
+  <% }) %>
+</div>

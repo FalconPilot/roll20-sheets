@@ -1,0 +1,82 @@
+<fieldset class="repeating_traits">
+  <div class="fcol fw">
+    <div class="frow fw">
+      <div class="frow ttw">
+        <% const aptValues = Object.entries(constants.aptitudes).map(([key, title]) => ({
+          value: key,
+          title
+        })); %>
+        <%- include('../textInput.ejs', {
+          constants,
+          name: 'name',
+          title: 'Trait',
+          options: {
+            classes: ['pg', 'tqw']
+          }
+        }) %>
+        <%- include('../selectInput.ejs', {
+          constants,
+          name: 'apt1',
+          title: null,
+          values: aptValues,
+          options: {
+            classes: ['pg', 'qw']
+          }
+        }) %>
+        <%- include('../selectInput.ejs', {
+          constants,
+          name: 'apt2',
+          title: null,
+          values: aptValues,
+          options: {
+            classes: ['pg', 'qw']
+          }
+        }) %>
+      </div>
+      <div class="frow tw trait-taken">
+        <%- include('../selectInput.ejs', {
+          constants,
+          name: 'tier',
+          title: null,
+          values: Object.keys(constants.xpMatrix.talents).map((key, idx) => ({
+            value: key,
+            title: `Tier ${idx + 1}`
+          })),
+          options: {
+            classes: ['pg', 'tw']
+          }
+        }) %>
+        <%- include('../numberInput.ejs', {
+          constants,
+          name: 'taken',
+          title: 'Taken',
+          options: {
+            min: '0',
+            defaultValue: '0',
+            placeholder: '0',
+            classes: ['pg', 'tw']
+          }
+        }) %>
+        <%- include('../numberInput.ejs', {
+          constants,
+          name: 'free',
+          title: 'Free',
+          options: {
+            min: '0',
+            defaultValue: '0',
+            placeholder: '0',
+            classes: ['pg', 'tw']
+          }
+        }) %>
+      </div>
+    </div>
+    <%- include('../textarea.ejs', {
+      constants,
+      name: 'description',
+      title: 'Effects',
+      options: {
+        classes: ['pg', 'fw']
+      }
+    }) %>
+  </div>
+</fieldset>

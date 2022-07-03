@@ -6,6 +6,7 @@
     name="attr_<%= name %>"
     class="nogrow fshrink parchment-input"
     <%= options.defaultChecked ? 'checked' : '' %>
+    <%- options.title ? `title="${options.title}"` : '' %>
   />
   <div class="checkbox-backdrop pg fw">
     <span class="fw"><%= title %></span>

@@ -55,7 +55,7 @@ exports.execute = async (args) => {
       path.resolve(folderPath, 'style.css'),
       path.resolve(buildDir, folderName, 'style.css')
     )
-    vscode.window.showInformationMessage('Build completed !')
+    vscode.window.showInformationMessage(`Build completed for "${folderName}" !`)
   } catch (err) {
     vscode.window.showErrorMessage(err.message)
   }

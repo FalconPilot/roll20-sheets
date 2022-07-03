@@ -1,0 +1,132 @@
+<div class="fw frow">
+  <%- include('../textInput.ejs', {
+    constants,
+    name: 'name',
+    title: 'Name',
+    options: {
+      classes: ['pgh', 'tqw']
+    }
+  }) %>
+  <button type="roll" class="bordeaux qw">Shoot</button>
+</div>
+<div class="frow fw">
+  <%- include('../numberInput.ejs', {
+    constants,
+    name: 'range',
+    title: 'Range',
+    options: {
+      min: '0',
+      classes: ['pg', 'qw']
+    }
+  }) %>
+  <div class="frow hw">
+    <%- include('../textInput.ejs', {
+      constants,
+      name: 'damage',
+      title: 'Dmg',
+      options: {
+        placeholder: '1D10',
+        defaultValue: '1D10',
+        classes: ['pg', 'ttw']
+      }
+    }) %>
+    <%- include('../numberInput.ejs', {
+      constants,
+      name: 'penetration',
+      title: 'Pen.',
+      options: {
+        defaultValue: '0',
+        placeholder: '0',
+        classes: ['pgv', 'tw']
+      }
+    }) %>
+  </div>
+  <%- include('../selectInput.ejs', {
+    constants,
+    name: 'dmgtype',
+    title: null,
+    values: Object.entries(constants.damages).map(([key, title]) => ({
+      value: key,
+      title
+    })),
+    options: {
+      classes: ['qw', 'pgl']
+    }
+  }) %>
+</div>
+<div class="frow fw pgl centerv">
+  <strong>RoF</strong>
+  <div class="frow tw centerv">
+    <%- include('../numberInput.ejs', {
+      constants,
+      name: 'rof1',
+      title: null,
+      options: {
+        defaultValue: '1',
+        min: '0',
+        max: '1',
+        classes: ['tw']
+      }
+    }) %>
+    <strong>/</strong>
+    <%- include('../numberInput.ejs', {
+      constants,
+      name: 'rof2',
+      title: null,
+      options: {
+        min: '0',
+        classes: ['tw']
+      }
+    }) %>
+    <strong>/</strong>
+    <%- include('../numberInput.ejs', {
+      constants,
+      name: 'rof3',
+      title: null,
+      options: {
+        min: '0',
+        classes: ['tw']
+      }
+    }) %>
+  </div>
+  <%- include('../textInput.ejs', {
+    constants,
+    name: 'reload',
+    title: 'Reload',
+    options: {
+      placeholder: '1 AC',
+      classes: ['tw', 'pg']
+    }
+  }) %>
+  <%- include('../selectInput.ejs', {
+    constants,
+    name: 'class',
+    title: null,
+    values: Object.entries(constants.gear.ranged.classes).map(([key, title]) => ({
+      title,
+      value: key
+    })),
+    options: {
+      classes: ['tw']
+    }
+  }) %>
+</div>
+<div class="frow fw pgl centerv">
+  <%- include('../textarea.ejs', {
+    constants,
+    name: 'description',
+    title: null,
+    options: {
+      placeholder: 'Effects, modifications and other informations...',
+      classes: ['ttw']
+    }
+  }) %>
+  <%- include('../bar.ejs', {
+    constants,
+    name: 'clip',
+    title: 'clip',
+    options: {
+      classes: ['tw', 'pg']
+    }
+  }) %>
+</div>

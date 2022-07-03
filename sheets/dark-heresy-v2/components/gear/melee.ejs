@@ -1,0 +1,59 @@
+
+<div class="fw frow">
+  <%- include('../textInput.ejs', {
+    constants,
+    name: 'name',
+    title: 'Name',
+    options: {
+      classes: ['pgh', 'tqw']
+    }
+  }) %>
+  <button type="roll" class="bordeaux qw">Hit</button>
+</div>
+<div class="frow fw">
+  <div class="frow ttw">
+    <%- include('../textInput.ejs', {
+      constants,
+      name: 'damage',
+      title: 'Dmg',
+      options: {
+        placeholder: '1D10',
+        defaultValue: '1D10',
+        classes: ['pg', 'ttw']
+      }
+    }) %>
+    <%- include('../numberInput.ejs', {
+      constants,
+      name: 'penetration',
+      title: 'Pen.',
+      options: {
+        defaultValue: '0',
+        placeholder: '0',
+        classes: ['pg', 'tw']
+      }
+    }) %>
+  </div>
+  <%- include('../selectInput.ejs', {
+    constants,
+    name: 'dmgtype',
+    title: null,
+    values: Object.entries(constants.damages).map(([key, title]) => ({
+      value: key,
+      title
+    })),
+    options: {
+      classes: ['tw']
+    }
+  }) %>
+</div>
+<div class="frow fw pgl centerv">
+  <%- include('../textarea.ejs', {
+    constants,
+    name: 'description',
+    title: null,
+    options: {
+      placeholder: 'Effects, modifications and other informations...',
+      classes: ['fw']
+    }
+  }) %>
+</div>

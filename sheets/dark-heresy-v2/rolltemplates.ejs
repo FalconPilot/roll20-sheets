@@ -1,3 +1,13 @@
-<rolltemplate class="sheet-rolltemplate-dice">
-  
+<rolltemplate class="sheet-rolltemplate-diceroll">
+  <div class="sheet-rt-standard">
+    <div class="sheet-rt-header">
+      {{title}}
+    </div>
+    <div class="sheet-rt-result">
+      <span>{{result}}</span><span>{{target}}</span>
+      <div class="sheet-rt-degrees sheet-rt-{{dtype}}">
+        <span>{{degrees}}</span> degrees of {{dtype}}
+      </div>
+    </div>
+  </div>
 </rolltemplate>

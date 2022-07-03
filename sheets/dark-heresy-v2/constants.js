@@ -244,5 +244,35 @@ module.exports = {
       t2: [300, 450, 900],
       t3: [400, 600, 1200]
     }
-  }
+  },
+  damages: {
+    e: 'Energy',
+    i: 'Impact',
+    r: 'Rending',
+    x: 'Explosive'
+  },
+  gear: {
+    ranged: {
+      classes: {
+        pistol: 'Pistol',
+        basic: 'Basic',
+        heavy: 'Heavy',
+        thrown: 'Thrown',
+        vehicle: 'Vehicle'
+      }
+    },
+    armor: {
+      locations: {
+        h: 'Head',
+        b: 'Body',
+        la: 'L. arm',
+        ra: 'R. arm',
+        ll: 'L. leg',
+        rl: 'R. leg'
+      }
+    }
+  },
+  rolltemplate: (template, values) => `&{template:${template}} ${Object.entries(values).map(([k, v]) => (
+    `{{${k}=${v}}}`
+  )).join(' ')}`
 }

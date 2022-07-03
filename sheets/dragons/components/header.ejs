@@ -1,0 +1,29 @@
+<div class="fw dg-header pg frow">
+  <div class="tqw fcol pgr">
+    <input
+      type="text"
+      name="attr_character_name"
+      placeholder="Nom du personnage"
+      class="fw"
+    />
+  </div>
+  <div class="qw fcol aside pgl">
+    <div class="fw frow">
+      <% Object.entries({ age: 'ans', meters: 'm', centimeters: 'cm' }).forEach(([key, suffix]) => { %>
+        <div class="tw frow bottomv">
+          <input type="number" class="fgrow smallnum" name="attr_character_<%= key %>" placeholder="?" />
+          <span class="anot noshrink"><%= suffix %></span>
+        </div>
+      <% }) %>
+    </div>
+    <input type="text" class="fw" name="attr_character_gender" placeholder="Genre" />
+    <select name="attr_character_race" class="fw">
+      <% Object.entries(constants.races).forEach(([raceKey, race]) => { %>
+        <option disabled><%= race.name %></option>
+        <% Object.entries(race.options).forEach(([key, name]) => { %>
+          <option value="<%= raceKey %>-<%= key %>"><%= name %></option>
+        <% }) %>
+      <% }) %>
+    </select>
+  </div>
+</div>

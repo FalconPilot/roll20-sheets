@@ -1,0 +1,12 @@
+<button
+  type="roll"
+  value="<%= `${constants.fn.rolltemplate('dg-diceroll', {
+    tag,
+    dice,
+    character: '@{character_name}',
+    goal: `[[12 + ${constants.fn.skillsQuery(constants.skills)}]]`,
+    result: `[[1${dice}cs0cf0 + ?{Valeur précédente|0}]]`,
+    race: '@{character_race}'
+    })}`
+  %>"
+>Lancer</button>

@@ -1,0 +1,79 @@
+.bc-wrapper {
+  position: relative;
+  width: 800px;
+  margin-top: 45px;
+  font-family: 'Arial';
+  border: 1px solid #CCC;
+}
+
+.bc-wrapper * {
+  box-sizing: border-box;
+}
+
+.bc-wrapper select {
+  margin: 0;
+}
+
+.bc-wrapper label {
+  width: auto;
+  margin-bottom: 0;
+  padding-right: 0;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* Utils */
+
+.bc-wrapper .frow,
+.bc-wrapper .fcol { display: flex; }
+
+.bc-wrapper .frow { flex-direction: row; }
+.bc-wrapper .fcol { flex-direction: column; }
+.bc-wrapper .fcol.centerv, .frow.centerh { justify-content: center; }
+.bc-wrapper .fcol.centerh, .frow.centerv { align-items: center; }
+.bc-wrapper .fcol.lefth, .frow.topv { align-items: flex-start; }
+.bc-wrapper .fcol.righth, .frow.bottomv { align-items: flex-end; }
+.bc-wrapper .fcol.topv, .frow.lefth { justify-content: flex-start; }
+.bc-wrapper .fcol.bottomv, .frow.righth { justify-content: flex-end; }
+
+.bc-wrapper .fw { width: 100%; }
+.bc-wrapper .tqw { width: 75%; }
+.bc-wrapper .ttw { width: 66%; }
+.bc-wrapper .hw { width: 50%; }
+.bc-wrapper .tw { width: 33%; }
+.bc-wrapper .qw { width: 25%; }
+.bc-wrapper .ftw { width: 20%; }
+.bc-wrapper .thw { width: 10%; }
+
+.bc-wrapper .pg, .repcontrol { padding: 8px; }
+.bc-wrapper .pgv { padding: 8px 0; }
+.bc-wrapper .pgh { padding: 0 8px; }
+.bc-wrapper .pgt { padding: 8px 0 0 0; }
+.bc-wrapper .pgb { padding: 0 0 8px 0; }
+.bc-wrapper .pgl { padding: 0 0 0 8px; }
+.bc-wrapper .pgr { padding: 0 8px 0 0; }
+
+.bc-wrapper .mg { margin: 8px; }
+.bc-wrapper .mgv { margin: 8px 0; }
+.bc-wrapper .mgh { margin: 0 8px; }
+.bc-wrapper .mgt { margin: 8px 0 0 0; }
+.bc-wrapper .mgb { margin: 0 0 8px 0; }
+.bc-wrapper .mgl { margin: 0 0 0 8px; }
+.bc-wrapper .mgr { margin: 0 8px 0 0; }
+
+.bc-wrapper .noshrink { flex-shrink: 0; }
+.bc-wrapper .fshrink { flex-shrink: 1; }
+.bc-wrapper .nogrow { flex-grow: 0; }
+.bc-wrapper .fgrow { flex-grow: 1; }
+
+.bc-wrapper .fwrap { flex-wrap: wrap; }

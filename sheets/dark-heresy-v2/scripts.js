@@ -27,7 +27,11 @@ const keygen = {
   total: key => `${key}_total`,
   ads: key => `ads${key}`,
   free: key => `${key}_free`,
-  tier: key => `${key}_tier`
+  tier: key => `${key}_tier`,
+  taken: key => `${key}_taken`,
+  current: key => `${key}_current`,
+  max: key => `${key}_max`,
+  percentage: key => `${key}_percentage`
 }
 
 
@@ -41,27 +45,57 @@ const statCalculationKeys = [
 ]
 
 const setPercentage = key => values => {
-  const current = parseNum(values[`${key}_current`])
-  const max = parseNum(values[`${key}_max`])
+  const current = parseNum(values[keygen.current(key)])
+  const max = parseNum(values[keygen.max(key)])
   const percentage = max === 0 ? 0 : Math.ceil((current / max) * 10)
 
   setAttrs({
-    [`${key}_percentage`]: Math.max(0, Math.min(10, percentage))
+    [keygen.percentage(key)]: Math.max(0, Math.min(10, percentage))
   })
 }
 
 const bars = ['wounds']
+const repeatingBars = {
+  rangedweapons: ['clip']
+}
 
 // Calculate bar percentages
 bars.forEach(key => {
-  const currentKey = `${key}_current`
-  const maxKey = `${key}_max`
   onEvents([
     events.sheetOpened,
-    events.attributeChanged(currentKey),
-    events.attributeChanged(maxKey)
+    events.attributeChanged(keygen.current(key)),
+    events.attributeChanged(keygen.max(key))
   ], () => {
-    getAttrs([currentKey, maxKey], setPercentage(key))
+    getAttrs([keygen.current(key), keygen.max(key)], setPercentage(key))
+  })
+})
+
+// Calculate repeating bars percentages
+Object.entries(repeatingBars).forEach(([group, bars]) => {
+  onEvents([
+    events.sheetOpened,
+    events.removeRepeatingGroup(group),
+    ...bars.reduce((acc, bar) => [
+      ...acc,
+      events.repeatingGroupAttributeChanged(group, keygen.current(bar)),
+      events.repeatingGroupAttributeChanged(group, keygen.max(bar))
+    ], [])
+  ], () => {
+    getSectionIDs(group, ids => {
+      const fields = bars.reduce((acc, bar) => [
+        ...acc,
+        ...ids.map(id => (
+          `repeating_${group}_${id}_${bar}`
+        ))
+      ], [])
+      getAttrs(fields.reduce((acc, key) => [
+        ...acc,
+        keygen.current(key),
+        keygen.max(key)
+      ], []), values => {
+        fields.forEach(key => setPercentage(key)(values))
+      })
+    })
   })
 })
 
@@ -128,6 +162,13 @@ const genSkillKeys = (prefix, ids) => (
   ], [])
 )
 
+const genTraitKeys = (prefix) => [
+  keygen.taken(prefix),
+  `${prefix}_apt1`,
+  `${prefix}_apt2`,
+  `${prefix}_tier`
+]
+
 const calcSkillMatrix = (key, skill, values) => (
   skillStatuses.reduce((total, status) => {
     const fullKey = `${key}_${status}`
@@ -159,7 +200,6 @@ const getSkillGroups = (acc, group, tail) => {
     // Compute XP from there
     getSectionIDs('repeating_miscadv', miscIDs => {
       const advKeys = miscIDs.map(id => `repeating_miscadv_${id}_cost`)
-
       getSectionIDs('repeating_traits', traitIDs => {
         const traitKeys = traitIDs.map(id => `repeating_traits_${id}`)
         getAttrs([
@@ -174,10 +214,14 @@ const getSkillGroups = (acc, group, tail) => {
           ...skillKeys.reduce((acc, skill) => [
             ...acc,
             ...genStatusKeys(skill)
+          ], []),
+          ...traitKeys.reduce((acc, tk) => [
+            ...acc,
+            ...genTraitKeys(tk)
           ], [])
         ], values => {
           const baseXP = parseNum(values.exp_gained)
-      
+
           // Stats XP cost
           const statXP = statKeys.reduce((total, key) => {
             const points = parseNum(values[keygen.advances(key)])
@@ -207,25 +251,35 @@ const getSkillGroups = (acc, group, tail) => {
           }, 0)
 
           // Traits XP cost
-          const traitsXP = 0
-  
+          const traitsXP = traitKeys.reduce((total, tk) => {
+            const taken = parseNum(values[keygen.taken(tk)])
+
+            if (taken <= 0) {
+              return total
+            }
+
+            const aptIndex = getAptitudeIndex(values, [values[`${tk}_apt1`], values[`${tk}_apt2`]])
+            const cost = constants.xpMatrix.talents[values[`${tk}_tier`]][aptIndex]
+            return total + taken * cost
+          }, 0)
+
           // Custom XP cost
           const customXP = advKeys.reduce((total, key) => total + parseNum(values[key]), 0)
-      
+
           // Total spent XP
           const spentXP = statXP
             + customXP
             + skillsXP
             + groupsXP
             + traitsXP
-      
+
           setAttrs({
             exp_spent: spentXP,
             exp_left: baseXP - spentXP
           })
         })
       })
-      })
+    })
   })
 }
 
@@ -235,8 +289,10 @@ onEvents([
   events.attributeChanged('exp_gained'),
   events.repeatingGroupAttributeChanged('miscadv', 'cost'),
   events.removeRepeatingGroup('miscadv'),
+  events.repeatingGroupAttributeChanged('traits', 'apt1'),
+  events.repeatingGroupAttributeChanged('traits', 'apt2'),
   events.repeatingGroupAttributeChanged('traits', 'tier'),
-  events.repeatingGroupAttributeChanged('traits', 'free'),
+  events.repeatingGroupAttributeChanged('traits', 'taken'),
   events.removeRepeatingGroup('traits'),
   ...statKeys.map(keygen.advances).map(events.attributeChanged),
   ...aptKeys.map(keygen.known).map(events.attributeChanged),

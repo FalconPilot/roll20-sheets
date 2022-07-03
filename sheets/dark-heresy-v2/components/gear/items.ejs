@@ -1,0 +1,22 @@
+<fieldset class="repeating_items">
+  <div class="inventory-item frow fw centerv">
+    <%- include('../textInput.ejs', {
+      constants,
+      name: 'name',
+      title: null,
+      options: {
+        placeholder: 'Item name...',
+        classes: ['pg', 'tqw']
+      }
+    }) %>
+    <%- include('../numberInput.ejs', {
+      constants,
+      name: 'weight',
+      title: null,
+      options: {
+        classes: ['pg', 'ftw']
+      }
+    }) %>
+    <strong>kg</strong>
+  </div>
+</fieldset>

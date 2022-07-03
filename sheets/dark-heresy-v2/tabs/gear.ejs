@@ -1,0 +1,15 @@
+<div class="frow fw">
+  <div class="fcol hw">
+    <h2 class="section-title">Ranged weapons</h2>
+    <%- include('../components/gear/weapons.ejs', { constants, name: 'ranged' }) %>
+    <h2 class="section-title">Melee weapons</h2>
+    <%- include('../components/gear/weapons.ejs', { constants, name: 'melee' }) %>
+  </div>
+  <div class="fcol hw">
+    <h2 class="section-title">Armor</h2>
+    <%- include('../components/gear/armor.ejs', { constants }) %>
+    <h2 class="section-title">Cybernetics</h2>
+    <h2 class="section-title">Items</h2>
+    <%- include('../components/gear/items.ejs', { constants }) %>
+  </div>
+</div>

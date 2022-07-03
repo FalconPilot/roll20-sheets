@@ -1,0 +1,13 @@
+<% const classList = options.classes && options.classes.length > 0 ? ` ${options.classes.join(' ')}` : '' %>
+<div class="text-input fcol centerv<%= classList %>">
+  <%if (!!title) { %>
+    <span class="noshrink"><%= title %></span>
+  <% } %>
+  <textarea
+    name="attr_<%= name %>"
+    class="fgrow fshrink fw parchment-input"
+    <%- options.placeholder ? `placeholder="${options.placeholder}"` : '' %>
+    <%- options.defaultValue ? `value="${options.defaultValue}"` : '' %>
+    <%- options.readOnly ? 'readonly' : '' %>
+  ></textarea>
+</div>

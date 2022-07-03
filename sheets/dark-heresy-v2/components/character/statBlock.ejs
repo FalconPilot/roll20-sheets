@@ -1,5 +1,5 @@
 <div class="stat frow fw pgv <%= key %>">
-  <button type="roll" value="" class="fgrow bordeaux">
+  <button type="roll" value="<%- `/em Test (${stat.name}): [[1D100]], Target: [[@{${key}_total} + ?{Modifier|0}]]` %>" class="fgrow bordeaux">
     <%= stat.name %>
     <br />
     (<%= stat.diminutive %>)

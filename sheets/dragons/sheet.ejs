@@ -1,0 +1,28 @@
+<input type="hidden" name="attr_current_tab" value="character" />
+<div class="dg-wrapper fcol">
+  <%- include('./components/header.ejs', { constants }) %>
+  <div class="fw frow">
+    <div class="hw"></div>
+    <div class="hw fcol">
+      <div class="fw frow fwrap">
+        <% Object.entries(constants.tabs).forEach(([key, name]) => { %>
+          <label class="tab-btn fgrow <%= key %>">
+            <span><%= name %></span>
+            <input
+              type="radio"
+              name="attr_current_tab"
+              value="<%= key %>"
+            />
+          </label>
+        <% }) %>
+      </div>
+      <% Object.keys(constants.tabs).forEach(key => { %>
+        <div class="fw fcol ftab <%= key %>">
+          <%- include(`./tabs/${key}.ejs`, { constants }) %>
+        </div>
+      <% }) %>
+    </div>
+  </div>
+</div>
+
+<%- include('./rolltemplates.ejs', { constants }) %>
